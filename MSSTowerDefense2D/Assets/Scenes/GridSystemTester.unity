@@ -184,6 +184,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shelfPlacementManager: {fileID: 817276242}
   shelfPrefab: {fileID: 7873324396560715407, guid: 27bfc57053f115d4291221f8ccd5bff4, type: 3}
+  cellTilePrefab: {fileID: 7873324396560715407, guid: f26f24feabfc3024aa6087f9e42844f7, type: 3}
+  gridCellLength: 10
+  gridCellHeight: 10
+  gridCellSize: 1
 --- !u!1 &1472085434
 GameObject:
   m_ObjectHideFlags: 0
