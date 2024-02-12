@@ -13,27 +13,74 @@ public class ShelfScript : MonoBehaviour
     private List<GameObject> currentInventoryItems;
     private bool placed = false;
     private bool allgood = true;
+    private ShelfUIScript shelfUIScript;
+    private int shelfLength;
+    public GameObject gridBlockMain;
+    public List<GameObject> gridBlockArray;
+    private GameObject gridBlockLeft;
+    private GameObject gridBlockRight;
+    private GameObject gridBlockAbove;
+    private GameObject gridBlockBelow;
+
+
+    private void OnMouseDown()
+    {
+        if (shelfUIScript = null)
+        {
+            shelfUIScript.currentShelf = gameObject;
+        }
+        else if ((shelfUIScript.currentShelf = gameObject) && verifyPlacement() == true)
+        {
+            shelfUIScript.currentShelf = null;
+        }
+        else if ((shelfUIScript.currentShelf = gameObject) && verifyPlacement() == false)
+        {
+            shelfUIScript.currentShelf = null;
+            deleteShelf();
+        }
+    }
+
 
     private void sellInventory(GameObject item, GameObject customer)
     {
-        if (currentInventory == 1)
+        if (currentInventory == 2)
         {
             restockAlert();
+        }
+        else if (currentInventory > 2)
+        {
+            StopCoroutine(flash);
         }
         if (currentInventory > 0)
         {
             currentInventoryItems.Remove(item);
             currentInventoryItems.RemoveAll(x => x == null);
-            //currentInventory -= 1;
             currentInventory = currentInventoryItems.Count;
             makeCustomerLeave(customer);
+        }
+        if (currentCustomersInventory == 0)
+        {
+            StopCoroutine(flash);
+            SpriteRenderer renderer = GetComponent<SpriteRenderer>();
+            renderer.color = new Color(0, 0, 0);
         }
     }
 
     private void restockAlert()
     {
-        //TODO flash red, squish/stretch, look into juice effects of towers dying
+        StartCoroutine(flash);
     }
+
+    IEnumerator flash()
+    {
+        SpriteRenderer renderer = GetComponent<SpriteRenderer>();
+        renderer.color = new Color(1, 0, 0);
+        yield return new WaitForSeconds(0.5);
+        renderer.color = new Color(1, 1, 1);
+        yield return new WaitForSeconds(0.5);
+        StartCoroutine(flash);
+    }
+
 
     public void restock(List<GameObject> newItems)
     {
@@ -68,7 +115,7 @@ public class ShelfScript : MonoBehaviour
     public void rotateRight()
     {
         placed = false;
-        transform.Rotate(0, 90, 0);
+        transform.Rotate(0, 0, -90);
         if (verifyPlacement() == true)
         {
             placed = true;
@@ -78,22 +125,51 @@ public class ShelfScript : MonoBehaviour
     public void rotateLeft()
     {
         placed = false;
-        transform.Rotate(0, -90, 0);
+        transform.Rotate(0, 0, 90);
         if (verifyPlacement() == true)
         {
             placed = true;
         }
     }
 
-    private bool verifyPlacement()
+    public bool verifyPlacement()
     {
-        if (allgood) //TODO change this lol
+        if (Mathf.Round(transform.position.z/180) - transform.position.z/180 == 0)
         {
+            foreach(GameObject gridBlock in gridBlockArray)
+            {
+                if (gridBlockMain.transform.position.x + 1 == gridBlock.transform.position.x)
+                {
+                    gridBlockRight = gridBlock;
+                }
+                if (gridBlockMain.transform.position.x - 1 == gridBlock.transform.position.x)
+                {
+                    gridBlockLeft = gridBlock;
+                }
+            }
+            //gridBlockLeft = null;
+            //gridBlockRight = null;
             return true;
+
         }
         else
         {
-            return false;
+            foreach (GameObject gridBlock in gridBlockArray)
+            {
+                if (gridBlockMain.transform.position.y + 1 == gridBlock.transform.position.x)
+                {
+                    gridBlockAbove = gridBlock;
+                }
+                if (gridBlockMain.transform.position.y - 1 == gridBlock.transform.position.x)
+                {
+                    gridBlockAbove = gridBlock;
+                }
+            }
+            // if gridBlock to the obove is open and exists && if gridblock to the below is open and exists
+            //return true;
+            //else
+            //return false;
+            return true;
         }
     }
 
