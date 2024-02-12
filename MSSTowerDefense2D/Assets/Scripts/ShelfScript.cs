@@ -49,7 +49,7 @@ public class ShelfScript : MonoBehaviour
         }
         else if (currentInventory > 2)
         {
-            StopCoroutine(flash);
+            StopCoroutine(flash());
         }
         if (currentInventory > 0)
         {
@@ -58,9 +58,9 @@ public class ShelfScript : MonoBehaviour
             currentInventory = currentInventoryItems.Count;
             makeCustomerLeave(customer);
         }
-        if (currentCustomersInventory == 0)
+        if (currentInventory == 0)
         {
-            StopCoroutine(flash);
+            StopCoroutine(flash());
             SpriteRenderer renderer = GetComponent<SpriteRenderer>();
             renderer.color = new Color(0, 0, 0);
         }
@@ -68,17 +68,17 @@ public class ShelfScript : MonoBehaviour
 
     private void restockAlert()
     {
-        StartCoroutine(flash);
+        StartCoroutine(flash());
     }
 
     IEnumerator flash()
     {
         SpriteRenderer renderer = GetComponent<SpriteRenderer>();
         renderer.color = new Color(1, 0, 0);
-        yield return new WaitForSeconds(0.5);
+        yield return new WaitForSeconds(0.5f);
         renderer.color = new Color(1, 1, 1);
-        yield return new WaitForSeconds(0.5);
-        StartCoroutine(flash);
+        yield return new WaitForSeconds(0.5f);
+        StartCoroutine(flash());
     }
 
 
