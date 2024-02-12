@@ -4,11 +4,14 @@ public class GameManager : MonoBehaviour
 {
     private GridSystem gridSystem;
     public ShelfPlacementManager shelfPlacementManager;
-    public GameObject shelfPrefab; // Assign this in the inspector
+    public GameObject shelfPrefab;
+
+    public int gridCellLength = 10, gridCellHeight = 10;
+    public float gridCellSize = 1f;
 
     private void Start()
     {
-        gridSystem = new GridSystem(10, 10, 1f, Vector3.zero); // Example parameters
+        gridSystem = new GridSystem(gridCellLength, gridCellHeight, gridCellSize, Vector3.zero); // Example parameters
         shelfPlacementManager.gridSystem = gridSystem;
     }
 
