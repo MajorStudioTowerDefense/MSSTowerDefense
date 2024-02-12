@@ -10,10 +10,7 @@ public class ShelfPlacementManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && currentShelfInstance == null)
-        {
-            SelectNextShelfPrefab();
-        }
+        PlacingShelf();
 
         if (currentShelfPrefab != null)
         {
@@ -57,6 +54,14 @@ public class ShelfPlacementManager : MonoBehaviour
                 currentShelfInstance = null;
                 currentShelfPrefab = null; // Reset currentShelfPrefab if you want to force reselection for each placement
             }
+        }
+    }
+
+    public void PlacingShelf()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && currentShelfInstance == null)
+        {
+            SelectNextShelfPrefab();
         }
     }
 

@@ -18,7 +18,26 @@ namespace Pathfinding {
 		public Transform target;
 		IAstarAI ai;
 
-		void OnEnable () {
+		public string targetObjectName;
+
+        void Start()
+        {
+            // Find the GameObject named "TestShopExit" in the scene
+            GameObject shopExit = GameObject.Find(targetObjectName);
+
+            // Check if the GameObject was found
+            if (shopExit != null)
+            {
+                // Set the target Transform to the found GameObject's Transform
+                target = shopExit.transform;
+            }
+            else
+            {
+                Debug.LogWarning("TestShopExit object not found in the scene.");
+            }
+        }
+
+        void OnEnable () {
 			ai = GetComponent<IAstarAI>();
 			// Update the destination right before searching for a path as well.
 			// This is enough in theory, but this script will also update the destination every
