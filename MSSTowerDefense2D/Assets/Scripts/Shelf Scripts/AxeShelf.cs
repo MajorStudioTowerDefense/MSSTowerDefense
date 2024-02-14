@@ -5,7 +5,7 @@ using UnityEngine;
 public class AxeShelf : MonoBehaviour
 {
     ShelfScript shelfScript;
-
+    //test
     void Start()
     {
         shelfScript = GetComponent<ShelfScript>();

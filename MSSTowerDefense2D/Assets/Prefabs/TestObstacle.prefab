@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4971062859645332146}
   - component: {fileID: 4971062859645332147}
   - component: {fileID: 4971062859645332149}
+  - component: {fileID: 5143793487139602274}
   m_Layer: 6
   m_Name: TestObstacle
   m_TagString: Untagged
@@ -128,3 +129,23 @@ MonoBehaviour:
   uniqueID: 3148164134674492
   updateError: 0.5
   checkTime: 0.2
+--- !u!114 &5143793487139602274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4971062859645332145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 002c817b324554795956342a72699f7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shelfType: 
+  maxCustomers: 0
+  maxInventory: 0
+  currentInventory: 0
+  shelfLength: 0
+  gridBlockMain: {fileID: 0}
+  gridBlockArray: []
+  cost: 25

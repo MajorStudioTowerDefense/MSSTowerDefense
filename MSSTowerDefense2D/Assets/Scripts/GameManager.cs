@@ -4,11 +4,24 @@ public class GameManager : MonoBehaviour
 {
     private GridSystem gridSystem;
     public ShelfPlacementManager shelfPlacementManager;
-    public GameObject shelfPrefab;
+    public ShelfScript shelfPrefab;
     public GameObject cellTilePrefab; // Reference to the cell tile prefab
 
     public int gridCellLength = 10, gridCellHeight = 10;
     public float gridCellSize = 1f;
+
+    public float money = 100;
+
+    public static GameManager instance { get; private set; }
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else Destroy(this.gameObject);
+    }
 
     private void Start()
     {

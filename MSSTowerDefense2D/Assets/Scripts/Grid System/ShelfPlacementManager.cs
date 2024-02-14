@@ -71,9 +71,14 @@ public class ShelfPlacementManager : MonoBehaviour
         currentShelfPrefab = shelfPrefabs[currentPrefabIndex];
     }
 
-    public void SetCurrentShelfPrefab(GameObject shelfPrefab)
+    public void SetCurrentShelfPrefab(ShelfScript shelfPrefab)
     {
-        currentShelfPrefab = shelfPrefab;
+
+        if (GameManager.instance.money >= shelfPrefab.Cost) 
+        {
+            GameManager.instance.money -= shelfPrefab.Cost;
+            currentShelfPrefab = shelfPrefab.gameObject;
+        } 
     }
 
     private bool IsWithinGrid(int x, int y)

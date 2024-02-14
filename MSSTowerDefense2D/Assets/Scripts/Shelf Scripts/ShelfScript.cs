@@ -23,23 +23,26 @@ public class ShelfScript : MonoBehaviour
     private GameObject gridBlockAbove;
     private GameObject gridBlockBelow;
 
+    [SerializeField] private float cost;
+    public float Cost { get { return cost; } }
 
-    private void OnMouseDown()
-    {
-        if (shelfUIScript = null)
-        {
-            shelfUIScript.currentShelf = gameObject;
-        }
-        else if ((shelfUIScript.currentShelf = gameObject) && verifyPlacement() == true)
-        {
-            shelfUIScript.currentShelf = null;
-        }
-        else if ((shelfUIScript.currentShelf = gameObject) && verifyPlacement() == false)
-        {
-            shelfUIScript.currentShelf = null;
-            deleteShelf();
-        }
-    }
+
+    //private void OnMouseDown()
+    //{
+    //    if (shelfUIScript = null)
+    //    {
+    //        shelfUIScript.currentShelf = gameObject;
+    //    }
+    //    else if ((shelfUIScript.currentShelf = gameObject) && verifyPlacement() == true)
+    //    {
+    //        shelfUIScript.currentShelf = null;
+    //    }
+    //    else if ((shelfUIScript.currentShelf = gameObject) && verifyPlacement() == false)
+    //    {
+    //        shelfUIScript.currentShelf = null;
+    //        deleteShelf();
+    //    }
+    //}
 
 
     private void sellInventory(GameObject item, GameObject customer)
