@@ -10,8 +10,8 @@ public class AxeShelf : MonoBehaviour
     {
         shelfScript = GetComponent<ShelfScript>();
         shelfScript.shelfType = "AxeShelf";
-        shelfScript.maxCustomers = 4;
-        shelfScript.maxInventory = 12;
+        shelfScript.maxCustomers = 40;
+        shelfScript.maxInventory = 120;
         shelfScript.currentInventory = shelfScript.maxInventory;
     }
 

@@ -9,12 +9,11 @@ public class HaloScript : MonoBehaviour
     void Start()
     {
         shelfScript = GetComponent<ShelfScript>();
-        shelfScript.shelfType = "AxeShelf";
-        shelfScript.maxCustomers = 1;
-        shelfScript.maxInventory = 3;
+        shelfScript.shelfType = "HaloScript";
+        shelfScript.maxCustomers = 10;
+        shelfScript.maxInventory = 30;
         shelfScript.currentInventory = shelfScript.maxInventory;
     }
-
     
     void Update()
     {

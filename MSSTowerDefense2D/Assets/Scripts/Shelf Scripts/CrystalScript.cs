@@ -2,19 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AppleShelf : MonoBehaviour
+public class CrystalScript : MonoBehaviour
 {
     ShelfScript shelfScript;
 
     void Start()
     {
         shelfScript = GetComponent<ShelfScript>();
-        shelfScript.shelfType = "AppleShelf";
-        shelfScript.maxCustomers = 10;
-        shelfScript.maxInventory = 50;
+        shelfScript.shelfType = "CrystalScript";
+        shelfScript.maxCustomers = 30;
+        shelfScript.maxInventory = 100;
         shelfScript.currentInventory = shelfScript.maxInventory;
     }
-
     
     void Update()
     {
