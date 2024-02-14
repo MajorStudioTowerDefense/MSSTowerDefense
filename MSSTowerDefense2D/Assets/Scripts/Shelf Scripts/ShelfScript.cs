@@ -2,11 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static UnityEditor.Progress;
+using Pathfinding;
+using System.Linq;
+
+public class CustomerData
+{
+    public AIDestinationSetter aiDestinationSetter;
+    public Transform originalDestination;
+    public float timeAtShelf = 0f;
+    public CustomerAI customerAI;
+
+    public CustomerData(AIDestinationSetter ai, Transform originalDestination, CustomerAI customerAI)
+    {
+        this.aiDestinationSetter = ai;
+        this.originalDestination = originalDestination;
+        this.customerAI = customerAI;
+        this.timeAtShelf = 0f;
+    }
+}
 
 public class ShelfScript : MonoBehaviour
 {
     public string shelfType = "";
     public int maxCustomers;
+    private List<CustomerData> currentCustomersData = new List<CustomerData>();
+    private List<AIDestinationSetter> removedCustomers = new List<AIDestinationSetter>();
     private int currentCustomers = 0;
     private List<GameObject> currentCustomersPeople = null;
     public int maxInventory;
@@ -22,6 +42,11 @@ public class ShelfScript : MonoBehaviour
     private GameObject gridBlockRight;
     private GameObject gridBlockAbove;
     private GameObject gridBlockBelow;
+
+    public float detectionRadius = 1f;
+    public float customerStayDuration = 5f;
+
+    public string targetObjectName;
 
     [SerializeField] private float cost;
     public float Cost { get { return cost; } }
@@ -43,6 +68,20 @@ public class ShelfScript : MonoBehaviour
     //        deleteShelf();
     //    }
     //}
+
+    // void Start()
+    // {
+    //     CircleCollider2D circleCollider = gameObject.AddComponent<CircleCollider2D>();
+        
+    //     circleCollider.isTrigger = true;
+        
+    //     circleCollider.radius = shelfDetectionRange;
+    // }
+
+    void Update()
+    {
+         DetectAndManageCustomers();
+    }
 
 
     private void sellInventory(GameObject item, GameObject customer)
@@ -180,5 +219,67 @@ public class ShelfScript : MonoBehaviour
     {
         Destroy(gameObject);
     }
-   
+
+    void DetectAndManageCustomers()
+    {
+        AIDestinationSetter[] allAIDestinationSetters = FindObjectsOfType<AIDestinationSetter>();
+        foreach (var aiDestinationSetter in allAIDestinationSetters)
+        {
+            // Skip if this customer has already been removed
+            if (removedCustomers.Contains(aiDestinationSetter)) continue;
+
+            float distance = Vector3.Distance(transform.position, aiDestinationSetter.transform.position);
+            var existingCustomerData = currentCustomersData.FirstOrDefault(c => c.aiDestinationSetter == aiDestinationSetter);
+
+            // Check for new customer within range and max capacity not exceeded
+            if (distance <= detectionRadius && currentCustomersData.Count < maxCustomers)
+            {
+                aiDestinationSetter.target = transform;
+                if (existingCustomerData == null) // New customer detected
+                {
+                    CustomerAI customerAI = aiDestinationSetter.gameObject.GetComponent<CustomerAI>();
+                    if (customerAI != null)
+                    {
+                        GameObject shopExit = GameObject.Find("TestShopExit");
+                        if (shopExit != null)
+                        {
+                            Transform originalDestination = shopExit.transform;
+                            var newCustomerData = new CustomerData(aiDestinationSetter, originalDestination, customerAI);
+                            if (distance <= 1f)
+                            {
+                                currentCustomersData.Add(newCustomerData);
+                            }
+                        }
+                        else
+                        {
+                            Debug.LogWarning("TestShopExit object not found in the scene.");
+                        }
+                    }
+                }
+            }
+            // else if (existingCustomerData != null)
+            // {
+            //     RemoveCustomer(existingCustomerData);
+            // }
+
+            // Update and manage customers' stay duration
+            foreach (var customer in currentCustomersData.ToList())
+            {
+                customer.timeAtShelf += Time.deltaTime;
+                if (customer.timeAtShelf >= customerStayDuration)
+                {
+                    RemoveCustomer(customer);
+                }
+            }
+        }
+    }
+
+    void RemoveCustomer(CustomerData customerData)
+    {
+        GameManager.instance.AddMoney(customerData.customerAI.budget);
+        customerData.aiDestinationSetter.target = customerData.originalDestination;
+        currentCustomersData.Remove(customerData);
+        // Add the AIDestinationSetter to the removedCustomers list
+        removedCustomers.Add(customerData.aiDestinationSetter);
+    }
 }

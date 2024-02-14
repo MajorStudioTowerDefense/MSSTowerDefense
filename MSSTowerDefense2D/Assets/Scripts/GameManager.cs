@@ -4,7 +4,7 @@ public class GameManager : MonoBehaviour
 {
     private GridSystem gridSystem;
     public ShelfPlacementManager shelfPlacementManager;
-    public ShelfScript shelfPrefab;
+    public ShelfScript[] shelfPrefabs;
     public GameObject cellTilePrefab; // Reference to the cell tile prefab
 
     public int gridCellLength = 10, gridCellHeight = 10;
@@ -48,6 +48,16 @@ public class GameManager : MonoBehaviour
     // Example method to start placing a shelf
     public void StartPlacingShelf()
     {
-        shelfPlacementManager.SetCurrentShelfPrefab(shelfPrefab);
+        shelfPlacementManager.SetCurrentShelfPrefab(shelfPrefabs[1]);
+    }
+
+    public void StartPlacingTable()
+    {
+        shelfPlacementManager.SetCurrentShelfPrefab(shelfPrefabs[0]);
+    }
+
+    public void AddMoney(float amount)
+    {
+        money += amount;
     }
 }

@@ -9,12 +9,15 @@ public class MoneyUI : MonoBehaviour
     void Start()
     {
         currency = GetComponent<TextMeshProUGUI>();
+    }
+
+    void Update()
+    {
         DisplayCurrentCurrency();
     }
 
     public void DisplayCurrentCurrency()
     {
         currency.text = GameManager.instance.money.ToString();
-        Debug.Log(GameManager.instance.money);
     }
 }
