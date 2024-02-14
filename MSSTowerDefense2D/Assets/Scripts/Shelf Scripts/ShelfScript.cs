@@ -5,16 +5,17 @@ using static UnityEditor.Progress;
 
 public class ShelfScript : MonoBehaviour
 {
-    private int maxCustomers;
-    private int currentCustomers;
-    private List<GameObject> currentCustomersPeople;
-    private int maxInventory;
-    private int currentInventory;
-    private List<GameObject> currentInventoryItems;
+    public string shelfType = "";
+    public int maxCustomers;
+    private int currentCustomers = 0;
+    private List<GameObject> currentCustomersPeople = null;
+    public int maxInventory;
+    public int currentInventory = 0;
+    private List<GameObject> currentInventoryItems = null;
     private bool placed = false;
     private bool allgood = true;
     private ShelfUIScript shelfUIScript;
-    private int shelfLength;
+    public int shelfLength;
     public GameObject gridBlockMain;
     public List<GameObject> gridBlockArray;
     private GameObject gridBlockLeft;
@@ -107,7 +108,6 @@ public class ShelfScript : MonoBehaviour
         {
             currentCustomersPeople.Remove(customer);
             currentCustomersPeople.RemoveAll(x => x == null);
-            //currentCustomers -= 1;
             currentCustomers = currentCustomersPeople.Count;
         }
     }
