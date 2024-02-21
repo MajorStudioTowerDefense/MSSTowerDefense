@@ -8,6 +8,7 @@ public class ShelfPlacementManager : MonoBehaviour
     private GameObject currentShelfInstance;
     private int currentPrefabIndex = -1; // Initialize to -1 to indicate no prefab is selected
 
+    public AudioSource placed;
     private void Update()
     {
         PlacingShelf();
@@ -52,6 +53,7 @@ public class ShelfPlacementManager : MonoBehaviour
             {
                 // Lock the shelf in place and prepare for the next shelf selection
                 currentShelfInstance = null;
+                placed.Play(); //Plays the placed-down sound effect
                 currentShelfPrefab = null; // Reset currentShelfPrefab if you want to force reselection for each placement
             }
         }
