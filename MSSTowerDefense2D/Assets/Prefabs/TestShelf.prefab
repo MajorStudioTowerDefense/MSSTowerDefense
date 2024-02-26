@@ -152,3 +152,4 @@ MonoBehaviour:
   customerStayDuration: 5
   targetObjectName: TestShopExit
   cost: 25
+  sellingGoods: 1

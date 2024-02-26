@@ -49,6 +49,7 @@ public class ShelfScript : MonoBehaviour
     public string targetObjectName;
 
     [SerializeField] private float cost;
+    [SerializeField] private goods sellingGoods;
     public float Cost { get { return cost; } }
 
 
@@ -266,7 +267,7 @@ public class ShelfScript : MonoBehaviour
             foreach (var customer in currentCustomersData.ToList())
             {
                 customer.timeAtShelf += Time.deltaTime;
-                if (customer.timeAtShelf >= customerStayDuration)
+                if (customer.timeAtShelf >= customerStayDuration || customer.customerAI.item.GetItem() != sellingGoods)
                 {
                     RemoveCustomer(customer);
                 }
@@ -276,7 +277,7 @@ public class ShelfScript : MonoBehaviour
 
     void RemoveCustomer(CustomerData customerData)
     {
-        GameManager.instance.AddMoney(customerData.customerAI.budget);
+       if(customerData.customerAI.item.GetItem() == sellingGoods) GameManager.instance.AddMoney(customerData.customerAI.budget);
         customerData.aiDestinationSetter.target = customerData.originalDestination;
         currentCustomersData.Remove(customerData);
         // Add the AIDestinationSetter to the removedCustomers list
