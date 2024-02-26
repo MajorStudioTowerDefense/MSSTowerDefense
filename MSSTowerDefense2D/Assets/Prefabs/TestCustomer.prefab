@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6430688495216814455}
   - component: {fileID: 6430688495216814449}
   - component: {fileID: 1586973814258870986}
+  - component: {fileID: 4322771858949740154}
   m_Layer: 0
   m_Name: TestCustomer
   m_TagString: Untagged
@@ -203,3 +204,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   budget: 10
+--- !u!114 &4322771858949740154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6430688495216814459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e31bb8167b1d68e42b05262adc0d0eb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  botName: 
+  botBudget: 0
+  shoppingEffect: {fileID: 0}
+  shoppingSFX: {fileID: 0}
+  aiPath: {fileID: 0}
+  destinationSetter: {fileID: 0}
+  tags: 0
