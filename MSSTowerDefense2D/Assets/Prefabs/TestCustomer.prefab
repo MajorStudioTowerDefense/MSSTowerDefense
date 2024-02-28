@@ -204,7 +204,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   budget: 10
-<<<<<<< Updated upstream
 --- !u!114 &4322771858949740154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,6 +223,3 @@ MonoBehaviour:
   aiPath: {fileID: 0}
   destinationSetter: {fileID: 0}
   tags: 0
-=======
-  item: {fileID: 11400000, guid: 3ef8a2d35256101438f7b6987a3c9964, type: 2}
->>>>>>> Stashed changes
