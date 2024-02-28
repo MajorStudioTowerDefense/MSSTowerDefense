@@ -249,19 +249,19 @@ public class ShelfScript : MonoBehaviour
                 var existingCustomerData = currentCustomersData.FirstOrDefault(c => c.aiDestinationSetter == aiDestinationSetter);
 
                 // If within range and item matches, and not already being processed
-                if (itemMatch && existingCustomerData == null && currentCustomersData.Count < maxCustomers)
+                if (itemMatch && existingCustomerData == null && currentCustomersData.Count < maxCustomers && !customerAI.isPurchasing)
                 {
                     Debug.Log("Comming!");
-                    aiDestinationSetter.target = transform; // Set customer to approach the shelf
+                    aiDestinationSetter.target = transform;
+                    customerAI.isPurchasing = true;
 
                     Transform originalDestination = shopExit.transform;
                     var newCustomerData = new CustomerData(aiDestinationSetter, originalDestination, customerAI);
                     currentCustomersData.Add(newCustomerData); // Add customer for processing
                 }
                 // If the item doesn't match or max capacity reached, and the customer isn't already being processed
-                else if ((!itemMatch || currentCustomersData.Count >= maxCustomers) && existingCustomerData == null)
+                else
                 {
-                                                                     // Optionally, mark this customer as removed to prevent future processing
                     removedCustomers.Add(aiDestinationSetter);
                 }
             }
@@ -294,6 +294,7 @@ public class ShelfScript : MonoBehaviour
 
     void RemoveCustomer(CustomerData customerData)
     {
+        customerData.customerAI.isPurchasing = false;
         currentCustomersData.Remove(customerData);
         // Add the AIDestinationSetter to the removedCustomers list
         removedCustomers.Add(customerData.aiDestinationSetter);

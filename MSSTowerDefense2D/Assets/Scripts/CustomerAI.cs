@@ -5,4 +5,5 @@ public class CustomerAI : MonoBehaviour
 {
     public float budget = 10f;
     public Items item;
+    public bool isPurchasing = false;
 }
