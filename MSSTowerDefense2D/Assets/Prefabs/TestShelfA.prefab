@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4971062859645332149}
   - component: {fileID: 5143793487139602274}
   m_Layer: 6
-  m_Name: TestShelf
+  m_Name: TestShelfA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.9468551, g: 0.9528302, b: 0, a: 1}
+  m_Color: {r: 0.8584906, g: 0.1652189, b: 0.3069326, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -149,7 +149,8 @@ MonoBehaviour:
   gridBlockMain: {fileID: 0}
   gridBlockArray: []
   detectionRadius: 3
-  customerStayDuration: 5
+  customerStayDuration: 20
   targetObjectName: TestShopExit
   cost: 25
-  sellingGoods: 1
+  sellingItems:
+  - {fileID: 11400000, guid: 3ef8a2d35256101438f7b6987a3c9964, type: 2}

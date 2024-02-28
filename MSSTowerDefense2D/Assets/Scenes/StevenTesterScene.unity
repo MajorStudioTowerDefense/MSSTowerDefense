@@ -517,7 +517,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shelfPlacementManager: {fileID: 213848175}
-  shelfPrefab: {fileID: 1641420861}
+  shelfPrefabs:
+  - {fileID: 5143793487139602274, guid: a0bcde29cfef48d4c923dc36afd0b12d, type: 3}
+  - {fileID: 5143793487139602274, guid: 74bcaef7db9a3e14dbd95f9342c98a5c, type: 3}
   cellTilePrefab: {fileID: 7873324396560715407, guid: f26f24feabfc3024aa6087f9e42844f7, type: 3}
   gridCellLength: 10
   gridCellHeight: 10
@@ -537,6 +539,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shelfPrefabs:
   - {fileID: 1641420856}
+  - {fileID: 4971062859645332145, guid: 74bcaef7db9a3e14dbd95f9342c98a5c, type: 3}
 --- !u!4 &213848176
 Transform:
   m_ObjectHideFlags: 0
@@ -1344,17 +1347,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4971062859645332144, guid: a0bcde29cfef48d4c923dc36afd0b12d, type: 3}
   m_PrefabInstance: {fileID: 4971062859096797833}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1641420861 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5143793487139602274, guid: a0bcde29cfef48d4c923dc36afd0b12d, type: 3}
-  m_PrefabInstance: {fileID: 4971062859096797833}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1641420856}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 002c817b324554795956342a72699f7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1853203750
 GameObject:
   m_ObjectHideFlags: 0

@@ -46,9 +46,14 @@ public class GameManager : MonoBehaviour
     }
 
     // Example method to start placing a shelf
-    public void StartPlacingShelf()
+    public void StartPlacingShelfA()
     {
         shelfPlacementManager.SetCurrentShelfPrefab(shelfPrefabs[1]);
+    }
+
+    public void StartPlacingShelfB()
+    {
+        shelfPlacementManager.SetCurrentShelfPrefab(shelfPrefabs[2]);
     }
 
     public void StartPlacingTable()
