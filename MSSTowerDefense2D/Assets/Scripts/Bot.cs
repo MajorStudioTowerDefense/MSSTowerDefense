@@ -116,6 +116,11 @@ public class Bot : MonoBehaviour
         set { _isPurchasing = value; }
     }
 
+    /////////////////////////////////
+
+    /////////////////////////////////
+    
+
     // Bot behavior functions defined here.
 
     // This function is explicitly called after a bot has been spawned and positioned.
@@ -129,5 +134,11 @@ public class Bot : MonoBehaviour
         _body = GetComponent<Rigidbody2D>();
         _collider = GetComponent<Collider2D>();
         _startBudget = botBudget;
+        
+        if (tags.HasFlag(BotTags.customer))
+        {
+            aiPath = GetComponent<AIPath>();
+            destinationSetter = GetComponent<AIDestinationSetter>();
+        }
     }
 }

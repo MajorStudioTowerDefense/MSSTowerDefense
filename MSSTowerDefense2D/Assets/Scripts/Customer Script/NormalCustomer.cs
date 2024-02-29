@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class NormalCustomer : Bot
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private GameObject desireVFX;
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        desireVFX.SetActive(isPurchasing);
     }
 }

@@ -11,13 +11,13 @@ public class CustomerData
     public AIDestinationSetter aiDestinationSetter;
     public Transform originalDestination;
     public float timeAtShelf = 0f;
-    public CustomerAI customerAI;
+    public Bot bot;
 
-    public CustomerData(AIDestinationSetter ai, Transform originalDestination, CustomerAI customerAI)
+    public CustomerData(AIDestinationSetter ai, Transform originalDestination, Bot bot)
     {
         this.aiDestinationSetter = ai;
         this.originalDestination = originalDestination;
-        this.customerAI = customerAI;
+        this.bot = bot;
         this.timeAtShelf = 0f;
     }
 }
@@ -241,23 +241,23 @@ public class ShelfScript : MonoBehaviour
             if (removedCustomers.Contains(aiDestinationSetter)) continue;
 
             float distance = Vector3.Distance(transform.position, aiDestinationSetter.transform.position);
-            CustomerAI customerAI = aiDestinationSetter.gameObject.GetComponent<CustomerAI>();
+            Bot bot = aiDestinationSetter.gameObject.GetComponent<Bot>();
 
-            if (customerAI != null && distance <= detectionRadius)
+            if (bot != null && distance <= detectionRadius)
             {
                 Debug.Log("Buying!");
-                bool itemMatch = IsSellingItem(customerAI.item);
+                bool itemMatch = IsSellingItem(bot.item);
                 var existingCustomerData = currentCustomersData.FirstOrDefault(c => c.aiDestinationSetter == aiDestinationSetter);
 
                 // If within range and item matches, and not already being processed
-                if (itemMatch && existingCustomerData == null && currentCustomersData.Count < maxCustomers && !customerAI.isPurchasing)
+                if (itemMatch && existingCustomerData == null && currentCustomersData.Count < maxCustomers && !bot.isPurchasing)
                 {
                     Debug.Log("Comming!");
                     aiDestinationSetter.target = transform;
-                    customerAI.isPurchasing = true;
+                    bot.isPurchasing = true;
 
                     Transform originalDestination = shopExit.transform;
-                    var newCustomerData = new CustomerData(aiDestinationSetter, originalDestination, customerAI);
+                    var newCustomerData = new CustomerData(aiDestinationSetter, originalDestination, bot);
                     currentCustomersData.Add(newCustomerData); // Add customer for processing
                 }
                 // If the item doesn't match or max capacity reached, and the customer isn't already being processed
@@ -288,14 +288,14 @@ public class ShelfScript : MonoBehaviour
 
     void Purchase(CustomerData customerData)
     {
-        GameManager.instance.AddMoney(customerData.customerAI.budget);
+        GameManager.instance.AddMoney(customerData.bot.botBudget);
         customerData.aiDestinationSetter.target = customerData.originalDestination;
         RemoveCustomer(customerData);
     }
 
     void RemoveCustomer(CustomerData customerData)
     {
-        customerData.customerAI.isPurchasing = false;
+        customerData.bot.isPurchasing = false;
         currentCustomersData.Remove(customerData);
         // Add the AIDestinationSetter to the removedCustomers list
         removedCustomers.Add(customerData.aiDestinationSetter);
