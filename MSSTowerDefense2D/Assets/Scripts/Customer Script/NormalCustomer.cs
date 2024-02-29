@@ -6,8 +6,9 @@ public class NormalCustomer : Bot
 {
     [SerializeField] private GameObject desireVFX;
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
         desireVFX.SetActive(isPurchasing);
     }
 }

@@ -1,6 +1,7 @@
 using Pathfinding;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -37,6 +38,12 @@ public class Bot : MonoBehaviour
 
     //Item the customer is looking for
     public Items item;
+
+    //UIs for the bot
+    public TextMeshPro nameText;
+    public TextMeshPro budgetText;
+    public float nameTextOffsetX = 0f;
+    public float nameTextOffsetY = 1f;
     
     /////////////////////////////////
 
@@ -140,5 +147,27 @@ public class Bot : MonoBehaviour
             aiPath = GetComponent<AIPath>();
             destinationSetter = GetComponent<AIDestinationSetter>();
         }
+
+        nameText = GetComponentInChildren<TextMeshPro>();
+        botUIinit();
+    }
+
+    public virtual void botUIinit()
+    {
+        if (nameText == null) return;
+        nameText.text = botName;
+        nameText.transform.localPosition = new Vector3(nameTextOffsetX, nameTextOffsetY, 0);
+
+    }
+
+    public virtual void botUIUpdate()
+    {
+        if (nameText == null) return;
+
+    }
+
+    protected virtual void Update()
+    {
+        botUIUpdate();
     }
 }
