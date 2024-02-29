@@ -931,6 +931,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   customerPrefabs:
   - {fileID: 6430688495216814459, guid: 1b94cea9cc8da234889e003bdfabc54f, type: 3}
+  - {fileID: 9136437235981850938, guid: a59f992ebf3a3294186275b6619201ba, type: 3}
   spawnPoint: {fileID: 839055626}
   minGenerateDelay: 2
   maxGenerateDelay: 5

@@ -34,7 +34,9 @@ public class Bot : MonoBehaviour
     //tag property
     [SerializeField]
     public BotTags tags = 0;
-    
+
+    //Item the customer is looking for
+    public Items item;
     
     /////////////////////////////////
 
@@ -106,6 +108,13 @@ public class Bot : MonoBehaviour
     }
 
     /////////////////////////////////
+    
+    protected bool _isPurchasing;
+    public bool isPurchasing
+    {
+        get { return _isPurchasing; }
+        set { _isPurchasing = value; }
+    }
 
     // Bot behavior functions defined here.
 
