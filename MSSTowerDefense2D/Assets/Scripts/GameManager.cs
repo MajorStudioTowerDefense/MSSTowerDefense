@@ -4,7 +4,7 @@ public class GameManager : MonoBehaviour
 {
     private GridSystem gridSystem;
     public ShelfPlacementManager shelfPlacementManager;
-    public ShelfScript[] shelfPrefabs;
+    public GameObject[] shelfPrefabs;
     public GameObject cellTilePrefab; // Reference to the cell tile prefab
 
     public int gridCellLength = 10, gridCellHeight = 10;

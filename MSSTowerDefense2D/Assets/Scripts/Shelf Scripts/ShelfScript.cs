@@ -4,6 +4,7 @@ using UnityEngine;
 using static UnityEditor.Progress;
 using Pathfinding;
 using System.Linq;
+using UnityEditor.SearchService;
 
 public class CustomerData
 {
@@ -70,14 +71,14 @@ public class ShelfScript : MonoBehaviour
     //    }
     //}
 
-    // void Start()
-    // {
+    void Start()
+    {       
     //     CircleCollider2D circleCollider = gameObject.AddComponent<CircleCollider2D>();
 
     //     circleCollider.isTrigger = true;
 
     //     circleCollider.radius = shelfDetectionRange;
-    // }
+    }
 
     void Update()
     {
