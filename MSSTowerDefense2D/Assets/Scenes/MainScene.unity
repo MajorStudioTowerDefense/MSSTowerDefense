@@ -439,8 +439,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shelfPrefabs:
-  - {fileID: 4971062859645332145, guid: 74bcaef7db9a3e14dbd95f9342c98a5c, type: 3}
   - {fileID: 37771605}
+  - {fileID: 4971062859645332145, guid: 74bcaef7db9a3e14dbd95f9342c98a5c, type: 3}
   - {fileID: 4971062859645332145, guid: d8fc89b9f54a5a8449521019a4ea0ab1, type: 3}
 --- !u!114 &404972024
 MonoBehaviour:
@@ -456,8 +456,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shelfPlacementManager: {fileID: 404972023}
   shelfPrefabs:
-  - {fileID: 4971062859645332145, guid: 74bcaef7db9a3e14dbd95f9342c98a5c, type: 3}
   - {fileID: 4971062859645332145, guid: a0bcde29cfef48d4c923dc36afd0b12d, type: 3}
+  - {fileID: 4971062859645332145, guid: 74bcaef7db9a3e14dbd95f9342c98a5c, type: 3}
   - {fileID: 4971062859645332145, guid: d8fc89b9f54a5a8449521019a4ea0ab1, type: 3}
   cellTilePrefab: {fileID: 7873324396560715407, guid: f26f24feabfc3024aa6087f9e42844f7, type: 3}
   gridCellLength: 10
