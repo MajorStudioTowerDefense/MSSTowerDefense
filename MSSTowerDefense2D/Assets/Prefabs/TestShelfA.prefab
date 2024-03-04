@@ -149,6 +149,7 @@ MonoBehaviour:
   gridBlockMain: {fileID: 0}
   gridBlockArray: []
   detectionRadius: 3
+  purchaseRadius: 1
   customerStayDuration: 5
   targetObjectName: TestShopExit
   cost: 25
