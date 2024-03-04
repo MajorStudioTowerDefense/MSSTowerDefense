@@ -54,24 +54,6 @@ public class ShelfScript : MonoBehaviour
     public List<Items> sellingItems;
     public float Cost { get { return cost; } }
 
-
-    //private void OnMouseDown()
-    //{
-    //    if (shelfUIScript = null)
-    //    {
-    //        shelfUIScript.currentShelf = gameObject;
-    //    }
-    //    else if ((shelfUIScript.currentShelf = gameObject) && verifyPlacement() == true)
-    //    {
-    //        shelfUIScript.currentShelf = null;
-    //    }
-    //    else if ((shelfUIScript.currentShelf = gameObject) && verifyPlacement() == false)
-    //    {
-    //        shelfUIScript.currentShelf = null;
-    //        deleteShelf();
-    //    }
-    //}
-
     void Start()
     {       
     //     CircleCollider2D circleCollider = gameObject.AddComponent<CircleCollider2D>();
