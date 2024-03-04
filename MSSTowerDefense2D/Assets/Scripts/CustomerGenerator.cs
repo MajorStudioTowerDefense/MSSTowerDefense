@@ -36,7 +36,8 @@ public class CustomerGenerator : MonoBehaviour
             GameObject customerPrefab = customerPrefabs[index];
 
             // Instantiate the customer at the spawn point's position
-            Instantiate(customerPrefab, spawnPoint.position, Quaternion.identity);
+            GameObject cus = Instantiate(customerPrefab, spawnPoint.position, Quaternion.identity);
+            cus.GetComponent<Bot>().init();
 
             // Increment the current customer count
             currentCustomers++;

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4971062859645332149}
   - component: {fileID: 5143793487139602274}
   m_Layer: 6
-  m_Name: TestObstacle
+  m_Name: TestShelfB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.62400836, g: 0.7735849, b: 0.3751157, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -142,13 +142,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shelfType: 
-  maxCustomers: 0
+  maxCustomers: 2
   maxInventory: 0
   currentInventory: 0
   shelfLength: 0
   gridBlockMain: {fileID: 0}
   gridBlockArray: []
-  detectionRadius: 0
+  detectionRadius: 3
+  purchaseRadius: 1
   customerStayDuration: 5
   targetObjectName: TestShopExit
-  cost: 5
+  cost: 25
+  sellingItems:
+  - {fileID: 11400000, guid: c868db8ccba8f71448fefe0093a480ee, type: 2}

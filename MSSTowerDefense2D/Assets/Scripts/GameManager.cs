@@ -4,11 +4,24 @@ public class GameManager : MonoBehaviour
 {
     private GridSystem gridSystem;
     public ShelfPlacementManager shelfPlacementManager;
-    public GameObject shelfPrefab;
+    public GameObject[] shelfPrefabs;
     public GameObject cellTilePrefab; // Reference to the cell tile prefab
 
     public int gridCellLength = 10, gridCellHeight = 10;
     public float gridCellSize = 1f;
+
+    public float money = 100;
+
+    public static GameManager instance { get; private set; }
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else Destroy(this.gameObject);
+    }
 
     private void Start()
     {
@@ -33,8 +46,23 @@ public class GameManager : MonoBehaviour
     }
 
     // Example method to start placing a shelf
-    public void StartPlacingShelf()
+    public void StartPlacingShelfA()
     {
-        shelfPlacementManager.SetCurrentShelfPrefab(shelfPrefab);
+        shelfPlacementManager.SetCurrentShelfPrefab(shelfPrefabs[1]);
+    }
+
+    public void StartPlacingShelfB()
+    {
+        shelfPlacementManager.SetCurrentShelfPrefab(shelfPrefabs[2]);
+    }
+
+    public void StartPlacingTable()
+    {
+        shelfPlacementManager.SetCurrentShelfPrefab(shelfPrefabs[0]);
+    }
+
+    public void AddMoney(float amount)
+    {
+        money += amount;
     }
 }
