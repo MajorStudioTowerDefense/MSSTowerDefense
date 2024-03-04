@@ -15,7 +15,7 @@ public class CustomerGenerator : MonoBehaviour
 
     void Update()
     {
-        if (isShopOpened)
+        if (GameManager.instance.currentState == GameStates.STORE)
         {
             // Check if it's time to generate a new customer and if the current number of customers is below the maximum
             if (Time.time >= nextGenerateTime && currentCustomers < maxCustomers)
