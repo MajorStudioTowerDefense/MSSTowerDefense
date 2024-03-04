@@ -45,6 +45,7 @@ public class ShelfScript : MonoBehaviour
     private GameObject gridBlockBelow;
 
     public float detectionRadius = 1f;
+    public float purchaseRadius = 1f;
     public float customerStayDuration = 5f;
 
     public string targetObjectName;
@@ -254,11 +255,15 @@ public class ShelfScript : MonoBehaviour
                 {
                     Debug.Log("Comming!");
                     aiDestinationSetter.target = transform;
-                    bot.isPurchasing = true;
-
                     Transform originalDestination = shopExit.transform;
-                    var newCustomerData = new CustomerData(aiDestinationSetter, originalDestination, bot);
-                    currentCustomersData.Add(newCustomerData); // Add customer for processing
+
+                    if (distance <= purchaseRadius)
+                    {
+                        Debug.Log("Start Purchase!");
+                        bot.isPurchasing = true;
+                        var newCustomerData = new CustomerData(aiDestinationSetter, originalDestination, bot);
+                        currentCustomersData.Add(newCustomerData); // Add customer for processing
+                    }
                 }
                 // If the item doesn't match or max capacity reached, and the customer isn't already being processed
                 else
