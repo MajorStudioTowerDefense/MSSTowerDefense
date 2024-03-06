@@ -32,7 +32,7 @@ public class ShelfScript : MonoBehaviour
     private List<GameObject> currentCustomersPeople = null;
     public int maxInventory;
     public int currentInventory = 0;
-    private List<GameObject> currentInventoryItems = null;
+    private List<GameObject> currentInventoryItems = new List<GameObject>();
     private bool placed = false;
     private bool allgood = true;
     private ShelfUIScript shelfUIScript;
@@ -99,7 +99,7 @@ public class ShelfScript : MonoBehaviour
         if (currentInventory > 0)
         {
             currentInventoryItems.Remove(item);
-            currentInventoryItems.RemoveAll(x => x == null);
+            //currentInventoryItems.RemoveAll(x => x == null);
             currentInventory = currentInventoryItems.Count;
             makeCustomerLeave(customer);
         }
