@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
 
     public GameStates currentState;
 
+    public Transform exit;
+
     [Header("Clock Settings")]
     [HideInInspector] public float timer;
     private bool isTimer;

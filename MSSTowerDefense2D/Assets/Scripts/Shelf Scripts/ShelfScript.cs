@@ -84,7 +84,7 @@ public class ShelfScript : MonoBehaviour
 
         //     circleCollider.radius = shelfDetectionRange;
 
-        loadAmountText = transform.Find("Canvas/Load Amount Text").GetComponent<TMP_Text>();
+        loadAmountText = GetComponentInChildren<TMP_Text>();
 
         if (loadAmountText == null)
         {
@@ -238,7 +238,7 @@ public class ShelfScript : MonoBehaviour
     {
         Destroy(gameObject);
     }
-
+    
     void DetectAndManageCustomers()
     {
         AIDestinationSetter[] allAIDestinationSetters = FindObjectsOfType<AIDestinationSetter>();
@@ -313,6 +313,84 @@ public class ShelfScript : MonoBehaviour
             }
         }
     }
+    
+
+    /*
+    void DetectAndManageCustomers()
+    {   Transform shopExit = GameManager.instance.exit;
+        if (shopExit != null)
+        {
+            Transform originalDestination = shopExit;
+        }
+        else
+        {
+            Debug.LogWarning("TestShopExit object not found in the scene.");
+        }
+
+        Collider2D[] encounteredCustomers = Physics2D.OverlapCircleAll(transform.position, visibility, 7);
+        encounteredCustomers[0].
+
+        foreach (var aiDestinationSetter in allAIDestinationSetters)
+        {
+            // Skip customers that have been removed
+            if (removedCustomers.Contains(aiDestinationSetter)) continue;
+
+            float distance = Vector3.Distance(transform.position, aiDestinationSetter.transform.position);
+            Bot bot = aiDestinationSetter.gameObject.GetComponent<Bot>();
+
+            if (bot != null && distance <= visibility)
+            {
+                Debug.Log("Buying!");
+                bool itemMatch = IsSellingItem(bot.item);
+                var existingCustomerData = currentCustomersData.FirstOrDefault(c => c.aiDestinationSetter == aiDestinationSetter);
+
+                // If within range and item matches, and not already being processed
+                if (itemMatch && existingCustomerData == null && currentCustomersData.Count < maxCustomers && !bot.isPurchasing)
+                {
+                    Debug.Log("Comming!");
+                    aiDestinationSetter.target = transform;
+                    Transform originalDestination = shopExit;
+
+                    if (distance <= purchaseRadius)
+                    {
+                        if (loadAmount > 0)
+                        {
+                            Debug.Log("Start Purchase!");
+                            bot.isPurchasing = true;
+                            var newCustomerData = new CustomerData(aiDestinationSetter, originalDestination, bot);
+                            currentCustomersData.Add(newCustomerData); // Add customer for processing
+                        }
+                        else
+                        {
+                            removedCustomers.Add(aiDestinationSetter);
+                            aiDestinationSetter.target = originalDestination;
+                        }
+                    }
+                }
+                // If the item doesn't match or max capacity reached, and the customer isn't already being processed
+                else
+                {
+                    removedCustomers.Add(aiDestinationSetter);
+                }
+            }
+        }
+
+        // Update time at shelf for customers and remove after duration
+        foreach (var customer in currentCustomersData.ToList())
+        {
+            if (loadAmount <= 0)
+            {
+                RemoveCustomer(customer);
+            }
+
+            customer.timeAtShelf += Time.deltaTime;
+            if (customer.timeAtShelf >= customerStayDuration && loadAmount > 0)
+            {
+                Purchase(customer);
+                Debug.Log("Customer leaves after buying or waiting.");
+            }
+        }
+    }*/
 
 
     private bool IsSellingItem(Items customerItem)
