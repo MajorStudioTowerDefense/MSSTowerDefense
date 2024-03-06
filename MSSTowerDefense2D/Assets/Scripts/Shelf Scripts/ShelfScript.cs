@@ -84,7 +84,7 @@ public class ShelfScript : MonoBehaviour
 
         //     circleCollider.radius = shelfDetectionRange;
 
-        loadAmountText = transform.Find("Canvas/Load Amount Text").GetComponent<TMP_Text>();
+        loadAmountText = GetComponentInChildren<TMP_Text>();
 
         if (loadAmountText == null)
         {
@@ -242,10 +242,10 @@ public class ShelfScript : MonoBehaviour
     void DetectAndManageCustomers()
     {
         AIDestinationSetter[] allAIDestinationSetters = FindObjectsOfType<AIDestinationSetter>();
-        GameObject shopExit = GameObject.Find("TestShopExit");
+        Transform shopExit = GameManager.instance.exit;
         if (shopExit != null)
         {
-            Transform originalDestination = shopExit.transform;
+            Transform originalDestination = shopExit;
         }
         else
         {
@@ -271,7 +271,7 @@ public class ShelfScript : MonoBehaviour
                 {
                     Debug.Log("Comming!");
                     aiDestinationSetter.target = transform;
-                    Transform originalDestination = shopExit.transform;
+                    Transform originalDestination = shopExit;
 
                     if (distance <= purchaseRadius)
                     {

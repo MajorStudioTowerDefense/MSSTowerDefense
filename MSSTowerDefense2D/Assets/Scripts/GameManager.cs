@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance { get; private set; }
 
+    public Transform exit;
+
     public GameStates currentState;
 
     [Header("Clock Settings")]
