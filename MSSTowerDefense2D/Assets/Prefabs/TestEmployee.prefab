@@ -135,14 +135,14 @@ MonoBehaviour:
   height: 2
   canMove: 0
   maxSpeed: 1
-  gravity: {x: NaN, y: NaN, z: NaN}
+  gravity: {x: 0, y: 0, z: 0}
   groundMask:
     serializedVersion: 2
     m_Bits: 4294967295
   centerOffsetCompatibility: NaN
   repathRateCompatibility: NaN
   canSearchCompability: 0
-  orientation: 0
+  orientation: 1
   enableRotation: 1
   autoRepath:
     mode: 2
@@ -191,8 +191,8 @@ MonoBehaviour:
   botBudget: 0
   shoppingEffect: {fileID: 0}
   shoppingSFX: {fileID: 0}
-  aiPath: {fileID: 0}
-  destinationSetter: {fileID: 0}
+  aiPath: {fileID: -7438339303508494745}
+  destinationSetter: {fileID: -6095185238316118098}
   tags: 2
   item: {fileID: 0}
   nameText: {fileID: 4939974613824196881}
@@ -204,6 +204,9 @@ MonoBehaviour:
   carryMax: 3
   carryCount: 0
   employeeSelected: 0
+  shelfPlacementManager: {fileID: 0}
+  employeeUICanvas: {fileID: 0}
+  employeeActionPanelPrefab: {fileID: 256338174260524804, guid: 4ff453d8daf31b04f88cb94812bba4c0, type: 3}
 --- !u!58 &-254084621290772639
 CircleCollider2D:
   m_ObjectHideFlags: 0

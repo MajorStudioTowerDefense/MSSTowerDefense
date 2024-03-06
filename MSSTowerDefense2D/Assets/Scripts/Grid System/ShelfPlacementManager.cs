@@ -8,7 +8,7 @@ public class ShelfPlacementManager : MonoBehaviour
     private GameObject currentShelfPrefab;
     private GameObject currentShelfInstance;
     private int currentPrefabIndex = -1;
-    private GameObject shelfBeingRepositioned = null;
+    public GameObject shelfBeingRepositioned = null;
 
     private void Awake()
     {
