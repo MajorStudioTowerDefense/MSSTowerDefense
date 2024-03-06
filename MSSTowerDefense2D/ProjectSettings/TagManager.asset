@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Cutomer
+  - target
+  - Exit
   layers:
   - Default
   - TransparentFX
