@@ -464,7 +464,6 @@ MonoBehaviour:
   gridCellHeight: 10
   gridCellSize: 1
   money: 200
-  exit: {fileID: 184862742}
   currentState: 0
   timer: 0
   timeScaleFactor: 20
