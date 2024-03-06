@@ -460,14 +460,17 @@ MonoBehaviour:
   - {fileID: 4971062859645332145, guid: 74bcaef7db9a3e14dbd95f9342c98a5c, type: 3}
   - {fileID: 4971062859645332145, guid: d8fc89b9f54a5a8449521019a4ea0ab1, type: 3}
   cellTilePrefab: {fileID: 7873324396560715407, guid: f26f24feabfc3024aa6087f9e42844f7, type: 3}
+  topWallPrefab: {fileID: 7873324396560715407, guid: 3adc6ccb744326745ab638f1b41e43af, type: 3}
+  sideWallPrefab: {fileID: 7873324396560715407, guid: 66556cee1de993a48bd904e27dad0360, type: 3}
+  bottomWallPrefab: {fileID: 7873324396560715407, guid: 683e4f0ec4566fa419082dc48fd746cf, type: 3}
   gridCellLength: 10
   gridCellHeight: 10
   gridCellSize: 1
   money: 200
   currentState: 0
   timer: 0
-  timeScaleFactor: 20
-  startStoreTime: {x: 8, y: 0}
+  timeScaleFactor: 10
+  startStoreTime: {x: 9, y: 0}
   endTime: {x: 18, y: 0}
   InitialTime: {x: 7, y: 0}
 --- !u!4 &404972025
