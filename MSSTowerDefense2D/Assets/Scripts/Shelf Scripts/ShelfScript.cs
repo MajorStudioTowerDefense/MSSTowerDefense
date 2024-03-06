@@ -5,6 +5,7 @@ using static UnityEditor.Progress;
 using Pathfinding;
 using System.Linq;
 using UnityEditor.SearchService;
+using TMPro;
 
 public class CustomerData
 {
@@ -44,8 +45,11 @@ public class ShelfScript : MonoBehaviour
     private GameObject gridBlockAbove;
     private GameObject gridBlockBelow;
 
-    public float detectionRadius = 1f;
+    public float visibility = 1f;
+    public float purchaseRadius = 1f;
     public float customerStayDuration = 5f;
+
+    public int loadAmount = 3;
 
     public string targetObjectName;
 
@@ -53,6 +57,7 @@ public class ShelfScript : MonoBehaviour
     public List<Items> sellingItems;
     public float Cost { get { return cost; } }
 
+    private TMP_Text loadAmountText;
 
     //private void OnMouseDown()
     //{
@@ -72,17 +77,29 @@ public class ShelfScript : MonoBehaviour
     //}
 
     void Start()
-    {       
-    //     CircleCollider2D circleCollider = gameObject.AddComponent<CircleCollider2D>();
+    {
+        //     CircleCollider2D circleCollider = gameObject.AddComponent<CircleCollider2D>();
 
-    //     circleCollider.isTrigger = true;
+        //     circleCollider.isTrigger = true;
 
-    //     circleCollider.radius = shelfDetectionRange;
+        //     circleCollider.radius = shelfDetectionRange;
+
+        loadAmountText = transform.Find("Canvas/Load Amount Text").GetComponent<TMP_Text>();
+
+        if (loadAmountText == null)
+        {
+            Debug.LogError("TextMeshPro component not found on the child object!");
+        }
     }
 
     void Update()
     {
         DetectAndManageCustomers();
+
+        if (loadAmountText != null)
+        {
+            loadAmountText.text = $"Load Amount: {loadAmount}";
+        }
     }
 
 
@@ -243,7 +260,7 @@ public class ShelfScript : MonoBehaviour
             float distance = Vector3.Distance(transform.position, aiDestinationSetter.transform.position);
             Bot bot = aiDestinationSetter.gameObject.GetComponent<Bot>();
 
-            if (bot != null && distance <= detectionRadius)
+            if (bot != null && distance <= visibility)
             {
                 Debug.Log("Buying!");
                 bool itemMatch = IsSellingItem(bot.item);
@@ -254,11 +271,23 @@ public class ShelfScript : MonoBehaviour
                 {
                     Debug.Log("Comming!");
                     aiDestinationSetter.target = transform;
-                    bot.isPurchasing = true;
-
                     Transform originalDestination = shopExit.transform;
-                    var newCustomerData = new CustomerData(aiDestinationSetter, originalDestination, bot);
-                    currentCustomersData.Add(newCustomerData); // Add customer for processing
+
+                    if (distance <= purchaseRadius)
+                    {
+                        if (loadAmount > 0)
+                        {
+                            Debug.Log("Start Purchase!");
+                            bot.isPurchasing = true;
+                            var newCustomerData = new CustomerData(aiDestinationSetter, originalDestination, bot);
+                            currentCustomersData.Add(newCustomerData); // Add customer for processing
+                        }
+                        else
+                        {
+                            removedCustomers.Add(aiDestinationSetter);
+                            aiDestinationSetter.target = originalDestination;
+                        }
+                    }
                 }
                 // If the item doesn't match or max capacity reached, and the customer isn't already being processed
                 else
@@ -271,8 +300,13 @@ public class ShelfScript : MonoBehaviour
         // Update time at shelf for customers and remove after duration
         foreach (var customer in currentCustomersData.ToList())
         {
+            if (loadAmount <= 0)
+            {
+                RemoveCustomer(customer);
+            }
+
             customer.timeAtShelf += Time.deltaTime;
-            if (customer.timeAtShelf >= customerStayDuration)
+            if (customer.timeAtShelf >= customerStayDuration && loadAmount > 0)
             {
                 Purchase(customer);
                 Debug.Log("Customer leaves after buying or waiting.");
@@ -288,8 +322,8 @@ public class ShelfScript : MonoBehaviour
 
     void Purchase(CustomerData customerData)
     {
+        loadAmount--;
         GameManager.instance.AddMoney(customerData.bot.botBudget);
-        customerData.aiDestinationSetter.target = customerData.originalDestination;
         RemoveCustomer(customerData);
     }
 
@@ -299,5 +333,6 @@ public class ShelfScript : MonoBehaviour
         currentCustomersData.Remove(customerData);
         // Add the AIDestinationSetter to the removedCustomers list
         removedCustomers.Add(customerData.aiDestinationSetter);
+        customerData.aiDestinationSetter.target = customerData.originalDestination;
     }
 }
