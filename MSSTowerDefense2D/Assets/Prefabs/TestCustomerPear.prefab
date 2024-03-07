@@ -176,7 +176,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   target: {fileID: 0}
-  targetObjectName: TestShopExit
 --- !u!58 &3901240669130896224
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -212,7 +211,8 @@ MonoBehaviour:
   aiPath: {fileID: 3901240669130896225}
   destinationSetter: {fileID: 3901240669130896230}
   tags: 1
-  item: {fileID: 11400000, guid: c868db8ccba8f71448fefe0093a480ee, type: 2}
+  needs:
+  - {fileID: 11400000, guid: c868db8ccba8f71448fefe0093a480ee, type: 2}
   nameText: {fileID: 5624200907085691460}
   budgetText: {fileID: 0}
   nameTextOffsetX: 0
