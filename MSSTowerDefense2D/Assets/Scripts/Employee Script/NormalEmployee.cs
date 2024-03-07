@@ -1,12 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public enum employeeStage
 {
     standBy = 0,
     isSelected = 1,
+    actionSelected = 2,
+}
+
+public enum employeeAction
+{
+    noAction = 0,
+    reload = 1,
+    moveShelf = 2,
 }
 public class NormalEmployee : Bot
 {
@@ -21,10 +30,12 @@ public class NormalEmployee : Bot
     public ShelfPlacementManager shelfPlacementManager;
     //stage of the employee
     public employeeStage eStage = employeeStage.standBy;
+    //action of the employee
+    public employeeAction eAction = employeeAction.noAction;
 
     /////////////////////////////////
     //UI when the employee is selected
-    public GameObject employeeUICanvas;
+    public Canvas employeeUICanvas;
     public GameObject employeeActionPanelPrefab;
 
     protected GameObject actionPanel;
@@ -34,7 +45,7 @@ public class NormalEmployee : Bot
     {
         base.init();
         shelfPlacementManager = ShelfPlacementManager.instance;
-        employeeUICanvas = GameObject.Find("Canvas");
+        employeeUICanvas = GameObject.Find("Canvas").GetComponent<Canvas>();
     }
     private void Start()
     {
@@ -58,8 +69,26 @@ public class NormalEmployee : Bot
                 case employeeStage.isSelected:
                     chooseActions(mousePosition, mouseHit);
                     break;
+                case employeeStage.actionSelected:
+                    switch (eAction)
+                    {
+                        case employeeAction.reload:
+                            break;
+                        case employeeAction.moveShelf:
+                            break;
+                    }
+                    break;
             }
-            chooseEmployee(mousePosition,mouseHit);
+
+        }
+        else
+        {
+            if(actionPanel != null)
+            {
+                Destroy(actionPanel);
+            }
+            eStage = employeeStage.standBy;
+            eAction = employeeAction.noAction;
         }
 
     }
@@ -105,16 +134,19 @@ public class NormalEmployee : Bot
         }
     }
 
+    //second step, click the action
     //different situations for different buttons
     public void OnButtonClick(int buttonIndex)
     {
         switch (buttonIndex)
         {
             case 0:
-                startShelfSelect = true;
+                eStage = employeeStage.actionSelected;
+                eAction = employeeAction.reload;
                 break;
             case 1:
-                Debug.Log("Button 2");
+                eStage = employeeStage.actionSelected;
+                eAction = employeeAction.moveShelf;
                 break;
         }
     }
@@ -123,7 +155,11 @@ public class NormalEmployee : Bot
     {
         if(Input.GetMouseButtonDown(0))
         {
-            if(hit.collider != null && hit.collider.gameObject == this.gameObject)
+            if (IsPointerOverUIObject())
+            {
+
+            }
+            else if(hit.collider != null && hit.collider.gameObject == this.gameObject)
             {
 
             }
@@ -133,6 +169,42 @@ public class NormalEmployee : Bot
                 eStage = employeeStage.standBy;
                 Destroy(actionPanel);
             }
+        }
+    }
+
+    private bool IsPointerOverUIObject()
+    {
+        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+        eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+        foreach (RaycastResult r in results)
+        {
+            if (r.gameObject == actionPanel || r.gameObject.transform.IsChildOf(actionPanel.transform))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public virtual void chooseShelf(Vector2 mousePosition, RaycastHit2D hit)
+    {
+        if(Input.GetMouseButtonDown(0))
+        {
+            if (hit.collider != null)
+            {
+                if (hit.collider.gameObject.GetComponent<ShelfScript>() != null)
+                {
+                    NeededShelf = hit.collider.gameObject.GetComponent<ShelfScript>();
+                    destinationSetter.target = NeededShelf.transform;
+                    aiPath.canMove = true;
+                    startShelfSelect = false;
+
+                }
+            }
+            else
+            { }
         }
     }
 
@@ -151,7 +223,7 @@ public class NormalEmployee : Bot
     //                destinationSetter.target = NeededShelf.transform;
     //                aiPath.canMove = true;
     //                startShelfSelect = false;
-   
+
     //            }
     //        }
     //        else

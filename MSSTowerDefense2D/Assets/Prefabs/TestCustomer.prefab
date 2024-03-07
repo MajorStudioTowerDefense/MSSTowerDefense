@@ -247,8 +247,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  drawGizmos: 1
-  detailedGizmos: 1
+  drawGizmos: 0
+  detailedGizmos: 0
   startEndModifier:
     addPoints: 0
     exactStartPoint: 3
@@ -355,6 +355,7 @@ MonoBehaviour:
   tags: 1
   needs:
   - {fileID: 11400000, guid: 3ef8a2d35256101438f7b6987a3c9964, type: 2}
+  selectedItem: {fileID: 0}
   nameText: {fileID: 8327674106412807263}
   budgetText: {fileID: 0}
   nameTextOffsetX: 0
