@@ -132,6 +132,12 @@ public class ShelfPlacementManager : MonoBehaviour
 
     void RepositionShelf()
     {
+        //if game state is store then return
+        if(GameManager.instance.currentState == GameStates.STORE)
+        {
+            return;
+        }
+
         Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mouseWorldPosition.z = 0; // Ensure it's in the 2D plane for a 2D game
 

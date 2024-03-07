@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum employeeStage
+{
+    standBy = 0,
+    isSelected = 1,
+}
 public class NormalEmployee : Bot
 {
     //the shelf being selected
@@ -12,10 +17,10 @@ public class NormalEmployee : Bot
     public int carryCount = 0;
     protected bool startShelfSelect;
 
-    
-    //the employee being selected
-    public bool employeeSelected = false;
+    //check if the shelf is selected
     public ShelfPlacementManager shelfPlacementManager;
+    //stage of the employee
+    public employeeStage eStage = employeeStage.standBy;
 
     /////////////////////////////////
     //UI when the employee is selected
@@ -40,71 +45,67 @@ public class NormalEmployee : Bot
     {
         base.Update();
 
-        if(employeeSelected)
+        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        RaycastHit2D mouseHit = Physics2D.Raycast(mousePosition, Vector2.zero);
+        //if the employee can be selected
+        if (canSelectEmployee())
         {
-            if(startShelfSelect)
+            switch (eStage)
             {
-                chooseShelf();
+                case employeeStage.standBy:
+                    chooseEmployee(mousePosition, mouseHit);
+                    break;
+                case employeeStage.isSelected:
+                    chooseActions(mousePosition, mouseHit);
+                    break;
             }
-            
-        }
-        else if(employeeSelected == false && actionPanel!=null)
-        {
-            
-            Destroy(actionPanel);
-            actionButtons.Clear();
-            startShelfSelect = false;
-        }
-        else if(employeeSelected == false && actionPanel == null)
-        {
-            chooseEmployee();
+            chooseEmployee(mousePosition,mouseHit);
         }
 
     }
 
-    
-    public virtual void chooseEmployee()
+    public virtual bool canSelectEmployee()
     {
-        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
-
-        if (shelfPlacementManager.shelfBeingRepositioned == null && Input.GetMouseButtonDown(0))
+        if (shelfPlacementManager.shelfBeingRepositioned != null)
         {
-            //If not clicked on empty space
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+        
+    }
+
+    //First step, click the employee
+    public virtual void chooseEmployee(Vector2 mousePosition, RaycastHit2D hit)
+    {
+        //If mouse is clicked
+        if (Input.GetMouseButtonDown(0))
+        {
+            //if not clicked on empty space
             if (hit.collider != null)
             {
+                //if clicked on the employee
                 if (hit.collider.gameObject == this.gameObject)
                 {
-                    if (employeeSelected == false)
+                    eStage = employeeStage.isSelected;
+                    actionPanel = Instantiate(employeeActionPanelPrefab, employeeUICanvas.transform);
+                    actionPanel.GetComponent<EmployeeActionPanel>().target = this.transform;
+                    //add listener to the buttons
+                    actionButtons = new List<Button>();
+                    actionButtons.AddRange(actionPanel.GetComponentsInChildren<Button>());
+                    foreach (Button button in actionButtons)
                     {
-                        employeeSelected = true;
-                        actionPanel = Instantiate(employeeActionPanelPrefab, employeeUICanvas.transform);
-                        actionPanel.GetComponent<EmployeeActionPanel>().target = this.transform;
-                        actionButtons = new List<Button>();
-                        actionButtons.AddRange(actionPanel.GetComponentsInChildren<Button>());
-                        foreach (Button button in actionButtons)
-                        {
-                            int buttonIndex = actionButtons.IndexOf(button);
-                            button.onClick.AddListener(() => OnButtonClick(buttonIndex));
-                        }
+                        int buttonIndex = actionButtons.IndexOf(button);
+                        button.onClick.AddListener(() => OnButtonClick(buttonIndex));
                     }
-
                 }
-                else if (startShelfSelect) { }
-                else
-                {
-                    employeeSelected = false;
-                }
-            }
-            //if clicked on empty space
-            else
-            {
-                employeeSelected = false;
-            }
-            
+            }   
         }
     }
 
+    //different situations for different buttons
     public void OnButtonClick(int buttonIndex)
     {
         switch (buttonIndex)
@@ -118,32 +119,49 @@ public class NormalEmployee : Bot
         }
     }
 
-    public virtual void chooseShelf()
+    public virtual void chooseActions(Vector2 mousePosition, RaycastHit2D hit)
     {
-        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
-
         if(Input.GetMouseButtonDown(0))
         {
-            if (hit.collider != null)
+            if(hit.collider != null && hit.collider.gameObject == this.gameObject)
             {
-                if (hit.collider.gameObject.GetComponent<ShelfScript>() != null)
-                {
-                    NeededShelf = hit.collider.gameObject.GetComponent<ShelfScript>();
-                    destinationSetter.target = NeededShelf.transform;
-                    aiPath.canMove = true;
-                    startShelfSelect = false;
-                    employeeSelected = false;
-                }
+
             }
+            //if clicked on empty space£¬close the action panel, we can have the close animation later
             else
             {
-                employeeSelected = false;
-
+                eStage = employeeStage.standBy;
+                Destroy(actionPanel);
             }
         }
-
     }
+
+    //public virtual void chooseShelf()
+    //{
+    //    Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    //    RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
+
+    //    if(Input.GetMouseButtonDown(0))
+    //    {
+    //        if (hit.collider != null)
+    //        {
+    //            if (hit.collider.gameObject.GetComponent<ShelfScript>() != null)
+    //            {
+    //                NeededShelf = hit.collider.gameObject.GetComponent<ShelfScript>();
+    //                destinationSetter.target = NeededShelf.transform;
+    //                aiPath.canMove = true;
+    //                startShelfSelect = false;
+   
+    //            }
+    //        }
+    //        else
+    //        {
+
+
+    //        }
+    //    }
+
+    //}
 
 
 }
