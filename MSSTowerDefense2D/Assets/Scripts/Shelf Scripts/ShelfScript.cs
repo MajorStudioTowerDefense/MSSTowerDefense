@@ -335,8 +335,9 @@ public class ShelfScript : MonoBehaviour
             AIDestinationSetter ai = customer.GetComponent<AIDestinationSetter>();
             if (ai == null || currentCustomersData.FirstOrDefault(c => c.aiDestinationSetter == ai) != null) continue;
             bot = customer.gameObject.GetComponent<Bot>();
+            if (bot.isPurchasing) continue;
             if (bot != null) { bot.selectedItem = IsSellingItem(bot.needs); }
-            if (bot.selectedItem != null && currentCustomersData.Count < maxCustomers && !bot.isPurchasing)
+            if (bot.selectedItem != null && currentCustomersData.Count < maxCustomers)
             {
                 Transform originalDestination = shopExit;
                 if (loadAmount > 0)
