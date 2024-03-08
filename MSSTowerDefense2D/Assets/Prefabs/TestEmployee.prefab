@@ -155,10 +155,10 @@ MonoBehaviour:
   rotationSpeed: 360
   slowdownDistance: 0.6
   pickNextWaypointDist: 0.3
-  endReachedDistance: 0.2
+  endReachedDistance: 0.72
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1
-  whenCloseToDestination: 0
+  whenCloseToDestination: 1
   constrainInsideGraph: 0
 --- !u!114 &-6095185238316118098
 MonoBehaviour:
@@ -174,7 +174,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   target: {fileID: 0}
-  targetObjectName: 
 --- !u!114 &5529370222845911486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,7 +193,8 @@ MonoBehaviour:
   aiPath: {fileID: -7438339303508494745}
   destinationSetter: {fileID: -6095185238316118098}
   tags: 2
-  item: {fileID: 0}
+  needs: []
+  selectedItem: {fileID: 0}
   nameText: {fileID: 4939974613824196881}
   budgetText: {fileID: 0}
   nameTextOffsetX: 0
@@ -202,9 +202,11 @@ MonoBehaviour:
   NeededShelf: {fileID: 0}
   isCarrying: 0
   carryMax: 3
-  carryCount: 0
-  employeeSelected: 0
+  carryCount: 3
   shelfPlacementManager: {fileID: 0}
+  eStage: 0
+  eAction: 0
+  employeeArea: {fileID: 0}
   employeeUICanvas: {fileID: 0}
   employeeActionPanelPrefab: {fileID: 256338174260524804, guid: 4ff453d8daf31b04f88cb94812bba4c0, type: 3}
 --- !u!58 &-254084621290772639

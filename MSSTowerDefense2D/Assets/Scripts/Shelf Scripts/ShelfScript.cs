@@ -49,6 +49,7 @@ public class ShelfScript : MonoBehaviour
     public float customerStayDuration = 5f;
 
     public int loadAmount = 3;
+    public int loadAmountMax = 6;
 
     public string targetObjectName;
 
