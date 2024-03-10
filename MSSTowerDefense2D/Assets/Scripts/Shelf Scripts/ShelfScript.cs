@@ -318,6 +318,10 @@ public class ShelfScript : MonoBehaviour
 
     void DetectAndManageCustomers()
     {
+        if(GameManager.instance.currentState != GameStates.STORE) {
+            currentCustomersData.Clear();
+            return;
+        }
         Transform shopExit = GameObject.FindWithTag("Exit").transform;
         if (shopExit != null)
         {
