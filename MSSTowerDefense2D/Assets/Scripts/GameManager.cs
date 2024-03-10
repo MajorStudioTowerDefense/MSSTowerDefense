@@ -5,7 +5,8 @@ public enum GameStates
 {
     PREP,
     STORE,
-    END
+    END,
+    LOOP
 }
 
 public enum WallSide
@@ -51,6 +52,11 @@ public class GameManager : MonoBehaviour
     public int entranceYPosition;
     public int exitYPosition;
 
+    [Header("Game Loop Settings")]
+    [SerializeField] private int level = 1;
+    [SerializeField] private float difficultyFactor = 1.2f;
+
+
     private void Awake()
     {
         if (instance == null)
@@ -62,12 +68,13 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        gridSystem = new GridSystem(gridCellLength, gridCellHeight, gridCellSize, Vector3.zero);
-        shelfPlacementManager.gridSystem = gridSystem;
-        timer = InitialTime.x * 60 + InitialTime.y;
+        InitializeLevel();
+        //gridSystem = new GridSystem(gridCellLength, gridCellHeight, gridCellSize, Vector3.zero);
+        //shelfPlacementManager.gridSystem = gridSystem;
+        //timer = InitialTime.x * 60 + InitialTime.y;
 
-        GenerateGrid();
-        GenerateWalls();
+        //GenerateGrid();
+        //GenerateWalls();
     }
 
     private void Update()
@@ -77,6 +84,7 @@ public class GameManager : MonoBehaviour
             timer += timeScaleFactor * Time.deltaTime;
             if (timer >= startStoreTime.x * 60 + startStoreTime.y && currentState == GameStates.PREP) currentState = GameStates.STORE;
             if (currentState == GameStates.STORE && timer >= endTime.x * 60 + endTime.y) currentState = GameStates.END;
+            if (currentState == GameStates.END) StartNextLevel();
         }
 
         switch (currentState)
@@ -91,6 +99,31 @@ public class GameManager : MonoBehaviour
                 isTimer = false;
                 break;
         }
+    }
+
+    private void InitializeLevel()
+    {
+        gridSystem = new GridSystem(gridCellLength, gridCellHeight, gridCellSize, Vector3.zero);
+        shelfPlacementManager.gridSystem = gridSystem;
+        timer = InitialTime.x * 60 + InitialTime.y;
+
+        GenerateGrid();
+        GenerateWalls();
+        currentState = GameStates.PREP; // 确保游戏状态设置为PREP
+        isTimer = true; // 开始计时
+    }
+
+    private void StartNextLevel()
+    {
+        level++; // 增加关卡等级
+        AdjustDifficulty(); // 根据难度系数调整游戏难度
+        ReloadCurrentScene(); // 重新加载场景，以开始新的关卡
+    }
+
+    private void AdjustDifficulty()
+    {
+        // 这里可以添加代码来调整敌人的数量、速度或其他任何应对难度增加的因素
+        // 例如: enemySpeed *= difficultyMultiplier;
     }
 
     private void GenerateGrid()
