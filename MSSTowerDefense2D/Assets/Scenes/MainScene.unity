@@ -751,7 +751,7 @@ MonoBehaviour:
   currentState: 0
   exit: {fileID: 0}
   timer: 0
-  timeScaleFactor: 10
+  timeScaleFactor: 5
   startStoreTime: {x: 9, y: 0}
   endTime: {x: 18, y: 0}
   InitialTime: {x: 7, y: 0}
