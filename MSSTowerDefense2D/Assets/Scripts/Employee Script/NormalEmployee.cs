@@ -29,6 +29,9 @@ public class NormalEmployee : Bot
     public int carryMax = 3;
     public int carryCount = 3;
 
+    private float timeAtShelf = 0f;
+    public float stayShelfDuration = 5f;
+
 
     //check if the shelf is selected
     public ShelfPlacementManager shelfPlacementManager;
@@ -263,14 +266,18 @@ public class NormalEmployee : Bot
             if (NeededShelf != null)
             {
                 int actualIncrease = Mathf.Min(carryCount, NeededShelf.loadAmountMax - NeededShelf.loadAmount);
-                NeededShelf.loadAmount += actualIncrease;
-                carryCount -= actualIncrease;
-                eStage = employeeStage.actionFinished;
-                if (NeededShelf.loadAmount == NeededShelf.loadAmountMax)
+                timeAtShelf += Time.deltaTime;
+                if (timeAtShelf >= stayShelfDuration && NeededShelf.loadAmount < NeededShelf.loadAmountMax)
+                {
+                    NeededShelf.loadAmount += actualIncrease;
+                    carryCount -= actualIncrease;
+                    eStage = employeeStage.actionFinished;
+                }
+                else if (NeededShelf.loadAmount == NeededShelf.loadAmountMax)
                 {
                     Debug.Log("Load amount has reached its maximum.");
+                    eStage = employeeStage.actionFinished;
                 }
-
             }
             else
             {
