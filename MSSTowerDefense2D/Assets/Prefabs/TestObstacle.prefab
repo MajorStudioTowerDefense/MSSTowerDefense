@@ -152,7 +152,10 @@ MonoBehaviour:
   purchaseRadius: 1
   customerStayDuration: 5
   loadAmount: 3
+  initalLoadAmount: 3
   loadAmountMax: 6
   targetObjectName: TestShopExit
   cost: 5
   sellingItems: []
+  maintainingCost: 0
+  visibilityIndicator: {fileID: 0}
