@@ -162,13 +162,34 @@ public class GameManager : MonoBehaviour
                     prefabToInstantiate = entrancePrefab;
                 else if (y == gridCellHeight && exitSide == WallSide.Top && exitYPosition == x)
                     prefabToInstantiate = exitPrefab;
-                else if (x == -1 || x == gridCellLength || y == -1 || y == gridCellHeight)
-                    prefabToInstantiate = sideWallPrefab;
+/*                else if (x == -1 || x == gridCellLength || y == -1 || y == gridCellHeight)
+                    prefabToInstantiate = sideWallPrefab;*/
 
                 if (prefabToInstantiate != null)
                     Instantiate(prefabToInstantiate, position, Quaternion.identity, transform);
             }
         }
+
+        for (int x = 0; x < gridCellLength; x++)
+        {
+            Vector3 position = gridSystem.GetWorldPosition(x, gridCellHeight) + new Vector3(gridCellSize, gridCellSize) * 0.5f;
+            Instantiate(topWallPrefab, position, Quaternion.identity, transform);
+        }
+
+        for (int y = 1; y <= gridCellHeight; y++)
+        {
+            Vector3 leftPosition = gridSystem.GetWorldPosition(-1, y) + new Vector3(gridCellSize, gridCellSize) * 0.5f;
+            Instantiate(sideWallPrefab, leftPosition, Quaternion.identity, transform);
+
+            Vector3 rightPosition = gridSystem.GetWorldPosition(gridCellLength, y) + new Vector3(gridCellSize, gridCellSize) * 0.5f;
+            Instantiate(sideWallPrefab, rightPosition, Quaternion.identity, transform);
+        }
+
+        Vector3 bottomLeft = gridSystem.GetWorldPosition(-1, 0) + new Vector3(gridCellSize, gridCellSize) * 0.5f;
+        Instantiate(bottomWallPrefab, bottomLeft, Quaternion.identity, transform);
+
+        Vector3 bottomRight = gridSystem.GetWorldPosition(gridCellLength, 0) + new Vector3(gridCellSize, gridCellSize) * 0.5f;
+        Instantiate(bottomWallPrefab, bottomRight, Quaternion.identity, transform);
     }
 
     public void StartPlacingShelfA() => shelfPlacementManager.SetCurrentShelfPrefab(shelfPrefabs[1]);
