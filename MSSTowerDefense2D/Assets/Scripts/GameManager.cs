@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -32,6 +33,7 @@ public class GameManager : MonoBehaviour
     public int gridCellLength = 10, gridCellHeight = 10;
     public float gridCellSize = 1f;
     public float money = 100;
+    public float yesterdayMoney = 0;
 
     public static GameManager instance { get; private set; }
     public GameStates currentState;
@@ -103,6 +105,7 @@ public class GameManager : MonoBehaviour
 
     private void InitializeLevel()
     {
+        yesterdayMoney = money;
         gridSystem = new GridSystem(gridCellLength, gridCellHeight, gridCellSize, Vector3.zero);
         shelfPlacementManager.gridSystem = gridSystem;
         timer = InitialTime.x * 60 + InitialTime.y;
@@ -113,14 +116,41 @@ public class GameManager : MonoBehaviour
         isTimer = true; 
     }
 
+    private void ReInitLevel()
+    {
+        yesterdayMoney = money;
+        timer = InitialTime.x * 60 + InitialTime.y;
+
+        currentState = GameStates.PREP;
+        isTimer = true;
+    }
+
+    public GameObject summaryPanel;
+    public GameObject upgradePanel;
+    public TextMeshProUGUI[] summaryText;
+
     private void SummaryOfTheDay()
     {
+        summaryPanel.SetActive(true);
+        summaryText[0].text = "Revenue Gained " + (money-yesterdayMoney);
+    }
 
+    public void confirmSummary()
+    {
+        summaryPanel.SetActive(false);
+        upgradePanel.SetActive(true);
+    }
+
+    public void confirmUpgrade()
+    {
+        upgradePanel.SetActive(false);
+        StartNextLevel();
     }
     private void StartNextLevel()
     {
         level++; 
         AdjustDifficulty(); 
+        ReInitLevel();
         
     }
 

@@ -94,6 +94,7 @@ public class ShelfScript : MonoBehaviour
 
     void Update()
     {
+        showVisibility();
         DetectAndManageCustomers();
 
         if (loadAmountText != null)
@@ -411,5 +412,14 @@ public class ShelfScript : MonoBehaviour
         customerData.bot.isPurchasing = false;
         customerData.aiDestinationSetter.target = customerData.originalDestination;
         currentCustomersData.Remove(customerData);
+    }
+
+    public Transform visibilityIndicator;
+
+    void showVisibility()
+    {
+        float scaleValue = visibility; // 根据你的Sprite实际大小，这里可能需要调整比例因子
+        if (visibilityIndicator != null)
+        visibilityIndicator.localScale = new Vector3(scaleValue, scaleValue, 1);
     }
 }

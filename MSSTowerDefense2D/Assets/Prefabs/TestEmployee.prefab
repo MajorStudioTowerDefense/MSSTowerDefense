@@ -134,7 +134,7 @@ MonoBehaviour:
   radius: 0.5
   height: 2
   canMove: 0
-  maxSpeed: 1
+  maxSpeed: 2
   gravity: {x: 0, y: 0, z: 0}
   groundMask:
     serializedVersion: 2
@@ -203,6 +203,7 @@ MonoBehaviour:
   isCarrying: 0
   carryMax: 3
   carryCount: 3
+  stayShelfDuration: 5
   shelfPlacementManager: {fileID: 0}
   eStage: 0
   eAction: 0
