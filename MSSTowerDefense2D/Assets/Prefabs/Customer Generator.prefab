@@ -47,11 +47,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   customerPrefabs:
   - {fileID: 6430688495216814459, guid: 1b94cea9cc8da234889e003bdfabc54f, type: 3}
-  - {fileID: 2782339301779740598, guid: 99b5d3cb60531a0488180c74bc09d14d, type: 3}
   spawnPoint: {fileID: 1896027676592228250}
   minGenerateDelay: 2
   maxGenerateDelay: 5
   maxCustomers: 20
+  customersList: []
 --- !u!1 &1896027676592228249
 GameObject:
   m_ObjectHideFlags: 0
