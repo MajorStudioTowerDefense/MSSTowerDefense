@@ -32,16 +32,33 @@ public class CustomerGenerator : MonoBehaviour
 
     void GenerateCustomer()
     {
-        if (customerPrefabs.Length > 0 && spawnPoint != null)
+        if (customerPrefabs.Length > 1 && spawnPoint != null) // Ensure there are at least 2 customer prefabs
         {
-            // Select a random customer prefab
-            int index = Random.Range(0, customerPrefabs.Length);
-            GameObject customerPrefab = customerPrefabs[index];
+            // Generate a random number between 0.0 and 1.0
+            float chance = Random.Range(0.0f, 1.0f);
+            GameObject customerPrefab;
 
-            // Instantiate the customer at the spawn point's position
+            if (customerPrefabs.Length > 1)
+            {
+                // 80% chance for customerPrefabs[0], 20% chance for customerPrefabs[1]
+                if (chance < 0.8f) // 0.0 to 0.79... is 80% of the range
+                {
+                    customerPrefab = customerPrefabs[0];
+                }
+                else // 0.8 to 1.0 is the remaining 20%
+                {
+                    customerPrefab = customerPrefabs[1];
+                }
+            }
+            else
+            {
+                customerPrefab = customerPrefabs[0];
+            }
+
+            // Instantiate the selected customer at the spawn point's position
             GameObject cus = Instantiate(customerPrefab, spawnPoint.position, Quaternion.identity);
-            cus.GetComponent<Bot>().init();
-            customersList.Add(cus);
+            cus.GetComponent<Bot>().init(); // Initialize the bot component
+            customersList.Add(cus); // Add the customer to the list
 
             // Increment the current customer count
             currentCustomers++;
