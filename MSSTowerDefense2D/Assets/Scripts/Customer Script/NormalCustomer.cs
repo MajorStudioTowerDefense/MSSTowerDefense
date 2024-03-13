@@ -18,6 +18,7 @@ public class NormalCustomer : Bot
         base.Update();
         desireVFX.SetActive(isPurchasing);
         forceToLeaveStoreInEndStage();
+
     }
 
     public virtual void forceToLeaveStoreInEndStage()
@@ -27,4 +28,5 @@ public class NormalCustomer : Bot
             destinationSetter.target = ShopExit;
         }
     }
+
 }
