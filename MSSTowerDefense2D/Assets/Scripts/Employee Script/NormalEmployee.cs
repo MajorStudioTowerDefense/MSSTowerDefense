@@ -272,6 +272,7 @@ public class NormalEmployee : Bot
                     NeededShelf.loadAmount += actualIncrease;
                     carryCount -= actualIncrease;
                     eStage = employeeStage.actionFinished;
+                    timeAtShelf = 0;
                 }
                 else if (NeededShelf.loadAmount == NeededShelf.loadAmountMax)
                 {
