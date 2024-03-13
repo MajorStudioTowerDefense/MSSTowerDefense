@@ -957,8 +957,8 @@ MonoBehaviour:
   bottomWallPrefab: {fileID: 7873324396560715407, guid: 683e4f0ec4566fa419082dc48fd746cf, type: 3}
   entrancePrefab: {fileID: 1896027676372340350, guid: 1c004b74b520e734fb5d25b8883455b6, type: 3}
   exitPrefab: {fileID: 313576045180133773, guid: 8b6d3730f63e35e4e8d0224a64ba9567, type: 3}
-  gridCellLength: 26
-  gridCellHeight: 18
+  gridCellLength: 13
+  gridCellHeight: 9
   gridCellSize: 1
   money: 200
   yesterdayMoney: 0
@@ -971,10 +971,11 @@ MonoBehaviour:
   InitialTime: {x: 7, y: 0}
   entranceSide: 1
   exitSide: 2
-  entranceYPosition: 5
-  exitYPosition: 5
+  entranceYPosition: 2
+  exitYPosition: 7
   level: 1
   difficultyFactor: 1.2
+  customerGenerator: {fileID: 0}
   summaryPanel: {fileID: 121916735}
   upgradePanel: {fileID: 683974080}
   summaryText:
