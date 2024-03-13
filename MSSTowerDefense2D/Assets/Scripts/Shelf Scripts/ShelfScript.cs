@@ -94,6 +94,7 @@ public class ShelfScript : MonoBehaviour
 
     void Update()
     {
+        showVisibility();
         DetectAndManageCustomers();
 
         if (loadAmountText != null)
@@ -340,27 +341,27 @@ public class ShelfScript : MonoBehaviour
             AIDestinationSetter ai = customer.GetComponent<AIDestinationSetter>();
             if (ai == null || currentCustomersData.FirstOrDefault(c => c.aiDestinationSetter == ai) != null) continue;
             bot = customer.gameObject.GetComponent<Bot>();
-            if (bot.isPurchasing) continue;
             if (bot != null) { bot.selectedItem = IsSellingItem(bot.needs); }
-            if (bot.selectedItem != null && currentCustomersData.Count < maxCustomers)
+            Transform originalDestination = shopExit;
+            if (bot.selectedItem != null && currentCustomersData.Count < maxCustomers && !bot.isPurchasing)
             {
-                Transform originalDestination = shopExit;
                 if (loadAmount > 0)
                 {
-                    Debug.Log("While purchasing" + bot.selectedItem);
+                    Debug.Log("While purchasing " + bot.selectedItem);
                     ai.target = transform;
-                    if (Vector2.Distance(customer.transform.position, transform.position) < purchaseRadius)
-                    {
-                            Debug.Log("Start Purchase!");
-                            bot.isPurchasing = true;
-                            var newCustomerData = new CustomerData(ai, originalDestination, bot);
-                            currentCustomersData.Add(newCustomerData); // Add customer for processing
-                        }
+                    bot.isPurchasing = true;
                     }
                 else
                 {
                     ai.target = originalDestination;
                 }
+            }
+
+            if (Vector2.Distance(customer.transform.position, transform.position) < purchaseRadius && bot.isPurchasing)
+            {
+                Debug.Log("Start Purchase!");
+                var newCustomerData = new CustomerData(ai, originalDestination, bot);
+                currentCustomersData.Add(newCustomerData);
             }
 
         }
@@ -411,5 +412,14 @@ public class ShelfScript : MonoBehaviour
         customerData.bot.isPurchasing = false;
         customerData.aiDestinationSetter.target = customerData.originalDestination;
         currentCustomersData.Remove(customerData);
+    }
+
+    public Transform visibilityIndicator;
+
+    void showVisibility()
+    {
+        float scaleValue = visibility; // 根据你的Sprite实际大小，这里可能需要调整比例因子
+        if (visibilityIndicator != null)
+        visibilityIndicator.localScale = new Vector3(scaleValue, scaleValue, 1);
     }
 }

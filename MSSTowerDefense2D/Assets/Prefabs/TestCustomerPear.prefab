@@ -105,8 +105,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  drawGizmos: 0
-  detailedGizmos: 0
+  drawGizmos: 1
+  detailedGizmos: 1
   startEndModifier:
     addPoints: 0
     exactStartPoint: 3
@@ -219,6 +219,7 @@ MonoBehaviour:
   nameTextOffsetX: 0
   nameTextOffsetY: 1
   desireVFX: {fileID: 6891590087796108944}
+  ShopExit: {fileID: 0}
 --- !u!1 &6764625469833469541
 GameObject:
   m_ObjectHideFlags: 0

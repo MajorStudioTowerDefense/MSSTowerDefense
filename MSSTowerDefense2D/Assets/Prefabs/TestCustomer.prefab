@@ -247,8 +247,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  drawGizmos: 0
-  detailedGizmos: 0
+  drawGizmos: 1
+  detailedGizmos: 1
   startEndModifier:
     addPoints: 0
     exactStartPoint: 3
@@ -361,6 +361,7 @@ MonoBehaviour:
   nameTextOffsetX: 0
   nameTextOffsetY: 1
   desireVFX: {fileID: 3512315190433346689}
+  ShopExit: {fileID: 0}
 --- !u!1001 &5563871795364568732
 PrefabInstance:
   m_ObjectHideFlags: 0
