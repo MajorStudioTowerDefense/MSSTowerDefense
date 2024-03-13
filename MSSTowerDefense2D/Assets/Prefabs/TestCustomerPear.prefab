@@ -81,8 +81,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0.9493294, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 4efece76a052c0446ba6cc03885b9e53, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -205,13 +205,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   botName: PearLover
-  botBudget: 10
+  botBudget: 5
   shoppingEffect: {fileID: 0}
   shoppingSFX: {fileID: 0}
   aiPath: {fileID: 3901240669130896225}
   destinationSetter: {fileID: 3901240669130896230}
   tags: 1
   needs:
+  - {fileID: 11400000, guid: c868db8ccba8f71448fefe0093a480ee, type: 2}
+  - {fileID: 11400000, guid: 3ef8a2d35256101438f7b6987a3c9964, type: 2}
+  - {fileID: 11400000, guid: 3ef8a2d35256101438f7b6987a3c9964, type: 2}
   - {fileID: 11400000, guid: c868db8ccba8f71448fefe0093a480ee, type: 2}
   selectedItem: {fileID: 0}
   nameText: {fileID: 5624200907085691460}

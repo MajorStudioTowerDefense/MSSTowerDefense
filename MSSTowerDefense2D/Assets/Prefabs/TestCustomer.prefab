@@ -223,7 +223,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4bde224799d25e048ad63608805004d7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -355,9 +355,6 @@ MonoBehaviour:
   tags: 1
   needs:
   - {fileID: 11400000, guid: 3ef8a2d35256101438f7b6987a3c9964, type: 2}
-  - {fileID: 11400000, guid: 3ef8a2d35256101438f7b6987a3c9964, type: 2}
-  - {fileID: 11400000, guid: 3ef8a2d35256101438f7b6987a3c9964, type: 2}
-  - {fileID: 11400000, guid: c868db8ccba8f71448fefe0093a480ee, type: 2}
   - {fileID: 11400000, guid: c868db8ccba8f71448fefe0093a480ee, type: 2}
   selectedItem: {fileID: 0}
   nameText: {fileID: 8327674106412807263}

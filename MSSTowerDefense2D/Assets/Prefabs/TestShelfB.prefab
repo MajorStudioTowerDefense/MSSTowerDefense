@@ -388,13 +388,15 @@ MonoBehaviour:
   gridBlockArray: []
   visibility: 3
   purchaseRadius: 1
-  customerStayDuration: 5
+  customerStayDuration: 8
   loadAmount: 3
+  initalLoadAmount: 3
   loadAmountMax: 6
   targetObjectName: TestShopExit
   cost: 25
   sellingItems:
   - {fileID: 11400000, guid: c868db8ccba8f71448fefe0093a480ee, type: 2}
+  maintainingCost: 5
   visibilityIndicator: {fileID: 2606767789544531563}
 --- !u!1 &5010003699079719547
 GameObject:
