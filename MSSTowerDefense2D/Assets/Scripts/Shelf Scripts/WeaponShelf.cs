@@ -21,6 +21,7 @@ public class WeaponShelf : ShelfScript
     {
         acceptableNames.Add("Halbert");
         acceptableNames.Add("Axe");
+        acceptableNames.Add("Sword");
         shelfScript = GetComponent<ShelfScript>();
         level = UpgradeLevel.Low;
     }
