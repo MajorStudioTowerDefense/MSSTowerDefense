@@ -1,3 +1,4 @@
+using Pathfinding;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -57,7 +58,6 @@ public class GameManager : MonoBehaviour
     [Header("Game Loop Settings")]
     [SerializeField] private int level = 1;
     [SerializeField] private float difficultyFactor = 1.2f;
-    public CustomerGenerator customerGenerator;
 
 
     private void Awake()
@@ -119,13 +119,19 @@ public class GameManager : MonoBehaviour
 
     private void ReInitLevel()
     {
-        foreach (GameObject customer in customerGenerator.customersList)
+        CustomerGenerator[] customerGenerators = FindObjectsOfType<CustomerGenerator>();
+        if (customerGenerators.Length > 0)
         {
-            if (customer == null) continue;
-            else
+            for (int i = customerGenerators[0].customersList.Count - 1; i >= 0; i--)
             {
-                customerGenerator.customersList.Remove(customer);
-                Destroy(customer);
+                GameObject customer = customerGenerators[0].customersList[i];
+                if (customer != null)
+                {
+                    Debug.Log("Delete customers");
+                    customerGenerators[0].customersList.RemoveAt(i);
+                    customerGenerators[0].currentCustomers--;
+                    Destroy(customer);
+                }
             }
         }
 

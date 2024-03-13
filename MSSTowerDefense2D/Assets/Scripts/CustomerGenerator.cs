@@ -10,7 +10,7 @@ public class CustomerGenerator : MonoBehaviour
     public int maxCustomers = 10; // Maximum number of customers allowed
 
     private float nextGenerateTime = 0f; // When the next customer should be generated
-    private int currentCustomers = 0; // Current number of generated customers
+    [HideInInspector] public int currentCustomers = 0; // Current number of generated customers
 
     private bool isShopOpened = false;
 
