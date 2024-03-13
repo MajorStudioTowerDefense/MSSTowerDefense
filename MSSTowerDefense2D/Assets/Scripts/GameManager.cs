@@ -140,6 +140,12 @@ public class GameManager : MonoBehaviour
 
         currentState = GameStates.PREP;
         isTimer = true;
+
+        ShelfScript[] shelfScripts = FindObjectsOfType<ShelfScript>();
+        foreach (var shelfScript in shelfScripts)
+        {
+            shelfScript.loadAmount = shelfScript.initalLoadAmount;
+        }
     }
 
     public GameObject summaryPanel;

@@ -48,7 +48,8 @@ public class ShelfScript : MonoBehaviour
     public float purchaseRadius = 1f;
     public float customerStayDuration = 5f;
 
-    public int loadAmount = 3;
+    public int loadAmount = 0;
+    public int initalLoadAmount = 3;
     public int loadAmountMax = 6;
 
     public string targetObjectName;
@@ -83,6 +84,8 @@ public class ShelfScript : MonoBehaviour
         //     circleCollider.isTrigger = true;
 
         //     circleCollider.radius = shelfDetectionRange;
+
+        loadAmount = initalLoadAmount;
 
         loadAmountText = GetComponentInChildren<TMP_Text>();
 
