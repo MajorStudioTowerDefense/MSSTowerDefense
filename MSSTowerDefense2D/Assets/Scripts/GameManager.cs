@@ -57,6 +57,7 @@ public class GameManager : MonoBehaviour
     [Header("Game Loop Settings")]
     [SerializeField] private int level = 1;
     [SerializeField] private float difficultyFactor = 1.2f;
+    public CustomerGenerator customerGenerator;
 
 
     private void Awake()
@@ -118,6 +119,16 @@ public class GameManager : MonoBehaviour
 
     private void ReInitLevel()
     {
+        foreach (GameObject customer in customerGenerator.customersList)
+        {
+            if (customer == null) continue;
+            else
+            {
+                customerGenerator.customersList.Remove(customer);
+                Destroy(customer);
+            }
+        }
+
         yesterdayMoney = money;
         timer = InitialTime.x * 60 + InitialTime.y;
 

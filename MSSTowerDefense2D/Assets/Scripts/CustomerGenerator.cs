@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CustomerGenerator : MonoBehaviour
@@ -12,6 +13,8 @@ public class CustomerGenerator : MonoBehaviour
     private int currentCustomers = 0; // Current number of generated customers
 
     private bool isShopOpened = false;
+
+    public List<GameObject> customersList = new List<GameObject>();
 
     void Update()
     {
@@ -38,6 +41,7 @@ public class CustomerGenerator : MonoBehaviour
             // Instantiate the customer at the spawn point's position
             GameObject cus = Instantiate(customerPrefab, spawnPoint.position, Quaternion.identity);
             cus.GetComponent<Bot>().init();
+            customersList.Add(cus);
 
             // Increment the current customer count
             currentCustomers++;
