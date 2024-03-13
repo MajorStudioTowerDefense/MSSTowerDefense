@@ -60,6 +60,8 @@ public class ShelfScript : MonoBehaviour
 
     private TMP_Text loadAmountText;
 
+    public int maintainingCost = 5;
+
     //private void OnMouseDown()
     //{
     //    if (shelfUIScript = null)

@@ -59,7 +59,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int level = 1;
     [SerializeField] private float difficultyFactor = 1.2f;
 
-
     private void Awake()
     {
         if (instance == null)
@@ -133,6 +132,10 @@ public class GameManager : MonoBehaviour
                     Destroy(customer);
                 }
             }
+
+            float newCustomersAmount = 0;
+            newCustomersAmount = (float)customerGenerators[0].maxCustomers * difficultyFactor;
+            customerGenerators[0].maxCustomers = Mathf.RoundToInt(newCustomersAmount);
         }
 
         yesterdayMoney = money;
@@ -154,8 +157,16 @@ public class GameManager : MonoBehaviour
 
     private void SummaryOfTheDay()
     {
+        ShelfScript[] shelfScripts = FindObjectsOfType<ShelfScript>();
+        int shelfCost = 0;
+        foreach (var shelfScript in shelfScripts)
+        {
+            shelfCost += shelfScript.maintainingCost;
+        }
         summaryPanel.SetActive(true);
-        summaryText[0].text = "Revenue Gained " + (money-yesterdayMoney);
+        summaryText[0].text = "Revenue Gained " + (money - yesterdayMoney - (gridCellHeight - 1) * (gridCellLength - 1) - shelfCost) + "\nRent: " + (gridCellHeight - 1) * (gridCellLength - 1) + "\nShelf Maintaining Cost: " + shelfCost;
+
+        money = money - shelfCost - (gridCellHeight - 1) * (gridCellLength - 1);
     }
 
     public void confirmSummary()
