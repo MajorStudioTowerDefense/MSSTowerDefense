@@ -20,16 +20,16 @@ public class PauseScript : MonoBehaviour
 
     public void pauseGame()
     {
-        stopAI();
-        disableShelves();
+        //stopAI();
+        //disableShelves();
         enableUI();
         Time.timeScale = 0.0f;
     }
 
     public void resumeGame()
     {
-        startAI();
-        enableShelves();
+        //startAI();
+        //enableShelves();
         disableUI();
         Time.timeScale = 1.0f;
     }
