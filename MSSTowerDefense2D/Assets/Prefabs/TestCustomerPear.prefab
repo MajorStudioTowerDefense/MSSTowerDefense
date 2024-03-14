@@ -145,7 +145,7 @@ MonoBehaviour:
   repathRateCompatibility: NaN
   canSearchCompability: 0
   orientation: 1
-  enableRotation: 1
+  enableRotation: 0
   autoRepath:
     mode: 2
     period: 0.5
@@ -204,7 +204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1342cfc9a3544aa488f464ce31a363cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  botName: PearLover
+  botName: Rhinox Stonehide
   botBudget: 5
   shoppingEffect: {fileID: 0}
   shoppingSFX: {fileID: 0}

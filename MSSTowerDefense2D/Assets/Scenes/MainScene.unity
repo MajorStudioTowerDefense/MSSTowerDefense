@@ -960,7 +960,7 @@ MonoBehaviour:
   gridCellLength: 13
   gridCellHeight: 9
   gridCellSize: 1
-  money: 100
+  money: 200
   yesterdayMoney: 0
   currentState: 0
   exit: {fileID: 0}
@@ -1833,7 +1833,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 634301957}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.99, y: 3.78, z: -0.41300994}
+  m_LocalPosition: {x: -5.57, y: 3.13, z: -0.41300994}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

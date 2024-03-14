@@ -143,7 +143,7 @@ MonoBehaviour:
   repathRateCompatibility: NaN
   canSearchCompability: 0
   orientation: 1
-  enableRotation: 1
+  enableRotation: 0
   autoRepath:
     mode: 2
     period: 0.5
@@ -186,7 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 126bfc6744bbf204a9de45cdb6efc559, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  botName: Employee
+  botName: Vale Thornwhisper
   botBudget: 0
   shoppingEffect: {fileID: 0}
   shoppingSFX: {fileID: 0}
