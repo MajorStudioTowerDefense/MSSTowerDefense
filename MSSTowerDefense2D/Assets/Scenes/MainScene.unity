@@ -591,6 +591,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 404972026}
+        m_TargetAssemblyTypeName: UpgradeSystem, Assembly-CSharp
+        m_MethodName: AddEmployee
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &229691036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -910,6 +922,7 @@ GameObject:
   - component: {fileID: 404972025}
   - component: {fileID: 404972023}
   - component: {fileID: 404972024}
+  - component: {fileID: 404972026}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -994,6 +1007,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &404972026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404972022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f53173136f2c60847b2ad0f20600061f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EmployeeArea: {fileID: 634301958}
+  employeePrefabs:
+  - {fileID: 2172623621878989275, guid: 59ae1cf025289c24f9c9f6c2c19f859e, type: 3}
+  employeePositionOffset: 1.2
+  employeeSpeedBoost: 1
+  Shelves: []
 --- !u!1001 &451158307
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1361,6 +1392,18 @@ MonoBehaviour:
       - m_Target: {fileID: 404972024}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: confirmUpgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 404972026}
+        m_TargetAssemblyTypeName: UpgradeSystem, Assembly-CSharp
+        m_MethodName: BoostEmployee
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1994,7 +2037,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &683974081
 RectTransform:
   m_ObjectHideFlags: 0

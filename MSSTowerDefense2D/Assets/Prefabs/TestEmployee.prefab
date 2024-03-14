@@ -149,7 +149,7 @@ MonoBehaviour:
     period: 0.5
     sensitivity: 10
     maximumPeriod: 2
-    visualizeSensitivity: 0
+    visualizeSensitivity: 1
   targetCompatibility: {fileID: 0}
   maxAcceleration: -2.5
   rotationSpeed: 360
