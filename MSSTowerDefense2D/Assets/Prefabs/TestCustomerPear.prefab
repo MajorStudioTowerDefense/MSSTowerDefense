@@ -205,7 +205,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   botName: Rhinox Stonehide
-  botBudget: 5
+  botBudget: 6
   shoppingEffect: {fileID: 0}
   shoppingSFX: {fileID: 0}
   aiPath: {fileID: 3901240669130896225}

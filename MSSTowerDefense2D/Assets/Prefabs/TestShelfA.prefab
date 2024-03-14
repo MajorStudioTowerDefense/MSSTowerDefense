@@ -238,7 +238,7 @@ MonoBehaviour:
   purchaseRadius: 1
   customerStayDuration: 8
   loadAmount: 3
-  initalLoadAmount: 1
+  initalLoadAmount: 3
   loadAmountMax: 6
   targetObjectName: TestShopExit
   cost: 25

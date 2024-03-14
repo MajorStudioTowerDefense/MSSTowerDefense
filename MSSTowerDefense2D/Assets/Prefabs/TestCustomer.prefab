@@ -278,7 +278,7 @@ MonoBehaviour:
   radius: 0.5
   height: 2
   canMove: 1
-  maxSpeed: 1
+  maxSpeed: 3
   gravity: {x: 0, y: 0, z: 0}
   groundMask:
     serializedVersion: 2
@@ -347,7 +347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   botName: Rory Rustbeard
-  botBudget: 5
+  botBudget: 6
   shoppingEffect: {fileID: 0}
   shoppingSFX: {fileID: 0}
   aiPath: {fileID: 6430688495216814448}

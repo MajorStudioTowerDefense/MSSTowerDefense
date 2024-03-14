@@ -960,7 +960,7 @@ MonoBehaviour:
   gridCellLength: 13
   gridCellHeight: 9
   gridCellSize: 1
-  money: 200
+  money: 125
   yesterdayMoney: 0
   currentState: 0
   exit: {fileID: 0}
