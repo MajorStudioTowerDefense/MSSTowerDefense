@@ -18,12 +18,10 @@ namespace Pathfinding {
 		public Transform target;
 		IAstarAI ai;
 
-		public string targetObjectName;
-
         void Start()
         {
-            // Find the GameObject named "TestShopExit" in the scene
-            GameObject shopExit = GameObject.Find(targetObjectName);
+            // Find the GameObject tagged "Exit" in the scene
+            GameObject shopExit = GameObject.FindWithTag("Exit");
 
             // Check if the GameObject was found
             if (shopExit != null)
@@ -33,7 +31,7 @@ namespace Pathfinding {
             }
             else
             {
-                Debug.LogWarning("TestShopExit object not found in the scene.");
+                Debug.LogWarning("GameObject with tag 'Exit' not found in the scene.");
             }
         }
 

@@ -37,7 +37,8 @@ public class Bot : MonoBehaviour
     public BotTags tags = 0;
 
     //Item the customer is looking for
-    public Items item;
+    public List<Items> needs = new List<Items>();
+    public Items selectedItem;
 
     //UIs for the bot
     public TextMeshPro nameText;

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CustomerGenerator : MonoBehaviour
@@ -13,9 +14,11 @@ public class CustomerGenerator : MonoBehaviour
 
     private bool isShopOpened = false;
 
+    public List<GameObject> customersList = new List<GameObject>();
+
     void Update()
     {
-        if (isShopOpened)
+        if (GameManager.instance.currentState == GameStates.STORE)
         {
             // Check if it's time to generate a new customer and if the current number of customers is below the maximum
             if (Time.time >= nextGenerateTime && currentCustomers < maxCustomers)
@@ -38,6 +41,7 @@ public class CustomerGenerator : MonoBehaviour
             // Instantiate the customer at the spawn point's position
             GameObject cus = Instantiate(customerPrefab, spawnPoint.position, Quaternion.identity);
             cus.GetComponent<Bot>().init();
+            customersList.Add(cus);
 
             // Increment the current customer count
             currentCustomers++;

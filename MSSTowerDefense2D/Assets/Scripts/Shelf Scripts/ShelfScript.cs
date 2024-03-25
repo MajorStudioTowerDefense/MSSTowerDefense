@@ -1,10 +1,11 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static UnityEditor.Progress;
 using Pathfinding;
 using System.Linq;
 using UnityEditor.SearchService;
+using TMPro;
 
 public class CustomerData
 {
@@ -27,12 +28,11 @@ public class ShelfScript : MonoBehaviour
     public string shelfType = "";
     public int maxCustomers;
     private List<CustomerData> currentCustomersData = new List<CustomerData>();
-    private List<AIDestinationSetter> removedCustomers = new List<AIDestinationSetter>();
     private int currentCustomers = 0;
     private List<GameObject> currentCustomersPeople = null;
     public int maxInventory;
     public int currentInventory = 0;
-    private List<GameObject> currentInventoryItems = null;
+    private List<GameObject> currentInventoryItems = new List<GameObject>();
     private bool placed = false;
     private bool allgood = true;
     private ShelfUIScript shelfUIScript;
@@ -44,9 +44,12 @@ public class ShelfScript : MonoBehaviour
     private GameObject gridBlockAbove;
     private GameObject gridBlockBelow;
 
-    public float detectionRadius = 1f;
+    public float visibility = 1f;
     public float purchaseRadius = 1f;
     public float customerStayDuration = 5f;
+
+    public int loadAmount = 3;
+    public int loadAmountMax = 6;
 
     public string targetObjectName;
 
@@ -54,6 +57,7 @@ public class ShelfScript : MonoBehaviour
     public List<Items> sellingItems;
     public float Cost { get { return cost; } }
 
+    private TMP_Text loadAmountText;
 
     //private void OnMouseDown()
     //{
@@ -73,17 +77,30 @@ public class ShelfScript : MonoBehaviour
     //}
 
     void Start()
-    {       
-    //     CircleCollider2D circleCollider = gameObject.AddComponent<CircleCollider2D>();
+    {
+        //     CircleCollider2D circleCollider = gameObject.AddComponent<CircleCollider2D>();
 
-    //     circleCollider.isTrigger = true;
+        //     circleCollider.isTrigger = true;
 
-    //     circleCollider.radius = shelfDetectionRange;
+        //     circleCollider.radius = shelfDetectionRange;
+
+        loadAmountText = GetComponentInChildren<TMP_Text>();
+
+        if (loadAmountText == null)
+        {
+            Debug.LogError("TextMeshPro component not found on the child object!");
+        }
     }
 
     void Update()
     {
+        showVisibility();
         DetectAndManageCustomers();
+
+        if (loadAmountText != null)
+        {
+            loadAmountText.text = $"Load Amount: {loadAmount}";
+        }
     }
 
 
@@ -100,7 +117,7 @@ public class ShelfScript : MonoBehaviour
         if (currentInventory > 0)
         {
             currentInventoryItems.Remove(item);
-            currentInventoryItems.RemoveAll(x => x == null);
+            //currentInventoryItems.RemoveAll(x => x == null);
             currentInventory = currentInventoryItems.Count;
             makeCustomerLeave(customer);
         }
@@ -222,7 +239,7 @@ public class ShelfScript : MonoBehaviour
     {
         Destroy(gameObject);
     }
-
+    /*
     void DetectAndManageCustomers()
     {
         AIDestinationSetter[] allAIDestinationSetters = FindObjectsOfType<AIDestinationSetter>();
@@ -244,7 +261,7 @@ public class ShelfScript : MonoBehaviour
             float distance = Vector3.Distance(transform.position, aiDestinationSetter.transform.position);
             Bot bot = aiDestinationSetter.gameObject.GetComponent<Bot>();
 
-            if (bot != null && distance <= detectionRadius)
+            if (bot != null && distance <= visibility)
             {
                 Debug.Log("Buying!");
                 bool itemMatch = IsSellingItem(bot.item);
@@ -259,10 +276,18 @@ public class ShelfScript : MonoBehaviour
 
                     if (distance <= purchaseRadius)
                     {
-                        Debug.Log("Start Purchase!");
-                        bot.isPurchasing = true;
-                        var newCustomerData = new CustomerData(aiDestinationSetter, originalDestination, bot);
-                        currentCustomersData.Add(newCustomerData); // Add customer for processing
+                        if (loadAmount > 0)
+                        {
+                            Debug.Log("Start Purchase!");
+                            bot.isPurchasing = true;
+                            var newCustomerData = new CustomerData(aiDestinationSetter, originalDestination, bot);
+                            currentCustomersData.Add(newCustomerData); // Add customer for processing
+                        }
+                        else
+                        {
+                            removedCustomers.Add(aiDestinationSetter);
+                            aiDestinationSetter.target = originalDestination;
+                        }
                     }
                 }
                 // If the item doesn't match or max capacity reached, and the customer isn't already being processed
@@ -276,33 +301,125 @@ public class ShelfScript : MonoBehaviour
         // Update time at shelf for customers and remove after duration
         foreach (var customer in currentCustomersData.ToList())
         {
+            if (loadAmount <= 0)
+            {
+                RemoveCustomer(customer);
+            }
+
             customer.timeAtShelf += Time.deltaTime;
-            if (customer.timeAtShelf >= customerStayDuration)
+            if (customer.timeAtShelf >= customerStayDuration && loadAmount > 0)
             {
                 Purchase(customer);
                 Debug.Log("Customer leaves after buying or waiting.");
             }
         }
-    }
+    }*/
 
 
-    private bool IsSellingItem(Items customerItem)
+
+    void DetectAndManageCustomers()
     {
-        return sellingItems.Any(item => item.name == customerItem.name);
+        if(GameManager.instance.currentState != GameStates.STORE) {
+            currentCustomersData.Clear();
+            return;
+        }
+        Transform shopExit = GameObject.FindWithTag("Exit").transform;
+        if (shopExit != null)
+        {
+            Transform originalDestination = shopExit;
+        }
+        else
+        {
+            Debug.LogWarning("TestShopExit object not found in the scene.");
+        }
+
+        Collider2D[] encounteredCustomers = Physics2D.OverlapCircleAll(transform.position, visibility, 7);
+
+        foreach (Collider2D customer in encounteredCustomers)
+        {
+            Bot bot;
+            AIDestinationSetter ai = customer.GetComponent<AIDestinationSetter>();
+            if (ai == null || currentCustomersData.FirstOrDefault(c => c.aiDestinationSetter == ai) != null) continue;
+            bot = customer.gameObject.GetComponent<Bot>();
+            if (bot != null) { bot.selectedItem = IsSellingItem(bot.needs); }
+            Transform originalDestination = shopExit;
+            if (bot.selectedItem != null && currentCustomersData.Count < maxCustomers && !bot.isPurchasing)
+            {
+                if (loadAmount > 0)
+                {
+                    Debug.Log("While purchasing " + bot.selectedItem);
+                    ai.target = transform;
+                    bot.isPurchasing = true;
+                    }
+                else
+                {
+                    ai.target = originalDestination;
+                }
+            }
+
+            if (Vector2.Distance(customer.transform.position, transform.position) < purchaseRadius && bot.isPurchasing)
+            {
+                Debug.Log("Start Purchase!");
+                var newCustomerData = new CustomerData(ai, originalDestination, bot);
+                currentCustomersData.Add(newCustomerData);
+            }
+
+        }
+        Debug.Log(currentCustomersData.ToList().Count);
+        // Update time at shelf for customers and remove after duration
+        foreach (var customer in currentCustomersData.ToList())
+        {
+            if (loadAmount <= 0)
+            {
+                RemoveCustomer(customer);
+            }
+            customer.timeAtShelf += Time.deltaTime;
+            if (customer.timeAtShelf >= customerStayDuration && loadAmount > 0)
+            {
+                Purchase(customer);
+            }
+        }
     }
+
+
+    private Items IsSellingItem(List<Items> customerNeeds)
+    {
+        foreach (Items item in customerNeeds)
+        {
+            Items wantedItem = sellingItems.FirstOrDefault(offeredItem => offeredItem.name == item.name);
+            if (wantedItem != null)
+            {
+                return wantedItem;
+            }
+        }
+        return null;
+    }
+
 
     void Purchase(CustomerData customerData)
     {
-        GameManager.instance.AddMoney(customerData.bot.botBudget);
-        customerData.aiDestinationSetter.target = customerData.originalDestination;
+        loadAmount--;
+        Bot customer = customerData.bot;
+        GameManager.instance.AddMoney(customer.botBudget);
+        Debug.Log("Finish purchase!" + customer.selectedItem);
+        customer.needs.Remove(customer.selectedItem);
+        customer.selectedItem = null;
         RemoveCustomer(customerData);
     }
 
     void RemoveCustomer(CustomerData customerData)
     {
         customerData.bot.isPurchasing = false;
+        customerData.aiDestinationSetter.target = customerData.originalDestination;
         currentCustomersData.Remove(customerData);
-        // Add the AIDestinationSetter to the removedCustomers list
-        removedCustomers.Add(customerData.aiDestinationSetter);
+    }
+
+    public Transform visibilityIndicator;
+
+    void showVisibility()
+    {
+        float scaleValue = visibility; // 根据你的Sprite实际大小，这里可能需要调整比例因子
+        if (visibilityIndicator != null)
+        visibilityIndicator.localScale = new Vector3(scaleValue, scaleValue, 1);
     }
 }

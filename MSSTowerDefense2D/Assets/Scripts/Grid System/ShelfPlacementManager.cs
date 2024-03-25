@@ -8,7 +8,7 @@ public class ShelfPlacementManager : MonoBehaviour
     private GameObject currentShelfPrefab;
     private GameObject currentShelfInstance;
     private int currentPrefabIndex = -1;
-    private GameObject shelfBeingRepositioned = null;
+    public GameObject shelfBeingRepositioned = null;
 
     private void Awake()
     {
@@ -24,6 +24,11 @@ public class ShelfPlacementManager : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.instance.currentState == GameStates.STORE)
+        {
+            return;
+        }
+
         if (Input.GetMouseButtonDown(0))
         {
             if (shelfBeingRepositioned == null && currentShelfInstance == null)
@@ -93,6 +98,7 @@ public class ShelfPlacementManager : MonoBehaviour
 
     void TrySelectShelfForRepositioning()
     {
+
         Vector2 rayPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(rayPos, Vector2.zero);
 
@@ -132,6 +138,7 @@ public class ShelfPlacementManager : MonoBehaviour
 
     void RepositionShelf()
     {
+
         Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mouseWorldPosition.z = 0; // Ensure it's in the 2D plane for a 2D game
 
