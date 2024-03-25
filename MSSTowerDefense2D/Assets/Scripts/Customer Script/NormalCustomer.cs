@@ -7,11 +7,17 @@ public class NormalCustomer : Bot
     [SerializeField] private GameObject desireVFX;
 
     public Transform ShopExit;
+    public AudioClip Walking;
 
+    void Start()
+    {
+        AudioManager.instance.PlaySound(Walking);
+    }
     public override void init()
     {
         base.init();
         ShopExit = GameObject.FindGameObjectWithTag("Exit").transform;
+        Walking.Stop();
     }
     protected override void Update()
     {

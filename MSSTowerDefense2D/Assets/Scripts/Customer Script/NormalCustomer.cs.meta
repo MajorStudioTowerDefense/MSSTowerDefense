@@ -5,7 +5,7 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - shoppingEffect: {instanceID: 0}
-  - shoppingSFX: {fileID: 8300000, guid: 3b6f26366ba3461468ed335962c9b308, type: 3}
+  - shoppingSFX: {instanceID: 0}
   - aiPath: {instanceID: 0}
   - destinationSetter: {instanceID: 0}
   - selectedItem: {instanceID: 0}
