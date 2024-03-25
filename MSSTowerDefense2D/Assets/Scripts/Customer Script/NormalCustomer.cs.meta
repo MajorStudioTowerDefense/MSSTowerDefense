@@ -3,7 +3,16 @@ guid: 1342cfc9a3544aa488f464ce31a363cf
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - shoppingEffect: {instanceID: 0}
+  - shoppingSFX: {fileID: 8300000, guid: 3b6f26366ba3461468ed335962c9b308, type: 3}
+  - aiPath: {instanceID: 0}
+  - destinationSetter: {instanceID: 0}
+  - selectedItem: {instanceID: 0}
+  - nameText: {instanceID: 0}
+  - budgetText: {instanceID: 0}
+  - desireVFX: {instanceID: 0}
+  - ShopExit: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
