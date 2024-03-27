@@ -7,7 +7,22 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance;
 
     public AudioSource[] audioSources;
+    public AudioSource audioSource;
+    public AudioSource audioSource2;
 
+
+    public float duration = 60f;
+    public AudioClip Ticking;
+    public AudioClip TempAmb; 
+    private void Start()
+    {
+        audioSource.clip = Ticking;
+        audioSource2.clip = TempAmb;
+
+
+        StartCoroutine(StopSoundAfterDelay());
+
+    }
     private void Awake()
     {
         // Singleton pattern to ensure only one instance exists
@@ -67,5 +82,24 @@ public class AudioManager : MonoBehaviour
         {
             source.volume = volume;
         }
+    }
+ IEnumerator StopSoundAfterDelay()
+    {
+        // Wait for 'duration' seconds
+        yield return new WaitForSeconds(60);
+
+        // Stop the sound
+        audioSource.Stop();
+        StartCoroutine(StartSoundAfterDelay());
+
+    }
+
+ IEnumerator StartSoundAfterDelay()
+    {
+        // Wait for 'duration' seconds
+        yield return new WaitForSeconds(60);
+
+        // Stop the sound
+        audioSource2.Play();
     }
 }

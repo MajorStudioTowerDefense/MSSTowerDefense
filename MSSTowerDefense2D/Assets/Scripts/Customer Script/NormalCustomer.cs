@@ -8,9 +8,11 @@ public class NormalCustomer : Bot
 
     public Transform ShopExit;
     public AudioClip WalkingHeavy;
+    public AudioClip Walking;
     public void Start()
     {
         AudioManager.instance.PlaySound(WalkingHeavy);
+        AudioManager.instance.PlaySound(Walking);
 
     }
     

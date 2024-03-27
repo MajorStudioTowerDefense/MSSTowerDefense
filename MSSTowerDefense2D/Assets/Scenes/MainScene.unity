@@ -3767,7 +3767,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -3888,6 +3888,11 @@ MonoBehaviour:
   - {fileID: 1261508828}
   - {fileID: 1261508827}
   - {fileID: 1261508827}
+  audioSource: {fileID: 1261508831}
+  audioSource2: {fileID: 1261508830}
+  duration: 60
+  Ticking: {fileID: 8300000, guid: 3c58293d8128c8c4a83f7ddceb6b83f2, type: 3}
+  TempAmb: {fileID: 8300000, guid: befd829c9a4cf6a4faabca8fcba8196a, type: 3}
 --- !u!82 &1261508823
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4002,7 +4007,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 84
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -4571,7 +4576,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: befd829c9a4cf6a4faabca8fcba8196a, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
