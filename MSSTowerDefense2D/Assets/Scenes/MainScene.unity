@@ -3744,7 +3744,7 @@ GameObject:
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -3872,7 +3872,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb0c743e62badb84590dd91839de8206, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSources: []
+  audioSources:
+  - {fileID: 1261508826}
+  - {fileID: 1261508825}
+  - {fileID: 1261508824}
+  - {fileID: 1261508823}
+  - {fileID: 1261508823}
+  - {fileID: 1261508830}
+  - {fileID: 1261508829}
+  - {fileID: 1261508828}
+  - {fileID: 1261508827}
+  - {fileID: 1261508827}
 --- !u!82 &1261508823
 AudioSource:
   m_ObjectHideFlags: 0

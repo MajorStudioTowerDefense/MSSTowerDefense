@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+
+
 public enum employeeStage
 {
     standBy = 0,
@@ -23,6 +25,9 @@ public enum employeeAction
 }
 public class NormalEmployee : Bot
 {
+    public AudioClip Walking;
+
+    
     //the shelf being selected
     public ShelfScript NeededShelf;
     public bool isCarrying = false;
@@ -67,6 +72,8 @@ public class NormalEmployee : Bot
     private void Start()
     {
         init();
+        AudioManager.instance.PlaySound(Walking);
+
     }
 
     protected override void Update()
@@ -214,7 +221,7 @@ public class NormalEmployee : Bot
             {
 
             }
-            //if clicked on empty space£¬close the action panel, we can have the close animation later
+            //if clicked on empty spaceï¿½ï¿½close the action panel, we can have the close animation later
             else
             {
                 eStage = employeeStage.standBy;

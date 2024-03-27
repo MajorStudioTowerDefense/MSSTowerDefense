@@ -7,7 +7,15 @@ public class NormalCustomer : Bot
     [SerializeField] private GameObject desireVFX;
 
     public Transform ShopExit;
-   
+    public AudioClip WalkingHeavy;
+    public void Start()
+    {
+        AudioManager.instance.PlaySound(WalkingHeavy);
+
+    }
+    
+
+    
     public override void init()
     {
         base.init();
