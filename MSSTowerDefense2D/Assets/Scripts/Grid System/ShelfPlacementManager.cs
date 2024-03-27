@@ -12,6 +12,8 @@ public class ShelfPlacementManager : MonoBehaviour
     private bool[,] shelfPlacementGrid;
 
     private bool isShelfGridCreated = false;
+    public AudioClip ShelfPlaced;
+
 
     private void Awake()
     {
@@ -59,6 +61,8 @@ public class ShelfPlacementManager : MonoBehaviour
             {
                 // Finalize initial placement if within grid
                 FinalizePlacement();
+                AudioManager.instance.PlaySound(ShelfPlaced);
+
             }
         }
 

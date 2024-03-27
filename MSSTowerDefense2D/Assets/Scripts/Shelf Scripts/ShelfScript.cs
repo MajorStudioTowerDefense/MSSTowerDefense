@@ -62,6 +62,8 @@ public class ShelfScript : MonoBehaviour
 
     public int maintainingCost = 5;
 
+
+
     //private void OnMouseDown()
     //{
     //    if (shelfUIScript = null)
@@ -90,6 +92,7 @@ public class ShelfScript : MonoBehaviour
         loadAmount = initalLoadAmount;
 
         loadAmountText = GetComponentInChildren<TMP_Text>();
+
 
         if (loadAmountText == null)
         {
@@ -213,11 +216,13 @@ public class ShelfScript : MonoBehaviour
                 {
                     gridBlockLeft = gridBlock;
                 }
+
+
             }
             //gridBlockLeft = null;
             //gridBlockRight = null;
             return true;
-
+            
         }
         else
         {

@@ -1075,6 +1075,7 @@ MonoBehaviour:
   - {fileID: 4971062859645332145, guid: 74bcaef7db9a3e14dbd95f9342c98a5c, type: 3}
   - {fileID: 4971062859645332145, guid: d8fc89b9f54a5a8449521019a4ea0ab1, type: 3}
   shelfBeingRepositioned: {fileID: 0}
+  ShelfPlaced: {fileID: 8300000, guid: 94f8267c561f437418c6ff8cba925b82, type: 3}
 --- !u!114 &404972024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1210,6 +1211,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TestObstacle
       objectReference: {fileID: 0}
+    - target: {fileID: 5143793487139602274, guid: a0bcde29cfef48d4c923dc36afd0b12d, type: 3}
+      propertyPath: ShelfPlaced
+      value: 
+      objectReference: {fileID: 8300000, guid: 94f8267c561f437418c6ff8cba925b82, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0bcde29cfef48d4c923dc36afd0b12d, type: 3}
 --- !u!1 &493057031
