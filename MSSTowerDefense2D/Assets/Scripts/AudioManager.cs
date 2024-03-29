@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+// Setting up the Audio Sources
     public static AudioManager instance;
 
     public AudioSource[] audioSources;
@@ -14,11 +15,13 @@ public class AudioManager : MonoBehaviour
     public float duration = 60f;
     public AudioClip Ticking;
     public AudioClip TempAmb; 
+    
+    //Assigning certain sounds to play for a limited amount of time
     private void Start()
     {
         audioSource.clip = Ticking;
         audioSource2.clip = TempAmb;
-
+// Calls up Stopping Coroutine
 
         StartCoroutine(StopSoundAfterDelay());
 
@@ -35,7 +38,7 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
+	
         DontDestroyOnLoad(gameObject);
 
         // Initialize audio sources
@@ -83,6 +86,7 @@ public class AudioManager : MonoBehaviour
             source.volume = volume;
         }
     }
+    //Stops the ticking from playing after 60 seconds
  IEnumerator StopSoundAfterDelay()
     {
         // Wait for 'duration' seconds
@@ -93,13 +97,13 @@ public class AudioManager : MonoBehaviour
         StartCoroutine(StartSoundAfterDelay());
 
     }
-
+// Starts the Ambiance
  IEnumerator StartSoundAfterDelay()
     {
         // Wait for 'duration' seconds
         yield return new WaitForSeconds(60);
 
-        // Stop the sound
+        // Start the sound
         audioSource2.Play();
     }
 }
