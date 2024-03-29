@@ -10,8 +10,7 @@ public class AudioManager : MonoBehaviour
     public AudioSource[] audioSources;
     public AudioSource audioSource;
     public AudioSource audioSource2;
-
-
+    
     public float duration = 60f;
     public AudioClip Ticking;
     public AudioClip TempAmb; 
