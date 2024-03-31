@@ -9,19 +9,17 @@ public class AudioManager : MonoBehaviour
 
     public AudioSource[] audioSources;
     public AudioSource audioSource;
-    public AudioSource audioSource2;
     
     public float duration = 60f;
     public AudioClip Ticking;
-    public AudioClip TempAmb; 
+    
     
     //Assigning certain sounds to play for a limited amount of time
     private void Start()
     {
         audioSource.clip = Ticking;
-        audioSource2.clip = TempAmb;
-// Calls up Stopping Coroutine
 
+        // Calls up Stopping Coroutine
         StartCoroutine(StopSoundAfterDelay());
 
     }
@@ -93,16 +91,7 @@ public class AudioManager : MonoBehaviour
 
         // Stop the sound
         audioSource.Stop();
-        StartCoroutine(StartSoundAfterDelay());
 
     }
-// Starts the Ambiance
- IEnumerator StartSoundAfterDelay()
-    {
-        // Wait for 'duration' seconds
-        yield return new WaitForSeconds(60);
 
-        // Start the sound
-        audioSource2.Play();
-    }
 }
