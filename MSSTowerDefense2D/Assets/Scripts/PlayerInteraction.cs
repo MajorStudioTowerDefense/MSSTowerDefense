@@ -19,7 +19,7 @@ public class PlayerInteraction : MonoBehaviour
 
     [Header("UI")]
     public Sprite[] mouseUIs;
-    public GameObject mouseUIPrefab;
+    public Image mouseUIPrefab;
 
     [Header("clickedGameObject")]
     [SerializeField] private NormalEmployee clickedEmployeeForEmployee;
@@ -43,13 +43,15 @@ public class PlayerInteraction : MonoBehaviour
 
     private void Start()
     {
+        Cursor.visible = false;
         shelfPlacementManager = ShelfPlacementManager.instance;
     }
     private void Update()
     {
-        if(currentStage == interactionStage.primary) { assignPrimaryTask(); }
+        if (currentStage == interactionStage.primary) { assignPrimaryTask(); }
         if(currentStage == interactionStage.findTarget) { assignTaskTarget(); }
 
+        
         // 检测鼠标按下事件
         if (Input.GetMouseButtonDown(0))
         {
@@ -340,7 +342,7 @@ public class PlayerInteraction : MonoBehaviour
     }
     void changeMouseUI(int index)
     {
-        
+        mouseUIPrefab.sprite = mouseUIs[index];
     }
 
     bool isMouseButtonDown()
