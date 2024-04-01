@@ -44,3 +44,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: employeeUI
+    uniqueID: 4068524277
+    locked: 0

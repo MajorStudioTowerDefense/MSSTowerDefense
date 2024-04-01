@@ -237,9 +237,15 @@ public class PlayerInteraction : MonoBehaviour
         shadowShelf.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.8f);
         foreach (GameObject emp in upgradeSystem.addEmployeeUseList)
         {
-            if(emp.GetComponent<NormalEmployee>().eStage == employeeStage.standBy)
+            NormalEmployee employee = emp.GetComponent<NormalEmployee>();
+            if(employee.eStage == employeeStage.standBy)
             {
-                
+                employee.eAction = employeeAction.moveShelf;
+                employee.eStage = employeeStage.isSelected;
+                employee.moveShelf(clickedShelfForShelf,shadowShelf);
+                currentStage = interactionStage.primary;
+                resetSomethingToDefault();
+                break;
             }
         }
 
@@ -270,6 +276,20 @@ public class PlayerInteraction : MonoBehaviour
             }
             changeMouseUI(0);
             currentStage = interactionStage.primary;
+        }
+        if (assignedTask == assignTaskTargetForShelf)
+        {
+            if (clickedShelfForShelf != null)
+            {
+                clickedShelfForShelf = null;
+            }
+            if (shadowShelf != null)
+            {
+                shadowShelf = null;
+            }
+            changeMouseUI(0);
+            assignedTask = null;
+            shelfPlacementManager.SetCurrentShelfInstance(null);
         }
     }
 

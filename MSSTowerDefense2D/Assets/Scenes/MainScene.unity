@@ -2275,6 +2275,7 @@ MonoBehaviour:
   employeePrefabs:
   - {fileID: 2172623621878989275, guid: 59ae1cf025289c24f9c9f6c2c19f859e, type: 3}
   employeePositionOffset: 1.2
+  addEmployeeUseList: []
   employeeSpeedBoost: 1
   Shelves: []
   shelfVisibilityBoost: 1
@@ -2296,10 +2297,11 @@ MonoBehaviour:
   mouseUIPrefab: {fileID: 0}
   clickedEmployeeForEmployee: {fileID: 0}
   clickedShelfForEmployee: {fileID: 0}
-  csfs: {fileID: 0}
+  clickedShelfForShelf: {fileID: 0}
   shelfPlacementManager: {fileID: 0}
   shadowShelfPrefab: {fileID: 8359569677299260852, guid: 451f2f17b0eef2843bee076321fbb000, type: 3}
   shadowShelf: {fileID: 0}
+  upgradeSystem: {fileID: 404972026}
   shelfStockButtons: []
 --- !u!1 &415356305
 GameObject:

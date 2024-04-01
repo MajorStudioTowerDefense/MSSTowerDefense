@@ -12,7 +12,8 @@ public enum employeeStage
     standBy = 0,
     isSelected = 1,
     running = 2,
-    backToStandBy = 3,
+    finishing = 3,
+    backToStandBy = 4,
 }
 
 public enum employeeAction
@@ -55,6 +56,7 @@ public class NormalEmployee : Bot
     //UI for employee
     public Sprite[] carriedItemSprites;
     public SpriteRenderer carriedItemSprite;
+    public SpriteRenderer carriedShelfSprite;
     
 
     /////////////////////////////////
@@ -74,6 +76,7 @@ public class NormalEmployee : Bot
 
     protected override void Update()
     {
+        Debug.Log("reachedDestination? "+aiPath.reachedDestination);
         base.Update();
 
         if (GameManager.instance.currentState != GameStates.STORE)
@@ -104,8 +107,13 @@ public class NormalEmployee : Bot
             }
             else if(eAction == employeeAction.moveShelf)
             {
-                
+                onWayToGrabShelf();
             }
+        }
+        else if (eStage == employeeStage.finishing)
+        {
+            if(eAction == employeeAction.moveShelf)
+            onWayToMoveShelf();
         }
         else if (eStage == employeeStage.backToStandBy)
         {
@@ -138,6 +146,48 @@ public class NormalEmployee : Bot
         NeededShelf = shelf;
         eStage = employeeStage.running;
 
+    }
+
+    private ShelfScript moveShelfNeeded;
+    private GameObject shadowNeeded;
+    public virtual void moveShelf(ShelfScript shelf, GameObject shadow)
+    {
+        aiPath.canMove = true;
+        moveShelfNeeded = shelf;
+        Debug.Log("moveShelfname = "+moveShelfNeeded.gameObject.name);
+        destinationSetter.target = shelf.transform;
+        eStage = employeeStage.running;
+        
+        shadowNeeded = shadow;
+    }
+
+    public virtual void onWayToGrabShelf()
+    {
+        if(destinationSetter.target == moveShelfNeeded.transform && aiPath.reachedDestination)
+        {
+            Debug.Log("Arrived at the shelf");
+            carriedShelfSprite.sprite = moveShelfNeeded.GetComponent<SpriteRenderer>().sprite;
+            moveShelfNeeded.gameObject.SetActive(false);
+            destinationSetter.target = shadowNeeded.transform;
+            eStage = employeeStage.finishing;
+        }
+        
+    }
+
+    public virtual void onWayToMoveShelf()
+    {
+        if (destinationSetter.target == shadowNeeded.transform && aiPath.reachedDestination)
+        {
+            Debug.Log("Arrived at the shadow");
+            moveShelfNeeded.gameObject.SetActive(true);
+            moveShelfNeeded.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+            ShelfPlacementManager.instance.RepositionShelfMovedByEmployee(shadowNeeded.transform.position, moveShelfNeeded.gameObject);
+            moveShelfNeeded.loadAllowed = true;
+            carriedShelfSprite.sprite = null;
+            Destroy(shadowNeeded);
+            eStage = employeeStage.backToStandBy;
+            destinationSetter.target = employeeArea;
+        }
     }
 
     public virtual void successReload()
@@ -174,6 +224,7 @@ public class NormalEmployee : Bot
             eAction = employeeAction.noAction;
             carryCount = carryMax;
             NeededShelf = null;
+            moveShelfNeeded = null;
         }
 
     }
