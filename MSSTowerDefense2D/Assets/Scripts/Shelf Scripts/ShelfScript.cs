@@ -63,7 +63,6 @@ public class ShelfScript : MonoBehaviour
     public int maintainingCost = 5;
 
 
-
     //private void OnMouseDown()
     //{
     //    if (shelfUIScript = null)

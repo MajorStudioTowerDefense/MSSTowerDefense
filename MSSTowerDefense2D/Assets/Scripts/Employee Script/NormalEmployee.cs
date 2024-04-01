@@ -11,10 +11,8 @@ public enum employeeStage
 {
     standBy = 0,
     isSelected = 1,
-    actionSelected = 2,
-    actionProgressing = 3,
-    actionFinished = 4,
-    backToStandBy = 5,
+    running = 2,
+    backToStandBy = 3,
 }
 
 public enum employeeAction
@@ -78,213 +76,65 @@ public class NormalEmployee : Bot
 
     protected override void Update()
     {
-        Debug.Log("current stage = " +eStage);
-        Debug.Log("current action = "+eAction);
+        Debug.Log("current stage = " + eStage);
+        Debug.Log("current action = " + eAction);
         base.Update();
-
-        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        RaycastHit2D mouseHit = Physics2D.Raycast(mousePosition, Vector2.zero);
 
         if (GameManager.instance.currentState != GameStates.STORE)
         {
             return;
         }
-        //if the employee can be selected
-        if (canSelectEmployee())
+
+        if (eStage == employeeStage.standBy)
         {
-            switch (eStage)
+            if(sprite.color != Color.white)
             {
-                case employeeStage.standBy:
-                    chooseEmployee(mousePosition, mouseHit);
-                    break;
-                case employeeStage.isSelected:
-                    chooseActions(mousePosition, mouseHit);
-                    break;
-                case employeeStage.actionSelected:
-                    switch (eAction)
-                    {
-                        case employeeAction.reload:
-                            chooseShelf(mousePosition, mouseHit);
-                            break;
-                        case employeeAction.moveShelf:
-                            chooseShelf(mousePosition, mouseHit);
-                            break;
-                    }
-                    break;
-                case employeeStage.actionProgressing:
-                    switch (eAction)
-                    {
-                        case employeeAction.reload:
-                            reloadShelf();
-                            break;
-                        case employeeAction.moveShelf:
-                            
-                            break;
-                    }
-                    break;
-                case employeeStage.actionFinished:
-                    switch (eAction)
-                    {
-                        case employeeAction.reload:
-                            returnToStandBy();
-                            break;
-                        case employeeAction.moveShelf:
-
-                            break;
-                    }
-                    break;
-                case employeeStage.backToStandBy:
-                    onWayToBack();
-                    break;
+                sprite.color = Color.white;
             }
-
         }
-        else
+        else if (eStage == employeeStage.isSelected)
         {
-            if(actionPanel != null)
-            {
-                Destroy(actionPanel);
-            }
-            eStage = employeeStage.standBy;
-            eAction = employeeAction.noAction;
+            showSelectedUI();
         }
 
     }
 
-    public virtual bool canSelectEmployee()
+    void showSelectedUI()
     {
-        if (shelfPlacementManager.shelfBeingRepositioned != null)
+        if(sprite.color != Color.cyan)
         {
-            return false;
+            sprite.color = Color.cyan;
         }
-        else
-        {
-            return true;
-        }
+
         
     }
+ 
 
-    //First step, click the employee
-    public virtual void chooseEmployee(Vector2 mousePosition, RaycastHit2D hit)
+    public virtual void reloadShelf(ShelfScript shelf, int index)
     {
-        //If mouse is clicked
-        if (Input.GetMouseButtonDown(0))
-        {
-            //if not clicked on empty space
-            if (hit.collider != null)
-            {
-                //if clicked on the employee
-                if (hit.collider.gameObject == this.gameObject)
-                {
-                    eStage = employeeStage.isSelected;
-                    actionPanel = Instantiate(employeeActionPanelPrefab, employeeUICanvas.transform);
-                    actionPanel.GetComponent<EmployeeActionPanel>().target = this.transform;
-                    //add listener to the buttons
-                    actionButtons = new List<Button>();
-                    actionButtons.AddRange(actionPanel.GetComponentsInChildren<Button>());
-                    foreach (Button button in actionButtons)
-                    {
-                        int buttonIndex = actionButtons.IndexOf(button);
-                        button.onClick.AddListener(() => OnButtonClick(buttonIndex));
-                    }
-                }
-            }   
-        }
-    }
+        //货架需要什么类型的货物的代码暂时留空
+        //////////////////////////////////////////
+        destinationSetter.target = shelf.gameObject.transform;
+        int actualIncrease = Mathf.Min(carryCount, NeededShelf.loadAmountMax - NeededShelf.loadAmount);
 
-    //second step, click the action
-    //different situations for different buttons
-    public void OnButtonClick(int buttonIndex)
-    {
-        switch (buttonIndex)
-        {
-            case 0:
-                eStage = employeeStage.actionSelected;
-                eAction = employeeAction.reload;
-                break;
-            case 1:
-                eStage = employeeStage.actionSelected;
-                eAction = employeeAction.moveShelf;
-                break;
-        }
-    }
 
-    public virtual void chooseActions(Vector2 mousePosition, RaycastHit2D hit)
-    {
-        if(Input.GetMouseButtonDown(0))
-        {
-            if (IsPointerOverUIObject())
-            {
-
-            }
-            else if(hit.collider != null && hit.collider.gameObject == this.gameObject)
-            {
-
-            }
-            //if clicked on empty space��close the action panel, we can have the close animation later
-            else
-            {
-                eStage = employeeStage.standBy;
-                Destroy(actionPanel);
-            }
-        }
-    }
-
-    private bool IsPointerOverUIObject()
-    {
-        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
-        eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-        List<RaycastResult> results = new List<RaycastResult>();
-        EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
-        foreach (RaycastResult r in results)
-        {
-            if (r.gameObject == actionPanel || r.gameObject.transform.IsChildOf(actionPanel.transform))
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public virtual void chooseShelf(Vector2 mousePosition, RaycastHit2D hit)
-    {
-        if(Input.GetMouseButtonDown(0))
-        {
-            if (hit.collider != null)
-            {
-                if (hit.collider.gameObject.GetComponent<ShelfScript>() != null)
-                {
-                    NeededShelf = hit.collider.gameObject.GetComponent<ShelfScript>();
-                    destinationSetter.target = NeededShelf.transform;
-                    aiPath.canMove = true;
-                    Destroy(actionPanel);
-                    eStage = employeeStage.actionProgressing;
-                }
-            }
-            else
-            { }
-        }
-    }
-
-    public virtual void reloadShelf()
-    {
-        if(destinationSetter.target!=null && aiPath.reachedDestination)
+        if (destinationSetter.target!=null && aiPath.reachedDestination)
         {
             if (NeededShelf != null)
             {
-                int actualIncrease = Mathf.Min(carryCount, NeededShelf.loadAmountMax - NeededShelf.loadAmount);
+                
                 timeAtShelf += Time.deltaTime;
                 if (timeAtShelf >= stayShelfDuration && NeededShelf.loadAmount < NeededShelf.loadAmountMax)
                 {
                     NeededShelf.loadAmount += actualIncrease;
                     carryCount -= actualIncrease;
-                    eStage = employeeStage.actionFinished;
+                    //eStage = employeeStage.actionFinished;
                     timeAtShelf = 0;
                 }
                 else if (NeededShelf.loadAmount == NeededShelf.loadAmountMax)
                 {
                     Debug.Log("Load amount has reached its maximum.");
-                    eStage = employeeStage.actionFinished;
+                    //eStage = employeeStage.actionFinished;
                 }
             }
             else
