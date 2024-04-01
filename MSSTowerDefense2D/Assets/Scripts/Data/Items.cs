@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum ItemStat { Name,Weight }
-public enum goods { Apple,Pear };
+public enum goods { DragonFruit,JackFruit };
 public enum weapons { Halbert,Axe };
 public enum potions { Love,Haste,Poison };
 public enum valuables { Fairydust,Halo,Crystals };

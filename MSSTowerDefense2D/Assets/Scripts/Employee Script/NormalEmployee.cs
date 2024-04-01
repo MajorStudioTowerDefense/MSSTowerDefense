@@ -131,6 +131,7 @@ public class NormalEmployee : Bot
         //货架需要什么类型的货物的代码暂时留空
         //////////////////////////////////////////
         ///获取货物的名字，目前只有一种类型货物所以只有一个枚举，之后添加更多货物类型
+        ///There is only one type of goods so far, so only one enum is available. More goods types will be added later.
         goods goodsName = shelf.sellingItems[index].GetItem();
         carriedItemSprite.sprite = carriedItemSprites[(int)goodsName];
         //////////////////////////////////////////
