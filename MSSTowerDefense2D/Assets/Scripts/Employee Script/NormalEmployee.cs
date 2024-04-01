@@ -156,6 +156,7 @@ public class NormalEmployee : Bot
         moveShelfNeeded = shelf;
         Debug.Log("moveShelfname = "+moveShelfNeeded.gameObject.name);
         destinationSetter.target = shelf.transform;
+        aiPath.destination = shelf.transform.position;
         eStage = employeeStage.running;
         
         shadowNeeded = shadow;
