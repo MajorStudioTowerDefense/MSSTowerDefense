@@ -2291,11 +2291,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9490cca374945f34391a085ab0d41f41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  holdMouseDuration: 1
+  holdMouseDuration: 0.8
   mouseUIs: []
   mouseUIPrefab: {fileID: 0}
-  clickedEmployee: {fileID: 0}
-  clickedShelf: {fileID: 0}
+  clickedEmployeeForEmployee: {fileID: 0}
+  clickedShelfForEmployee: {fileID: 0}
+  csfs: {fileID: 0}
+  shelfPlacementManager: {fileID: 0}
+  shadowShelfPrefab: {fileID: 8359569677299260852, guid: 451f2f17b0eef2843bee076321fbb000, type: 3}
+  shadowShelf: {fileID: 0}
   shelfStockButtons: []
 --- !u!1 &415356305
 GameObject:

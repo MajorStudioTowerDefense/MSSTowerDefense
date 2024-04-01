@@ -10,7 +10,7 @@ public class UpgradeSystem : MonoBehaviour
     public Transform EmployeeArea;
     public GameObject[] employeePrefabs;
     public float employeePositionOffset;
-    private List<GameObject> addEmployeeUseList = new List<GameObject>();
+    public List<GameObject> addEmployeeUseList = new List<GameObject>();
     public float employeeSpeedBoost;
     [Space(10)]
     [Header("Shelf Settings")]

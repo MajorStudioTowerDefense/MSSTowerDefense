@@ -74,8 +74,6 @@ public class NormalEmployee : Bot
 
     protected override void Update()
     {
-        Debug.Log("current stage = " + eStage);
-        Debug.Log("current action = " + eAction);
         base.Update();
 
         if (GameManager.instance.currentState != GameStates.STORE)

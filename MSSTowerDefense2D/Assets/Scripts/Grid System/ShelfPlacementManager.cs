@@ -105,7 +105,22 @@ public class ShelfPlacementManager : MonoBehaviour
         }
     }
 
-    void SnapShelfToGridAvoidOverlap()
+    public void SetCurrentShelfInstance(GameObject ins)
+    {
+        currentShelfInstance = ins;
+    }
+
+    public void SetCurrentShelfInstanceToNull()
+    {
+        currentShelfInstance = null;
+    }
+
+    public GameObject GetCurrentShelfInstance()
+    {
+        return currentShelfInstance;
+    }
+
+    public void SnapShelfToGridAvoidOverlap()
     {
         Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mouseWorldPosition.z = 0; // Adjust for 2D
@@ -167,7 +182,32 @@ public class ShelfPlacementManager : MonoBehaviour
         }
     }
 
-    void RepositionShelfAvoidOverlap()
+    public void RepositionShelfMovedByEmployee(Vector3 shadowPosition, GameObject selectedShelf)
+    {
+        int x, y;
+        gridSystem.GetXY(shadowPosition, out x, out y);
+
+        // First, check if the new position is within the grid and not occupied
+        if (IsWithinGrid(x, y) && !shelfPlacementGrid[x, y])
+        {
+            // Find the previous position of the shelf being repositioned
+            int prevX, prevY;
+            gridSystem.GetXY(selectedShelf.transform.position, out prevX, out prevY);
+
+            // Update the shelf's position to the corresponding grid position
+            Vector3 gridPosition = gridSystem.GetWorldPosition(x, y);
+            selectedShelf.transform.position = gridPosition;
+
+            // Update the shelf placement grid: mark the new position as occupied and the previous one as free
+            if (IsWithinGrid(prevX, prevY))
+            {
+                shelfPlacementGrid[prevX, prevY] = false;
+            }
+            shelfPlacementGrid[x, y] = true;
+        }
+    }
+
+    public void RepositionShelfAvoidOverlap()
     {
         Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mouseWorldPosition.z = 0; // Ensure it's in the 2D plane for a 2D game

@@ -51,6 +51,7 @@ public class ShelfScript : MonoBehaviour
     public int loadAmount = 0;
     public int initalLoadAmount = 3;
     public int loadAmountMax = 6;
+    public bool loadAllowed = true;
 
     public string targetObjectName;
 
