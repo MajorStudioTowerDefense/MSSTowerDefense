@@ -48,16 +48,14 @@ public class NormalEmployee : Bot
     public Transform employeeArea;
 
     /////////////////////////////////
-     
+
 
 
     /////////////////////////////////
-    //UI when the employee is selected
-    public Canvas employeeUICanvas;
-    public GameObject employeeActionPanelPrefab;
-
-    protected GameObject actionPanel;
-    protected List<Button> actionButtons;
+    //UI for employee
+    public Sprite[] carriedItemSprites;
+    public SpriteRenderer carriedItemSprite;
+    
 
     /////////////////////////////////
 
@@ -65,7 +63,7 @@ public class NormalEmployee : Bot
     {
         base.init();
         shelfPlacementManager = ShelfPlacementManager.instance;
-        employeeUICanvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+        
     }
     private void Start()
     {
@@ -96,6 +94,25 @@ public class NormalEmployee : Bot
         {
             showSelectedUI();
         }
+        else if(eStage == employeeStage.running)
+        {
+            if (sprite.color != Color.white)
+            {
+                sprite.color = Color.white;
+            }
+            if (eAction == employeeAction.reload)
+            {
+                successReload();
+            }
+            else if(eAction == employeeAction.moveShelf)
+            {
+                
+            }
+        }
+        else if (eStage == employeeStage.backToStandBy)
+        {
+            returnToStandBy();
+        }
 
     }
 
@@ -106,7 +123,6 @@ public class NormalEmployee : Bot
             sprite.color = Color.cyan;
         }
 
-        
     }
  
 
@@ -114,59 +130,53 @@ public class NormalEmployee : Bot
     {
         //货架需要什么类型的货物的代码暂时留空
         //////////////////////////////////////////
+        ///获取货物的名字，目前只有一种类型货物所以只有一个枚举，之后添加更多货物类型
+        goods goodsName = shelf.sellingItems[index].GetItem();
+        carriedItemSprite.sprite = carriedItemSprites[(int)goodsName];
+        //////////////////////////////////////////
+        aiPath.canMove = true;
         destinationSetter.target = shelf.gameObject.transform;
-        int actualIncrease = Mathf.Min(carryCount, NeededShelf.loadAmountMax - NeededShelf.loadAmount);
+        NeededShelf = shelf;
+        eStage = employeeStage.running;
 
+    }
 
-        if (destinationSetter.target!=null && aiPath.reachedDestination)
+    public virtual void successReload()
+    {
+        if(destinationSetter.target == NeededShelf.transform && aiPath.reachedDestination)
         {
-            if (NeededShelf != null)
+            int actualIncrease = Mathf.Min(carryCount, NeededShelf.loadAmountMax - NeededShelf.loadAmount);
+
+            timeAtShelf += Time.deltaTime;
+            if (timeAtShelf >= stayShelfDuration && NeededShelf.loadAmount < NeededShelf.loadAmountMax)
             {
-                
-                timeAtShelf += Time.deltaTime;
-                if (timeAtShelf >= stayShelfDuration && NeededShelf.loadAmount < NeededShelf.loadAmountMax)
-                {
-                    NeededShelf.loadAmount += actualIncrease;
-                    carryCount -= actualIncrease;
-                    //eStage = employeeStage.actionFinished;
-                    timeAtShelf = 0;
-                }
-                else if (NeededShelf.loadAmount == NeededShelf.loadAmountMax)
-                {
-                    Debug.Log("Load amount has reached its maximum.");
-                    //eStage = employeeStage.actionFinished;
-                }
+                NeededShelf.loadAmount += actualIncrease;
+                carryCount -= actualIncrease;
+                eStage = employeeStage.backToStandBy;
+                destinationSetter.target = employeeArea;
+                carriedItemSprite.sprite = null;
+                timeAtShelf = 0;
             }
-            else
+            else if (NeededShelf.loadAmount == NeededShelf.loadAmountMax)
             {
-                Debug.Log("No shelf selected");
+                carriedItemSprite.sprite = null;
+                Debug.Log("Load amount has reached its maximum.");
+                destinationSetter.target = employeeArea;
+                eStage = employeeStage.backToStandBy;
             }
         }
     }
 
     public virtual void returnToStandBy()
     {
-        if(destinationSetter.target != null)
+        if(destinationSetter.target == employeeArea && aiPath.reachedDestination)
         {
-            destinationSetter.target = employeeArea;
-            eStage = employeeStage.backToStandBy;
-        }
-
-    }
-
-    public virtual void onWayToBack()
-    {
-        if (aiPath.reachedDestination)
-        {
-            Debug.Log("Back to stand by");
             eStage = employeeStage.standBy;
             eAction = employeeAction.noAction;
             carryCount = carryMax;
-            //aiPath.canMove = false;
-            //destinationSetter.target = null;
-            //NeededShelf = null;
+            NeededShelf = null;
         }
-    }
 
+    }
 
 }

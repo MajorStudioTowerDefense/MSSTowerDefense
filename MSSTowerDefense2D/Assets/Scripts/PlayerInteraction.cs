@@ -39,7 +39,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (GameManager.instance.currentState == GameStates.STORE)
         {
-            if(isMouseButtonDown() && DetectMouseButton() == "Left")
+            if(isMouseButtonDown() && DetectMouseButton() == "Left" && CheckClickTarget()!=null)
             {
 
                 GameObject clicked = CheckClickTarget().gameObject;
@@ -96,7 +96,7 @@ public class PlayerInteraction : MonoBehaviour
             return;
         }
         //如果点击的是左键，则为任务选择目标
-        if(DetectMouseButton() == "Left")
+        if(DetectMouseButton() == "Left" && CheckClickTarget()!=null)
         {
             GameObject clicked = CheckClickTarget().gameObject;
             if(clicked != null && assignedTask!=null)
@@ -149,12 +149,16 @@ public class PlayerInteraction : MonoBehaviour
                 button.onClick.AddListener(() => OnButtonClick(index));
             }
         }
+        
     }
 
     public void OnButtonClick(int index)
     {
-        clickedEmployee.eAction = employeeAction.moveShelf;
+        Debug.Log("Button clicked: " + index);
+        clickedEmployee.eAction = employeeAction.reload;
+        Debug.Log("clickedEmployee is" + clickedEmployee.gameObject.name);
         clickedEmployee.reloadShelf(clickedShelf,index);
+        
         resetSomethingToDefault();
     }
 
