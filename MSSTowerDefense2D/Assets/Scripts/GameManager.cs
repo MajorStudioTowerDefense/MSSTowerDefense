@@ -41,6 +41,11 @@ public class GameManager : MonoBehaviour
 
     public Transform exit;
 
+    [Header("Revenue Data")]
+    public float revenue;
+    public float total;
+    public float rent;
+
     [Header("Clock Settings")]
     [HideInInspector] public float timer;
     private bool isTimer;
@@ -164,7 +169,10 @@ public class GameManager : MonoBehaviour
             shelfCost += shelfScript.maintainingCost;
         }
         summaryPanel.SetActive(true);
-        summaryText[0].text = "Revenue Gained " + (money - yesterdayMoney - (gridCellHeight - 1) * (gridCellLength - 1) - shelfCost) + "\nRent: " + (gridCellHeight - 1) * (gridCellLength - 1) + "\nShelf Maintaining Cost: " + shelfCost;
+        revenue = money - yesterdayMoney;
+        rent = (gridCellHeight - 1) * (gridCellLength - 1) * 7;
+
+        summaryText[0].text = "Revenue Gained " + revenue + "\nShelf Maintaining Cost: " + shelfCost + "\nTotal: " + (revenue - shelfCost) + "\n\nEST. RENT DUE SUNDAY: " + rent;
 
         money = money - shelfCost - (gridCellHeight - 1) * (gridCellLength - 1);
     }

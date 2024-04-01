@@ -8,24 +8,26 @@ public class DayTrackerScript : MonoBehaviour
 {
     public Sprite greenArrow, redArrow, X;
     public GameObject Mon, Tue, Wed, Thu, Fri, Sat, Sun;
+    public GameManager gameManager;
     public List<GameObject> week;
     public bool changeDay;
 
     private Image icon;
     private GameObject currDay;
-    private float revenue, passableRevenue, rent;
+    public float revenue, passableRevenue, rent;
     private int day;
     private Vector2 ogPosition, upPosition;
+
 
     void Awake()
     {
         day = -1;
         currDay = Mon;
-        week = new List<GameObject>{Mon, Tue, Wed, Thu, Fri, Sat, Sun};
-        revenue = GameManager.instance.money - GameManager.instance.yesterdayMoney - (GameManager.instance.gridCellHeight - 1); //this no work
-        revenue = 20;
-        rent = 100;
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        revenue = gameManager.total;
+        rent = gameManager.rent;
         passableRevenue = rent/7;
+        week = new List<GameObject> { Mon, Tue, Wed, Thu, Fri, Sat, Sun };
         DontDestroyOnLoad(gameObject);
     }
 

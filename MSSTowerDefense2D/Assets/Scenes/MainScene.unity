@@ -283,7 +283,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 754490630}
+      - m_Target: {fileID: 1989316530}
         m_TargetAssemblyTypeName: ShelfUI, Assembly-CSharp
         m_MethodName: WeaponShelvesOn
         m_Mode: 1
@@ -427,7 +427,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 754490630}
+      - m_Target: {fileID: 1989316530}
         m_TargetAssemblyTypeName: ShelfUI, Assembly-CSharp
         m_MethodName: OtherOn
         m_Mode: 1
@@ -921,7 +921,7 @@ RectTransform:
   m_Children:
   - {fileID: 1250576283}
   m_Father: {fileID: 1541597223}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2229,6 +2229,9 @@ MonoBehaviour:
   yesterdayMoney: 0
   currentState: 0
   exit: {fileID: 0}
+  revenue: 0
+  total: 0
+  rent: 0
   timer: 0
   timeScaleFactor: 5
   startStoreTime: {x: 9, y: 0}
@@ -3035,7 +3038,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1541597223}
-  m_RootOrder: 8
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3261,7 +3264,7 @@ RectTransform:
   m_Children:
   - {fileID: 361758743}
   m_Father: {fileID: 1541597223}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4017,9 +4020,8 @@ GameObject:
   - component: {fileID: 754490627}
   - component: {fileID: 754490629}
   - component: {fileID: 754490628}
-  - component: {fileID: 754490630}
   m_Layer: 5
-  m_Name: Shelf Selection Panel (All Buttons)
+  m_Name: Thing To Disable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4039,12 +4041,12 @@ RectTransform:
   m_Children:
   - {fileID: 2024460514}
   - {fileID: 1172902861}
-  m_Father: {fileID: 1541597223}
-  m_RootOrder: 7
+  m_Father: {fileID: 1989316529}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0.000015258789, y: -134}
+  m_AnchoredPosition: {x: 0.000015258789, y: -50}
   m_SizeDelta: {x: 908.863, y: 159.5358}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &754490628
@@ -4085,24 +4087,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 754490626}
   m_CullTransparentMesh: 1
---- !u!114 &754490630
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 754490626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e73ce38e9a4d42649649ec536b9a1db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FruitShelves: {fileID: 1478827253}
-  WeaponShelves: {fileID: 1565062571}
-  Other: {fileID: 101515912}
-  FruitTab: {fileID: 1432144759}
-  WeaponTab: {fileID: 26713381}
-  OtherTab: {fileID: 43438870}
 --- !u!1 &775871406
 GameObject:
   m_ObjectHideFlags: 0
@@ -4213,7 +4197,7 @@ RectTransform:
   m_Children:
   - {fileID: 937876336}
   m_Father: {fileID: 1541597223}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6415,7 +6399,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1172902860}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9319,7 +9303,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 754490630}
+      - m_Target: {fileID: 1989316530}
         m_TargetAssemblyTypeName: ShelfUI, Assembly-CSharp
         m_MethodName: FruitShelvesOn
         m_Mode: 1
@@ -9847,13 +9831,13 @@ RectTransform:
   m_Children:
   - {fileID: 1133464118}
   - {fileID: 1543060746}
+  - {fileID: 590425180}
   - {fileID: 1989002674}
   - {fileID: 1710337053}
   - {fileID: 607073659}
   - {fileID: 779099060}
   - {fileID: 142694681}
-  - {fileID: 754490627}
-  - {fileID: 590425180}
+  - {fileID: 1989316529}
   - {fileID: 121916736}
   - {fileID: 683974081}
   m_Father: {fileID: 0}
@@ -11281,7 +11265,7 @@ RectTransform:
   - {fileID: 869966629}
   - {fileID: 1358785951}
   m_Father: {fileID: 1541597223}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -11981,7 +11965,7 @@ RectTransform:
   m_Children:
   - {fileID: 1591458978}
   m_Father: {fileID: 1541597223}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -12096,6 +12080,63 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popUp: {fileID: 1710337052}
   gameManager: {fileID: 404972022}
+--- !u!1 &1989316528
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1989316529}
+  - component: {fileID: 1989316530}
+  m_Layer: 5
+  m_Name: Shelf Selection Panel (All Buttons)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1989316529
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1989316528}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 754490627}
+  m_Father: {fileID: 1541597223}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 406}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1989316530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1989316528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e73ce38e9a4d42649649ec536b9a1db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FruitShelves: {fileID: 1478827253}
+  WeaponShelves: {fileID: 1565062571}
+  Other: {fileID: 101515912}
+  FruitTab: {fileID: 1432144759}
+  WeaponTab: {fileID: 26713381}
+  OtherTab: {fileID: 43438870}
+  ToDisable: {fileID: 754490626}
 --- !u!1 &1991238520
 GameObject:
   m_ObjectHideFlags: 0
@@ -12578,8 +12619,12 @@ MonoBehaviour:
   Fri: {fileID: 142666206}
   Sat: {fileID: 1004848439}
   Sun: {fileID: 271745098}
+  gameManager: {fileID: 0}
   week: []
   changeDay: 0
+  revenue: 0
+  passableRevenue: 0
+  rent: 0
 --- !u!1 &2141535960
 GameObject:
   m_ObjectHideFlags: 0
@@ -12810,7 +12855,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Jackfruit
+  m_text: 'Durian
 
     (-$25)'
   m_isRightToLeft: 0

@@ -12,6 +12,7 @@ public class ShelfUI : MonoBehaviour
     public GameObject FruitTab;
     public GameObject WeaponTab;
     public GameObject OtherTab;
+    public GameObject ToDisable;
 
     private List<GameObject> tabs;
     private List<GameObject> tabButtons;
@@ -28,11 +29,11 @@ public class ShelfUI : MonoBehaviour
     {
         if(GameManager.instance.currentState != 0)
         {
-            gameObject.SetActive(false);
+            ToDisable.SetActive(false);
         }
         else
         {
-            gameObject.SetActive(true);
+            ToDisable.SetActive(true);
         }
     }
 
@@ -41,7 +42,6 @@ public class ShelfUI : MonoBehaviour
         Reset();
         FruitShelves.SetActive(true);
         FruitTab.GetComponent<Image>().color = Color.white;
-
     }
 
     public void WeaponShelvesOn()
