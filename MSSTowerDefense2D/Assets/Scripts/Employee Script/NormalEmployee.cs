@@ -57,6 +57,9 @@ public class NormalEmployee : Bot
     public Sprite[] carriedItemSprites;
     public SpriteRenderer carriedItemSprite;
     public SpriteRenderer carriedShelfSprite;
+    public Canvas employeeCanvas;
+    public Image employeeLoadingImage;
+    float loadingProgress = 0f;
     
 
     /////////////////////////////////
@@ -71,6 +74,9 @@ public class NormalEmployee : Bot
     {
         init();
         AudioManager.instance.PlaySound(Walking);
+        employeeCanvas = GetComponentInChildren<Canvas>();
+        employeeCanvas.worldCamera = Camera.main;
+        employeeLoadingImage = employeeCanvas.GetComponentInChildren<Image>();
 
     }
 
@@ -188,6 +194,7 @@ public class NormalEmployee : Bot
             Destroy(shadowNeeded);
             eStage = employeeStage.backToStandBy;
             destinationSetter.target = employeeArea;
+            aiPath.destination = employeeArea.position;
         }
     }
 
@@ -197,7 +204,13 @@ public class NormalEmployee : Bot
         {
             int actualIncrease = Mathf.Min(carryCount, NeededShelf.loadAmountMax - NeededShelf.loadAmount);
 
+            
             timeAtShelf += Time.deltaTime;
+            if (timeAtShelf <= stayShelfDuration)
+            {
+                float progress = timeAtShelf / stayShelfDuration;
+                employeeLoadingImage.fillAmount = progress;
+            }
             if (timeAtShelf >= stayShelfDuration && NeededShelf.loadAmount < NeededShelf.loadAmountMax)
             {
                 NeededShelf.loadAmount += actualIncrease;

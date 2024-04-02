@@ -11971,6 +11971,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 634301958}
     m_Modifications:
+    - target: {fileID: 739717080229444087, guid: 59ae1cf025289c24f9c9f6c2c19f859e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1667035547095147325, guid: 59ae1cf025289c24f9c9f6c2c19f859e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2172623621878989275, guid: 59ae1cf025289c24f9c9f6c2c19f859e, type: 3}
       propertyPath: m_Name
       value: TestEmployee

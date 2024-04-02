@@ -125,7 +125,7 @@ public class PlayerInteraction : MonoBehaviour
                 }
             }
             //如果鼠标长按并释放且点到了shelf
-            else if(CheckClickTarget().GetComponent<ShelfScript>() != null && holdLongEnough && CheckClickTarget().GetComponent<ShelfScript>().loadAllowed)
+            else if(holdLongEnough && CheckClickTarget().GetComponent<ShelfScript>() != null  && CheckClickTarget().GetComponent<ShelfScript>().loadAllowed)
             {
                 GameObject clicked = CheckClickTarget().gameObject;
                 Debug.Log("hold long enough");
