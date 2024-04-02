@@ -63,8 +63,14 @@ public class PlayerInteraction : MonoBehaviour
         if (Input.GetMouseButton(0) && timerOn)
         {
             float duration = Time.time - mouseDownTime;
+            if(duration >= 0.3f && duration<holdMouseDuration)
+            {
+                changeMouseUI(3);
+                mouseUIPrefab.fillAmount = duration/holdMouseDuration;
+            }
             if (duration >= holdMouseDuration)
             {
+                mouseUIPrefab.fillAmount = 1;
                 holdLongEnough = true; // 表示鼠标已经按下足够长的时间
             }
         }
@@ -72,6 +78,8 @@ public class PlayerInteraction : MonoBehaviour
         // 当鼠标抬起时重置状态，准备下一次检测
         if (Input.GetMouseButtonUp(0))
         {
+            changeMouseUI(0);
+            mouseUIPrefab.fillAmount = 1;
             timerOn = false; // 重置计时器标志
             // 重置长按标志，以便下一次检测
             holdLongEnough = false;
