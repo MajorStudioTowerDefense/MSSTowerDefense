@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -65,7 +66,8 @@ public class PlayerInteraction : MonoBehaviour
             float duration = Time.time - mouseDownTime;
             if(duration >= 0.3f && duration<holdMouseDuration)
             {
-                changeMouseUI(3);
+                if(mouseUIPrefab.sprite == mouseUIs[0]) { changeMouseUI(3); }
+                
                 mouseUIPrefab.fillAmount = duration/holdMouseDuration;
             }
             if (duration >= holdMouseDuration)
@@ -78,7 +80,8 @@ public class PlayerInteraction : MonoBehaviour
         // 当鼠标抬起时重置状态，准备下一次检测
         if (Input.GetMouseButtonUp(0))
         {
-            changeMouseUI(0);
+            if(mouseUIPrefab.sprite == mouseUIs[3]) { changeMouseUI(0); }
+
             mouseUIPrefab.fillAmount = 1;
             timerOn = false; // 重置计时器标志
             // 重置长按标志，以便下一次检测
@@ -240,6 +243,7 @@ public class PlayerInteraction : MonoBehaviour
         resetSomethingToDefault();
     }
 
+    public TextMeshProUGUI warningText;
     //货架放置时所分配的目标
     void assignTaskTargetForShelf(Collider2D clickedCol) 
     {
@@ -255,9 +259,15 @@ public class PlayerInteraction : MonoBehaviour
                 employee.moveShelf(clickedShelfForShelf,shadowShelf);
                 currentStage = interactionStage.primary;
                 resetSomethingToDefault();
-                break;
+                return;
             }
+            
         }
+        Debug.Log("no employee available");
+        warningText.gameObject.transform.position = new Vector3(Input.mousePosition.x, Input.mousePosition.y,0);
+        warningText.gameObject.SetActive(true);
+        currentStage = interactionStage.primary;
+        resetEverythingToDefault();
 
     }
 
