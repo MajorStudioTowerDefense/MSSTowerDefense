@@ -10,6 +10,8 @@ public class NormalCustomer : Bot
     public AudioClip WalkingHeavy;
     public AudioClip Walking;
 
+    public AudioClip thump;
+
     public void Start()
     {
         AudioManager.instance.PlaySound(WalkingHeavy);
@@ -36,6 +38,8 @@ public class NormalCustomer : Bot
         if(GameManager.instance.currentState==GameStates.END)
         {
             destinationSetter.target = ShopExit;
+            AudioManager.instance.PlaySound(thump);
+
         }
     }
 
