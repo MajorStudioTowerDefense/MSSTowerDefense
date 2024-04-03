@@ -361,10 +361,9 @@ MonoBehaviour:
   budgetText: {fileID: 0}
   nameTextOffsetX: 0
   nameTextOffsetY: 1
-  desireVFX: {fileID: 3512315190433346689}
   ShopExit: {fileID: 0}
-  WalkingHeavy: {fileID: 0}
-  Walking: {fileID: 0}
+  areaPartitionSizeX: 8
+  areaPartitionSizeY: 8
 --- !u!1001 &5563871795364568732
 PrefabInstance:
   m_ObjectHideFlags: 0

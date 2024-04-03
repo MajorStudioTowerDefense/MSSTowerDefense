@@ -222,10 +222,9 @@ MonoBehaviour:
   budgetText: {fileID: 0}
   nameTextOffsetX: 0
   nameTextOffsetY: 1
-  desireVFX: {fileID: 6891590087796108944}
   ShopExit: {fileID: 0}
-  WalkingHeavy: {fileID: 0}
-  Walking: {fileID: 0}
+  areaPartitionSizeX: 8
+  areaPartitionSizeY: 8
 --- !u!82 &-1235564854328231557
 AudioSource:
   m_ObjectHideFlags: 0

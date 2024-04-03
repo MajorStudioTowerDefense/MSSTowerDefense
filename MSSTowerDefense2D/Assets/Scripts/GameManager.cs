@@ -20,7 +20,7 @@ public enum WallSide
 
 public class GameManager : MonoBehaviour
 {
-    private GridSystem gridSystem;
+    public GridSystem gridSystem;
     public ShelfPlacementManager shelfPlacementManager;
     public GameObject[] shelfPrefabs;
     public GameObject cellTilePrefab;

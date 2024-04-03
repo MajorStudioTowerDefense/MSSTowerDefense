@@ -360,7 +360,7 @@ public class ShelfScript : MonoBehaviour
                     Debug.Log("While purchasing " + bot.selectedItem);
                     ai.target = transform;
                     bot.isPurchasing = true;
-                    }
+                }
                 else
                 {
                     ai.target = originalDestination;
