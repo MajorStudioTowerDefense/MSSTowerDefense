@@ -2927,8 +2927,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4d21e8fc4eef10458770fb28a174331, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraDragSpeed: 0.1
   maxMoveSpeed: 10
-  edgeBorderThickness: 10
   moveLimit: {x: 5, y: 5}
   zoomSpeed: 2
   minZoom: 3

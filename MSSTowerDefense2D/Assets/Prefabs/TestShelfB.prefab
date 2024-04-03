@@ -591,6 +591,7 @@ MonoBehaviour:
   loadAmount: 3
   initalLoadAmount: 3
   loadAmountMax: 6
+  loadAllowed: 1
   targetObjectName: TestShopExit
   cost: 25
   sellingItems:

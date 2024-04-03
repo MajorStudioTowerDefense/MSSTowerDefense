@@ -346,7 +346,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1342cfc9a3544aa488f464ce31a363cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  botName: Rory Rustbeard
+  botName: 
   botBudget: 6
   shoppingEffect: {fileID: 0}
   shoppingSFX: {fileID: 0}
@@ -363,6 +363,8 @@ MonoBehaviour:
   nameTextOffsetY: 1
   desireVFX: {fileID: 3512315190433346689}
   ShopExit: {fileID: 0}
+  WalkingHeavy: {fileID: 0}
+  Walking: {fileID: 0}
 --- !u!1001 &5563871795364568732
 PrefabInstance:
   m_ObjectHideFlags: 0

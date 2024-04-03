@@ -205,7 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1342cfc9a3544aa488f464ce31a363cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  botName: Rhinox Stonehide
+  botName: 
   botBudget: 6
   shoppingEffect: {fileID: 0}
   shoppingSFX: {fileID: 0}
@@ -224,6 +224,8 @@ MonoBehaviour:
   nameTextOffsetY: 1
   desireVFX: {fileID: 6891590087796108944}
   ShopExit: {fileID: 0}
+  WalkingHeavy: {fileID: 0}
+  Walking: {fileID: 0}
 --- !u!82 &-1235564854328231557
 AudioSource:
   m_ObjectHideFlags: 0
