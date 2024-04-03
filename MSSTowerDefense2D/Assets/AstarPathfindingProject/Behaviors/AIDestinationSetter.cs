@@ -16,9 +16,10 @@ namespace Pathfinding {
 	public class AIDestinationSetter : VersionedMonoBehaviour {
 		/// <summary>The object that the AI should move to</summary>
 		public Transform target;
+		public Vector3 targetPosition;
 		IAstarAI ai;
 
-        void Start()
+        /*void Start()
         {
             // Find the GameObject tagged "Exit" in the scene
             GameObject shopExit = GameObject.FindWithTag("Exit");
@@ -33,7 +34,7 @@ namespace Pathfinding {
             {
                 Debug.LogWarning("GameObject with tag 'Exit' not found in the scene.");
             }
-        }
+        }*/
 
         void OnEnable () {
 			ai = GetComponent<IAstarAI>();
@@ -50,7 +51,8 @@ namespace Pathfinding {
 
 		/// <summary>Updates the AI's destination every frame</summary>
 		void Update () {
-			if (target != null && ai != null) ai.destination = target.position;
-		}
+			if (targetPosition != null && ai != null) ai.destination = targetPosition;
+			else if (target != null && ai != null) ai.destination = target.position;
+        }
 	}
 }
