@@ -117,6 +117,7 @@ GameObject:
   - component: {fileID: 5529370222845911486}
   - component: {fileID: -254084621290772639}
   - component: {fileID: 6381253971314326612}
+  - component: {fileID: 5976883285120235208}
   m_Layer: 0
   m_Name: TestEmployee
   m_TagString: Untagged
@@ -433,6 +434,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5976883285120235208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2172623621878989275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b455b4c67a0dc4afea71245a52eb2770, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  front: {fileID: 21300000, guid: 2a13ed7b64891455d9ca16329a6155f8, type: 3}
+  back: {fileID: 21300000, guid: 7c162b5a0b9c740aea64deb4199f2371, type: 3}
+  forward: {fileID: 21300000, guid: cb5bdfe5e18de4b358dfeb5b4f44ca37, type: 3}
+  thisRenderer: {fileID: 0}
 --- !u!1 &2933616216355911901
 GameObject:
   m_ObjectHideFlags: 0
