@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    public float cameraDragSpeed = 0.1f;
     public float maxMoveSpeed = 20f;
-    public float edgeBorderThickness = 10f;
     public Vector2 moveLimit;
 
     public float zoomSpeed = 2f;
@@ -11,55 +11,37 @@ public class CameraController : MonoBehaviour
     public float maxZoom = 20f;
 
     private Vector2 moveVelocity;
+    private Vector3 lastMousePosition;
 
     public float acceleration = 30f;
     public float deceleration = 30f;
 
-    // Update is called once per frame
     void Update()
     {
         Vector3 pos = transform.position;
 
-        // Mouse Movement
-        float moveX = 0f;
-        float moveY = 0f;
+        // WASD Movement
+        float moveX = Input.GetAxis("Horizontal");
+        float moveY = Input.GetAxis("Vertical");
 
-        if (Input.mousePosition.x >= Screen.width - edgeBorderThickness)
+        // Middle Mouse Button Drag
+        if (Input.GetMouseButtonDown(2)) 
         {
-            moveX = 1f;
-        }
-        else if (Input.mousePosition.x <= edgeBorderThickness)
-        {
-            moveX = -1f;
+            lastMousePosition = Input.mousePosition;
         }
 
-        if (Input.mousePosition.y >= Screen.height - edgeBorderThickness)
+        if (Input.GetMouseButton(2)) 
         {
-            moveY = 1f;
-        }
-        else if (Input.mousePosition.y <= edgeBorderThickness)
-        {
-            moveY = -1f;
-        }
-
-        // Apply acceleration
-        if (moveX != 0)
-        {
-            moveVelocity.x = Mathf.MoveTowards(moveVelocity.x, maxMoveSpeed * moveX, acceleration * Time.deltaTime);
-        }
-        else // Apply deceleration
-        {
-            moveVelocity.x = Mathf.MoveTowards(moveVelocity.x, 0, deceleration * Time.deltaTime);
+            Vector3 delta = Input.mousePosition - lastMousePosition;
+            
+            moveX -= delta.x * maxMoveSpeed * cameraDragSpeed;
+            moveY -= delta.y * maxMoveSpeed * cameraDragSpeed;
+            lastMousePosition = Input.mousePosition;
         }
 
-        if (moveY != 0)
-        {
-            moveVelocity.y = Mathf.MoveTowards(moveVelocity.y, maxMoveSpeed * moveY, acceleration * Time.deltaTime);
-        }
-        else // Apply deceleration
-        {
-            moveVelocity.y = Mathf.MoveTowards(moveVelocity.y, 0, deceleration * Time.deltaTime);
-        }
+        // Apply movement
+        moveVelocity.x = Mathf.Clamp(moveX, -1, 1) * maxMoveSpeed;
+        moveVelocity.y = Mathf.Clamp(moveY, -1, 1) * maxMoveSpeed;
 
         pos.x += moveVelocity.x * Time.deltaTime;
         pos.y += moveVelocity.y * Time.deltaTime;
