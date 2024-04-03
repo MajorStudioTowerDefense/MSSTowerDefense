@@ -106,7 +106,7 @@ public class AudioManager : MonoBehaviour
         yield return new WaitForSeconds(21);
         
         //start sound
-        audioSource2.Start();
+        //audioSource2.Start();
 
     }
 
