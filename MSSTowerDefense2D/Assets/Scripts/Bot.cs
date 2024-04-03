@@ -155,15 +155,13 @@ public class Bot : MonoBehaviour
 
     public virtual void botUIinit()
     {
-        if (nameText == null) return;
-        nameText.text = botName;
-        nameText.transform.localPosition = new Vector3(nameTextOffsetX, nameTextOffsetY, 0);
+        
 
     }
 
     public virtual void botUIUpdate()
     {
-        if (nameText == null) return;
+        
 
     }
 

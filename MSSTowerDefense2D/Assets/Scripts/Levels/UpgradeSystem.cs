@@ -28,12 +28,10 @@ public class UpgradeSystem : MonoBehaviour
     }
     public void AddEmployee()
     {
-        Vector3 nextPos = EmployeeArea.position + new Vector3(addEmployeeUseList.Count * employeePositionOffset, 0, 0);
-        GameObject employeeAreaNext = new GameObject("EmployeeArea(Clone)");
-        employeeAreaNext.transform.position = nextPos;
-        GameObject emp = Instantiate(employeePrefabs[0], employeeAreaNext.transform.position, Quaternion.identity);
-        emp.transform.SetParent(employeeAreaNext.transform);
-        emp.GetComponent<NormalEmployee>().employeeArea = employeeAreaNext.transform;
+        Vector3 nextPos = new Vector3(addEmployeeUseList[addEmployeeUseList.Count - 1].transform.position.x + employeePositionOffset, addEmployeeUseList[addEmployeeUseList.Count - 1].transform.position.y, addEmployeeUseList[addEmployeeUseList.Count - 1].transform.position.z);
+        GameObject emp = Instantiate(employeePrefabs[0], nextPos, Quaternion.identity);
+        emp.transform.SetParent(EmployeeArea.transform);
+        
         addEmployeeUseList.Add(emp);
     }
 
