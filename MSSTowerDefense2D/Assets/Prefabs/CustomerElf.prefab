@@ -142,6 +142,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &6049977373585779996
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1198038838388850767}
+  m_Layer: 0
+  m_Name: SortOffsetMarker
+  m_TagString: Untagged
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1198038838388850767
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6049977373585779996}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.899, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6430688495216814453}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6430688495216814459
 GameObject:
   m_ObjectHideFlags: 0
@@ -158,6 +189,7 @@ GameObject:
   - component: {fileID: 6430688495216814449}
   - component: {fileID: -726666408145361071}
   - component: {fileID: -9108921441225004776}
+  - component: {fileID: 3594516886336401160}
   m_Layer: 0
   m_Name: CustomerElf
   m_TagString: Untagged
@@ -180,6 +212,7 @@ Transform:
   - {fileID: 5296634256476706043}
   - {fileID: 1104182611480996936}
   - {fileID: 4327408196717879298}
+  - {fileID: 1198038838388850767}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -366,6 +399,7 @@ MonoBehaviour:
   ShopExit: {fileID: 0}
   WalkingHeavy: {fileID: 0}
   Walking: {fileID: 0}
+  thump: {fileID: 0}
 --- !u!114 &-9108921441225004776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -381,6 +415,22 @@ MonoBehaviour:
   front: {fileID: 21300000, guid: 6e5d8ffda26844ef89e5cff60f20636c, type: 3}
   back: {fileID: 21300000, guid: ddbb7f85fbd1d47278ce5ec879d54474, type: 3}
   forward: {fileID: 21300000, guid: f973d50f502ef41619fc3c2b69f296e9, type: 3}
+--- !u!114 &3594516886336401160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6430688495216814459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca0e74b414ada72409484048f6119501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sortableSprites:
+  - spriteRenderer: {fileID: 6430688495216814452}
+    relativeOrder: 0
+  _sortOffsetMarker: {fileID: 1198038838388850767}
 --- !u!1001 &5563871795364568732
 PrefabInstance:
   m_ObjectHideFlags: 0

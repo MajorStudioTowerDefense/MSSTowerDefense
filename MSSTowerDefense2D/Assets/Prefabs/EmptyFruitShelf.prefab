@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1472112454037206737
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2397259404299274223}
+  m_Layer: 6
+  m_Name: SortOffsetMarker
+  m_TagString: Untagged
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2397259404299274223
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1472112454037206737}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.473, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4971062859645332144}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1539219191917688945
 GameObject:
   m_ObjectHideFlags: 0
@@ -453,6 +484,7 @@ GameObject:
   - component: {fileID: 4971062859645332147}
   - component: {fileID: 4971062859645332149}
   - component: {fileID: 5143793487139602274}
+  - component: {fileID: 3589884318226659849}
   m_Layer: 6
   m_Name: EmptyFruitShelf
   m_TagString: Untagged
@@ -477,6 +509,7 @@ Transform:
   - {fileID: 7526649677575027810}
   - {fileID: 5988739943845434373}
   - {fileID: 4728075785867087963}
+  - {fileID: 2397259404299274223}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -606,6 +639,22 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3ef8a2d35256101438f7b6987a3c9964, type: 2}
   maintainingCost: 5
   visibilityIndicator: {fileID: 1214488877365645690}
+--- !u!114 &3589884318226659849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4971062859645332145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca0e74b414ada72409484048f6119501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sortableSprites:
+  - spriteRenderer: {fileID: 4971062859645332146}
+    relativeOrder: 0
+  _sortOffsetMarker: {fileID: 2397259404299274223}
 --- !u!1 &5293852333506622311
 GameObject:
   m_ObjectHideFlags: 0
