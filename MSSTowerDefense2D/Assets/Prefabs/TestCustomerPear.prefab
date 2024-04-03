@@ -211,6 +211,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   target: {fileID: 0}
+  targetPosition: {x: 0, y: 0, z: 0}
 --- !u!58 &3901240669130896224
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -256,8 +257,10 @@ MonoBehaviour:
   budgetText: {fileID: 0}
   nameTextOffsetX: 0
   nameTextOffsetY: 1
-  desireVFX: {fileID: 6891590087796108944}
   ShopExit: {fileID: 0}
+  currentDestination: {x: 0, y: 0, z: 0}
+  areaPartitionSizeX: 4
+  areaPartitionSizeY: 4
   WalkingHeavy: {fileID: 0}
   Walking: {fileID: 0}
   thump: {fileID: 0}
