@@ -7325,8 +7325,10 @@ MonoBehaviour:
   - {fileID: 1261508828}
   - {fileID: 1261508827}
   audioSource: {fileID: 1261508831}
-  duration: 21
+  audioSource2: {fileID: 1261508823}
+  duration: 20
   Ticking: {fileID: 8300000, guid: 3c58293d8128c8c4a83f7ddceb6b83f2, type: 3}
+  StartShift: {fileID: 8300000, guid: f3bfe4c24bb25144187423e5250d56bf, type: 3}
 --- !u!82 &1261508823
 AudioSource:
   m_ObjectHideFlags: 0

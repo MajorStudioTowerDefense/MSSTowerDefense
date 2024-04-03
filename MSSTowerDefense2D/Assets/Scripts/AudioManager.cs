@@ -85,28 +85,24 @@ public class AudioManager : MonoBehaviour
             source.volume = volume;
         }
     }
-    //Stops the ticking from playing after 60 seconds
+    //Stops the ticking from playing after 20 seconds
  IEnumerator StopSoundAfterDelay()
     {
         // Wait for 'duration' seconds
-        yield return new WaitForSeconds(21);
+        yield return new WaitForSeconds(duration);
 
         // Stop the sound
         audioSource.Stop();
 
         //start the whistle
-        StartCoroutine(StartSoundAfterDelay());
-
+        StartCoroutine(PlaySoundAfterDelay(20f));
 
     }
-
-    IEnumerator StartSoundAfterDelay()
+    //Play the whistle after 20 seconds
+    IEnumerator PlaySoundAfterDelay(float delay)
     {   
-        // Wait for 'duration' seconds
-        yield return new WaitForSeconds(21);
-        
-        //start sound
-        audioSource2.Start();
+        yield return new WaitForSeconds(delay);
+        AudioSource.PlayClipAtPoint(Ticking, transform.position);
 
     }
 

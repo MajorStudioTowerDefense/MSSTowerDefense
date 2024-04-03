@@ -26,7 +26,7 @@ public class AmbianceTimer : MonoBehaviour
  IEnumerator StartSoundAfterDelay()
     {
         // Wait for 'duration' seconds
-        yield return new WaitForSeconds(24);
+        yield return new WaitForSeconds(duration);
 
         // Start the sound
         audioSource2.Play();
