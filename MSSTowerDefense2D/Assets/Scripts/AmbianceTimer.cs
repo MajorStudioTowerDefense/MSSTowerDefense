@@ -6,6 +6,8 @@ public class AmbianceTimer : MonoBehaviour
 {
     public AudioSource audioSource2;
     public AudioClip TempAmb; 
+     public float duration = 24f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +26,7 @@ public class AmbianceTimer : MonoBehaviour
  IEnumerator StartSoundAfterDelay()
     {
         // Wait for 'duration' seconds
-        yield return new WaitForSeconds(60);
+        yield return new WaitForSeconds(24);
 
         // Start the sound
         audioSource2.Play();
