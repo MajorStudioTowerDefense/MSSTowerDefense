@@ -20,7 +20,7 @@ public enum WallSide
 
 public class GameManager : MonoBehaviour
 {
-    private GridSystem gridSystem;
+    public GridSystem gridSystem;
     public ShelfPlacementManager shelfPlacementManager;
     public GameObject[] shelfPrefabs;
     public GameObject cellTilePrefab;
@@ -117,8 +117,8 @@ public class GameManager : MonoBehaviour
 
         GenerateGrid();
         GenerateWalls();
-        currentState = GameStates.PREP; 
-        isTimer = true; 
+        currentState = GameStates.PREP;
+        isTimer = true;
     }
 
     private void ReInitLevel()
@@ -190,10 +190,10 @@ public class GameManager : MonoBehaviour
     }
     private void StartNextLevel()
     {
-        level++; 
-        AdjustDifficulty(); 
+        level++;
+        AdjustDifficulty();
         ReInitLevel();
-        
+
     }
 
     private void AdjustDifficulty()
@@ -234,8 +234,8 @@ public class GameManager : MonoBehaviour
                     prefabToInstantiate = entrancePrefab;
                 else if (y == gridCellHeight && exitSide == WallSide.Top && exitYPosition == x)
                     prefabToInstantiate = exitPrefab;
-/*                else if (x == -1 || x == gridCellLength || y == -1 || y == gridCellHeight)
-                    prefabToInstantiate = sideWallPrefab;*/
+                /*                else if (x == -1 || x == gridCellLength || y == -1 || y == gridCellHeight)
+                                    prefabToInstantiate = sideWallPrefab;*/
 
                 if (prefabToInstantiate != null)
                     Instantiate(prefabToInstantiate, position, Quaternion.identity, transform);

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GridSystem
@@ -6,6 +7,7 @@ public class GridSystem
     private int height;
     private float cellSize;
     private Vector3 originPosition;
+    public List<GridArea> areas = new List<GridArea>();
 
     public GridSystem(int width, int height, float cellSize, Vector3 originPosition)
     {
@@ -28,4 +30,21 @@ public class GridSystem
 
     public int GetWidth() => width;
     public int GetHeight() => height;
+
+    public void AddArea(GridArea area)
+    {
+        areas.Add(area);
+    }
+}
+
+public class GridArea
+{
+    public string Name;
+    public Vector3 CenterPosition; // Center position of the area for distance calculations
+
+    public GridArea(string name, Vector3 centerPosition)
+    {
+        Name = name;
+        CenterPosition = centerPosition;
+    }
 }

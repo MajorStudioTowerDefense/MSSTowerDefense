@@ -10,14 +10,14 @@ using TMPro;
 public class CustomerData
 {
     public AIDestinationSetter aiDestinationSetter;
-    public Transform originalDestination;
+    public NormalCustomer normalCustomer;
     public float timeAtShelf = 0f;
     public Bot bot;
 
-    public CustomerData(AIDestinationSetter ai, Transform originalDestination, Bot bot)
+    public CustomerData(AIDestinationSetter ai, NormalCustomer normalCustomer, Bot bot)
     {
         this.aiDestinationSetter = ai;
-        this.originalDestination = originalDestination;
+        this.normalCustomer = normalCustomer;
         this.bot = bot;
         this.timeAtShelf = 0f;
     }
@@ -222,7 +222,7 @@ public class ShelfScript : MonoBehaviour
             //gridBlockLeft = null;
             //gridBlockRight = null;
             return true;
-            
+
         }
         else
         {
@@ -329,7 +329,8 @@ public class ShelfScript : MonoBehaviour
 
     void DetectAndManageCustomers()
     {
-        if(GameManager.instance.currentState != GameStates.STORE) {
+        if (GameManager.instance.currentState != GameStates.STORE)
+        {
             currentCustomersData.Clear();
             return;
         }
@@ -352,25 +353,25 @@ public class ShelfScript : MonoBehaviour
             if (ai == null || currentCustomersData.FirstOrDefault(c => c.aiDestinationSetter == ai) != null) continue;
             bot = customer.gameObject.GetComponent<Bot>();
             if (bot != null) { bot.selectedItem = IsSellingItem(bot.needs); }
-            Transform originalDestination = shopExit;
+            NormalCustomer normalCustomer = customer.GetComponent<NormalCustomer>();
             if (bot.selectedItem != null && currentCustomersData.Count < maxCustomers && !bot.isPurchasing)
             {
                 if (loadAmount > 0)
                 {
                     Debug.Log("While purchasing " + bot.selectedItem);
-                    ai.target = transform;
+                    ai.targetPosition = transform.position;
                     bot.isPurchasing = true;
-                    }
+                }
                 else
                 {
-                    ai.target = originalDestination;
+                    bot.isPurchasing = false;
                 }
             }
 
             if (Vector2.Distance(customer.transform.position, transform.position) < purchaseRadius && bot.isPurchasing)
             {
                 Debug.Log("Start Purchase!");
-                var newCustomerData = new CustomerData(ai, originalDestination, bot);
+                var newCustomerData = new CustomerData(ai, normalCustomer, bot);
                 currentCustomersData.Add(newCustomerData);
             }
 
@@ -420,7 +421,8 @@ public class ShelfScript : MonoBehaviour
     void RemoveCustomer(CustomerData customerData)
     {
         customerData.bot.isPurchasing = false;
-        customerData.aiDestinationSetter.target = customerData.originalDestination;
+        //customerData.aiDestinationSetter.target = customerData.originalDestination;
+        customerData.normalCustomer.SetNextDestination();
         currentCustomersData.Remove(customerData);
     }
 
@@ -428,8 +430,8 @@ public class ShelfScript : MonoBehaviour
 
     void showVisibility()
     {
-        float scaleValue = visibility; // 根据你的Sprite实际大小，这里可能需要调整比例因子
+        float scaleValue = visibility;
         if (visibilityIndicator != null)
-        visibilityIndicator.localScale = new Vector3(scaleValue, scaleValue, 1);
+            visibilityIndicator.localScale = new Vector3(scaleValue, scaleValue, 1);
     }
 }
