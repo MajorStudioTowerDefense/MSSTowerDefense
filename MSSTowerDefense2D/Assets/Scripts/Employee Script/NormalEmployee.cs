@@ -5,8 +5,6 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-
-
 public enum employeeStage
 {
     standBy = 0,
@@ -36,6 +34,13 @@ public class NormalEmployee : Bot
     private float timeAtShelf = 0f;
     public float stayShelfDuration = 5f;
 
+    public float employeeAreaOffsetXMax = 2f;
+    public float employeeAreaOffsetXMin = 0.5f;
+    public float employeeAreaOffsetYMin = 0.4f;
+    public float employeeAreaOffsetYMax = 1.2f;
+    public Vector3 myEmployeeAreaPos = Vector3.zero;
+
+    private bool endStage = false;
 
     //check if the shelf is selected
     public ShelfPlacementManager shelfPlacementManager;
@@ -81,14 +86,31 @@ public class NormalEmployee : Bot
 
     protected override void Update()
     {
-        Debug.Log("reachedDestination? "+aiPath.reachedDestination);
         base.Update();
-
+        if(GameManager.instance.currentState == GameStates.END)
+        {
+            if(endStage == false)
+            {
+                endStage = true;
+                aiPath.canMove = true;
+                myEmployeeAreaPos = randomOffsetPos();
+                destinationSetter.targetPosition = myEmployeeAreaPos;
+                carriedItemSprite.sprite = null;
+                carriedShelfSprite.sprite = null;
+                
+                eStage = employeeStage.backToStandBy;
+            }
+            if(eStage == employeeStage.backToStandBy)
+            {
+                returnToStandBy();
+            }
+            
+        }
         if (GameManager.instance.currentState != GameStates.STORE)
         {
             return;
         }
-
+        endStage = false;
         if (eStage == employeeStage.standBy)
         {
             if(sprite.color != Color.white)
@@ -127,6 +149,27 @@ public class NormalEmployee : Bot
 
     }
 
+    public Vector3 randomOffsetPos()
+    {
+        float possibilityX = Random.Range(0f, 1f);
+        float possibilityY = Random.Range(0f, 1f);
+        float xSign = 1;
+        float ySign = 1;
+        if(possibilityX < 0.5f)
+        {
+            xSign = -1;
+        }
+        if(possibilityY < 0.5f)
+        {
+            ySign = -1;
+        }
+        float offsetX = xSign * Random.Range(employeeAreaOffsetXMin, employeeAreaOffsetXMax);
+        float offsetY = ySign * Random.Range(employeeAreaOffsetYMin, employeeAreaOffsetYMax);
+        Vector2 offset = new Vector2(offsetX, offsetY);
+        Vector3 pos = employeeArea.position + (Vector3)offset;
+        return pos;
+    }
+
     void showSelectedUI()
     {
         if(sprite.color != Color.cyan)
@@ -146,6 +189,7 @@ public class NormalEmployee : Bot
         destinationSetter.targetPosition = shelf.gameObject.transform.position;
         NeededShelf = shelf;
         carriedItemSprite.sprite = ItemManager.Instance.shelfItemSprites[(int)product];
+        myEmployeeAreaPos = randomOffsetPos();
         eStage = employeeStage.running;
 
     }
@@ -160,7 +204,7 @@ public class NormalEmployee : Bot
         destinationSetter.targetPosition = shelf.transform.position;
         aiPath.destination = shelf.transform.position;
         eStage = employeeStage.running;
-        
+        myEmployeeAreaPos = randomOffsetPos();
         shadowNeeded = shadow;
     }
 
@@ -189,8 +233,8 @@ public class NormalEmployee : Bot
             carriedShelfSprite.sprite = null;
             Destroy(shadowNeeded);
             eStage = employeeStage.backToStandBy;
-            destinationSetter.targetPosition = employeeArea.position;
-            aiPath.destination = employeeArea.position;
+            destinationSetter.targetPosition = myEmployeeAreaPos;
+            aiPath.destination = myEmployeeAreaPos;
         }
     }
 
@@ -216,7 +260,7 @@ public class NormalEmployee : Bot
                         NeededShelf.loadAmount += actualIncrease;
                         carryCount -= actualIncrease;
                         eStage = employeeStage.backToStandBy;
-                        destinationSetter.targetPosition = employeeArea.position;
+                        destinationSetter.targetPosition = myEmployeeAreaPos;
                         carriedItemSprite.sprite = null;
                         timeAtShelf = 0;
                         NeededShelf.sellingItem = items;
@@ -229,7 +273,7 @@ public class NormalEmployee : Bot
             {
                 carriedItemSprite.sprite = null;
                 Debug.Log("Load amount has reached its maximum.");
-                destinationSetter.targetPosition = employeeArea.position;
+                destinationSetter.targetPosition = myEmployeeAreaPos;
                 eStage = employeeStage.backToStandBy;
             }
         }
@@ -237,7 +281,7 @@ public class NormalEmployee : Bot
 
     public virtual void returnToStandBy()
     {
-        if(destinationSetter.targetPosition == employeeArea.position && aiPath.reachedDestination)
+        if(destinationSetter.targetPosition == myEmployeeAreaPos && aiPath.reachedDestination)
         {
             eStage = employeeStage.standBy;
             eAction = employeeAction.noAction;

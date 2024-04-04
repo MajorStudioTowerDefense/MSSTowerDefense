@@ -188,7 +188,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1205983986, guid: d12d5e2f6abf8a14d9d3bafa47be489d, type: 3}
+  m_Sprite: {fileID: 361853567, guid: 0d95dbcb0bb034086b4457d2eb10474f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -430,7 +430,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1205983986, guid: d12d5e2f6abf8a14d9d3bafa47be489d, type: 3}
+  m_Sprite: {fileID: 361853567, guid: 0d95dbcb0bb034086b4457d2eb10474f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -681,7 +681,7 @@ GameObject:
   - component: {fileID: 5143793487139602274}
   - component: {fileID: 2014722460697413060}
   m_Layer: 6
-  m_Name: TestShelfB
+  m_Name: SwordShelf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -746,7 +746,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2003066573, guid: 250b9b8f13f3de34ba11cb25afa2847e, type: 3}
+  m_Sprite: {fileID: 412905620, guid: 6bfb7f9ca296b4b3d8b5cfbc8a99fd13, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -773,8 +773,8 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1.01}
+    pivot: {x: 0.5, y: 0.24}
+    oldSize: {x: 1.03, y: 2.1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -796,7 +796,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  uniqueID: 6285116109820051100
+  uniqueID: 6678642852873745744
   updateError: 0.5
   checkTime: 0.2
 --- !u!114 &5143793487139602274
@@ -823,19 +823,19 @@ MonoBehaviour:
   customerStayDuration: 8
   loadAmount: 3
   initalLoadAmount: 3
-  loadAmountMax: 6
+  loadAmountMax: 3
   loadAllowed: 1
   targetObjectName: TestShopExit
   costToBuy: 25
   canvas: {fileID: 4461831576480158605}
   itemsCanBeSold:
-  - {fileID: 11400000, guid: 3ef8a2d35256101438f7b6987a3c9964, type: 2}
-  - {fileID: 11400000, guid: c868db8ccba8f71448fefe0093a480ee, type: 2}
-  - {fileID: 11400000, guid: 1293b0fb25ae7334180721f08fcbfb19, type: 2}
-  sellingItem: {fileID: 11400000, guid: 1293b0fb25ae7334180721f08fcbfb19, type: 2}
-  thisType: 0
-  costToMaintain: 5
-  purchasePower: 5
+  - {fileID: 11400000, guid: 011163cdb31c31744b8d39272e5378b6, type: 2}
+  - {fileID: 11400000, guid: a41856e1d723cb64e9a49865f8341870, type: 2}
+  - {fileID: 11400000, guid: 19a4f9728dac99b4b96bb11846401a6b, type: 2}
+  sellingItem: {fileID: 11400000, guid: 19a4f9728dac99b4b96bb11846401a6b, type: 2}
+  thisType: 3
+  costToMaintain: 15
+  purchasePower: 0
   visibilityIndicator: {fileID: 2606767789544531563}
 --- !u!114 &2014722460697413060
 MonoBehaviour:
@@ -1125,7 +1125,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1205983986, guid: d12d5e2f6abf8a14d9d3bafa47be489d, type: 3}
+  m_Sprite: {fileID: 361853567, guid: 0d95dbcb0bb034086b4457d2eb10474f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

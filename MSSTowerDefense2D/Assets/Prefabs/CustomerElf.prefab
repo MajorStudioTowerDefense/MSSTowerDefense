@@ -331,8 +331,8 @@ MonoBehaviour:
   targetCompatibility: {fileID: 0}
   maxAcceleration: -2.5
   rotationSpeed: 360
-  slowdownDistance: 0.46
-  pickNextWaypointDist: 0.58
+  slowdownDistance: 0.55
+  pickNextWaypointDist: 0.46
   endReachedDistance: 0.89
   alwaysDrawGizmos: 1
   slowWhenNotFacingTarget: 1
@@ -389,7 +389,12 @@ MonoBehaviour:
   destinationSetter: {fileID: 6430688495216814455}
   tags: 1
   needs:
-  - {fileID: 11400000, guid: 3ef8a2d35256101438f7b6987a3c9964, type: 2}
+  - {fileID: 11400000, guid: 1d538a75481f3480e9db0507f04b4a6b, type: 2}
+  - {fileID: 11400000, guid: 19a4f9728dac99b4b96bb11846401a6b, type: 2}
+  - {fileID: 11400000, guid: ad5801f856148f64e92eeed93ca2a062, type: 2}
+  - {fileID: 11400000, guid: 7f1d6b88b26c44b408798a384f3823b6, type: 2}
+  - {fileID: 11400000, guid: 39e9010e4516ffa45868b59b47d26871, type: 2}
+  - {fileID: 11400000, guid: 1293b0fb25ae7334180721f08fcbfb19, type: 2}
   selectedItem: {fileID: 0}
   nameText: {fileID: 8327674106412807263}
   budgetText: {fileID: 0}

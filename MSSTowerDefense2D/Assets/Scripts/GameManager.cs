@@ -269,8 +269,16 @@ public class GameManager : MonoBehaviour
         Instantiate(bottomWallPrefab, bottomRight, Quaternion.identity, transform);
     }
 
-    public void StartPlacingShelfA() => shelfPlacementManager.SetCurrentShelfPrefab(shelfPrefabs[1]);
-    public void StartPlacingShelfB() => shelfPlacementManager.SetCurrentShelfPrefab(shelfPrefabs[2]);
+    public void placingApple() => shelfPlacementManager.SetCurrentShelfPrefab(shelfPrefabs[1]);
+    public void placingDurian() => shelfPlacementManager.SetCurrentShelfPrefab(shelfPrefabs[2]);
+    public void placingDragonFruit() => shelfPlacementManager.SetCurrentShelfPrefab(shelfPrefabs[3]);
+    public void placingHalbert() => shelfPlacementManager.SetCurrentShelfPrefab(shelfPrefabs[4]);
+    public void placingAxe() => shelfPlacementManager.SetCurrentShelfPrefab(shelfPrefabs[5]);
+    public void placingSword() => shelfPlacementManager.SetCurrentShelfPrefab(shelfPrefabs[6]);
+    public void placingLove() => shelfPlacementManager.SetCurrentShelfPrefab(shelfPrefabs[7]);
+    public void placingHaste() => shelfPlacementManager.SetCurrentShelfPrefab(shelfPrefabs[8]);
+    public void placingPoison() => shelfPlacementManager.SetCurrentShelfPrefab(shelfPrefabs[9]);
+    
     public void StartPlacingTable() => shelfPlacementManager.SetCurrentShelfPrefab(shelfPrefabs[0]);
 
     public void AddMoney(float amount) => money += amount;

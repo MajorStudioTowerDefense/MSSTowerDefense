@@ -261,7 +261,7 @@ MonoBehaviour:
   targetCompatibility: {fileID: 0}
   maxAcceleration: -2.5
   rotationSpeed: 360
-  slowdownDistance: 2.04
+  slowdownDistance: 1.19
   pickNextWaypointDist: 0.5
   endReachedDistance: 1.59
   alwaysDrawGizmos: 1
@@ -314,6 +314,11 @@ MonoBehaviour:
   carryMax: 3
   carryCount: 3
   stayShelfDuration: 5
+  employeeAreaOffsetXMax: 0.4
+  employeeAreaOffsetXMin: 0.2
+  employeeAreaOffsetYMin: 0.2
+  employeeAreaOffsetYMax: 0.8
+  myEmployeeAreaPos: {x: 0, y: 0, z: 0}
   shelfPlacementManager: {fileID: 0}
   eStage: 0
   eAction: 0
