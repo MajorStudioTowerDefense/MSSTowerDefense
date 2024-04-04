@@ -786,7 +786,7 @@ MonoBehaviour:
   gridBlockMain: {fileID: 0}
   gridBlockArray: []
   visibility: 3
-  purchaseRadius: 1
+  purchaseRadius: 1.5
   customerStayDuration: 8
   loadAmount: 3
   initalLoadAmount: 3
@@ -794,6 +794,7 @@ MonoBehaviour:
   loadAllowed: 1
   targetObjectName: TestShopExit
   costToBuy: 25
+  canvas: {fileID: 9144195484976279092}
   itemsCanBeSold:
   - {fileID: 11400000, guid: 3ef8a2d35256101438f7b6987a3c9964, type: 2}
   - {fileID: 11400000, guid: c868db8ccba8f71448fefe0093a480ee, type: 2}
@@ -801,7 +802,7 @@ MonoBehaviour:
   sellingItem: {fileID: 11400000, guid: 3ef8a2d35256101438f7b6987a3c9964, type: 2}
   thisType: 0
   costToMaintain: 5
-  purchasePower: 0
+  purchasePower: 5
   visibilityIndicator: {fileID: 1214488877365645690}
 --- !u!114 &3589884318226659849
 MonoBehaviour:
@@ -1015,7 +1016,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
+  m_SortingLayerID: -226443019
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &7114700789355187028

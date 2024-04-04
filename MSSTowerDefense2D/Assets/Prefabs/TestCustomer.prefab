@@ -300,9 +300,9 @@ MonoBehaviour:
   targetCompatibility: {fileID: 0}
   maxAcceleration: -2.5
   rotationSpeed: 360
-  slowdownDistance: 0.6
-  pickNextWaypointDist: 0.3
-  endReachedDistance: 0.2
+  slowdownDistance: 0.51
+  pickNextWaypointDist: 0.54
+  endReachedDistance: 0.79
   alwaysDrawGizmos: 1
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0
@@ -337,7 +337,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.69
 --- !u!114 &-726666408145361071
 MonoBehaviour:
   m_ObjectHideFlags: 0

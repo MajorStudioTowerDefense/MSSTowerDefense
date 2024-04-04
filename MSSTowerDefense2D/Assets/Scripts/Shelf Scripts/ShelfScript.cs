@@ -58,6 +58,8 @@ public class ShelfScript : MonoBehaviour
 
     [SerializeField] private float costToBuy;
 
+    public Canvas canvas;
+
     [Header("Items")]
     public List<Items> itemsCanBeSold;
     public Items sellingItem;
@@ -78,7 +80,7 @@ public class ShelfScript : MonoBehaviour
         loadAmount = initalLoadAmount;
 
         loadAmountText = GetComponentInChildren<TMP_Text>();
-
+        canvas.worldCamera = Camera.main;
 
         if (loadAmountText == null)
         {

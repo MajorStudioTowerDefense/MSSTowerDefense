@@ -233,21 +233,26 @@ public class PlayerInteraction : MonoBehaviour
                     button.onClick.RemoveAllListeners();
                     //根据不同货架类型显示不同的物品
                     shelvesType type = clickedShelfForEmployee.thisType;
-                    switch (type)
+                    foreach(Transform child in button.transform)
                     {
-                        case shelvesType.Shelf:
-                            button.GetComponentsInChildren<Image>()[1].sprite = ItemManager.Instance.shelfItemSprites[i];
-                            break;
-                        case shelvesType.HighShelf:
-                            button.GetComponentsInChildren<Image>()[1].sprite = ItemManager.Instance.shelfItemSprites[i+3];
-                            break;
-                        case shelvesType.Table:
-                            button.GetComponentsInChildren<Image>()[1].sprite = ItemManager.Instance.shelfItemSprites[i+6];
-                            break;
-                        case shelvesType.Rack:
-                            button.GetComponentsInChildren<Image>()[1].sprite = ItemManager.Instance.shelfItemSprites[i+9];
-                            break;
+                        Image image = child.GetComponent<Image>();
+                        switch (type)
+                        {
+                            case shelvesType.Shelf:
+                                image.sprite = ItemManager.Instance.shelfItemSprites[i];
+                                break;
+                            case shelvesType.HighShelf:
+                                image.sprite = ItemManager.Instance.shelfItemSprites[i + 3];
+                                break;
+                            case shelvesType.Table:
+                                image.sprite = ItemManager.Instance.shelfItemSprites[i + 6];
+                                break;
+                            case shelvesType.Rack:
+                                image.sprite = ItemManager.Instance.shelfItemSprites[i + 9];
+                                break;
+                        }
                     }
+                    
                     button.GetComponent<RectTransform>().anchoredPosition = new Vector2(-80 + i*80f, 110.4f);
                     goods product = clickedShelfForEmployee.itemsCanBeSold[i].GetItem();
                     button.onClick.AddListener(() => OnButtonClick(product));
@@ -264,7 +269,12 @@ public class PlayerInteraction : MonoBehaviour
                     if (i == 0)
                     {
                         button.gameObject.SetActive(true);
-                        button.GetComponentInChildren<Image>().sprite = ItemManager.Instance.shelfItemSprites[(int)clickedShelfForEmployee.sellingItem.GetItem()];
+                        foreach(Transform child in button.transform)
+                        {
+                            Image image = child.GetComponent<Image>();
+                            image.sprite = ItemManager.Instance.shelfItemSprites[(int)clickedShelfForEmployee.sellingItem.GetItem()];
+                        }
+                        
                     }else if (i != 0)
                     {
                         button.gameObject.SetActive(false);
