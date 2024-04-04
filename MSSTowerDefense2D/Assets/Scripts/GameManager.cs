@@ -168,7 +168,7 @@ public class GameManager : MonoBehaviour
         int wageCost = 0;
         foreach (var shelfScript in shelfScripts)
         {
-            shelfCost += shelfScript.maintainingCost;
+            shelfCost += shelfScript.costToMaintain;
         }
         foreach (var employee in employees)
         {

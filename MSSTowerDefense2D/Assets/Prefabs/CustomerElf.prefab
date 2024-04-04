@@ -390,7 +390,6 @@ MonoBehaviour:
   tags: 1
   needs:
   - {fileID: 11400000, guid: 3ef8a2d35256101438f7b6987a3c9964, type: 2}
-  - {fileID: 11400000, guid: c868db8ccba8f71448fefe0093a480ee, type: 2}
   selectedItem: {fileID: 0}
   nameText: {fileID: 8327674106412807263}
   budgetText: {fileID: 0}

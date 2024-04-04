@@ -1,11 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Progress;
 using Pathfinding;
 using System.Linq;
-using UnityEditor.SearchService;
 using TMPro;
+using static UnityEditor.Progress;
 
 public class CustomerData
 {
@@ -25,7 +24,7 @@ public class CustomerData
 
 public class ShelfScript : MonoBehaviour
 {
-    public string shelfType = "";
+    public string shelfTypeNameString = "";
     public int maxCustomers;
     private List<CustomerData> currentCustomersData = new List<CustomerData>();
     private int currentCustomers = 0;
@@ -55,40 +54,27 @@ public class ShelfScript : MonoBehaviour
 
     public string targetObjectName;
 
-    [SerializeField] private float cost;
-    public List<Items> sellingItems;
-    public float Cost { get { return cost; } }
+    SpriteRenderer spriteRenderer;
+
+    [SerializeField] private float costToBuy;
+
+    [Header("Items")]
+    public List<Items> itemsCanBeSold;
+    public Items sellingItem;
+    public shelvesType thisType;
+    private int currentStateIndex = -1; // 初始化为-1以确保在开始时更新sprite
+    public List<Sprite[]> threeStates; // 假设0=空，1=半满，2=满
+
+    public float Cost { get { return costToBuy; } }
 
     private TMP_Text loadAmountText;
+    [Space(10)]
+    public int costToMaintain = 5;
 
-    public int maintainingCost = 5;
-
-
-    //private void OnMouseDown()
-    //{
-    //    if (shelfUIScript = null)
-    //    {
-    //        shelfUIScript.currentShelf = gameObject;
-    //    }
-    //    else if ((shelfUIScript.currentShelf = gameObject) && verifyPlacement() == true)
-    //    {
-    //        shelfUIScript.currentShelf = null;
-    //    }
-    //    else if ((shelfUIScript.currentShelf = gameObject) && verifyPlacement() == false)
-    //    {
-    //        shelfUIScript.currentShelf = null;
-    //        deleteShelf();
-    //    }
-    //}
 
     void Start()
     {
-        //     CircleCollider2D circleCollider = gameObject.AddComponent<CircleCollider2D>();
-
-        //     circleCollider.isTrigger = true;
-
-        //     circleCollider.radius = shelfDetectionRange;
-
+        spriteRenderer = GetComponent<SpriteRenderer>();
         loadAmount = initalLoadAmount;
 
         loadAmountText = GetComponentInChildren<TMP_Text>();
@@ -98,58 +84,64 @@ public class ShelfScript : MonoBehaviour
         {
             Debug.LogError("TextMeshPro component not found on the child object!");
         }
+
+        threeStates = new List<Sprite[]>();
+        threeStates.Add(ShelfManager.Instance.shelfSpritesEmpty);
+        threeStates.Add(ShelfManager.Instance.shelfSpritesHalf);
+        threeStates.Add(ShelfManager.Instance.shelfSpritesFull);
+        
+        
+        
+        
     }
 
     void Update()
     {
         showVisibility();
         DetectAndManageCustomers();
-
+        updateSprite();
         if (loadAmountText != null)
         {
             loadAmountText.text = $"Load Amount: {loadAmount}";
         }
     }
 
-
-    private void sellInventory(GameObject item, GameObject customer)
+    void updateSprite()
     {
-        if (currentInventory == 2)
-        {
-            restockAlert();
-        }
-        else if (currentInventory > 2)
-        {
-            StopCoroutine(flash());
-        }
-        if (currentInventory > 0)
-        {
-            currentInventoryItems.Remove(item);
-            //currentInventoryItems.RemoveAll(x => x == null);
-            currentInventory = currentInventoryItems.Count;
-            makeCustomerLeave(customer);
-        }
-        if (currentInventory == 0)
-        {
-            StopCoroutine(flash());
-            SpriteRenderer renderer = GetComponent<SpriteRenderer>();
-            renderer.color = new Color(0, 0, 0);
-        }
-    }
+        int targetStateIndex;
 
-    private void restockAlert()
-    {
-        StartCoroutine(flash());
-    }
+        if (loadAmount == 0)
+        {
+            targetStateIndex = 0; 
+        }
+        else if (loadAmount > 0 && loadAmount < loadAmountMax / 2)
+        {
+            targetStateIndex = 1; 
+        }
+        else
+        {
+            targetStateIndex = 2; 
+        }
 
-    IEnumerator flash()
-    {
-        SpriteRenderer renderer = GetComponent<SpriteRenderer>();
-        renderer.color = new Color(1, 0, 0);
-        yield return new WaitForSeconds(0.5f);
-        renderer.color = new Color(1, 1, 1);
-        yield return new WaitForSeconds(0.5f);
-        StartCoroutine(flash());
+        // 如果目标sprite索引与当前不同，则更新sprite
+        if (targetStateIndex != currentStateIndex)
+        {
+           if(targetStateIndex == 0)
+            {
+                spriteRenderer.sprite = threeStates[targetStateIndex][(int)thisType];
+                currentStateIndex = targetStateIndex;
+            }
+            else if(targetStateIndex == 1)
+            {
+                spriteRenderer.sprite = threeStates[targetStateIndex][(int)sellingItem.GetItem()];
+                currentStateIndex = targetStateIndex;
+            }
+            else
+            {
+                spriteRenderer.sprite = threeStates[targetStateIndex][(int)sellingItem.GetItem()];
+                currentStateIndex = targetStateIndex;
+            }
+        }
     }
 
 
@@ -249,84 +241,7 @@ public class ShelfScript : MonoBehaviour
     {
         Destroy(gameObject);
     }
-    /*
-    void DetectAndManageCustomers()
-    {
-        AIDestinationSetter[] allAIDestinationSetters = FindObjectsOfType<AIDestinationSetter>();
-        GameObject shopExit = GameObject.Find("TestShopExit");
-        if (shopExit != null)
-        {
-            Transform originalDestination = shopExit.transform;
-        }
-        else
-        {
-            Debug.LogWarning("TestShopExit object not found in the scene.");
-        }
-
-        foreach (var aiDestinationSetter in allAIDestinationSetters)
-        {
-            // Skip customers that have been removed
-            if (removedCustomers.Contains(aiDestinationSetter)) continue;
-
-            float distance = Vector3.Distance(transform.position, aiDestinationSetter.transform.position);
-            Bot bot = aiDestinationSetter.gameObject.GetComponent<Bot>();
-
-            if (bot != null && distance <= visibility)
-            {
-                Debug.Log("Buying!");
-                bool itemMatch = IsSellingItem(bot.item);
-                var existingCustomerData = currentCustomersData.FirstOrDefault(c => c.aiDestinationSetter == aiDestinationSetter);
-
-                // If within range and item matches, and not already being processed
-                if (itemMatch && existingCustomerData == null && currentCustomersData.Count < maxCustomers && !bot.isPurchasing)
-                {
-                    Debug.Log("Comming!");
-                    aiDestinationSetter.target = transform;
-                    Transform originalDestination = shopExit.transform;
-
-                    if (distance <= purchaseRadius)
-                    {
-                        if (loadAmount > 0)
-                        {
-                            Debug.Log("Start Purchase!");
-                            bot.isPurchasing = true;
-                            var newCustomerData = new CustomerData(aiDestinationSetter, originalDestination, bot);
-                            currentCustomersData.Add(newCustomerData); // Add customer for processing
-                        }
-                        else
-                        {
-                            removedCustomers.Add(aiDestinationSetter);
-                            aiDestinationSetter.target = originalDestination;
-                        }
-                    }
-                }
-                // If the item doesn't match or max capacity reached, and the customer isn't already being processed
-                else
-                {
-                    removedCustomers.Add(aiDestinationSetter);
-                }
-            }
-        }
-
-        // Update time at shelf for customers and remove after duration
-        foreach (var customer in currentCustomersData.ToList())
-        {
-            if (loadAmount <= 0)
-            {
-                RemoveCustomer(customer);
-            }
-
-            customer.timeAtShelf += Time.deltaTime;
-            if (customer.timeAtShelf >= customerStayDuration && loadAmount > 0)
-            {
-                Purchase(customer);
-                Debug.Log("Customer leaves after buying or waiting.");
-            }
-        }
-    }*/
-
-
-
+    
     void DetectAndManageCustomers()
     {
         if (GameManager.instance.currentState != GameStates.STORE)
@@ -397,7 +312,7 @@ public class ShelfScript : MonoBehaviour
     {
         foreach (Items item in customerNeeds)
         {
-            Items wantedItem = sellingItems.FirstOrDefault(offeredItem => offeredItem.name == item.name);
+            Items wantedItem = sellingItem.GetItem() == item.GetItem() ?  sellingItem:null;
             if (wantedItem != null)
             {
                 return wantedItem;
@@ -406,13 +321,15 @@ public class ShelfScript : MonoBehaviour
         return null;
     }
 
-
+    [Header("Purchase")]
+    public float purchasePower = 0f;
+    
     void Purchase(CustomerData customerData)
     {
         loadAmount--;
         Bot customer = customerData.bot;
-        GameManager.instance.AddMoney(customer.botBudget);
-        Debug.Log("Finish purchase!" + customer.selectedItem);
+        GameManager.instance.AddMoney(ItemManager.Instance.GetPricePerUnit(sellingItem.GetItem()) + purchasePower);
+        Debug.Log("Finish purchase!" + customer.selectedItem.GetItem());
         customer.needs.Remove(customer.selectedItem);
         customer.selectedItem = null;
         RemoveCustomer(customerData);

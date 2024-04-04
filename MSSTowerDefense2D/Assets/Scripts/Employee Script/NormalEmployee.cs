@@ -49,17 +49,16 @@ public class NormalEmployee : Bot
     public Transform employeeArea;
 
     /////////////////////////////////
-
+    //the item needed to be carried
+    private goods itemNeeded;
 
 
     /////////////////////////////////
     //UI for employee
-    public Sprite[] carriedItemSprites;
     public SpriteRenderer carriedItemSprite;
     public SpriteRenderer carriedShelfSprite;
     public Canvas employeeCanvas;
     public Image employeeLoadingImage;
-    float loadingProgress = 0f;
     
 
     /////////////////////////////////
@@ -138,18 +137,15 @@ public class NormalEmployee : Bot
     }
  
 
-    public virtual void reloadShelf(ShelfScript shelf, int index)
+    public virtual void reloadShelf(ShelfScript shelf, goods product)
     {
-        //货架需要什么类型的货物的代码暂时留空
-        //////////////////////////////////////////
-        ///获取货物的名字，目前只有一种类型货物所以只有一个枚举，之后添加更多货物类型
-        ///There is only one type of goods so far, so only one enum is available. More goods types will be added later.
-        goods goodsName = shelf.sellingItems[index].GetItem();
-        carriedItemSprite.sprite = carriedItemSprites[(int)goodsName];
+        //获取货物枚举类型，附加到货架上
+        itemNeeded = product;
         //////////////////////////////////////////
         aiPath.canMove = true;
-        destinationSetter.target = shelf.gameObject.transform;
+        destinationSetter.targetPosition = shelf.gameObject.transform.position;
         NeededShelf = shelf;
+        carriedItemSprite.sprite = ItemManager.Instance.shelfItemSprites[(int)product];
         eStage = employeeStage.running;
 
     }
@@ -161,7 +157,7 @@ public class NormalEmployee : Bot
         aiPath.canMove = true;
         moveShelfNeeded = shelf;
         Debug.Log("moveShelfname = "+moveShelfNeeded.gameObject.name);
-        destinationSetter.target = shelf.transform;
+        destinationSetter.targetPosition = shelf.transform.position;
         aiPath.destination = shelf.transform.position;
         eStage = employeeStage.running;
         
@@ -170,12 +166,12 @@ public class NormalEmployee : Bot
 
     public virtual void onWayToGrabShelf()
     {
-        if(destinationSetter.target == moveShelfNeeded.transform && aiPath.reachedDestination)
+        if(destinationSetter.targetPosition == moveShelfNeeded.transform.position && aiPath.reachedDestination)
         {
             Debug.Log("Arrived at the shelf");
             carriedShelfSprite.sprite = moveShelfNeeded.GetComponent<SpriteRenderer>().sprite;
             moveShelfNeeded.gameObject.SetActive(false);
-            destinationSetter.target = shadowNeeded.transform;
+            destinationSetter.targetPosition = shadowNeeded.transform.position;
             eStage = employeeStage.finishing;
         }
         
@@ -183,7 +179,7 @@ public class NormalEmployee : Bot
 
     public virtual void onWayToMoveShelf()
     {
-        if (destinationSetter.target == shadowNeeded.transform && aiPath.reachedDestination)
+        if (destinationSetter.targetPosition == shadowNeeded.transform.position && aiPath.reachedDestination)
         {
             Debug.Log("Arrived at the shadow");
             moveShelfNeeded.gameObject.SetActive(true);
@@ -193,14 +189,14 @@ public class NormalEmployee : Bot
             carriedShelfSprite.sprite = null;
             Destroy(shadowNeeded);
             eStage = employeeStage.backToStandBy;
-            destinationSetter.target = employeeArea;
+            destinationSetter.targetPosition = employeeArea.position;
             aiPath.destination = employeeArea.position;
         }
     }
 
     public virtual void successReload()
     {
-        if(destinationSetter.target == NeededShelf.transform && aiPath.reachedDestination)
+        if(destinationSetter.targetPosition == NeededShelf.transform.position && aiPath.reachedDestination)
         {
             int actualIncrease = Mathf.Min(carryCount, NeededShelf.loadAmountMax - NeededShelf.loadAmount);
 
@@ -213,18 +209,27 @@ public class NormalEmployee : Bot
             }
             if (timeAtShelf >= stayShelfDuration && NeededShelf.loadAmount < NeededShelf.loadAmountMax)
             {
-                NeededShelf.loadAmount += actualIncrease;
-                carryCount -= actualIncrease;
-                eStage = employeeStage.backToStandBy;
-                destinationSetter.target = employeeArea;
-                carriedItemSprite.sprite = null;
-                timeAtShelf = 0;
+                foreach(Items items in NeededShelf.itemsCanBeSold)
+                {
+                    if(items.GetItem() == itemNeeded)
+                    {
+                        NeededShelf.loadAmount += actualIncrease;
+                        carryCount -= actualIncrease;
+                        eStage = employeeStage.backToStandBy;
+                        destinationSetter.targetPosition = employeeArea.position;
+                        carriedItemSprite.sprite = null;
+                        timeAtShelf = 0;
+                        NeededShelf.sellingItem = items;
+                        break;
+                    }
+                }
+
             }
             else if (NeededShelf.loadAmount == NeededShelf.loadAmountMax)
             {
                 carriedItemSprite.sprite = null;
                 Debug.Log("Load amount has reached its maximum.");
-                destinationSetter.target = employeeArea;
+                destinationSetter.targetPosition = employeeArea.position;
                 eStage = employeeStage.backToStandBy;
             }
         }
@@ -232,7 +237,7 @@ public class NormalEmployee : Bot
 
     public virtual void returnToStandBy()
     {
-        if(destinationSetter.target == employeeArea && aiPath.reachedDestination)
+        if(destinationSetter.targetPosition == employeeArea.position && aiPath.reachedDestination)
         {
             eStage = employeeStage.standBy;
             eAction = employeeAction.noAction;
