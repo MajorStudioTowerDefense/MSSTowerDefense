@@ -4,7 +4,7 @@ using UnityEngine;
 using Pathfinding;
 using System.Linq;
 using TMPro;
-using static UnityEditor.Progress;
+
 
 public class CustomerData
 {
