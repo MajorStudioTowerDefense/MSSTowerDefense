@@ -9,7 +9,7 @@ public class CrystalScript : MonoBehaviour
     void Start()
     {
         shelfScript = GetComponent<ShelfScript>();
-        shelfScript.shelfType = "CrystalScript";
+        shelfScript.shelfTypeNameString = "CrystalScript";
         shelfScript.maxCustomers = 30;
         shelfScript.maxInventory = 100;
         shelfScript.currentInventory = shelfScript.maxInventory;

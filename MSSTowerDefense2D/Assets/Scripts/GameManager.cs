@@ -166,7 +166,7 @@ public class GameManager : MonoBehaviour
         int shelfCost = 0;
         foreach (var shelfScript in shelfScripts)
         {
-            shelfCost += shelfScript.maintainingCost;
+            shelfCost += shelfScript.costToMaintain;
         }
         summaryPanel.SetActive(true);
         revenue = money - yesterdayMoney;

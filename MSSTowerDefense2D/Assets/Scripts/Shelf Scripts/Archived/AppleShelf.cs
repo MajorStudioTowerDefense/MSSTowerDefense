@@ -9,7 +9,7 @@ public class AppleShelf : MonoBehaviour
     void Start()
     {
         shelfScript = GetComponent<ShelfScript>();
-        shelfScript.shelfType = "AppleShelf";
+        shelfScript.shelfTypeNameString = "AppleShelf";
         shelfScript.maxCustomers = 10;
         shelfScript.maxInventory = 50;
         shelfScript.currentInventory = shelfScript.maxInventory;

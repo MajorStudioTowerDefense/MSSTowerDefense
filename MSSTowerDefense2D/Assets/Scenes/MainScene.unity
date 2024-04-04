@@ -2174,6 +2174,8 @@ GameObject:
   - component: {fileID: 404972024}
   - component: {fileID: 404972026}
   - component: {fileID: 404972027}
+  - component: {fileID: 404972028}
+  - component: {fileID: 404972029}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -2311,6 +2313,74 @@ MonoBehaviour:
   upgradeSystem: {fileID: 404972026}
   shelfStockButtons: []
   warningText: {fileID: 1104061735}
+--- !u!114 &404972028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404972022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 917647c69c405774b8db50aead59f75a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shelfItemSprites:
+  - {fileID: 364725445, guid: 0d95dbcb0bb034086b4457d2eb10474f, type: 3}
+  - {fileID: 2108015926, guid: 0d95dbcb0bb034086b4457d2eb10474f, type: 3}
+  - {fileID: -403530108, guid: 0d95dbcb0bb034086b4457d2eb10474f, type: 3}
+  - {fileID: 1460054977, guid: 0d95dbcb0bb034086b4457d2eb10474f, type: 3}
+  - {fileID: -2075407902, guid: 0d95dbcb0bb034086b4457d2eb10474f, type: 3}
+  - {fileID: -1691142603, guid: 0d95dbcb0bb034086b4457d2eb10474f, type: 3}
+  - {fileID: 1667404725, guid: 0d95dbcb0bb034086b4457d2eb10474f, type: 3}
+  - {fileID: 1078227714, guid: 0d95dbcb0bb034086b4457d2eb10474f, type: 3}
+  - {fileID: 172103224, guid: 0d95dbcb0bb034086b4457d2eb10474f, type: 3}
+  - {fileID: -268306503, guid: 0d95dbcb0bb034086b4457d2eb10474f, type: 3}
+  - {fileID: 1996806508, guid: 0d95dbcb0bb034086b4457d2eb10474f, type: 3}
+  - {fileID: 361853567, guid: 0d95dbcb0bb034086b4457d2eb10474f, type: 3}
+--- !u!114 &404972029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404972022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9b27db414a787f43a4732c978e83e64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shelfSpritesFull:
+  - {fileID: -1400449680, guid: 6bfb7f9ca296b4b3d8b5cfbc8a99fd13, type: 3}
+  - {fileID: -1853233486, guid: 6bfb7f9ca296b4b3d8b5cfbc8a99fd13, type: 3}
+  - {fileID: -2087046511, guid: 6bfb7f9ca296b4b3d8b5cfbc8a99fd13, type: 3}
+  - {fileID: 1953312374, guid: 0d95dbcb0bb034086b4457d2eb10474f, type: 3}
+  - {fileID: 1434143282, guid: 0d95dbcb0bb034086b4457d2eb10474f, type: 3}
+  - {fileID: 658733707, guid: 0d95dbcb0bb034086b4457d2eb10474f, type: 3}
+  - {fileID: 1294359460, guid: 6bfb7f9ca296b4b3d8b5cfbc8a99fd13, type: 3}
+  - {fileID: 817604204, guid: 6bfb7f9ca296b4b3d8b5cfbc8a99fd13, type: 3}
+  - {fileID: -300408480, guid: 6bfb7f9ca296b4b3d8b5cfbc8a99fd13, type: 3}
+  - {fileID: 1078424110, guid: 6bfb7f9ca296b4b3d8b5cfbc8a99fd13, type: 3}
+  - {fileID: 97574926, guid: 6bfb7f9ca296b4b3d8b5cfbc8a99fd13, type: 3}
+  - {fileID: 412905620, guid: 6bfb7f9ca296b4b3d8b5cfbc8a99fd13, type: 3}
+  shelfSpritesHalf:
+  - {fileID: -678836446, guid: 68e9892e96c80422cab613f8be0dc920, type: 3}
+  - {fileID: 933851504, guid: 68e9892e96c80422cab613f8be0dc920, type: 3}
+  - {fileID: 1943184432, guid: 68e9892e96c80422cab613f8be0dc920, type: 3}
+  - {fileID: -331419105, guid: 68e9892e96c80422cab613f8be0dc920, type: 3}
+  - {fileID: 1849208374, guid: 68e9892e96c80422cab613f8be0dc920, type: 3}
+  - {fileID: 224275601, guid: 68e9892e96c80422cab613f8be0dc920, type: 3}
+  - {fileID: 1431340816, guid: 68e9892e96c80422cab613f8be0dc920, type: 3}
+  - {fileID: 624465851, guid: 68e9892e96c80422cab613f8be0dc920, type: 3}
+  - {fileID: 1864297240, guid: 68e9892e96c80422cab613f8be0dc920, type: 3}
+  - {fileID: 615030519, guid: 68e9892e96c80422cab613f8be0dc920, type: 3}
+  - {fileID: -2093695892, guid: 68e9892e96c80422cab613f8be0dc920, type: 3}
+  - {fileID: -1360698410, guid: 68e9892e96c80422cab613f8be0dc920, type: 3}
+  shelfSpritesEmpty:
+  - {fileID: -577181077, guid: 0d95dbcb0bb034086b4457d2eb10474f, type: 3}
+  - {fileID: -385809783, guid: 0d95dbcb0bb034086b4457d2eb10474f, type: 3}
+  - {fileID: -1441473915, guid: 0d95dbcb0bb034086b4457d2eb10474f, type: 3}
+  - {fileID: 1303507441, guid: 0d95dbcb0bb034086b4457d2eb10474f, type: 3}
 --- !u!1 &415356305
 GameObject:
   m_ObjectHideFlags: 0
@@ -3076,7 +3146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -7325,8 +7395,10 @@ MonoBehaviour:
   - {fileID: 1261508828}
   - {fileID: 1261508827}
   audioSource: {fileID: 1261508831}
+  audioSource2: {fileID: 0}
   duration: 21
   Ticking: {fileID: 8300000, guid: 3c58293d8128c8c4a83f7ddceb6b83f2, type: 3}
+  StartShift: {fileID: 0}
 --- !u!82 &1261508823
 AudioSource:
   m_ObjectHideFlags: 0
@@ -10061,7 +10133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
