@@ -14,31 +14,30 @@ public class EmployeeTab : MonoBehaviour
 
     private void Start()
     {
-        ogPosition = GetComponent<RectTransform>().anchoredPosition;
+        ogPosition = rectTransform.GetComponent<RectTransform>().offsetMax;
         movePosition = new Vector2(0.2f, 0);
         newPosition = new Vector2(ogPosition.x - 100, ogPosition.y);
-
     }
 
      private void Update()
      {
-        currentPosition = rectTransform.anchoredPosition;
+        currentPosition = rectTransform.offsetMax;
     }
 
     public void MoveTab()
     {
        if (MoveOut == true)
        {
-           rectTransform.anchoredPosition += movePosition;
-           if (rectTransform.anchoredPosition.x < ogPosition.x)
+           rectTransform.offsetMax += movePosition;
+           if (rectTransform.offsetMax.x > ogPosition.x)
            {
                 MoveOut = false;
            }
        }
        else if (MoveIn == true)
        {
-            rectTransform.anchoredPosition -= movePosition;
-            if (rectTransform.anchoredPosition.x < newPosition.x)
+            rectTransform.offsetMin -= movePosition;
+            if (rectTransform.offsetMin.x < newPosition.x)
             {
                 MoveIn = false;
             }
@@ -47,11 +46,11 @@ public class EmployeeTab : MonoBehaviour
 
     public void ButtonClick()
     {
-        if (rectTransform.anchoredPosition.x > ogPosition.x)
+        if (rectTransform.offsetMax.x > ogPosition.x)
         {
             MoveIn = true;
         }
-        else if (rectTransform.anchoredPosition.x < newPosition.x)
+        else if (rectTransform.offsetMin.x < newPosition.x)
         {
             MoveOut = true;
         }
