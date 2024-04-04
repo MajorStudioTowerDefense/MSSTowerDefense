@@ -163,18 +163,23 @@ public class GameManager : MonoBehaviour
     private void SummaryOfTheDay()
     {
         ShelfScript[] shelfScripts = FindObjectsOfType<ShelfScript>();
+        NormalEmployee[] employees = FindObjectsOfType<NormalEmployee>();
         int shelfCost = 0;
+        int wageCost = 0;
         foreach (var shelfScript in shelfScripts)
         {
             shelfCost += shelfScript.costToMaintain;
         }
+        foreach (var employee in employees)
+        {
+            wageCost += 20;
+        }
         summaryPanel.SetActive(true);
         revenue = money - yesterdayMoney;
         rent = (gridCellHeight - 1) * (gridCellLength - 1) * 7;
-
-        summaryText[0].text = "Revenue Gained " + revenue + "\nShelf Maintaining Cost: " + shelfCost + "\nTotal: " + (revenue - shelfCost) + "\n\nEST. RENT DUE SUNDAY: " + rent;
-
-        money = money - shelfCost - (gridCellHeight - 1) * (gridCellLength - 1);
+        total = revenue - shelfCost - wageCost;
+        money += total;
+        summaryText[0].text = "Revenue Gained " + revenue + "\nSupplies for shelves: " + shelfCost + "\nEmployee Wages: " + wageCost + "\nTotal: " + total + "\n\nEST. RENT DUE SUNDAY: " + rent;
     }
 
     public void confirmSummary()
