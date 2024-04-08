@@ -8,7 +8,6 @@ public class UpgradeSystem : MonoBehaviour
 {
     [Header("Employee Settings")]
     public Transform EmployeeArea;
-    public Transform EmployeeArealocate;
     public GameObject[] employeePrefabs;
     public float employeePositionOffset;
     public List<GameObject> addEmployeeUseList = new List<GameObject>();
@@ -29,9 +28,8 @@ public class UpgradeSystem : MonoBehaviour
     }
     public void AddEmployee()
     {
-        GameObject emp = Instantiate(employeePrefabs[0], Vector3.zero, Quaternion.identity);
-        emp.GetComponent<NormalEmployee>().employeeArea = EmployeeArealocate;
-        emp.transform.position = emp.GetComponent<NormalEmployee>().randomOffsetPos();
+        Vector3 nextPos = new Vector3(addEmployeeUseList[addEmployeeUseList.Count - 1].transform.position.x + employeePositionOffset, addEmployeeUseList[addEmployeeUseList.Count - 1].transform.position.y, addEmployeeUseList[addEmployeeUseList.Count - 1].transform.position.z);
+        GameObject emp = Instantiate(employeePrefabs[0], nextPos, Quaternion.identity);
         emp.transform.SetParent(EmployeeArea.transform);
         
         addEmployeeUseList.Add(emp);

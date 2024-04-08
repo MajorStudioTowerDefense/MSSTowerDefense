@@ -9,7 +9,7 @@ public class RopeScript : MonoBehaviour
     void Start()
     {
         shelfScript = GetComponent<ShelfScript>();
-        shelfScript.shelfTypeNameString = "RopeScript";
+        shelfScript.shelfType = "RopeScript";
         shelfScript.maxCustomers = 30;
         shelfScript.maxInventory = 100;
         shelfScript.currentInventory = shelfScript.maxInventory;

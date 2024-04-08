@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+
+
 public enum employeeStage
 {
     standBy = 0,
@@ -34,13 +36,6 @@ public class NormalEmployee : Bot
     private float timeAtShelf = 0f;
     public float stayShelfDuration = 5f;
 
-    public float employeeAreaOffsetXMax = 2f;
-    public float employeeAreaOffsetXMin = 0.5f;
-    public float employeeAreaOffsetYMin = 0.4f;
-    public float employeeAreaOffsetYMax = 1.2f;
-    public Vector3 myEmployeeAreaPos = Vector3.zero;
-
-    private bool endStage = false;
 
     //check if the shelf is selected
     public ShelfPlacementManager shelfPlacementManager;
@@ -54,16 +49,17 @@ public class NormalEmployee : Bot
     public Transform employeeArea;
 
     /////////////////////////////////
-    //the item needed to be carried
-    private goods itemNeeded;
+
 
 
     /////////////////////////////////
     //UI for employee
+    public Sprite[] carriedItemSprites;
     public SpriteRenderer carriedItemSprite;
     public SpriteRenderer carriedShelfSprite;
     public Canvas employeeCanvas;
     public Image employeeLoadingImage;
+    float loadingProgress = 0f;
     
 
     /////////////////////////////////
@@ -86,31 +82,14 @@ public class NormalEmployee : Bot
 
     protected override void Update()
     {
+        Debug.Log("reachedDestination? "+aiPath.reachedDestination);
         base.Update();
-        if(GameManager.instance.currentState == GameStates.END)
-        {
-            if(endStage == false)
-            {
-                endStage = true;
-                aiPath.canMove = true;
-                myEmployeeAreaPos = randomOffsetPos();
-                destinationSetter.targetPosition = myEmployeeAreaPos;
-                carriedItemSprite.sprite = null;
-                carriedShelfSprite.sprite = null;
-                
-                eStage = employeeStage.backToStandBy;
-            }
-            if(eStage == employeeStage.backToStandBy)
-            {
-                returnToStandBy();
-            }
-            
-        }
+
         if (GameManager.instance.currentState != GameStates.STORE)
         {
             return;
         }
-        endStage = false;
+
         if (eStage == employeeStage.standBy)
         {
             if(sprite.color != Color.white)
@@ -149,27 +128,6 @@ public class NormalEmployee : Bot
 
     }
 
-    public Vector3 randomOffsetPos()
-    {
-        float possibilityX = Random.Range(0f, 1f);
-        float possibilityY = Random.Range(0f, 1f);
-        float xSign = 1;
-        float ySign = 1;
-        if(possibilityX < 0.5f)
-        {
-            xSign = -1;
-        }
-        if(possibilityY < 0.5f)
-        {
-            ySign = -1;
-        }
-        float offsetX = xSign * Random.Range(employeeAreaOffsetXMin, employeeAreaOffsetXMax);
-        float offsetY = ySign * Random.Range(employeeAreaOffsetYMin, employeeAreaOffsetYMax);
-        Vector2 offset = new Vector2(offsetX, offsetY);
-        Vector3 pos = employeeArea.position + (Vector3)offset;
-        return pos;
-    }
-
     void showSelectedUI()
     {
         if(sprite.color != Color.cyan)
@@ -180,16 +138,18 @@ public class NormalEmployee : Bot
     }
  
 
-    public virtual void reloadShelf(ShelfScript shelf, goods product)
+    public virtual void reloadShelf(ShelfScript shelf, int index)
     {
-        //获取货物枚举类型，附加到货架上
-        itemNeeded = product;
+        //货架需要什么类型的货物的代码暂时留空
+        //////////////////////////////////////////
+        ///获取货物的名字，目前只有一种类型货物所以只有一个枚举，之后添加更多货物类型
+        ///There is only one type of goods so far, so only one enum is available. More goods types will be added later.
+        goods goodsName = shelf.sellingItems[index].GetItem();
+        carriedItemSprite.sprite = carriedItemSprites[(int)goodsName];
         //////////////////////////////////////////
         aiPath.canMove = true;
-        destinationSetter.targetPosition = shelf.gameObject.transform.position;
+        destinationSetter.target = shelf.gameObject.transform;
         NeededShelf = shelf;
-        carriedItemSprite.sprite = ItemManager.Instance.shelfItemSprites[(int)product];
-        myEmployeeAreaPos = randomOffsetPos();
         eStage = employeeStage.running;
 
     }
@@ -201,21 +161,21 @@ public class NormalEmployee : Bot
         aiPath.canMove = true;
         moveShelfNeeded = shelf;
         Debug.Log("moveShelfname = "+moveShelfNeeded.gameObject.name);
-        destinationSetter.targetPosition = shelf.transform.position;
+        destinationSetter.target = shelf.transform;
         aiPath.destination = shelf.transform.position;
         eStage = employeeStage.running;
-        myEmployeeAreaPos = randomOffsetPos();
+        
         shadowNeeded = shadow;
     }
 
     public virtual void onWayToGrabShelf()
     {
-        if(destinationSetter.targetPosition == moveShelfNeeded.transform.position && aiPath.reachedDestination)
+        if(destinationSetter.target == moveShelfNeeded.transform && aiPath.reachedDestination)
         {
             Debug.Log("Arrived at the shelf");
             carriedShelfSprite.sprite = moveShelfNeeded.GetComponent<SpriteRenderer>().sprite;
             moveShelfNeeded.gameObject.SetActive(false);
-            destinationSetter.targetPosition = shadowNeeded.transform.position;
+            destinationSetter.target = shadowNeeded.transform;
             eStage = employeeStage.finishing;
         }
         
@@ -223,7 +183,7 @@ public class NormalEmployee : Bot
 
     public virtual void onWayToMoveShelf()
     {
-        if (destinationSetter.targetPosition == shadowNeeded.transform.position && aiPath.reachedDestination)
+        if (destinationSetter.target == shadowNeeded.transform && aiPath.reachedDestination)
         {
             Debug.Log("Arrived at the shadow");
             moveShelfNeeded.gameObject.SetActive(true);
@@ -233,14 +193,14 @@ public class NormalEmployee : Bot
             carriedShelfSprite.sprite = null;
             Destroy(shadowNeeded);
             eStage = employeeStage.backToStandBy;
-            destinationSetter.targetPosition = myEmployeeAreaPos;
-            aiPath.destination = myEmployeeAreaPos;
+            destinationSetter.target = employeeArea;
+            aiPath.destination = employeeArea.position;
         }
     }
 
     public virtual void successReload()
     {
-        if(destinationSetter.targetPosition == NeededShelf.transform.position && aiPath.reachedDestination)
+        if(destinationSetter.target == NeededShelf.transform && aiPath.reachedDestination)
         {
             int actualIncrease = Mathf.Min(carryCount, NeededShelf.loadAmountMax - NeededShelf.loadAmount);
 
@@ -253,27 +213,18 @@ public class NormalEmployee : Bot
             }
             if (timeAtShelf >= stayShelfDuration && NeededShelf.loadAmount < NeededShelf.loadAmountMax)
             {
-                foreach(Items items in NeededShelf.itemsCanBeSold)
-                {
-                    if(items.GetItem() == itemNeeded)
-                    {
-                        NeededShelf.loadAmount += actualIncrease;
-                        carryCount -= actualIncrease;
-                        eStage = employeeStage.backToStandBy;
-                        destinationSetter.targetPosition = myEmployeeAreaPos;
-                        carriedItemSprite.sprite = null;
-                        timeAtShelf = 0;
-                        NeededShelf.sellingItem = items;
-                        break;
-                    }
-                }
-
+                NeededShelf.loadAmount += actualIncrease;
+                carryCount -= actualIncrease;
+                eStage = employeeStage.backToStandBy;
+                destinationSetter.target = employeeArea;
+                carriedItemSprite.sprite = null;
+                timeAtShelf = 0;
             }
             else if (NeededShelf.loadAmount == NeededShelf.loadAmountMax)
             {
                 carriedItemSprite.sprite = null;
                 Debug.Log("Load amount has reached its maximum.");
-                destinationSetter.targetPosition = myEmployeeAreaPos;
+                destinationSetter.target = employeeArea;
                 eStage = employeeStage.backToStandBy;
             }
         }
@@ -281,7 +232,7 @@ public class NormalEmployee : Bot
 
     public virtual void returnToStandBy()
     {
-        if(destinationSetter.targetPosition == myEmployeeAreaPos && aiPath.reachedDestination)
+        if(destinationSetter.target == employeeArea && aiPath.reachedDestination)
         {
             eStage = employeeStage.standBy;
             eAction = employeeAction.noAction;

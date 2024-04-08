@@ -40,18 +40,14 @@ public class CustomerGenerator : MonoBehaviour
 
             if (customerPrefabs.Length > 1)
             {
-                // 60% chance for customerPrefabs[0], 20% chance for customerPrefabs[1], 20% chance for customerPrefabs[2]
-                if (chance < 0.6f) // 0.0 to 0.59... is 60% of the range
+                // 80% chance for customerPrefabs[0], 20% chance for customerPrefabs[1]
+                if (chance < 0.8f) // 0.0 to 0.79... is 80% of the range
                 {
                     customerPrefab = customerPrefabs[0];
                 }
-                else if (chance < 0.8f) //some more for the middle one cuz I added the third final customer sry if i leave the rest of the commented numbers wrong
-                {
-                    customerPrefab = customerPrefabs[1];
-                }
                 else // 0.8 to 1.0 is the remaining 20%
                 {
-                    customerPrefab = customerPrefabs[2];
+                    customerPrefab = customerPrefabs[1];
                 }
             }
             else

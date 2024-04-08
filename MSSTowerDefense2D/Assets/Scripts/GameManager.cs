@@ -20,7 +20,7 @@ public enum WallSide
 
 public class GameManager : MonoBehaviour
 {
-    public GridSystem gridSystem;
+    private GridSystem gridSystem;
     public ShelfPlacementManager shelfPlacementManager;
     public GameObject[] shelfPrefabs;
     public GameObject cellTilePrefab;
@@ -117,8 +117,8 @@ public class GameManager : MonoBehaviour
 
         GenerateGrid();
         GenerateWalls();
-        currentState = GameStates.PREP;
-        isTimer = true;
+        currentState = GameStates.PREP; 
+        isTimer = true; 
     }
 
     private void ReInitLevel()
@@ -163,23 +163,18 @@ public class GameManager : MonoBehaviour
     private void SummaryOfTheDay()
     {
         ShelfScript[] shelfScripts = FindObjectsOfType<ShelfScript>();
-        NormalEmployee[] employees = FindObjectsOfType<NormalEmployee>();
         int shelfCost = 0;
-        int wageCost = 0;
         foreach (var shelfScript in shelfScripts)
         {
-            shelfCost += shelfScript.costToMaintain;
-        }
-        foreach (var employee in employees)
-        {
-            wageCost += 20;
+            shelfCost += shelfScript.maintainingCost;
         }
         summaryPanel.SetActive(true);
         revenue = money - yesterdayMoney;
         rent = (gridCellHeight - 1) * (gridCellLength - 1) * 7;
-        total = revenue - shelfCost - wageCost;
-        money += total;
-        summaryText[0].text = "Revenue Gained " + revenue + "\nSupplies for shelves: " + shelfCost + "\nEmployee Wages: " + wageCost + "\nTotal: " + total + "\n\nEST. RENT DUE SUNDAY: " + rent;
+
+        summaryText[0].text = "Revenue Gained " + revenue + "\nShelf Maintaining Cost: " + shelfCost + "\nTotal: " + (revenue - shelfCost) + "\n\nEST. RENT DUE SUNDAY: " + rent;
+
+        money = money - shelfCost - (gridCellHeight - 1) * (gridCellLength - 1);
     }
 
     public void confirmSummary()
@@ -195,10 +190,10 @@ public class GameManager : MonoBehaviour
     }
     private void StartNextLevel()
     {
-        level++;
-        AdjustDifficulty();
+        level++; 
+        AdjustDifficulty(); 
         ReInitLevel();
-
+        
     }
 
     private void AdjustDifficulty()
@@ -239,8 +234,8 @@ public class GameManager : MonoBehaviour
                     prefabToInstantiate = entrancePrefab;
                 else if (y == gridCellHeight && exitSide == WallSide.Top && exitYPosition == x)
                     prefabToInstantiate = exitPrefab;
-                /*                else if (x == -1 || x == gridCellLength || y == -1 || y == gridCellHeight)
-                                    prefabToInstantiate = sideWallPrefab;*/
+/*                else if (x == -1 || x == gridCellLength || y == -1 || y == gridCellHeight)
+                    prefabToInstantiate = sideWallPrefab;*/
 
                 if (prefabToInstantiate != null)
                     Instantiate(prefabToInstantiate, position, Quaternion.identity, transform);
@@ -269,16 +264,8 @@ public class GameManager : MonoBehaviour
         Instantiate(bottomWallPrefab, bottomRight, Quaternion.identity, transform);
     }
 
-    public void placingApple() => shelfPlacementManager.SetCurrentShelfPrefab(shelfPrefabs[1]);
-    public void placingDurian() => shelfPlacementManager.SetCurrentShelfPrefab(shelfPrefabs[2]);
-    public void placingDragonFruit() => shelfPlacementManager.SetCurrentShelfPrefab(shelfPrefabs[3]);
-    public void placingHalbert() => shelfPlacementManager.SetCurrentShelfPrefab(shelfPrefabs[4]);
-    public void placingAxe() => shelfPlacementManager.SetCurrentShelfPrefab(shelfPrefabs[5]);
-    public void placingSword() => shelfPlacementManager.SetCurrentShelfPrefab(shelfPrefabs[6]);
-    public void placingLove() => shelfPlacementManager.SetCurrentShelfPrefab(shelfPrefabs[7]);
-    public void placingHaste() => shelfPlacementManager.SetCurrentShelfPrefab(shelfPrefabs[8]);
-    public void placingPoison() => shelfPlacementManager.SetCurrentShelfPrefab(shelfPrefabs[9]);
-    
+    public void StartPlacingShelfA() => shelfPlacementManager.SetCurrentShelfPrefab(shelfPrefabs[1]);
+    public void StartPlacingShelfB() => shelfPlacementManager.SetCurrentShelfPrefab(shelfPrefabs[2]);
     public void StartPlacingTable() => shelfPlacementManager.SetCurrentShelfPrefab(shelfPrefabs[0]);
 
     public void AddMoney(float amount) => money += amount;

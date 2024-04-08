@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -211,7 +210,6 @@ public class PlayerInteraction : MonoBehaviour
             //如果点击的货架不是当前选中的货架，则关闭按钮后切换货架
             else if(clickedShelfForEmployee != clicked.GetComponent<ShelfScript>())
             {
-                Debug.Log("switch shelf");
                 foreach (Button button in clickedShelfForEmployee.GetComponentsInChildren<Button>(true))
                 {
                     button.onClick.RemoveAllListeners();
@@ -222,76 +220,25 @@ public class PlayerInteraction : MonoBehaviour
             
             
             shelfStockButtons = clickedShelfForEmployee.GetComponentsInChildren<Button>(true);
+            for (int i = 0; i < shelfStockButtons.Length; i++)
+            {
+                Button button = shelfStockButtons[i];
+                button.gameObject.SetActive(true);
+                button.onClick.RemoveAllListeners();
 
-            //如果货架上没有物品则显示三个按钮
-            if(clickedShelfForEmployee.loadAmount == 0)
-            {
-                for (int i = 0; i < shelfStockButtons.Length; i++)
-                {
-                    Button button = shelfStockButtons[i];
-                    button.gameObject.SetActive(true);
-                    button.onClick.RemoveAllListeners();
-                    //根据不同货架类型显示不同的物品
-                    shelvesType type = clickedShelfForEmployee.thisType;
-                    foreach(Transform child in button.transform)
-                    {
-                        Image image = child.GetComponent<Image>();
-                        switch (type)
-                        {
-                            case shelvesType.Shelf:
-                                image.sprite = ItemManager.Instance.shelfItemSprites[i];
-                                break;
-                            case shelvesType.HighShelf:
-                                image.sprite = ItemManager.Instance.shelfItemSprites[i + 3];
-                                break;
-                            case shelvesType.Table:
-                                image.sprite = ItemManager.Instance.shelfItemSprites[i + 6];
-                                break;
-                            case shelvesType.Rack:
-                                image.sprite = ItemManager.Instance.shelfItemSprites[i + 9];
-                                break;
-                        }
-                    }
-                    
-                    button.GetComponent<RectTransform>().anchoredPosition = new Vector2(-80 + i*80f, 110.4f);
-                    goods product = clickedShelfForEmployee.itemsCanBeSold[i].GetItem();
-                    button.onClick.AddListener(() => OnButtonClick(product));
-                }
+                int index = i; // 捕获循环变量的当前值
+                button.onClick.AddListener(() => OnButtonClick(index));
             }
-            //如果货架上有物品则只显示一个按钮，读取当前货架物品
-            else
-            {
-                for (int i = 0; i < shelfStockButtons.Length; i++)
-                {
-                    Button button = shelfStockButtons[i];
-                    button.onClick.RemoveAllListeners();
-                    button.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 110.4f);
-                    if (i == 0)
-                    {
-                        button.gameObject.SetActive(true);
-                        foreach(Transform child in button.transform)
-                        {
-                            Image image = child.GetComponent<Image>();
-                            image.sprite = ItemManager.Instance.shelfItemSprites[(int)clickedShelfForEmployee.sellingItem.GetItem()];
-                        }
-                        
-                    }else if (i != 0)
-                    {
-                        button.gameObject.SetActive(false);
-                    }
-                    
-                    button.onClick.AddListener(() => OnButtonClick(clickedShelfForEmployee.sellingItem.GetItem()));
-                }
-            }
-            
         }
         
     }
 
-    public void OnButtonClick(goods product)
+    public void OnButtonClick(int index)
     {
+        Debug.Log("Button clicked: " + index);
         clickedEmployeeForEmployee.eAction = employeeAction.reload;
-        clickedEmployeeForEmployee.reloadShelf(clickedShelfForEmployee,product);
+        Debug.Log("clickedEmployee is" + clickedEmployeeForEmployee.gameObject.name);
+        clickedEmployeeForEmployee.reloadShelf(clickedShelfForEmployee,index);
         
         resetSomethingToDefault();
     }
