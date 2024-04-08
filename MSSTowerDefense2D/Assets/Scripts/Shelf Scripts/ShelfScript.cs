@@ -64,7 +64,7 @@ public class ShelfScript : MonoBehaviour
     public List<Items> itemsCanBeSold;
     public Items sellingItem;
     public shelvesType thisType;
-    private int currentStateIndex = -1; // 初始化为-1以确保在开始时更新sprite
+    private int currentStateIndex = -1; 
     public List<Sprite[]> threeStates; // 假设0=空，1=半满，2=满
 
     public float Cost { get { return costToBuy; } }
