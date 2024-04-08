@@ -94,11 +94,15 @@ public class AudioManager : MonoBehaviour
         // Stop the sound
         audioSource.Stop();
 
-        if(audioSource.stop())
-        {
-            audioSource2.Play();
+        //start the whistle
+        StartCoroutine(PlaySoundAfterDelay(20f));
 
-        }
+    }
+    //Play the whistle after 20 seconds
+    IEnumerator PlaySoundAfterDelay(float delay)
+    {   
+        yield return new WaitForSeconds(delay);
+        AudioSource.PlayClipAtPoint(Ticking, transform.position);
 
     }
 
