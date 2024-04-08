@@ -15,14 +15,12 @@ public class PauseScript : MonoBehaviour
     // Allow pathfinding to resume
     //graphLock.Release();
 
-    [SerializeField] GameObject popUp;
     [SerializeField] GameObject gameManager;
 
     public void pauseGame()
     {
         //stopAI();
         //disableShelves();
-        enableUI();
         Time.timeScale = 0.0f;
     }
 
@@ -30,7 +28,6 @@ public class PauseScript : MonoBehaviour
     {
         //startAI();
         //enableShelves();
-        disableUI();
         Time.timeScale = 1.0f;
     }
 
@@ -50,16 +47,6 @@ public class PauseScript : MonoBehaviour
         {
             bot.gameObject.GetComponent<IAstarAI>().canMove = true;
         }
-    }
-
-    private void enableUI()
-    {
-        popUp.SetActive(true);
-    }
-
-    private void disableUI()
-    {
-        popUp.SetActive(false);
     }
 
     private void disableShelves()
