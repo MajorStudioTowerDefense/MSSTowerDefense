@@ -6,7 +6,6 @@ public class AudioManager : MonoBehaviour
 {
 // Setting up the Audio Sources
     public static AudioManager instance;
-
     public AudioSource[] audioSources;
     public AudioSource audioSource;
     public AudioSource audioSource2;
@@ -59,8 +58,6 @@ public class AudioManager : MonoBehaviour
             }
         }
 
-   
-        
     }
 
     // Stop all audio sources
@@ -107,6 +104,5 @@ public class AudioManager : MonoBehaviour
         }  
 
     }
-   
 
 }
