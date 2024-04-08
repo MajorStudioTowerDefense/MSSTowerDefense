@@ -10,15 +10,16 @@ public class AudioManager : MonoBehaviour
     public AudioSource[] audioSources;
     public AudioSource audioSource;
     public AudioSource audioSource2;
-    public float duration = 21f;
+    public float duration = 10f;
     public AudioClip Ticking;
     public AudioClip StartShift;
-    
+    bool BeginShift; 
     //Assigning certain sounds to play for a limited amount of time
     private void Start()
     {
         audioSource.clip = Ticking;
         audioSource2.clip = StartShift;
+        BeginShift = false;
 
 
         // Calls up Stopping Coroutine
@@ -57,6 +58,9 @@ public class AudioManager : MonoBehaviour
                 return;
             }
         }
+
+   
+        
     }
 
     // Stop all audio sources
@@ -94,16 +98,15 @@ public class AudioManager : MonoBehaviour
         // Stop the sound
         audioSource.Stop();
 
-        //start the whistle
-        StartCoroutine(PlaySoundAfterDelay(20f));
+        BeginShift = true; 
+
+        if(BeginShift = true)
+        {
+          audioSource2.Play();
+
+        }  
 
     }
-    //Play the whistle after 20 seconds
-    IEnumerator PlaySoundAfterDelay(float delay)
-    {   
-        yield return new WaitForSeconds(delay);
-        AudioSource.PlayClipAtPoint(Ticking, transform.position);
-
-    }
+   
 
 }
