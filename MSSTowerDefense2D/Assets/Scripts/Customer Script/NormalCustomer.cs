@@ -10,11 +10,9 @@ public class NormalCustomer : Bot
     private bool movingToExit = false;
     public Vector3 currentDestination;
 
-    // Desired partition size
     public int areaPartitionSizeX = 2;
     public int areaPartitionSizeY = 2;
 
-    // Stop duration at each area
     private float stopDuration = 2.0f;
     private bool isWaiting = false;
 
@@ -50,7 +48,6 @@ public class NormalCustomer : Bot
             }
         }
 
-        // Initial shuffle
         unvisitedAreas = unvisitedAreas.OrderBy(a => Random.value).ToList();
     }
 
@@ -58,13 +55,12 @@ public class NormalCustomer : Bot
     {
         if (unvisitedAreas.Count > 0)
         {
-            unvisitedAreas = unvisitedAreas.OrderBy(a => Random.value).ToList(); // Example shuffle
+            unvisitedAreas = unvisitedAreas.OrderBy(a => Random.value).ToList();
 
-            // Set the first area as the current destination
             GridArea firstArea = unvisitedAreas[0];
             currentDestination = firstArea.CenterPosition;
             destinationSetter.targetPosition = currentDestination;
-            unvisitedAreas.RemoveAt(0); // Remove the first area from the list of unvisited areas
+            unvisitedAreas.RemoveAt(0);
 
             MoveToNextArea();
         }
@@ -131,15 +127,13 @@ public class NormalCustomer : Bot
     {
         if (unvisitedAreas.Count > 0)
         {
-            // If there are still areas to visit, set the next one as the destination
-            currentDestination = unvisitedAreas[0].CenterPosition; // Get the next area's center position
+            currentDestination = unvisitedAreas[0].CenterPosition;
         }
         else
         {
-            // If all areas have been visited, maybe set ShopExit or any other logic you need
             currentDestination = ShopExit.position;
         }
-        destinationSetter.targetPosition = currentDestination; // Update the destination setter
+        destinationSetter.targetPosition = currentDestination;
     }
 
     void MoveToExit()

@@ -65,7 +65,7 @@ public class ShelfScript : MonoBehaviour
     public Items sellingItem;
     public shelvesType thisType;
     private int currentStateIndex = -1; 
-    public List<Sprite[]> threeStates; // 假设0=空，1=半满，2=满
+    public List<Sprite[]> threeStates;
 
     public float Cost { get { return costToBuy; } }
 
@@ -125,7 +125,6 @@ public class ShelfScript : MonoBehaviour
             targetStateIndex = 2; 
         }
 
-        // 如果目标sprite索引与当前不同，则更新sprite
         if (targetStateIndex != currentStateIndex)
         {
            if(targetStateIndex == 0)
@@ -294,7 +293,7 @@ public class ShelfScript : MonoBehaviour
 
         }
         Debug.Log(currentCustomersData.ToList().Count);
-        // Update time at shelf for customers and remove after duration
+
         foreach (var customer in currentCustomersData.ToList())
         {
             if (loadAmount <= 0)
