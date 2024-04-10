@@ -201,10 +201,10 @@ public class GameManager : MonoBehaviour
 
     }
 
-/*    private void AdjustDifficulty()
+    private void AdjustDifficulty()
     {
         
-    }*/
+    }
 
     private void GenerateGrid()
     {
