@@ -19,7 +19,8 @@ public class FoodShelf : ShelfScript
     void Start()
     {
         acceptableNames.Add("Apple");
-        acceptableNames.Add("Pear");
+        acceptableNames.Add("DragonFruit");
+        acceptableNames.Add("Durian");
         shelfScript = GetComponent<ShelfScript>();
         level = UpgradeLevel.Low;
     }

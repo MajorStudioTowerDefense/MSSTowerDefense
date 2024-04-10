@@ -18,7 +18,7 @@ public class ValuableShelf : MonoBehaviour
 
     void Start()
     {
-        acceptableNames.Add("Fairydust");
+        acceptableNames.Add("UnicornHorn");
         acceptableNames.Add("Halo");
         acceptableNames.Add("Crystals");
         shelfScript = GetComponent<ShelfScript>();
