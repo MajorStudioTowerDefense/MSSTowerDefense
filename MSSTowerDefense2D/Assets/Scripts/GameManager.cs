@@ -2,6 +2,7 @@ using Pathfinding;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public enum GameStates
 {
@@ -35,6 +36,8 @@ public class GameManager : MonoBehaviour
     public float gridCellSize = 1f;
     public float money = 100;
     public float yesterdayMoney = 0;
+
+    private List<Dictionary<string, object>> room;
 
     public static GameManager instance { get; private set; }
     public GameStates currentState;
@@ -82,6 +85,7 @@ public class GameManager : MonoBehaviour
 
         //GenerateGrid();
         //GenerateWalls();
+        room = CSVReader.Read("");
     }
 
     private void Update()
