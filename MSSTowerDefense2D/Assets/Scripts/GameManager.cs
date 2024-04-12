@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour
 
         //GenerateGrid();
         //GenerateWalls();
-        room = CSVReader.Read("");
+        //room = CSVReader.Read("");
     }
 
     private void Update()
