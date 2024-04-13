@@ -832,7 +832,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1d538a75481f3480e9db0507f04b4a6b, type: 2}
   - {fileID: 11400000, guid: c868db8ccba8f71448fefe0093a480ee, type: 2}
   - {fileID: 11400000, guid: 1293b0fb25ae7334180721f08fcbfb19, type: 2}
-  sellingItem: {fileID: 11400000, guid: 3ef8a2d35256101438f7b6987a3c9964, type: 2}
+  sellingItem: {fileID: 11400000, guid: c868db8ccba8f71448fefe0093a480ee, type: 2}
   thisType: 0
   costToMaintain: 5
   purchasePower: 2
