@@ -5,24 +5,37 @@ using UnityEngine.UI;
 
 public class ShelfUI : MonoBehaviour
 {
-    public GameObject FruitShelves;
-    public GameObject WeaponShelves;
-    public GameObject Other;
+    //f is for fruit
+    public GameObject F1;
+    public GameObject F2;
+    public GameObject F3;
 
-    public GameObject FruitTab;
-    public GameObject WeaponTab;
-    public GameObject OtherTab;
+    //w is for weapon
+    public GameObject W1;
+    public GameObject W2;
+    public GameObject W3;
+
+    //p is for potion
+    public GameObject P1;
+    public GameObject P2;
+    public GameObject P3;
+
     public GameObject ToDisable;
 
-    private List<GameObject> tabs;
-    private List<GameObject> tabButtons;
+ 
+    private List<GameObject> fruits; //shut up
+    private List<GameObject> weapons;
+    private List<GameObject> potions;
 
 
     private void Start()
     {
-        tabs = new List<GameObject>() { FruitShelves, WeaponShelves, Other};
-        tabButtons = new List<GameObject>() { FruitTab, WeaponTab, OtherTab };
+        fruits = new List<GameObject>() { F1, F2, F3};
+        weapons = new List<GameObject>() { W1, W2, W3 };
         FruitShelvesOn();
+        WeaponShelvesOn();
+        PotionShelvesOn();
+        //remove these one level building becomes a thing, will probably need to make structure edits
     }
 
     private void Update()
@@ -39,37 +52,34 @@ public class ShelfUI : MonoBehaviour
 
     public void FruitShelvesOn()
     {
-        Reset();
-        FruitShelves.SetActive(true);
-        FruitTab.GetComponent<Image>().color = Color.white;
+        foreach (GameObject fruit in fruits)
+        {
+            fruit.SetActive(true);
+        }
+        
     }
 
     public void WeaponShelvesOn()
     {
-        Reset();
-        WeaponShelves.SetActive(true);
-        WeaponTab.GetComponent<Image>().color = Color.white;
+        foreach (GameObject weapon in weapons)
+        {
+            weapon.SetActive(true);
+        }
 
     }
 
-    public void OtherOn()
+    public void PotionShelvesOn()
     {
-        Reset();
-        Other.SetActive(true);
-        OtherTab.GetComponent<Image>().color = Color.white;
+        foreach (GameObject potion in potions)
+        {
+            potion.SetActive(true);
+        }
 
 
     }
 
     public void Reset()
     {
-        foreach (GameObject tab in tabs)
-        {
-            tab.SetActive(false);
-        }
-        foreach (GameObject tabButton in tabButtons)
-        {
-            tabButton.GetComponent<Image>().color = Color.grey;
-        }
+        //nothing to reset anymore but will leave it here just in case;
     }
 }

@@ -16,12 +16,16 @@ public class PauseScript : MonoBehaviour
     //graphLock.Release();
 
     [SerializeField] GameObject gameManager;
+    [SerializeField] GameObject play, pause;
+
 
     public void pauseGame()
     {
         //stopAI();
         //disableShelves();
         Time.timeScale = 0.0f;
+        play.SetActive(true);
+        pause.SetActive(false);
     }
 
     public void resumeGame()
@@ -29,6 +33,8 @@ public class PauseScript : MonoBehaviour
         //startAI();
         //enableShelves();
         Time.timeScale = 1.0f;
+        pause.SetActive(true);
+        play.SetActive(false);
     }
 
     private void stopAI()
