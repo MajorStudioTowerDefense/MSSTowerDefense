@@ -208,6 +208,8 @@ public class GameManager : MonoBehaviour
         level++;
         AdjustDifficulty();
         ReInitLevel();
+        GameObject.Find("TheBar").GetComponent<TimeBarUI>().startCo();
+        
 
     }
 

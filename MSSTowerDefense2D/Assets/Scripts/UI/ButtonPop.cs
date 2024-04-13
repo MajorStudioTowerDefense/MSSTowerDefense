@@ -7,6 +7,14 @@ using UnityEngine.SceneManagement;
 
 public class ButtonPop : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+
+    Vector2 orgSize;
+
+    public void Start()
+    {
+        orgSize = transform.localScale;
+    }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         transform.localScale = new Vector2(transform.localScale.x * 1.1f, transform.localScale.y * 1.1f);
@@ -32,5 +40,10 @@ public class ButtonPop : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public void NewGame()
     {
 
+    }
+
+    private void OnDisable()
+    {
+        transform.localPosition = orgSize;
     }
 }
