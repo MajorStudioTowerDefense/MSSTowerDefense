@@ -266,7 +266,7 @@ MonoBehaviour:
   WalkingHeavy: {fileID: 0}
   Walking: {fileID: 0}
   thump: {fileID: 0}
-  maxPatience: 30
+  maxPatience: 35
   patienceSpriteRenderer: {fileID: 1122669741261647094}
 --- !u!82 &-1235564854328231557
 AudioSource:

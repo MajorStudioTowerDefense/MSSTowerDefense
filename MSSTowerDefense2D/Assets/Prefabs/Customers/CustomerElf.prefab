@@ -403,7 +403,7 @@ MonoBehaviour:
   WalkingHeavy: {fileID: 0}
   Walking: {fileID: 0}
   thump: {fileID: 0}
-  maxPatience: 30
+  maxPatience: 35
   patienceSpriteRenderer: {fileID: 6956124681929144039}
 --- !u!114 &-9108921441225004776
 MonoBehaviour:

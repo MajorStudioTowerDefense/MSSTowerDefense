@@ -14,6 +14,10 @@ public class ShelfPlacementManager : MonoBehaviour
     private bool isShelfGridCreated = false;
     public AudioClip ShelfPlaced;
 
+    private int alternativeAreaWidth;
+    private int alternativeAreaHeight;
+    private int alternativeAreaStartX = 0;
+    private int alternativeAreaStartY;
 
     private void Awake()
     {
@@ -29,7 +33,10 @@ public class ShelfPlacementManager : MonoBehaviour
 
     private void Start()
     {
-        
+        alternativeAreaWidth = GameManager.instance.alternativeAreaWidth; 
+        alternativeAreaHeight = GameManager.instance.alternativeAreaHeight;
+
+        alternativeAreaStartY = gridSystem.GetHeight() - alternativeAreaHeight;
     }
 
     private void Update()
@@ -78,6 +85,21 @@ public class ShelfPlacementManager : MonoBehaviour
                         for (int y = 0; y < gridSystem.GetHeight(); y++)
                         {
                             shelfPlacementGrid[x, y] = false;
+                        }
+                    }
+                    for (int x = 0; x < gridSystem.GetWidth(); x++)
+                    {
+                        for (int y = 0; y < gridSystem.GetHeight(); y++)
+                        {
+                            if (x >= alternativeAreaStartX && x < alternativeAreaStartX + alternativeAreaWidth &&
+                                y >= alternativeAreaStartY && y < alternativeAreaStartY + alternativeAreaHeight)
+                            {
+                                shelfPlacementGrid[x, y] = true;
+                            }
+                            else
+                            {
+                                shelfPlacementGrid[x, y] = false;
+                            }
                         }
                     }
                     isShelfGridCreated = true;

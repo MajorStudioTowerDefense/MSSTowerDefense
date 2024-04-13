@@ -31,11 +31,15 @@ public class GameManager : MonoBehaviour
     public GameObject bottomWallPrefab;
     public GameObject entrancePrefab;
     public GameObject exitPrefab;
+    public GameObject alternativeCellTilePrefab;
+    
 
-    public int gridCellLength = 10, gridCellHeight = 10;
+    [Header("Level Initialization Perameters")]
+    public int gridCellLength = 10;
+    public int gridCellHeight = 10;
     public float gridCellSize = 1f;
-    public float money = 100;
-    public float yesterdayMoney = 0;
+    public int alternativeAreaWidth = 3;
+    public int alternativeAreaHeight = 2;
 
     private List<Dictionary<string, object>> room;
 
@@ -48,6 +52,8 @@ public class GameManager : MonoBehaviour
     public float revenue;
     public float total;
     public float rent;
+    public float money = 100;
+    public float yesterdayMoney = 0;
 
     [Header("Clock Settings")]
     [HideInInspector] public float timer;
@@ -217,7 +223,14 @@ public class GameManager : MonoBehaviour
             for (int y = 0; y < gridCellHeight; y++)
             {
                 Vector3 cellPosition = gridSystem.GetWorldPosition(x, y) + new Vector3(gridCellSize, gridCellSize) * 0.5f;
-                Instantiate(cellTilePrefab, cellPosition, Quaternion.identity, transform);
+                GameObject prefabToUse = cellTilePrefab;
+
+                if (x < alternativeAreaWidth && y >= gridCellHeight - alternativeAreaHeight)
+                {
+                    prefabToUse = alternativeCellTilePrefab;
+                }
+
+                Instantiate(prefabToUse, cellPosition, Quaternion.identity, transform);
             }
         }
     }
