@@ -23,9 +23,14 @@ public class NormalCustomer : Bot
 
     public AudioClip thump;
 
+    public float maxPatience = 30f;
+    private float patience;
+    public SpriteRenderer patienceSpriteRenderer;
+
     void Start()
     {
         base.init();
+        patience = maxPatience;
         ShopExit = GameObject.FindGameObjectWithTag("Exit").transform;
         InitializeAreas();
         SetFirstAreaDestination();
@@ -70,6 +75,14 @@ public class NormalCustomer : Bot
     {
         base.Update();
 
+        if (patience <= 0)
+        {
+            MoveToExit();
+            return; 
+        }
+
+        UpdateColorBasedOnPatience();
+
         switch (bot.isPurchasing)
         {
             case false:
@@ -84,8 +97,28 @@ public class NormalCustomer : Bot
             MoveToExit();
             AudioManager.instance.PlaySound(thump);
         }
+    }
 
-        Debug.Log("Count: " + unvisitedAreas.Count);
+    void UpdateColorBasedOnPatience()
+    {
+        float normalizedPatience = patience / maxPatience;
+
+        Color green = Color.green;
+        Color yellow = Color.yellow;
+        Color red = Color.red;
+
+        Color targetColor;
+
+        if (normalizedPatience > 0.5f)
+        {
+            targetColor = Color.Lerp(yellow, green, (normalizedPatience - 0.5f) * 2);
+        }
+        else
+        {
+            targetColor = Color.Lerp(red, yellow, normalizedPatience * 2);
+        }
+
+        patienceSpriteRenderer.color = targetColor;
     }
 
     void PerformWonderingActions()
@@ -108,7 +141,23 @@ public class NormalCustomer : Bot
         isWaiting = true;
         yield return new WaitForSeconds(duration);
         isWaiting = false;
-        MoveToNextArea();
+        if (!bot.isPurchasing)
+        {
+            patience -= 10; 
+        }
+        else
+        {
+            patience += 5;
+        }
+
+        if (patience <= 0)
+        {
+            MoveToExit();
+        }
+        else
+        {
+            MoveToNextArea();
+        }
     }
 
     void MoveToNextArea()
