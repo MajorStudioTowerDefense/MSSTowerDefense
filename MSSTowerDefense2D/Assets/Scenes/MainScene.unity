@@ -685,7 +685,6 @@ MonoBehaviour:
   rectTransform: {fileID: 698006376}
   ogPosition: {x: 0, y: 0}
   newPosition: {x: 0, y: 0}
-  movePosition: {x: 0, y: 0}
   currentPosition: {x: 0, y: 0}
 --- !u!1 &121916735
 GameObject:
@@ -2663,7 +2662,7 @@ MonoBehaviour:
   gridCellHeight: 9
   gridCellSize: 1
   alternativeAreaWidth: 3
-  alternativeAreaHeight: 2
+  alternativeAreaHeight: 3
   currentState: 0
   exit: {fileID: 0}
   revenue: 0
