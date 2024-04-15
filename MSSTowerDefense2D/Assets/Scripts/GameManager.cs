@@ -78,7 +78,9 @@ public class GameManager : MonoBehaviour
         //timer = InitialTime.x * 60 + InitialTime.y;
 
         //GenerateGrid();
-        //GenerateWalls();
+        //GenerateWalls();\
+
+        FindObjectOfType<AstarPath>().Scan();
     }
 
     private void Update()

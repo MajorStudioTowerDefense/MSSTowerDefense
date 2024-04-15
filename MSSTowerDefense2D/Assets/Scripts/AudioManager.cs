@@ -89,7 +89,8 @@ public class AudioManager : MonoBehaviour
  IEnumerator StopSoundAfterDelay()
     {
         // Wait for 'duration' seconds
-        yield return new WaitForSeconds(ClockDisplayUI.currentTime = 18);
+        yield return null;
+        //yield return new WaitForSeconds(ClockDisplayUI.currentTime = 18);
 
         // Stop the sound
         audioSource.Stop();
