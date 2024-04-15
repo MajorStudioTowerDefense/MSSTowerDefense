@@ -33,14 +33,15 @@ public class ShelfPlacementManager : MonoBehaviour
 
     private void Start()
     {
-        alternativeAreaWidth = GameManager.instance.alternativeAreaWidth; 
-        alternativeAreaHeight = GameManager.instance.alternativeAreaHeight;
-
-        alternativeAreaStartY = gridSystem.GetHeight() - alternativeAreaHeight;
+        
     }
 
     private void Update()
     {
+        alternativeAreaWidth = GameManager.instance.alternativeAreaWidth;
+        alternativeAreaHeight = GameManager.instance.alternativeAreaHeight;
+        alternativeAreaStartY = gridSystem.GetHeight() - alternativeAreaHeight;
+
         if (GameManager.instance.currentState == GameStates.STORE)
         {
             return;
@@ -85,21 +86,6 @@ public class ShelfPlacementManager : MonoBehaviour
                         for (int y = 0; y < gridSystem.GetHeight(); y++)
                         {
                             shelfPlacementGrid[x, y] = false;
-                        }
-                    }
-                    for (int x = 0; x < gridSystem.GetWidth(); x++)
-                    {
-                        for (int y = 0; y < gridSystem.GetHeight(); y++)
-                        {
-                            if (x >= alternativeAreaStartX && x < alternativeAreaStartX + alternativeAreaWidth &&
-                                y >= alternativeAreaStartY && y < alternativeAreaStartY + alternativeAreaHeight)
-                            {
-                                shelfPlacementGrid[x, y] = true;
-                            }
-                            else
-                            {
-                                shelfPlacementGrid[x, y] = false;
-                            }
                         }
                     }
                     isShelfGridCreated = true;
@@ -281,7 +267,13 @@ public class ShelfPlacementManager : MonoBehaviour
 
     private bool IsWithinGrid(int x, int y)
     {
-        // Check if the x and y coordinates are within the grid bounds
-        return x >= 0 && y >= 0 && x < gridSystem.GetWidth() && y < gridSystem.GetHeight();
+        bool isWithinBasicGrid = x >= 1 && y >= 1 && x < gridSystem.GetWidth() && y < gridSystem.GetHeight();
+
+        bool isInRestrictedArea = x >= alternativeAreaStartX && x < alternativeAreaStartX + alternativeAreaWidth + 1 &&
+                                  y >= alternativeAreaStartY + 1 && y < alternativeAreaStartY + alternativeAreaHeight;
+
+        Debug.Log("Employee Area Width: " + alternativeAreaWidth);
+
+        return isWithinBasicGrid && !isInRestrictedArea;
     }
 }

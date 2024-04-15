@@ -12,13 +12,6 @@ public enum GameStates
     LOOP
 }
 
-public enum WallSide
-{
-    Top,
-    Left,
-    Right
-}
-
 public class GameManager : MonoBehaviour
 {
     public GridSystem gridSystem;
@@ -41,7 +34,7 @@ public class GameManager : MonoBehaviour
     public int alternativeAreaWidth = 3;
     public int alternativeAreaHeight = 2;
 
-    private List<Dictionary<string, object>> room;
+    private List<List<string>> room;
 
     public static GameManager instance { get; private set; }
     public GameStates currentState;
@@ -63,12 +56,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Vector2 endTime;
     [SerializeField] private Vector2 InitialTime;
 
-    [Header("Entrance & Exit Settings")]
-    public WallSide entranceSide;
-    public WallSide exitSide;
-    public int entranceYPosition;
-    public int exitYPosition;
-
     [Header("Game Loop Settings")]
     [SerializeField] private int level = 1;
     [SerializeField] private float difficultyFactor = 1.2f;
@@ -80,6 +67,7 @@ public class GameManager : MonoBehaviour
             instance = this;
         }
         else Destroy(this.gameObject);
+        room = CSVReader.Read("LevelEditor");
     }
 
     private void Start()
@@ -91,7 +79,6 @@ public class GameManager : MonoBehaviour
 
         //GenerateGrid();
         //GenerateWalls();
-        //room = CSVReader.Read("");
     }
 
     private void Update()
@@ -125,7 +112,14 @@ public class GameManager : MonoBehaviour
         shelfPlacementManager.gridSystem = gridSystem;
         timer = InitialTime.x * 60 + InitialTime.y;
 
-        GenerateGrid();
+        for (int i = 0; i < room.Count; i++)
+        {
+            for (int j = 0; j < room[i].Count; j++)
+            {
+                Debug.Log(room[i][j]);
+            }
+        }
+
         GenerateWalls();
         currentState = GameStates.PREP;
         isTimer = true;
@@ -218,6 +212,7 @@ public class GameManager : MonoBehaviour
         
     }
 
+    /*
     private void GenerateGrid()
     {
         for (int x = 0; x < gridCellLength; x++)
@@ -236,56 +231,44 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+    */
 
     private void GenerateWalls()
     {
-        for (int x = -1; x < gridCellLength + 1; x++)
+        for (int y = 0; y < room.Count; y++)
         {
-            for (int y = -1; y < gridCellHeight + 1; y++)
+            for (int x = 0; x < room[y].Count; x++)
             {
                 Vector3 position = gridSystem.GetWorldPosition(x, y) + new Vector3(gridCellSize, gridCellSize) * 0.5f;
                 GameObject prefabToInstantiate = null;
 
-                if (x == -1 && entranceSide == WallSide.Left && entranceYPosition == y)
-                    prefabToInstantiate = entrancePrefab;
-                else if (x == -1 && exitSide == WallSide.Left && exitYPosition == y)
-                    prefabToInstantiate = exitPrefab;
-                else if (x == gridCellLength && entranceSide == WallSide.Right && entranceYPosition == y)
-                    prefabToInstantiate = entrancePrefab;
-                else if (x == gridCellLength && exitSide == WallSide.Right && exitYPosition == y)
-                    prefabToInstantiate = exitPrefab;
-                else if (y == gridCellHeight && entranceSide == WallSide.Top && entranceYPosition == x)
-                    prefabToInstantiate = entrancePrefab;
-                else if (y == gridCellHeight && exitSide == WallSide.Top && exitYPosition == x)
-                    prefabToInstantiate = exitPrefab;
-                /*                else if (x == -1 || x == gridCellLength || y == -1 || y == gridCellHeight)
-                                    prefabToInstantiate = sideWallPrefab;*/
+                switch (room[y][x])
+                {
+                    case "t":
+                        prefabToInstantiate = cellTilePrefab;
+                        break;
+                    case "i":
+                        prefabToInstantiate = entrancePrefab;
+                        break;
+                    case "o":
+                        prefabToInstantiate = exitPrefab;
+                        break;
+                    case "tw":
+                        prefabToInstantiate = topWallPrefab;
+                        break;
+                    case "sw":
+                        prefabToInstantiate = sideWallPrefab;
+                        break;
+                    case "bw":
+                        prefabToInstantiate = bottomWallPrefab;
+                        break;
+
+                }
 
                 if (prefabToInstantiate != null)
                     Instantiate(prefabToInstantiate, position, Quaternion.identity, transform);
             }
         }
-
-        for (int x = 0; x < gridCellLength; x++)
-        {
-            Vector3 position = gridSystem.GetWorldPosition(x, gridCellHeight) + new Vector3(gridCellSize, gridCellSize) * 0.5f;
-            Instantiate(topWallPrefab, position, Quaternion.identity, transform);
-        }
-
-        for (int y = 1; y <= gridCellHeight; y++)
-        {
-            Vector3 leftPosition = gridSystem.GetWorldPosition(-1, y) + new Vector3(gridCellSize, gridCellSize) * 0.5f;
-            Instantiate(sideWallPrefab, leftPosition, Quaternion.identity, transform);
-
-            Vector3 rightPosition = gridSystem.GetWorldPosition(gridCellLength, y) + new Vector3(gridCellSize, gridCellSize) * 0.5f;
-            Instantiate(sideWallPrefab, rightPosition, Quaternion.identity, transform);
-        }
-
-        Vector3 bottomLeft = gridSystem.GetWorldPosition(-1, 0) + new Vector3(gridCellSize, gridCellSize) * 0.5f;
-        Instantiate(bottomWallPrefab, bottomLeft, Quaternion.identity, transform);
-
-        Vector3 bottomRight = gridSystem.GetWorldPosition(gridCellLength, 0) + new Vector3(gridCellSize, gridCellSize) * 0.5f;
-        Instantiate(bottomWallPrefab, bottomRight, Quaternion.identity, transform);
     }
 
     public void placingApple() => shelfPlacementManager.SetCurrentShelfPrefab(shelfPrefabs[1]);
