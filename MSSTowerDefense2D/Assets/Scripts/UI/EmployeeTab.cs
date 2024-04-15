@@ -7,52 +7,56 @@ public class EmployeeTab : MonoBehaviour
     public bool MoveOut = false;
     public bool MoveIn = false;
     public RectTransform rectTransform;
-    public Vector2 ogPosition;
-    public Vector2 newPosition;
-    public Vector2 movePosition;
-    public Vector2 currentPosition;
+    public Vector2 ogPosition, newPosition, currentPosition;
 
     private void Start()
     {
-        ogPosition = rectTransform.GetComponent<RectTransform>().offsetMax;
-        movePosition = new Vector2(0.2f, 0);
+        ogPosition = rectTransform.GetComponent<RectTransform>().position;
         newPosition = new Vector2(ogPosition.x - 100, ogPosition.y);
     }
 
      private void Update()
      {
-        currentPosition = rectTransform.offsetMax;
-    }
+        currentPosition = rectTransform.position;
+     }
 
     public void MoveTab()
     {
        if (MoveOut == true)
        {
-           rectTransform.offsetMax += movePosition;
-           if (rectTransform.offsetMax.x > ogPosition.x)
+           rectTransform.position += new Vector3(0.2f*Time.deltaTime, 0, 0);
+           if (rectTransform.position.x > ogPosition.x)
            {
                 MoveOut = false;
+                Debug.Log("hi");
            }
        }
        else if (MoveIn == true)
        {
-            rectTransform.offsetMin -= movePosition;
-            if (rectTransform.offsetMin.x < newPosition.x)
+            rectTransform.position -= new Vector3(0.2f * Time.deltaTime, 0, 0);
+            if (rectTransform.position.x < newPosition.x)
             {
                 MoveIn = false;
+                Debug.Log("die");
+
             }
         }
     }
 
     public void ButtonClick()
     {
-        if (rectTransform.offsetMax.x > ogPosition.x)
+        Debug.Log("enter");
+
+        if (currentPosition.x >= ogPosition.x)
         {
             MoveIn = true;
+            Debug.Log("didthing1");
         }
-        else if (rectTransform.offsetMin.x < newPosition.x)
+        else if (currentPosition.x <= newPosition.x)
         {
             MoveOut = true;
+            Debug.Log("didthing2");
+
         }
     }
 }
