@@ -97,7 +97,8 @@ public class NormalEmployee : Bot
                 destinationSetter.targetPosition = myEmployeeAreaPos;
                 carriedItemSprite.sprite = null;
                 carriedShelfSprite.sprite = null;
-                
+                //progress
+                employeeLoadingImage.fillAmount = 0;
                 eStage = employeeStage.backToStandBy;
             }
             if(eStage == employeeStage.backToStandBy)

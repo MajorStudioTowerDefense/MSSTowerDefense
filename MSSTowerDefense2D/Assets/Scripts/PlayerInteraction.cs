@@ -50,6 +50,11 @@ public class PlayerInteraction : MonoBehaviour
     }
     private void Update()
     {
+        if(GameManager.instance.currentState == GameStates.END)
+        {
+            ResetAllAtEndStage();
+            return;
+        }
         if (currentStage == interactionStage.primary) { assignPrimaryTask(); }
         if(currentStage == interactionStage.findTarget) { assignTaskTarget(); }
 
@@ -148,6 +153,7 @@ public class PlayerInteraction : MonoBehaviour
                 shadowShelf = Instantiate(shadowShelfPrefab, PrintMousePosition(), Quaternion.identity);
                 shadowShelf.GetComponent<SpriteRenderer>().sprite = clickedShelfForShelf.GetComponent<SpriteRenderer>().sprite;
                 clickedShelfForShelf.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.5f);
+                clickedShelfForShelf.gameObject.tag = "interactedShelf";
                 shelfPlacementManager.SetCurrentShelfInstance(shadowShelf);
                 if (mouseUIs.Length > 0)
                 {
@@ -410,6 +416,48 @@ public class PlayerInteraction : MonoBehaviour
             assignedTask = null;
             shelfPlacementManager.SetCurrentShelfInstance(null);
         }
+    }
+
+    private void ResetAllAtEndStage()
+    {
+        if (clickedEmployeeForEmployee != null)
+        {
+            clickedEmployeeForEmployee.eStage = employeeStage.standBy;
+            clickedEmployeeForEmployee.eAction = employeeAction.noAction;
+            clickedEmployeeForEmployee = null;
+            changeMouseUI(0);
+        }
+        if (shelfStockButtons != null)
+        {
+            foreach (Button button in shelfStockButtons)
+            {
+                button.onClick.RemoveAllListeners();
+                button.gameObject.SetActive(false);
+            }
+            shelfStockButtons = null;
+        }
+        if (clickedShelfForEmployee != null)
+        {
+            clickedShelfForEmployee = null;
+        }
+        if (clickedShelfForShelf != null)
+        {
+            clickedShelfForShelf.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+            clickedShelfForShelf.loadAllowed = true;
+            clickedShelfForShelf = null;
+        }
+        if (shadowShelf != null)
+        {
+            Destroy(shadowShelf);
+            shadowShelf = null;
+        }
+        if(GameObject.Find("ShadowShelf(Clone)") != null)
+        {
+            Destroy(GameObject.Find("ShadowShelf(Clone)"));
+        }
+        changeMouseUI(0);
+        assignedTask = null;
+        shelfPlacementManager.SetCurrentShelfInstance(null);
     }
     void changeMouseUI(int index)
     {
