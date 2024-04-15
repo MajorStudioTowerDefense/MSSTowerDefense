@@ -8,6 +8,7 @@ TagManager:
   - target
   - Exit
   - interactedShelf
+  - Timer
   layers:
   - Default
   - TransparentFX
