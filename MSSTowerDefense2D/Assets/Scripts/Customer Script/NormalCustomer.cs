@@ -97,6 +97,14 @@ public class NormalCustomer : Bot
             MoveToExit();
             AudioManager.instance.PlaySound(thump);
         }
+
+        float distance = Vector3.Distance(transform.position, ShopExit.position);
+        Debug.Log(gameObject.name + " distance from exit: " + distance);
+
+        if (Vector3.Distance(transform.position, ShopExit.position) <= 1f)
+        {
+            Destroy(gameObject);
+        }
     }
 
     void UpdateColorBasedOnPatience()
