@@ -29,7 +29,8 @@ namespace HSVStudio.Tutorial
         Manual,
         Collider,
         UI,
-        KeyCode
+        KeyCode,
+        TagDetection
     }
 
     public enum PointerTrigger

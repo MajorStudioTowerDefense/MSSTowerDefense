@@ -17,6 +17,7 @@ namespace HSVStudio.Tutorial
         public HSVGraphicConfig graphicConfig;
         //if set to keycode, when key is pressed, it triggers event
         public KeyCode keyCode;
+        public HSVTagConfig tagConfig;
 
         public HSVTriggerConfig()
         {
@@ -24,6 +25,7 @@ namespace HSVStudio.Tutorial
             colliderConfig = new HSVColliderConfig();
             graphicConfig = new HSVGraphicConfig();
             keyCode = KeyCode.None;
+            tagConfig = new HSVTagConfig();
         }
 
         public HSVTriggerConfig(HSVTriggerConfig trigger)
@@ -32,6 +34,7 @@ namespace HSVStudio.Tutorial
             colliderConfig = HSVTutorialManager.JsonCopy(trigger.colliderConfig);
             graphicConfig = HSVTutorialManager.JsonCopy(trigger.graphicConfig);
             keyCode = trigger.keyCode;
+            tagConfig = HSVTutorialManager.JsonCopy(trigger.tagConfig);
         }
     }
 
@@ -80,5 +83,11 @@ namespace HSVStudio.Tutorial
             graphic = null;
             pointerTrigger = PointerTrigger.PointerClick;
         }
+    }
+
+    [Serializable]
+    public class HSVTagConfig
+    {
+        public string targetTag = "Customer"; 
     }
 }

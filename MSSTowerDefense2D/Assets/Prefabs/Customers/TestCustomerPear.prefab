@@ -51,7 +51,7 @@ GameObject:
   - component: {fileID: 7943251442694473406}
   m_Layer: 0
   m_Name: TestCustomerPear
-  m_TagString: Untagged
+  m_TagString: Customer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assignOnRuntime: 1
   targetCamera:
-    exposedName: ed8d65c94f998b442a86c9e1c031591e
+    exposedName: d860dd9a4abe8464bb00fb88dcd08863
     defaultValue: {fileID: 0}
   targetCanvas:
-    exposedName: 7937bf0442348ba488fe4f599a4dca6c
+    exposedName: 10be180ebdc92cb42998194ef835a10f
     defaultValue: {fileID: 0}
   autoStart: 1
   autoStartIndex: -1
@@ -28,7 +28,7 @@ MonoBehaviour:
     stageName: Game Intro and Goal
     state: 0
     startTrigger:
-      triggerType: 0
+      triggerType: 4
       colliderConfig:
         collider: {fileID: 0}
         triggerOnClick: 0
@@ -44,6 +44,8 @@ MonoBehaviour:
         graphic: {fileID: 0}
         pointerTrigger: 2
       keyCode: 0
+      tagConfig:
+        targetTag: 
     endTrigger:
       triggerType: 0
       colliderConfig:
@@ -61,6 +63,8 @@ MonoBehaviour:
         graphic: {fileID: 0}
         pointerTrigger: 2
       keyCode: 0
+      tagConfig:
+        targetTag: 
     advanceConfig:
       advanceType: 1
       index: -1
@@ -102,7 +106,19 @@ MonoBehaviour:
       enable: 0
       subEvent:
         m_PersistentCalls:
-          m_Calls: []
+          m_Calls:
+          - m_Target: {fileID: 0}
+            m_TargetAssemblyTypeName: PauseScript, Assembly-CSharp
+            m_MethodName: resumeGame
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
     currentStep: 1
     startObjectIndex: 1
     allowMultiple: 0
@@ -128,6 +144,8 @@ MonoBehaviour:
           graphic: {fileID: 0}
           pointerTrigger: 2
         keyCode: 0
+        tagConfig:
+          targetTag: 
       endTrigger:
         triggerType: 0
         colliderConfig:
@@ -145,6 +163,8 @@ MonoBehaviour:
           graphic: {fileID: 0}
           pointerTrigger: 2
         keyCode: 0
+        tagConfig:
+          targetTag: 
       advanceConfig:
         advanceType: 1
         index: -1
@@ -221,11 +241,13 @@ MonoBehaviour:
             graphic: {fileID: 0}
             pointerTrigger: 0
           keyCode: 0
+          tagConfig:
+            targetTag: 
         useTrigger: 0
         triggerState: 0
       moduleConfigs:
-      - rid: 8266946823575568406
-      - rid: 8266946823575568407
+      - rid: 8266946823575568452
+      - rid: 8266946823575568453
       test: 0
     - index: 2
       stageIndex: 1
@@ -248,6 +270,8 @@ MonoBehaviour:
           graphic: {fileID: 0}
           pointerTrigger: 2
         keyCode: 0
+        tagConfig:
+          targetTag: 
       endTrigger:
         triggerType: 0
         colliderConfig:
@@ -265,6 +289,8 @@ MonoBehaviour:
           graphic: {fileID: 0}
           pointerTrigger: 2
         keyCode: 0
+        tagConfig:
+          targetTag: 
       advanceConfig:
         advanceType: 1
         index: -1
@@ -341,11 +367,13 @@ MonoBehaviour:
             graphic: {fileID: 0}
             pointerTrigger: 0
           keyCode: 0
+          tagConfig:
+            targetTag: 
         useTrigger: 0
         triggerState: 0
       moduleConfigs:
-      - rid: 8266946823575568408
-      - rid: 8266946823575568409
+      - rid: 8266946823575568454
+      - rid: 8266946823575568455
       test: 0
     - index: 3
       stageIndex: 1
@@ -368,6 +396,8 @@ MonoBehaviour:
           graphic: {fileID: 0}
           pointerTrigger: 2
         keyCode: 0
+        tagConfig:
+          targetTag: 
       endTrigger:
         triggerType: 0
         colliderConfig:
@@ -385,6 +415,8 @@ MonoBehaviour:
           graphic: {fileID: 0}
           pointerTrigger: 2
         keyCode: 0
+        tagConfig:
+          targetTag: 
       advanceConfig:
         advanceType: 1
         index: -1
@@ -461,11 +493,13 @@ MonoBehaviour:
             graphic: {fileID: 0}
             pointerTrigger: 0
           keyCode: 0
+          tagConfig:
+            targetTag: 
         useTrigger: 0
         triggerState: 0
       moduleConfigs:
-      - rid: 8266946823575568410
-      - rid: 8266946823575568411
+      - rid: 8266946823575568456
+      - rid: 8266946823575568457
       test: 0
     - index: 4
       stageIndex: 1
@@ -488,6 +522,8 @@ MonoBehaviour:
           graphic: {fileID: 0}
           pointerTrigger: 2
         keyCode: 0
+        tagConfig:
+          targetTag: 
       endTrigger:
         triggerType: 0
         colliderConfig:
@@ -505,6 +541,8 @@ MonoBehaviour:
           graphic: {fileID: 0}
           pointerTrigger: 2
         keyCode: 0
+        tagConfig:
+          targetTag: 
       advanceConfig:
         advanceType: 1
         index: -1
@@ -581,11 +619,13 @@ MonoBehaviour:
             graphic: {fileID: 0}
             pointerTrigger: 0
           keyCode: 0
+          tagConfig:
+            targetTag: 
         useTrigger: 0
         triggerState: 0
       moduleConfigs:
-      - rid: 8266946823575568412
-      - rid: 8266946823575568413
+      - rid: 8266946823575568458
+      - rid: 8266946823575568459
       test: 0
   - index: 2
     stageName: Shelves
@@ -607,6 +647,8 @@ MonoBehaviour:
         graphic: {fileID: 0}
         pointerTrigger: 2
       keyCode: 0
+      tagConfig:
+        targetTag: 
     endTrigger:
       triggerType: 0
       colliderConfig:
@@ -624,6 +666,8 @@ MonoBehaviour:
         graphic: {fileID: 0}
         pointerTrigger: 2
       keyCode: 0
+      tagConfig:
+        targetTag: 
     advanceConfig:
       advanceType: 1
       index: -1
@@ -679,6 +723,8 @@ MonoBehaviour:
           graphic: {fileID: 0}
           pointerTrigger: 2
         keyCode: 0
+        tagConfig:
+          targetTag: 
       endTrigger:
         triggerType: 0
         colliderConfig:
@@ -696,6 +742,8 @@ MonoBehaviour:
           graphic: {fileID: 0}
           pointerTrigger: 2
         keyCode: 0
+        tagConfig:
+          targetTag: 
       advanceConfig:
         advanceType: 1
         index: -1
@@ -772,11 +820,13 @@ MonoBehaviour:
             graphic: {fileID: 0}
             pointerTrigger: 0
           keyCode: 0
+          tagConfig:
+            targetTag: 
         useTrigger: 0
         triggerState: 0
       moduleConfigs:
-      - rid: 8266946823575568414
-      - rid: 8266946823575568415
+      - rid: 8266946823575568460
+      - rid: 8266946823575568461
       test: 0
     - index: 2
       stageIndex: 2
@@ -799,6 +849,8 @@ MonoBehaviour:
           graphic: {fileID: 0}
           pointerTrigger: 2
         keyCode: 0
+        tagConfig:
+          targetTag: 
       endTrigger:
         triggerType: 2
         colliderConfig:
@@ -816,6 +868,8 @@ MonoBehaviour:
           graphic: {fileID: 0}
           pointerTrigger: 2
         keyCode: 0
+        tagConfig:
+          targetTag: 
       advanceConfig:
         advanceType: 1
         index: -1
@@ -892,11 +946,13 @@ MonoBehaviour:
             graphic: {fileID: 0}
             pointerTrigger: 0
           keyCode: 0
+          tagConfig:
+            targetTag: 
         useTrigger: 0
         triggerState: 0
       moduleConfigs:
-      - rid: 8266946823575568416
-      - rid: 8266946823575568417
+      - rid: 8266946823575568462
+      - rid: 8266946823575568463
       test: 0
     - index: 3
       stageIndex: 2
@@ -919,6 +975,8 @@ MonoBehaviour:
           graphic: {fileID: 0}
           pointerTrigger: 2
         keyCode: 0
+        tagConfig:
+          targetTag: 
       endTrigger:
         triggerType: 0
         colliderConfig:
@@ -936,6 +994,8 @@ MonoBehaviour:
           graphic: {fileID: 0}
           pointerTrigger: 2
         keyCode: 323
+        tagConfig:
+          targetTag: 
       advanceConfig:
         advanceType: 1
         index: -1
@@ -968,7 +1028,7 @@ MonoBehaviour:
             m_Calls: []
       focusTargets: []
       moduleConfigs:
-      - rid: 8266946823575568418
+      - rid: 8266946823575568464
       test: 0
   - index: 3
     stageName: Prep Phase and Timer
@@ -990,6 +1050,8 @@ MonoBehaviour:
         graphic: {fileID: 0}
         pointerTrigger: 2
       keyCode: 0
+      tagConfig:
+        targetTag: 
     endTrigger:
       triggerType: 0
       colliderConfig:
@@ -1007,6 +1069,8 @@ MonoBehaviour:
         graphic: {fileID: 0}
         pointerTrigger: 2
       keyCode: 0
+      tagConfig:
+        targetTag: 
     advanceConfig:
       advanceType: 1
       index: -1
@@ -1074,6 +1138,8 @@ MonoBehaviour:
           graphic: {fileID: 0}
           pointerTrigger: 2
         keyCode: 0
+        tagConfig:
+          targetTag: 
       endTrigger:
         triggerType: 0
         colliderConfig:
@@ -1091,6 +1157,8 @@ MonoBehaviour:
           graphic: {fileID: 0}
           pointerTrigger: 2
         keyCode: 0
+        tagConfig:
+          targetTag: 
       advanceConfig:
         advanceType: 1
         index: -1
@@ -1167,11 +1235,13 @@ MonoBehaviour:
             graphic: {fileID: 0}
             pointerTrigger: 0
           keyCode: 0
+          tagConfig:
+            targetTag: 
         useTrigger: 0
         triggerState: 0
       moduleConfigs:
-      - rid: 8266946823575568419
-      - rid: 8266946823575568420
+      - rid: 8266946823575568465
+      - rid: 8266946823575568466
       test: 0
     - index: 2
       stageIndex: 3
@@ -1194,6 +1264,8 @@ MonoBehaviour:
           graphic: {fileID: 0}
           pointerTrigger: 2
         keyCode: 0
+        tagConfig:
+          targetTag: 
       endTrigger:
         triggerType: 0
         colliderConfig:
@@ -1211,6 +1283,8 @@ MonoBehaviour:
           graphic: {fileID: 0}
           pointerTrigger: 2
         keyCode: 0
+        tagConfig:
+          targetTag: 
       advanceConfig:
         advanceType: 1
         index: -1
@@ -1287,11 +1361,13 @@ MonoBehaviour:
             graphic: {fileID: 0}
             pointerTrigger: 0
           keyCode: 0
+          tagConfig:
+            targetTag: 
         useTrigger: 0
         triggerState: 0
       moduleConfigs:
-      - rid: 8266946823575568421
-      - rid: 8266946823575568422
+      - rid: 8266946823575568467
+      - rid: 8266946823575568468
       test: 0
     - index: 3
       stageIndex: 3
@@ -1314,6 +1390,8 @@ MonoBehaviour:
           graphic: {fileID: 0}
           pointerTrigger: 2
         keyCode: 0
+        tagConfig:
+          targetTag: 
       endTrigger:
         triggerType: 0
         colliderConfig:
@@ -1331,6 +1409,8 @@ MonoBehaviour:
           graphic: {fileID: 0}
           pointerTrigger: 2
         keyCode: 0
+        tagConfig:
+          targetTag: 
       advanceConfig:
         advanceType: 1
         index: -1
@@ -1407,11 +1487,13 @@ MonoBehaviour:
             graphic: {fileID: 0}
             pointerTrigger: 0
           keyCode: 0
+          tagConfig:
+            targetTag: 
         useTrigger: 0
         triggerState: 0
       moduleConfigs:
-      - rid: 8266946823575568423
-      - rid: 8266946823575568424
+      - rid: 8266946823575568469
+      - rid: 8266946823575568470
       test: 0
     - index: 4
       stageIndex: 3
@@ -1434,6 +1516,8 @@ MonoBehaviour:
           graphic: {fileID: 0}
           pointerTrigger: 2
         keyCode: 0
+        tagConfig:
+          targetTag: 
       endTrigger:
         triggerType: 1
         colliderConfig:
@@ -1451,6 +1535,8 @@ MonoBehaviour:
           graphic: {fileID: 0}
           pointerTrigger: 2
         keyCode: 0
+        tagConfig:
+          targetTag: 
       advanceConfig:
         advanceType: 1
         index: -1
@@ -1527,11 +1613,13 @@ MonoBehaviour:
             graphic: {fileID: 0}
             pointerTrigger: 0
           keyCode: 0
+          tagConfig:
+            targetTag: 
         useTrigger: 0
         triggerState: 0
       moduleConfigs:
-      - rid: 8266946823575568425
-      - rid: 8266946823575568426
+      - rid: 8266946823575568471
+      - rid: 8266946823575568472
       test: 0
     - index: 5
       stageIndex: 3
@@ -1554,6 +1642,8 @@ MonoBehaviour:
           graphic: {fileID: 0}
           pointerTrigger: 2
         keyCode: 0
+        tagConfig:
+          targetTag: 
       endTrigger:
         triggerType: 0
         colliderConfig:
@@ -1571,6 +1661,8 @@ MonoBehaviour:
           graphic: {fileID: 0}
           pointerTrigger: 2
         keyCode: 0
+        tagConfig:
+          targetTag: 
       advanceConfig:
         advanceType: 1
         index: -1
@@ -1603,7 +1695,158 @@ MonoBehaviour:
             m_Calls: []
       focusTargets: []
       moduleConfigs:
-      - rid: 8266946823575568427
+      - rid: 8266946823575568473
+      test: 0
+  - index: 4
+    stageName: Customers
+    state: 0
+    startTrigger:
+      triggerType: 4
+      colliderConfig:
+        collider: {fileID: 0}
+        triggerOnClick: 0
+        layerFiltering: 0
+        filterLayer:
+          serializedVersion: 2
+          m_Bits: 0
+        tagFiltering: 0
+        filterTag: 
+        useRigidBodyTag: 0
+        pointerTrigger: 2
+      graphicConfig:
+        graphic: {fileID: 0}
+        pointerTrigger: 2
+      keyCode: 0
+      tagConfig:
+        targetTag: 
+    endTrigger:
+      triggerType: 0
+      colliderConfig:
+        collider: {fileID: 0}
+        triggerOnClick: 0
+        layerFiltering: 0
+        filterLayer:
+          serializedVersion: 2
+          m_Bits: 0
+        tagFiltering: 0
+        filterTag: 
+        useRigidBodyTag: 0
+        pointerTrigger: 2
+      graphicConfig:
+        graphic: {fileID: 0}
+        pointerTrigger: 2
+      keyCode: 0
+      tagConfig:
+        targetTag: 
+    advanceConfig:
+      advanceType: 1
+      index: -1
+      name: 
+    events:
+    - type: 0
+      enable: 0
+      subEvent:
+        m_PersistentCalls:
+          m_Calls: []
+    - type: 1
+      enable: 0
+      subEvent:
+        m_PersistentCalls:
+          m_Calls: []
+    - type: 2
+      enable: 0
+      subEvent:
+        m_PersistentCalls:
+          m_Calls: []
+    - type: 3
+      enable: 0
+      subEvent:
+        m_PersistentCalls:
+          m_Calls: []
+    - type: 4
+      enable: 0
+      subEvent:
+        m_PersistentCalls:
+          m_Calls: []
+    currentStep: 1
+    startObjectIndex: -1
+    allowMultiple: 0
+    tutorialObjects:
+    - index: 1
+      stageIndex: 4
+      Name: New Tutorial Objects_1
+      state: 0
+      startTrigger:
+        triggerType: 0
+        colliderConfig:
+          collider: {fileID: 0}
+          triggerOnClick: 0
+          layerFiltering: 0
+          filterLayer:
+            serializedVersion: 2
+            m_Bits: 0
+          tagFiltering: 0
+          filterTag: 
+          useRigidBodyTag: 0
+          pointerTrigger: 2
+        graphicConfig:
+          graphic: {fileID: 0}
+          pointerTrigger: 2
+        keyCode: 0
+        tagConfig:
+          targetTag: Customer
+      endTrigger:
+        triggerType: 0
+        colliderConfig:
+          collider: {fileID: 0}
+          triggerOnClick: 0
+          layerFiltering: 0
+          filterLayer:
+            serializedVersion: 2
+            m_Bits: 0
+          tagFiltering: 0
+          filterTag: 
+          useRigidBodyTag: 0
+          pointerTrigger: 2
+        graphicConfig:
+          graphic: {fileID: 0}
+          pointerTrigger: 2
+        keyCode: 0
+        tagConfig:
+          targetTag: Customer
+      advanceConfig:
+        advanceType: 1
+        index: -1
+        name: 
+      events:
+      - type: 0
+        enable: 0
+        subEvent:
+          m_PersistentCalls:
+            m_Calls: []
+      - type: 1
+        enable: 0
+        subEvent:
+          m_PersistentCalls:
+            m_Calls: []
+      - type: 2
+        enable: 0
+        subEvent:
+          m_PersistentCalls:
+            m_Calls: []
+      - type: 3
+        enable: 0
+        subEvent:
+          m_PersistentCalls:
+            m_Calls: []
+      - type: 4
+        enable: 0
+        subEvent:
+          m_PersistentCalls:
+            m_Calls: []
+      focusTargets: []
+      moduleConfigs:
+      - rid: 8266946823575568474
       test: 0
   targetInfo:
   - info:
@@ -1611,70 +1854,70 @@ MonoBehaviour:
       tObjIndex: 0
       targetIndex: 0
     target:
-      exposedName: 1973185f35763184d9dc543d76ee0168
+      exposedName: acc1a69f93fd56b4c96195fbd381da07
       defaultValue: {fileID: 0}
   - info:
       stageIndex: 0
       tObjIndex: 1
       targetIndex: 0
     target:
-      exposedName: 92f8af3a37249dd4b80172a7aa1fd869
+      exposedName: 7284308fc9af6b74996341df8defbc96
       defaultValue: {fileID: 0}
   - info:
       stageIndex: 0
       tObjIndex: 2
       targetIndex: 0
     target:
-      exposedName: 3c29649c4073edf488be48d0259062e0
+      exposedName: 9f528ef4770c5b646abf82b411bffef3
       defaultValue: {fileID: 0}
   - info:
       stageIndex: 0
       tObjIndex: 3
       targetIndex: 0
     target:
-      exposedName: ebadcd11a5d2cc240b2c5746181ec7e1
+      exposedName: a40662e41d6e9dd46b31f3ba3fdd14e3
       defaultValue: {fileID: 0}
   - info:
       stageIndex: 1
       tObjIndex: 0
       targetIndex: 0
     target:
-      exposedName: 34489a0bcbb05984eb82113fea87ed7e
+      exposedName: b0b38e13fc606aa459db2b78fe70ce08
       defaultValue: {fileID: 0}
   - info:
       stageIndex: 1
       tObjIndex: 1
       targetIndex: 0
     target:
-      exposedName: ae7635fe123a11144886daa780855c87
+      exposedName: c51d3c252308ffe448d3bb657ea29364
       defaultValue: {fileID: 0}
   - info:
       stageIndex: 2
       tObjIndex: 0
       targetIndex: 0
     target:
-      exposedName: 383a3c34a65e9344ebcdbc4f5d43786a
+      exposedName: 5b5268adfc871f94d8cc07348b0430cb
       defaultValue: {fileID: 0}
   - info:
       stageIndex: 2
       tObjIndex: 1
       targetIndex: 0
     target:
-      exposedName: 4199b4e4303c987418e1d48e6576a5cf
+      exposedName: ad0401579804e67489e380ce3fca3494
       defaultValue: {fileID: 0}
   - info:
       stageIndex: 2
       tObjIndex: 2
       targetIndex: 0
     target:
-      exposedName: 92c6079b4838dff4d8a9f4c6096b8fbc
+      exposedName: 429f646c27a9a7d48926fb9c8dee87bd
       defaultValue: {fileID: 0}
   - info:
       stageIndex: 2
       tObjIndex: 3
       targetIndex: 0
     target:
-      exposedName: 307af40eae53ee64d804b4b729bd7746
+      exposedName: 380b6875162a21248926d3ebe448a1bd
       defaultValue: {fileID: 0}
   triggerInfo:
   - isStage: 0
@@ -1688,7 +1931,7 @@ MonoBehaviour:
       exposedName: 
       defaultValue: {fileID: 0}
     graphic:
-      exposedName: a2f2c748470b6434c8cd81bbb0b2a336
+      exposedName: 673faf796a9273e4e8ed6524f8f9d119
       defaultValue: {fileID: 0}
   - isStage: 1
     isStart: 1
@@ -1698,7 +1941,7 @@ MonoBehaviour:
       tObjIndex: -1
       targetIndex: -1
     collider:
-      exposedName: b161736bfdb22234485a631a686504c5
+      exposedName: fb6a3c910ab8fd54eac2b8b54ac351bf
       defaultValue: {fileID: 0}
     graphic:
       exposedName: 
@@ -1711,7 +1954,7 @@ MonoBehaviour:
       tObjIndex: 0
       targetIndex: -1
     collider:
-      exposedName: 649e8b8d567141c419a08806b194b65a
+      exposedName: 94c404b4016939844a51af426ed99009
       defaultValue: {fileID: 0}
     graphic:
       exposedName: 
@@ -1724,7 +1967,7 @@ MonoBehaviour:
       tObjIndex: 3
       targetIndex: -1
     collider:
-      exposedName: d5f7e03788eca944384b62c72fe510fb
+      exposedName: 7562addc00ebff347b30f4fdc0c39544
       defaultValue: {fileID: 0}
     graphic:
       exposedName: 
@@ -1737,7 +1980,7 @@ MonoBehaviour:
       tObjIndex: 4
       targetIndex: -1
     collider:
-      exposedName: ebb8ad35cb4815f4f9a23b103052a1c3
+      exposedName: 56ac057215825754fa1ee152022f84c2
       defaultValue: {fileID: 0}
     graphic:
       exposedName: 
@@ -1745,7 +1988,7 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 8266946823575568406
+    - rid: 8266946823575568452
       type: {class: HSVInfoDisplayModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 761627783437471551, guid: 4cd73b67848d84f34aa97ff4a0547bc9, type: 3}
@@ -1796,7 +2039,7 @@ MonoBehaviour:
           textColor: {r: 1, g: 1, b: 1, a: 1}
           fontAsset: {fileID: 0}
         backButtonText: 
-    - rid: 8266946823575568407
+    - rid: 8266946823575568453
       type: {class: HSVFocusDimModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 8096215429702445203, guid: 979329b36fadf4110967ab6f40b2c5ba, type: 3}
@@ -1812,7 +2055,7 @@ MonoBehaviour:
         followTarget: 0
         allowNoTarget: 0
         m_rectOffset: {x: 10, y: 10}
-    - rid: 8266946823575568408
+    - rid: 8266946823575568454
       type: {class: HSVInfoDisplayModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 761627783437471551, guid: 4cd73b67848d84f34aa97ff4a0547bc9, type: 3}
@@ -1863,7 +2106,7 @@ MonoBehaviour:
           textColor: {r: 1, g: 1, b: 1, a: 1}
           fontAsset: {fileID: 0}
         backButtonText: 
-    - rid: 8266946823575568409
+    - rid: 8266946823575568455
       type: {class: HSVFocusDimModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 8096215429702445203, guid: 979329b36fadf4110967ab6f40b2c5ba, type: 3}
@@ -1879,7 +2122,7 @@ MonoBehaviour:
         followTarget: 0
         allowNoTarget: 0
         m_rectOffset: {x: 10, y: 10}
-    - rid: 8266946823575568410
+    - rid: 8266946823575568456
       type: {class: HSVInfoDisplayModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 761627783437471551, guid: 4cd73b67848d84f34aa97ff4a0547bc9, type: 3}
@@ -1931,7 +2174,7 @@ MonoBehaviour:
           textColor: {r: 1, g: 1, b: 1, a: 1}
           fontAsset: {fileID: 0}
         backButtonText: 
-    - rid: 8266946823575568411
+    - rid: 8266946823575568457
       type: {class: HSVFocusDimModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 8096215429702445203, guid: 979329b36fadf4110967ab6f40b2c5ba, type: 3}
@@ -1947,7 +2190,7 @@ MonoBehaviour:
         followTarget: 0
         allowNoTarget: 0
         m_rectOffset: {x: 10, y: 10}
-    - rid: 8266946823575568412
+    - rid: 8266946823575568458
       type: {class: HSVInfoDisplayModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 761627783437471551, guid: 4cd73b67848d84f34aa97ff4a0547bc9, type: 3}
@@ -1998,7 +2241,7 @@ MonoBehaviour:
           textColor: {r: 1, g: 1, b: 1, a: 1}
           fontAsset: {fileID: 0}
         backButtonText: 
-    - rid: 8266946823575568413
+    - rid: 8266946823575568459
       type: {class: HSVFocusDimModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 8096215429702445203, guid: 979329b36fadf4110967ab6f40b2c5ba, type: 3}
@@ -2014,7 +2257,7 @@ MonoBehaviour:
         followTarget: 0
         allowNoTarget: 0
         m_rectOffset: {x: 10, y: 10}
-    - rid: 8266946823575568414
+    - rid: 8266946823575568460
       type: {class: HSVFocusDimModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 8096215429702445203, guid: 979329b36fadf4110967ab6f40b2c5ba, type: 3}
@@ -2030,7 +2273,7 @@ MonoBehaviour:
         followTarget: 0
         allowNoTarget: 0
         m_rectOffset: {x: 10, y: 10}
-    - rid: 8266946823575568415
+    - rid: 8266946823575568461
       type: {class: HSVInfoDisplayModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 761627783437471551, guid: 4cd73b67848d84f34aa97ff4a0547bc9, type: 3}
@@ -2081,7 +2324,7 @@ MonoBehaviour:
           textColor: {r: 1, g: 1, b: 1, a: 1}
           fontAsset: {fileID: 0}
         backButtonText: 
-    - rid: 8266946823575568416
+    - rid: 8266946823575568462
       type: {class: HSVFocusDimModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 8096215429702445203, guid: 979329b36fadf4110967ab6f40b2c5ba, type: 3}
@@ -2097,7 +2340,7 @@ MonoBehaviour:
         followTarget: 0
         allowNoTarget: 0
         m_rectOffset: {x: 10, y: 10}
-    - rid: 8266946823575568417
+    - rid: 8266946823575568463
       type: {class: HSVInfoDisplayModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 761627783437471551, guid: 4cd73b67848d84f34aa97ff4a0547bc9, type: 3}
@@ -2148,7 +2391,7 @@ MonoBehaviour:
           textColor: {r: 1, g: 1, b: 1, a: 1}
           fontAsset: {fileID: 0}
         backButtonText: 
-    - rid: 8266946823575568418
+    - rid: 8266946823575568464
       type: {class: HSVInfoDisplayModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 761627783437471551, guid: 4cd73b67848d84f34aa97ff4a0547bc9, type: 3}
@@ -2200,7 +2443,7 @@ MonoBehaviour:
           textColor: {r: 1, g: 1, b: 1, a: 1}
           fontAsset: {fileID: 0}
         backButtonText: 
-    - rid: 8266946823575568419
+    - rid: 8266946823575568465
       type: {class: HSVFocusDimModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 8096215429702445203, guid: 979329b36fadf4110967ab6f40b2c5ba, type: 3}
@@ -2216,7 +2459,7 @@ MonoBehaviour:
         followTarget: 0
         allowNoTarget: 0
         m_rectOffset: {x: 10, y: 10}
-    - rid: 8266946823575568420
+    - rid: 8266946823575568466
       type: {class: HSVInfoDisplayModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 761627783437471551, guid: 4cd73b67848d84f34aa97ff4a0547bc9, type: 3}
@@ -2268,7 +2511,7 @@ MonoBehaviour:
           textColor: {r: 1, g: 1, b: 1, a: 1}
           fontAsset: {fileID: 0}
         backButtonText: 
-    - rid: 8266946823575568421
+    - rid: 8266946823575568467
       type: {class: HSVFocusDimModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 8096215429702445203, guid: 979329b36fadf4110967ab6f40b2c5ba, type: 3}
@@ -2284,7 +2527,7 @@ MonoBehaviour:
         followTarget: 0
         allowNoTarget: 0
         m_rectOffset: {x: 10, y: 10}
-    - rid: 8266946823575568422
+    - rid: 8266946823575568468
       type: {class: HSVInfoDisplayModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 761627783437471551, guid: 4cd73b67848d84f34aa97ff4a0547bc9, type: 3}
@@ -2335,7 +2578,7 @@ MonoBehaviour:
           textColor: {r: 1, g: 1, b: 1, a: 1}
           fontAsset: {fileID: 0}
         backButtonText: 
-    - rid: 8266946823575568423
+    - rid: 8266946823575568469
       type: {class: HSVFocusDimModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 8096215429702445203, guid: 979329b36fadf4110967ab6f40b2c5ba, type: 3}
@@ -2351,7 +2594,7 @@ MonoBehaviour:
         followTarget: 0
         allowNoTarget: 0
         m_rectOffset: {x: 10, y: 10}
-    - rid: 8266946823575568424
+    - rid: 8266946823575568470
       type: {class: HSVInfoDisplayModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 761627783437471551, guid: 4cd73b67848d84f34aa97ff4a0547bc9, type: 3}
@@ -2403,7 +2646,7 @@ MonoBehaviour:
           textColor: {r: 1, g: 1, b: 1, a: 1}
           fontAsset: {fileID: 0}
         backButtonText: 
-    - rid: 8266946823575568425
+    - rid: 8266946823575568471
       type: {class: HSVFocusDimModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 8096215429702445203, guid: 979329b36fadf4110967ab6f40b2c5ba, type: 3}
@@ -2419,7 +2662,7 @@ MonoBehaviour:
         followTarget: 0
         allowNoTarget: 0
         m_rectOffset: {x: 10, y: 10}
-    - rid: 8266946823575568426
+    - rid: 8266946823575568472
       type: {class: HSVInfoDisplayModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 761627783437471551, guid: 4cd73b67848d84f34aa97ff4a0547bc9, type: 3}
@@ -2470,7 +2713,7 @@ MonoBehaviour:
           textColor: {r: 1, g: 1, b: 1, a: 1}
           fontAsset: {fileID: 0}
         backButtonText: 
-    - rid: 8266946823575568427
+    - rid: 8266946823575568473
       type: {class: HSVInfoDisplayModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 761627783437471551, guid: 4cd73b67848d84f34aa97ff4a0547bc9, type: 3}
@@ -2491,6 +2734,58 @@ MonoBehaviour:
         scaleInOut: 0
         message: Great! Now that you know the basics of running your store, let's
           meet your first customers!
+        overrideStyle: 1
+        fontConfig:
+          fontSize: 30
+          fontStyle: 0
+          textAlignment: 514
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          fontAsset: {fileID: 0}
+        overrideCloseButtonStyle: 0
+        closeButtonStyle:
+          fontSize: 30
+          fontStyle: 0
+          textAlignment: 514
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          fontAsset: {fileID: 0}
+        closeButtonText: 
+        overrideAdvanceButtonStyle: 0
+        advanceButtonStyle:
+          fontSize: 30
+          fontStyle: 0
+          textAlignment: 514
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          fontAsset: {fileID: 0}
+        advanceButtonText: 
+        overrideBackButtonStyle: 0
+        backButtonStyle:
+          fontSize: 30
+          fontStyle: 0
+          textAlignment: 514
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          fontAsset: {fileID: 0}
+        backButtonText: 
+    - rid: 8266946823575568474
+      type: {class: HSVInfoDisplayModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
+      data:
+        modulePrefab: {fileID: 761627783437471551, guid: 4cd73b67848d84f34aa97ff4a0547bc9, type: 3}
+        maskPrefab: {fileID: 2039497102852256437, guid: 1ade444593cf046cc919fa628a3829e9, type: 3}
+        instantTransition: 1
+        m_smoothValue: 10
+        fadeTime: 0.5
+        customTransition: 0
+        overridePrefabColor: 0
+        color: {r: 1, g: 1, b: 1, a: 1}
+        m_sprite: {fileID: 0}
+        displayRect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 500
+          height: 300
+        scaleInOut: 0
+        message: Your first customer has arrived! Each day customers will arrive,
+          each with different good they're looking for!
         overrideStyle: 1
         fontConfig:
           fontSize: 30

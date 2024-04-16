@@ -73,6 +73,15 @@ namespace HSVStudio.Tutorial
                         }
                     }
                 }
+                else if (config.triggerType == TriggerType.TagDetection)
+                {
+                    Debug.Log("Tagging!");
+                    if (GameObject.FindWithTag(config.tagConfig.targetTag) != null)
+                    {
+                        Debug.Log("JBD");
+                        PlayAction();
+                    }
+                }
             }
         }
 
