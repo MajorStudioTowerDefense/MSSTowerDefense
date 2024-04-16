@@ -3,14 +3,23 @@ using UnityEngine.EventSystems;
 
 public class TutorialEventTrigger : MonoBehaviour
 {
+    [Header ("Customer Tutorial")]
     public GameObject customerTutorialTriggerUIObject;
-
     private bool isCustomerTutorialTriggered = false;
-
     private GameObject firstCustomer;
     private GameObject firstDoor;
 
+    [Header("Customer Tutorial")]
+    public GameObject employeeRestockTriggerUIObject;
+
     void Update()
+    {
+        TriggerCustomerTutorial();
+
+        TriggerEmployeeandRestockTutorial();
+    }
+
+    void TriggerCustomerTutorial()
     {
         if (firstCustomer != null && firstDoor != null)
         {
@@ -18,7 +27,11 @@ public class TutorialEventTrigger : MonoBehaviour
 
             if (distance < 1 && !isCustomerTutorialTriggered)
             {
-                TriggerCustomerTutorial();
+                PointerEventData pointerEventData = new PointerEventData(EventSystem.current);
+                pointerEventData.position = Camera.main.WorldToScreenPoint(customerTutorialTriggerUIObject.transform.position);
+
+                ExecuteEvents.Execute(customerTutorialTriggerUIObject, pointerEventData, ExecuteEvents.pointerClickHandler);
+
                 isCustomerTutorialTriggered = true;
             }
         }
@@ -29,11 +42,8 @@ public class TutorialEventTrigger : MonoBehaviour
         }
     }
 
-    void TriggerCustomerTutorial()
+    void TriggerEmployeeandRestockTutorial()
     {
-        PointerEventData pointerEventData = new PointerEventData(EventSystem.current);
-        pointerEventData.position = Camera.main.WorldToScreenPoint(customerTutorialTriggerUIObject.transform.position);
 
-        ExecuteEvents.Execute(customerTutorialTriggerUIObject, pointerEventData, ExecuteEvents.pointerClickHandler);
     }
 }

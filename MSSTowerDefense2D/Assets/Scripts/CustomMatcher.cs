@@ -1,11 +1,12 @@
 using UnityEngine;
 
-public class SatisfactionMatcher : MonoBehaviour
+public class CustomMatcher : MonoBehaviour
 {
+    public string targetObjectTag;
     private GameObject satisfactionUI;
     void Update()
     {
-        GameObject targetObject = GameObject.FindWithTag("Satisfaction");
+        GameObject targetObject = GameObject.FindWithTag(targetObjectTag);
 
         if (targetObject != null)
         {
