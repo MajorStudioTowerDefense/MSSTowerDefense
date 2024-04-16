@@ -37,6 +37,12 @@ public class PauseScript : MonoBehaviour
         play.SetActive(false);
     }
 
+    public void resumeHighSpeed()
+    {
+        pause.SetActive(true);
+        play.SetActive(false);
+    }
+
     private void stopAI()
     {
         var ai = FindObjectsOfType<CircleCollider2D>();
