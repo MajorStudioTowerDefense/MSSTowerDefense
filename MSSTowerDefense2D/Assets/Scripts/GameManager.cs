@@ -239,7 +239,7 @@ public class GameManager : MonoBehaviour
         {
             for (int x = 0; x < room[y].Count; x++)
             {
-                Vector3 position = gridSystem.GetWorldPosition(x, y) + new Vector3(gridCellSize, gridCellSize) * 0.5f;
+                Vector3 position = gridSystem.GetWorldPosition(x, -y+9) + new Vector3(gridCellSize, gridCellSize) * 0.5f;
                 GameObject prefabToInstantiate = null;
 
                 switch (room[y][x])
