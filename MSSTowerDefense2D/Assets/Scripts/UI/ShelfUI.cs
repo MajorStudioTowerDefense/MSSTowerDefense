@@ -40,7 +40,7 @@ public class ShelfUI : MonoBehaviour
 
     private void Update()
     {
-        if(GameManager.instance.currentState != 0)
+        if(GameManager.instance.currentState != 0 && GameManager.instance.previousState != GameStates.PREP)
         {
             ToDisable.SetActive(false);
         }

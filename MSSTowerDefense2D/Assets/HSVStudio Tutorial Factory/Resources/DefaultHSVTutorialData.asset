@@ -12,20 +12,164 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53e78f52f8bb34501abb20a1047e2197, type: 3}
   m_Name: DefaultHSVTutorialData
   m_EditorClassIdentifier: 
-  assignOnRuntime: 0
+  assignOnRuntime: 1
   targetCamera:
     exposedName: 
     defaultValue: {fileID: 0}
   targetCanvas:
     exposedName: 
     defaultValue: {fileID: 0}
-  autoStart: 0
+  autoStart: 1
   autoStartIndex: -1
-  debugMode: 0
+  debugMode: 1
   currentStageStep: 1
-  stageObjects: []
+  stageObjects:
+  - index: 0
+    stageName: Game Intro and Goal
+    state: 0
+    startTrigger:
+      triggerType: 0
+      colliderConfig:
+        collider: {fileID: 0}
+        triggerOnClick: 0
+        layerFiltering: 0
+        filterLayer:
+          serializedVersion: 2
+          m_Bits: 0
+        tagFiltering: 0
+        filterTag: 
+        useRigidBodyTag: 0
+        pointerTrigger: 0
+      graphicConfig:
+        graphic: {fileID: 0}
+        pointerTrigger: 0
+      keyCode: 0
+    endTrigger:
+      triggerType: 0
+      colliderConfig:
+        collider: {fileID: 0}
+        triggerOnClick: 0
+        layerFiltering: 0
+        filterLayer:
+          serializedVersion: 2
+          m_Bits: 0
+        tagFiltering: 0
+        filterTag: 
+        useRigidBodyTag: 0
+        pointerTrigger: 0
+      graphicConfig:
+        graphic: {fileID: 0}
+        pointerTrigger: 0
+      keyCode: 0
+    advanceConfig:
+      advanceType: 0
+      index: 0
+      name: 
+    events: []
+    currentStep: 0
+    startObjectIndex: 0
+    allowMultiple: 0
+    tutorialObjects:
+    - index: 0
+      stageIndex: 0
+      Name: 
+      state: 0
+      startTrigger:
+        triggerType: 0
+        colliderConfig:
+          collider: {fileID: 0}
+          triggerOnClick: 0
+          layerFiltering: 0
+          filterLayer:
+            serializedVersion: 2
+            m_Bits: 0
+          tagFiltering: 0
+          filterTag: 
+          useRigidBodyTag: 0
+          pointerTrigger: 0
+        graphicConfig:
+          graphic: {fileID: 0}
+          pointerTrigger: 0
+        keyCode: 0
+      endTrigger:
+        triggerType: 0
+        colliderConfig:
+          collider: {fileID: 0}
+          triggerOnClick: 0
+          layerFiltering: 0
+          filterLayer:
+            serializedVersion: 2
+            m_Bits: 0
+          tagFiltering: 0
+          filterTag: 
+          useRigidBodyTag: 0
+          pointerTrigger: 0
+        graphicConfig:
+          graphic: {fileID: 0}
+          pointerTrigger: 0
+        keyCode: 0
+      advanceConfig:
+        advanceType: 0
+        index: 0
+        name: 
+      events: []
+      focusTargets: []
+      moduleConfigs:
+      - rid: 8266946818759196678
+      test: 0
   targetInfo: []
   triggerInfo: []
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 8266946818759196678
+      type: {class: HSVInfoDisplayModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
+      data:
+        modulePrefab: {fileID: 761627783437471551, guid: 4cd73b67848d84f34aa97ff4a0547bc9, type: 3}
+        maskPrefab: {fileID: 2039497102852256437, guid: 1ade444593cf046cc919fa628a3829e9, type: 3}
+        instantTransition: 1
+        m_smoothValue: 10
+        fadeTime: 0.5
+        customTransition: 0
+        overridePrefabColor: 0
+        color: {r: 1, g: 1, b: 1, a: 1}
+        m_sprite: {fileID: 0}
+        displayRect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 750
+          height: 200
+        scaleInOut: 0
+        message: Welcome to Mysti Market Manager!
+        overrideStyle: 0
+        fontConfig:
+          fontSize: 30
+          fontStyle: 0
+          textAlignment: 514
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          fontAsset: {fileID: 0}
+        overrideCloseButtonStyle: 0
+        closeButtonStyle:
+          fontSize: 30
+          fontStyle: 0
+          textAlignment: 514
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          fontAsset: {fileID: 0}
+        closeButtonText: 
+        overrideAdvanceButtonStyle: 0
+        advanceButtonStyle:
+          fontSize: 30
+          fontStyle: 0
+          textAlignment: 514
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          fontAsset: {fileID: 0}
+        advanceButtonText: 
+        overrideBackButtonStyle: 0
+        backButtonStyle:
+          fontSize: 30
+          fontStyle: 0
+          textAlignment: 514
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          fontAsset: {fileID: 0}
+        backButtonText: 

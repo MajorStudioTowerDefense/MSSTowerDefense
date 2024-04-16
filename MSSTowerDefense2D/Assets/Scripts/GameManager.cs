@@ -9,7 +9,8 @@ public enum GameStates
     PREP,
     STORE,
     END,
-    LOOP
+    LOOP,
+    TUTORIAL
 }
 
 public class GameManager : MonoBehaviour
@@ -60,6 +61,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int level = 1;
     [SerializeField] private float difficultyFactor = 1.2f;
 
+    [Header("Tutorials")]
+    public GameStates previousState;
+
     private void Awake()
     {
         if (instance == null)
@@ -102,6 +106,9 @@ public class GameManager : MonoBehaviour
                 isTimer = true;
                 break;
             case GameStates.END:
+                isTimer = false;
+                break;
+            case GameStates.TUTORIAL:
                 isTimer = false;
                 break;
         }
@@ -279,5 +286,16 @@ public class GameManager : MonoBehaviour
     public void ReloadCurrentScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void TutorialStarts()
+    {
+        previousState = currentState;
+        currentState = GameStates.TUTORIAL;
+    }
+
+    public void TutorialEnds()
+    {
+        currentState = previousState;
     }
 }
