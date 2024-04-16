@@ -267,10 +267,10 @@ public class ShelfPlacementManager : MonoBehaviour
 
     private bool IsWithinGrid(int x, int y)
     {
-        bool isWithinBasicGrid = x >= 1 && y >= 1 && x < gridSystem.GetWidth() && y < gridSystem.GetHeight();
+        bool isWithinBasicGrid = x >= 2 && y >= 2 && x < gridSystem.GetWidth() + 1 && y < gridSystem.GetHeight();
 
-        bool isInRestrictedArea = x >= alternativeAreaStartX && x < alternativeAreaStartX + alternativeAreaWidth + 1 &&
-                                  y >= alternativeAreaStartY + 1 && y < alternativeAreaStartY + alternativeAreaHeight;
+        bool isInRestrictedArea = x >= alternativeAreaStartX && x < alternativeAreaStartX + alternativeAreaWidth + 2 &&
+                                  y >= alternativeAreaStartY + 2 && y < alternativeAreaStartY + alternativeAreaHeight;
 
         Debug.Log("Employee Area Width: " + alternativeAreaWidth);
 

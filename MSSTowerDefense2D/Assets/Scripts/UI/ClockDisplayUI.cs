@@ -5,7 +5,7 @@ using TMPro;
 
 public class ClockDisplayUI : MonoBehaviour
 {
-    TextMeshProUGUI currentTime;
+    public TextMeshProUGUI currentTime;
 
     private void Awake()
     {
