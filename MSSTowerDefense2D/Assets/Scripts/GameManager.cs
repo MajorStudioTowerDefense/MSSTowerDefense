@@ -114,14 +114,6 @@ public class GameManager : MonoBehaviour
         shelfPlacementManager.gridSystem = gridSystem;
         timer = InitialTime.x * 60 + InitialTime.y;
 
-        for (int i = 0; i < room.Count; i++)
-        {
-            for (int j = 0; j < room[i].Count; j++)
-            {
-                Debug.Log(room[i][j]);
-            }
-        }
-
         GenerateWalls();
         currentState = GameStates.PREP;
         isTimer = true;
@@ -257,6 +249,9 @@ public class GameManager : MonoBehaviour
                         break;
                     case "bw":
                         prefabToInstantiate = bottomWallPrefab;
+                        break;
+                    case "wh":
+                        prefabToInstantiate = alternativeCellTilePrefab;
                         break;
 
                 }
