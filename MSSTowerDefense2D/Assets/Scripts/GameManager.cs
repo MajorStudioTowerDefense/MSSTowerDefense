@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 
+
 public enum GameStates
 {
     PREP,
@@ -299,5 +300,10 @@ public class GameManager : MonoBehaviour
     public void TutorialEnds()
     {
         currentState = previousState;
+    }
+
+    private void OnApplicationQuit()
+    {
+        ES3.Save("money", money);
     }
 }
