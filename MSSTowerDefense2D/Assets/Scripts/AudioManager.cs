@@ -12,15 +12,14 @@ public class AudioManager : MonoBehaviour
     public AudioSource audioSource2;
     public AudioClip Ticking;
     public AudioClip StartShift;
-    GameObject ClockNumbers;
+    private ClockDisplay ClockDisplayUI;
 
- 
     //Assigning certain sounds to play for a limited amount of time
     private void Start()
     {
+        ClockDisplayUI = FindObjectOfType<ClockNumbers>(); // Find the TimerScript component in the scene
         audioSource.clip = Ticking;
         audioSource2.clip = StartShift;
-        ClockNumbers = GameObject.FindGameObjectWithTag("Timer"); 
         // Calls up Stopping Coroutine
         StartCoroutine(StopSoundAfterDelay());
 
@@ -109,6 +108,15 @@ public class AudioManager : MonoBehaviour
         //start sound
         //audioSource2.Start();
 
+    }
+
+    void Update()
+    {
+         if (timerScript != null)
+        {
+            float timerValue = timerScript.GetTimer(); // Access the timer value from TimerScript
+            
+        }
     }
 
 }
