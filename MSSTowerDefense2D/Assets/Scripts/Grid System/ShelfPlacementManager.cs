@@ -80,10 +80,10 @@ public class ShelfPlacementManager : MonoBehaviour
             {
                 if (!isShelfGridCreated)
                 {
-                    shelfPlacementGrid = new bool[gridSystem.GetWidth(), gridSystem.GetHeight()];
-                    for (int x = 0; x < gridSystem.GetWidth(); x++)
+                    shelfPlacementGrid = new bool[gridSystem.GetWidth() + 2, gridSystem.GetHeight() + 1];
+                    for (int x = 0; x < gridSystem.GetWidth() + 2; x++)
                     {
-                        for (int y = 0; y < gridSystem.GetHeight(); y++)
+                        for (int y = 0; y < gridSystem.GetHeight() + 1; y++)
                         {
                             shelfPlacementGrid[x, y] = false;
                         }
@@ -267,10 +267,10 @@ public class ShelfPlacementManager : MonoBehaviour
 
     private bool IsWithinGrid(int x, int y)
     {
-        bool isWithinBasicGrid = x >= 2 && y >= 1 && x < gridSystem.GetWidth() + 1 && y < gridSystem.GetHeight() + 1;
+        bool isWithinBasicGrid = x >= 2 && y >= 1 && x < gridSystem.GetWidth() + 2 && y < gridSystem.GetHeight() + 1;
 
         bool isInRestrictedArea = x >= alternativeAreaStartX && x < alternativeAreaStartX + alternativeAreaWidth + 2 &&
-                                  y >= alternativeAreaStartY + 1 && y < alternativeAreaStartY + alternativeAreaHeight;
+                                  y >= alternativeAreaStartY + 1 && y < alternativeAreaStartY + alternativeAreaHeight + 1;
 
         //Debug.Log("Employee Area Width: " + alternativeAreaWidth);
 
