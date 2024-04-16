@@ -72,6 +72,8 @@ public class GameManager : MonoBehaviour
         }
         else Destroy(this.gameObject);
         room = CSVReader.Read("LevelEditor");
+
+        DontDestroyOnLoad(this);
     }
 
     private void Start()
