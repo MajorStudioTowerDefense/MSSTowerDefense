@@ -178,7 +178,6 @@ public class ShelfPlacementManager : MonoBehaviour
             ShelfScript shelfScript = shelfPrefab.GetComponent<ShelfScript>();
             if (shelfScript != null && GameManager.instance.money >= shelfScript.Cost)
             {
-                GameManager.instance.money -= shelfScript.Cost;
                 currentShelfPrefab = shelfPrefab;
                 // Reset the index or manage prefab selection state as needed
                 currentPrefabIndex = -1; // Reset or adjust according to your logic
@@ -251,6 +250,7 @@ public class ShelfPlacementManager : MonoBehaviour
         gridSystem.GetXY(mousePos, out x, out y);
         if (IsWithinGrid(x, y) && !shelfPlacementGrid[x, y]) // Check if the position is free
         {
+            GameManager.instance.money -= currentShelfPrefab.GetComponent<ShelfScript>().Cost;
             // Mark the grid position as occupied
             shelfPlacementGrid[x, y] = true;
             currentShelfPrefab = null;
@@ -267,10 +267,10 @@ public class ShelfPlacementManager : MonoBehaviour
 
     private bool IsWithinGrid(int x, int y)
     {
-        bool isWithinBasicGrid = x >= 2 && y >= 2 && x < gridSystem.GetWidth() + 1 && y < gridSystem.GetHeight();
+        bool isWithinBasicGrid = x >= 2 && y >= 1 && x < gridSystem.GetWidth() + 1 && y < gridSystem.GetHeight();
 
         bool isInRestrictedArea = x >= alternativeAreaStartX && x < alternativeAreaStartX + alternativeAreaWidth + 2 &&
-                                  y >= alternativeAreaStartY + 2 && y < alternativeAreaStartY + alternativeAreaHeight;
+                                  y >= alternativeAreaStartY + 1 && y < alternativeAreaStartY + alternativeAreaHeight;
 
         Debug.Log("Employee Area Width: " + alternativeAreaWidth);
 
