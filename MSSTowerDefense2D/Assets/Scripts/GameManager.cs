@@ -86,8 +86,16 @@ public class GameManager : MonoBehaviour
 
         //GenerateGrid();
         //GenerateWalls();\
+        
+        //if (ES3.KeyExists("money"))
+        //{
+        //    Debug.Log("Loading");
+        //    money = ES3.Load("money", money);
+        //    employeeArea = ES3.Load("Employees", employeeArea);
+        //}
 
         FindObjectOfType<AstarPath>().Scan();
+        
     }
 
     private void Update()
@@ -302,8 +310,10 @@ public class GameManager : MonoBehaviour
         currentState = previousState;
     }
 
+    public GameObject employeeArea;
     private void OnApplicationQuit()
     {
         ES3.Save("money", money);
+        ES3.Save("Employees", employeeArea);
     }
 }
