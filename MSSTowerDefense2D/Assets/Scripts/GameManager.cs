@@ -202,16 +202,10 @@ public class GameManager : MonoBehaviour
     private void StartNextLevel()
     {
         level++;
-        AdjustDifficulty();
         ReInitLevel();
         GameObject.Find("TheBar").GetComponent<TimeBarUI>().startCo();
         
 
-    }
-
-    private void AdjustDifficulty()
-    {
-        
     }
 
     /*
