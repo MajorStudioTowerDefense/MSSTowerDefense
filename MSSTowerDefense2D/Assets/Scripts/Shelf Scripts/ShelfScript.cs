@@ -4,6 +4,7 @@ using UnityEngine;
 using Pathfinding;
 using System.Linq;
 using TMPro;
+using static UnityEngine.GraphicsBuffer;
 
 
 public class CustomerData
@@ -289,20 +290,24 @@ public class ShelfScript : MonoBehaviour
                 Debug.Log("Start Purchase!");
                 var newCustomerData = new CustomerData(ai, normalCustomer, bot);
                 currentCustomersData.Add(newCustomerData);
+                
             }
 
         }
-        Debug.Log(currentCustomersData.ToList().Count);
-
+        
+        
         foreach (var customer in currentCustomersData.ToList())
         {
             if (loadAmount <= 0)
             {
                 RemoveCustomer(customer);
+                return;
             }
+            
             customer.timeAtShelf += Time.deltaTime;
-            if (customer.timeAtShelf >= customerStayDuration && loadAmount > 0)
+            if (customer.timeAtShelf >= customerStayDuration)
             {
+                Debug.Log("stay long enough");
                 Purchase(customer);
             }
         }
@@ -327,15 +332,40 @@ public class ShelfScript : MonoBehaviour
     
     void Purchase(CustomerData customerData)
     {
+        Debug.Log   ("Purchasing is purchase");
         loadAmount--;
         Bot customer = customerData.bot;
-        GameManager.instance.AddMoney(ItemManager.Instance.GetPricePerUnit(sellingItem.GetItem()) + purchasePower);
+        float moneyGained = ItemManager.Instance.GetPricePerUnit(sellingItem.GetItem()) + purchasePower;
+        GameManager.instance.AddMoney(moneyGained);
         Debug.Log("Finish purchase!" + customer.selectedItem.GetItem());
+        showGainedMoney(moneyGained);
         customer.needs.Remove(customer.selectedItem);
         customer.selectedItem = null;
         RemoveCustomer(customerData);
     }
 
+    void showGainedMoney(float moneyGained)
+    {
+        Debug.Log("stay long enough and show money");
+        GameObject coins = GainedMoneyObjectPool.SharedInstance.GetPooledObject();
+        Debug.Log(coins.ToString());
+        if (coins != null)
+        {
+           
+            TextMeshPro text = coins.GetComponentInChildren<TextMeshPro>();
+            text.text = $"+ {moneyGained}$";
+            Vector3 position = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+            coins.transform.position = position;
+            coins.SetActive(true);
+            StartCoroutine(DeactivateAfterDelay(coins, 2)); // destroy after 2 seconds
+        }
+    }
+
+    IEnumerator DeactivateAfterDelay(GameObject obj, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        obj.SetActive(false);
+    }
     void RemoveCustomer(CustomerData customerData)
     {
         customerData.bot.isPurchasing = false;

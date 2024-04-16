@@ -44,6 +44,6 @@ public class ButtonPop : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     private void OnDisable()
     {
-        transform.localPosition = orgSize;
+        transform.localScale = orgSize;
     }
 }

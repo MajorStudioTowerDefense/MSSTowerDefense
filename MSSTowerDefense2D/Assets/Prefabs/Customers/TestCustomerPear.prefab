@@ -51,7 +51,7 @@ GameObject:
   - component: {fileID: 7943251442694473406}
   m_Layer: 0
   m_Name: TestCustomerPear
-  m_TagString: Untagged
+  m_TagString: Customer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -64,7 +64,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2782339301779740598}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 601.311, y: 425.11667, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -192,7 +192,7 @@ MonoBehaviour:
   rotationSpeed: 360
   slowdownDistance: 0.71
   pickNextWaypointDist: 0.5
-  endReachedDistance: 1.03
+  endReachedDistance: 0.89
   alwaysDrawGizmos: 1
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0

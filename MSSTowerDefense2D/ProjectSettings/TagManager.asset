@@ -4,9 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Cutomer
   - target
   - Exit
+  - interactedShelf
+  - Timer
+  - Customer
   layers:
   - Default
   - TransparentFX
@@ -16,7 +18,7 @@ TagManager:
   - UI
   - Shelves
   - Customers
-  - 
+  - Wall
   - 
   - 
   - 

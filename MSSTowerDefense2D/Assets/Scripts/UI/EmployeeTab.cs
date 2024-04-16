@@ -6,38 +6,35 @@ public class EmployeeTab : MonoBehaviour
 {
     public bool MoveOut = false;
     public bool MoveIn = false;
-    public RectTransform rectTransform;
-    public Vector2 ogPosition;
-    public Vector2 newPosition;
-    public Vector2 movePosition;
-    public Vector2 currentPosition;
+    public GameObject employeeTab;
+    public Vector2 ogPosition, newPosition, currentPosition;
 
     private void Start()
     {
-        ogPosition = rectTransform.GetComponent<RectTransform>().offsetMax;
-        movePosition = new Vector2(0.2f, 0);
-        newPosition = new Vector2(ogPosition.x - 100, ogPosition.y);
+        ogPosition = employeeTab.GetComponent<RectTransform>().position;
+        newPosition = new Vector2(ogPosition.x - 250, ogPosition.y);
     }
 
      private void Update()
      {
-        currentPosition = rectTransform.offsetMax;
-    }
+        currentPosition = employeeTab.GetComponent<RectTransform>().position;
+        MoveTab();
+     }
 
     public void MoveTab()
     {
        if (MoveOut == true)
        {
-           rectTransform.offsetMax += movePosition;
-           if (rectTransform.offsetMax.x > ogPosition.x)
+            employeeTab.GetComponent<RectTransform>().position += new Vector3(150f * Time.deltaTime, 0, 0);
+           if (employeeTab.GetComponent<RectTransform>().position.x >= ogPosition.x)
            {
                 MoveOut = false;
            }
        }
        else if (MoveIn == true)
        {
-            rectTransform.offsetMin -= movePosition;
-            if (rectTransform.offsetMin.x < newPosition.x)
+            employeeTab.GetComponent<RectTransform>().position -= new Vector3(150f * Time.deltaTime, 0, 0);
+            if (employeeTab.GetComponent<RectTransform>().position.x <= newPosition.x)
             {
                 MoveIn = false;
             }
@@ -46,13 +43,14 @@ public class EmployeeTab : MonoBehaviour
 
     public void ButtonClick()
     {
-        if (rectTransform.offsetMax.x > ogPosition.x)
+        if (currentPosition.x >= ogPosition.x)
         {
             MoveIn = true;
         }
-        else if (rectTransform.offsetMin.x < newPosition.x)
+        else if (currentPosition.x <= newPosition.x)
         {
             MoveOut = true;
+
         }
     }
 }

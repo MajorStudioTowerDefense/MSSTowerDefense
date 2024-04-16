@@ -33,14 +33,15 @@ public class ShelfPlacementManager : MonoBehaviour
 
     private void Start()
     {
-        alternativeAreaWidth = GameManager.instance.alternativeAreaWidth; 
-        alternativeAreaHeight = GameManager.instance.alternativeAreaHeight;
-
-        alternativeAreaStartY = gridSystem.GetHeight() - alternativeAreaHeight;
+        
     }
 
     private void Update()
     {
+        alternativeAreaWidth = GameManager.instance.alternativeAreaWidth;
+        alternativeAreaHeight = GameManager.instance.alternativeAreaHeight;
+        alternativeAreaStartY = gridSystem.GetHeight() - alternativeAreaHeight;
+
         if (GameManager.instance.currentState == GameStates.STORE)
         {
             return;
@@ -79,27 +80,12 @@ public class ShelfPlacementManager : MonoBehaviour
             {
                 if (!isShelfGridCreated)
                 {
-                    shelfPlacementGrid = new bool[gridSystem.GetWidth(), gridSystem.GetHeight()];
-                    for (int x = 0; x < gridSystem.GetWidth(); x++)
+                    shelfPlacementGrid = new bool[gridSystem.GetWidth() + 2, gridSystem.GetHeight() + 1];
+                    for (int x = 0; x < gridSystem.GetWidth() + 2; x++)
                     {
-                        for (int y = 0; y < gridSystem.GetHeight(); y++)
+                        for (int y = 0; y < gridSystem.GetHeight() + 1; y++)
                         {
                             shelfPlacementGrid[x, y] = false;
-                        }
-                    }
-                    for (int x = 0; x < gridSystem.GetWidth(); x++)
-                    {
-                        for (int y = 0; y < gridSystem.GetHeight(); y++)
-                        {
-                            if (x >= alternativeAreaStartX && x < alternativeAreaStartX + alternativeAreaWidth &&
-                                y >= alternativeAreaStartY && y < alternativeAreaStartY + alternativeAreaHeight)
-                            {
-                                shelfPlacementGrid[x, y] = true;
-                            }
-                            else
-                            {
-                                shelfPlacementGrid[x, y] = false;
-                            }
                         }
                     }
                     isShelfGridCreated = true;
@@ -192,7 +178,6 @@ public class ShelfPlacementManager : MonoBehaviour
             ShelfScript shelfScript = shelfPrefab.GetComponent<ShelfScript>();
             if (shelfScript != null && GameManager.instance.money >= shelfScript.Cost)
             {
-                GameManager.instance.money -= shelfScript.Cost;
                 currentShelfPrefab = shelfPrefab;
                 // Reset the index or manage prefab selection state as needed
                 currentPrefabIndex = -1; // Reset or adjust according to your logic
@@ -265,6 +250,7 @@ public class ShelfPlacementManager : MonoBehaviour
         gridSystem.GetXY(mousePos, out x, out y);
         if (IsWithinGrid(x, y) && !shelfPlacementGrid[x, y]) // Check if the position is free
         {
+            GameManager.instance.money -= currentShelfPrefab.GetComponent<ShelfScript>().Cost;
             // Mark the grid position as occupied
             shelfPlacementGrid[x, y] = true;
             currentShelfPrefab = null;
@@ -281,7 +267,13 @@ public class ShelfPlacementManager : MonoBehaviour
 
     private bool IsWithinGrid(int x, int y)
     {
-        // Check if the x and y coordinates are within the grid bounds
-        return x >= 0 && y >= 0 && x < gridSystem.GetWidth() && y < gridSystem.GetHeight();
+        bool isWithinBasicGrid = x >= 2 && y >= 1 && x < gridSystem.GetWidth() + 2 && y < gridSystem.GetHeight() + 1;
+
+        bool isInRestrictedArea = x >= alternativeAreaStartX && x < alternativeAreaStartX + alternativeAreaWidth + 2 &&
+                                  y >= alternativeAreaStartY + 1 && y < alternativeAreaStartY + alternativeAreaHeight + 1;
+
+        //Debug.Log("Employee Area Width: " + alternativeAreaWidth);
+
+        return isWithinBasicGrid && !isInRestrictedArea;
     }
 }
