@@ -16,4 +16,9 @@ public class ShelfMatcher : MonoBehaviour
             transform.localScale = shelf.transform.localScale;
         }
     }
+
+    public void SelfDestroy()
+    {
+        Destroy(gameObject);
+    }
 }

@@ -70,7 +70,7 @@ GameObject:
   - component: {fileID: 6956124681929144039}
   m_Layer: 0
   m_Name: Desire
-  m_TagString: Untagged
+  m_TagString: Satisfaction
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
