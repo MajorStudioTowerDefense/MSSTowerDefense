@@ -10,17 +10,16 @@ public class AudioManager : MonoBehaviour
     public AudioSource[] audioSources;
     public AudioSource audioSource;
     public AudioSource audioSource2;
-    public float duration = 21f;
     public AudioClip Ticking;
     public AudioClip StartShift;
-    
+    private ClockDisplayUI timerScript;
+
     //Assigning certain sounds to play for a limited amount of time
     private void Start()
     {
+        timerScript = GameObject.Find("ClockNumbers").GetComponent<ClockDisplayUI>(); // Grabs the ClockUI script from the "ClockNumbers" GameObect
         audioSource.clip = Ticking;
         audioSource2.clip = StartShift;
-
-
         // Calls up Stopping Coroutine
         StartCoroutine(StopSoundAfterDelay());
 
@@ -89,7 +88,8 @@ public class AudioManager : MonoBehaviour
  IEnumerator StopSoundAfterDelay()
     {
         // Wait for 'duration' seconds
-        yield return new WaitForSeconds(21);
+        yield return null;
+        //yield return new WaitForSeconds(ClockDisplayUI.currentTime = 18);
 
         // Stop the sound
         audioSource.Stop();
@@ -103,11 +103,21 @@ public class AudioManager : MonoBehaviour
     IEnumerator StartSoundAfterDelay()
     {   
         // Wait for 'duration' seconds
-        yield return new WaitForSeconds(21);
+        yield return new WaitForSeconds(2f);
         
         //start sound
         //audioSource2.Start();
 
+    }
+
+    void Update()
+    {
+        if (timerScript != null)
+        {
+            int timerValueHours = timerScript.hours; // updates only the hour that the clock is at
+            int timerValueMinutes = timerScript.minutes;  //updates only the minutes
+                                              
+        }
     }
 
 }

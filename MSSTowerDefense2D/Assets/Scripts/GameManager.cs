@@ -78,7 +78,9 @@ public class GameManager : MonoBehaviour
         //timer = InitialTime.x * 60 + InitialTime.y;
 
         //GenerateGrid();
-        //GenerateWalls();
+        //GenerateWalls();\
+
+        FindObjectOfType<AstarPath>().Scan();
     }
 
     private void Update()
@@ -200,16 +202,10 @@ public class GameManager : MonoBehaviour
     private void StartNextLevel()
     {
         level++;
-        AdjustDifficulty();
         ReInitLevel();
         GameObject.Find("TheBar").GetComponent<TimeBarUI>().startCo();
         
 
-    }
-
-    private void AdjustDifficulty()
-    {
-        
     }
 
     /*

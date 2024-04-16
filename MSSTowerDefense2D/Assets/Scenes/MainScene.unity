@@ -682,10 +682,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveOut: 0
   MoveIn: 0
-  rectTransform: {fileID: 698006376}
+  employeeTab: {fileID: 698006375}
   ogPosition: {x: 0, y: 0}
   newPosition: {x: 0, y: 0}
-  movePosition: {x: 0, y: 0}
   currentPosition: {x: 0, y: 0}
 --- !u!1 &121916735
 GameObject:
@@ -940,6 +939,7 @@ GameObject:
   - component: {fileID: 142694684}
   - component: {fileID: 142694683}
   - component: {fileID: 142694682}
+  - component: {fileID: 142694686}
   m_Layer: 5
   m_Name: 4X Speed
   m_TagString: Untagged
@@ -1039,6 +1039,18 @@ MonoBehaviour:
           m_StringArgument: pauseGame
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 142694686}
+        m_TargetAssemblyTypeName: PauseScript, Assembly-CSharp
+        m_MethodName: resumeHighSpeed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &142694684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1077,6 +1089,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 142694680}
   m_CullTransparentMesh: 1
+--- !u!114 &142694686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 142694680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b10f8073efbe418b8790831814c5647, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 404972022}
+  play: {fileID: 869966628}
+  pause: {fileID: 1989002673}
 --- !u!1 &180637656
 GameObject:
   m_ObjectHideFlags: 0
@@ -2663,7 +2690,7 @@ MonoBehaviour:
   gridCellHeight: 9
   gridCellSize: 1
   alternativeAreaWidth: 3
-  alternativeAreaHeight: 2
+  alternativeAreaHeight: 3
   currentState: 0
   exit: {fileID: 0}
   revenue: 0
@@ -2676,10 +2703,6 @@ MonoBehaviour:
   startStoreTime: {x: 9, y: 0}
   endTime: {x: 18, y: 0}
   InitialTime: {x: 7, y: 0}
-  entranceSide: 1
-  exitSide: 2
-  entranceYPosition: 2
-  exitYPosition: 7
   level: 1
   difficultyFactor: 1.2
   summaryPanel: {fileID: 121916735}
@@ -4082,6 +4105,134 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 552220181}
   m_CullTransparentMesh: 1
+--- !u!1 &557287647
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 557287649}
+  - component: {fileID: 557287648}
+  m_Layer: 0
+  m_Name: Start Shift
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &557287648
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 557287647}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: f3bfe4c24bb25144187423e5250d56bf, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &557287649
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 557287647}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.13868758, y: 0.7335608, z: 0.07684163}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &579976634
 GameObject:
   m_ObjectHideFlags: 0
@@ -4172,7 +4323,7 @@ GameObject:
   - component: {fileID: 590425181}
   m_Layer: 5
   m_Name: ClockNumbers
-  m_TagString: Untagged
+  m_TagString: Timer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4194,8 +4345,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 24.776741, y: -229}
-  m_SizeDelta: {x: 493.5898, y: 169.61047}
+  m_AnchoredPosition: {x: 21.35218, y: -229}
+  m_SizeDelta: {x: 500.439, y: 169.6105}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &590425181
 MonoBehaviour:
@@ -4209,6 +4360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c91eed92fc75c1a40b2620cec3a91d44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentTime: {fileID: 0}
 --- !u!114 &590425182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4445,7 +4597,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 634301957}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5, y: 3.5, z: 0}
+  m_LocalPosition: {x: -4, y: 4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4892,6 +5044,7 @@ GameObject:
   m_Component:
   - component: {fileID: 698006376}
   - component: {fileID: 698006378}
+  - component: {fileID: 698006379}
   m_Layer: 5
   m_Name: SkeletonPanel
   m_TagString: Untagged
@@ -4928,6 +5081,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 698006375}
   m_CullTransparentMesh: 1
+--- !u!114 &698006379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 698006375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4815f0105e9494da59dc390cf149b31a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MoveOut: 0
+  MoveIn: 0
+  employeeTab: {fileID: 698006375}
+  ogPosition: {x: 0, y: 0}
+  newPosition: {x: 0, y: 0}
+  currentPosition: {x: 0, y: 0}
 --- !u!1 &698769151
 GameObject:
   m_ObjectHideFlags: 0
@@ -5276,6 +5447,7 @@ GameObject:
   - component: {fileID: 779099063}
   - component: {fileID: 779099062}
   - component: {fileID: 779099061}
+  - component: {fileID: 779099065}
   m_Layer: 5
   m_Name: 2X Speed
   m_TagString: Untagged
@@ -5375,6 +5547,18 @@ MonoBehaviour:
           m_StringArgument: pauseGame
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 779099065}
+        m_TargetAssemblyTypeName: PauseScript, Assembly-CSharp
+        m_MethodName: resumeHighSpeed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &779099063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5413,6 +5597,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 779099059}
   m_CullTransparentMesh: 1
+--- !u!114 &779099065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 779099059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b10f8073efbe418b8790831814c5647, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 404972022}
+  play: {fileID: 869966628}
+  pause: {fileID: 1989002673}
 --- !u!1 &786096219
 GameObject:
   m_ObjectHideFlags: 0
@@ -8635,7 +8834,6 @@ GameObject:
   - component: {fileID: 1261508826}
   - component: {fileID: 1261508825}
   - component: {fileID: 1261508824}
-  - component: {fileID: 1261508823}
   - component: {fileID: 1261508829}
   - component: {fileID: 1261508828}
   - component: {fileID: 1261508827}
@@ -8775,113 +8973,16 @@ MonoBehaviour:
   - {fileID: 1261508826}
   - {fileID: 1261508825}
   - {fileID: 1261508824}
-  - {fileID: 1261508823}
-  - {fileID: 1261508823}
-  - {fileID: 1261508823}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 1261508829}
   - {fileID: 1261508828}
   - {fileID: 1261508827}
   audioSource: {fileID: 1261508831}
-  audioSource2: {fileID: 0}
-  duration: 21
+  audioSource2: {fileID: 557287648}
   Ticking: {fileID: 8300000, guid: 3c58293d8128c8c4a83f7ddceb6b83f2, type: 3}
-  StartShift: {fileID: 0}
---- !u!82 &1261508823
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1261508819}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: f3bfe4c24bb25144187423e5250d56bf, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  StartShift: {fileID: 8300000, guid: f3bfe4c24bb25144187423e5250d56bf, type: 3}
 --- !u!82 &1261508824
 AudioSource:
   m_ObjectHideFlags: 0
@@ -10380,7 +10481,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAACYn+tT8QlEogIAALQFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VNtu2kAQ/RW0z01kkxDSvrVASCslQSFVHkoeFu8Yr1jvWnsJkIh/78zaxIY2EpLNmTO3MzN+Z1K7CjJv7NRKcWcEsG89Ru/sS6813sKWr4yeyzc4cJ6l8AWReOQ8ci8N4im5OVOCtzL7rleKyAmCQcvc2HIiVjAyzjuEc64coMkaT94aofce2+KjPySXXeP6Rs/eHt8y0B5sy/s/K+hM8bICQfV2gl417PQ60jR20jCS8wFFN0pJ1xTC/K6Kjc6rAixQp0Jy7CvmT86vEShArgpPobveD3nuwDdVWb4bS4sC1WHZD1OrVnK3rkt75SpQoqvLWFUd8+4f81kazbk15e0hbZpQCl/IbP3Idxl3vqNqFx63ladRoA1Xa75U8FyAvjdTa4IWaPQ2kGtw0B+3fz86GxWQrVu8LvUEDNXn46Ee9rH57UjJchmFvKyBuTJR769EBouz+YkFx71wTQhEqYrfDp74qrtAjeFGWufR1HSpqbylCZaobBI1o26CHxmrwXYjVKC58rsZxvGnIzyxfe51w+lWmuyN7XACJy4RbvlJcmKamU07LQe/QlnNjNR+DtxmRSeeK8zmDlzxELySGto5kOEeVRwZrev1c8dG8poHm/Os4+Vh64OFMfc8HgGWhFsiuglR0Oihg1K0kLEJiv0Hm6DfC4lccEyrIszujY73c/R8oUVYBSmO15wtM3GZD8Sgn6T9Qc6HZxfXwPtpcjUYpsnwQlyzeAdSo+RczWrNmknhBum2F407f/ia9aaWV/HwhOWbqXwrTUcOqXMzzyyAfjiK4MBiDvxEiImQ2OUcvJc6rh57XzBlsjWIxQd/EXWdbL3li1axBavkq/GELNgofsAWjOCPs5pZeJWwodxHwUDh4EA8SQUlr8iU7tn+L1BLAwQUAAAICAAAmJ/rB64wTm0AAAB4AAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAatWKkstKs7Mz1OyUjDRM9IztNRRUEovSizIKAaKGII4pZkpIHa0UlJyikmaaYqpkYGhkWlaormusUVqopGhgZmpuaGBuXGKhVIsUH1JZUGqX2JuKkRPQGJJRlpmXkpmXrqee1FmijvIaKXYWgBQSwECLQAUAAAICAAAmJ/rU/EJRKICAAC0BQAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAAmJ/rB64wTm0AAAB4AAAACQAkAAAAAAAAAAAAAADvAgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAKcDAAAAAA==
+    dataString: UEsDBBQAAAgIAACYn+vrVnvhogIAALUFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VNtu2kAQ/RW0z01kkxDSvrVASCslQSFVHkoeFu8Yr1jvWnsJkIh/78zaxIY2EpLNmTO3MzN+Z1K7CjJv7NRKcWcEsG89Ru/sS6813sKWr4yeyzc4cJ6l8AWReOQ8ci8N4im5OVOCtzL7rleKyAmCQcvc2HIiVjAyzjuEc64coMkaT94aofce2+KjPySXXeP6Rs/eHt8y0B5sy/s/K+hM8bICQfV2gl417PQ60jR20jCS8wFFN0pJ1xTC/K6Kjc6rAixQp0Jy7CvmT86vEShArgpPobveD3nuwDdVWb4bS4sC1WHZD1OrVnK3rkt75SpQoot+XX0d9O4f+1kazbk15e0hb5pQDl/IbP3Idxl3viNrFx63padRoQ1Xa75U8FyAvjdTa4IWaPQ2kGtw0B+3fz9aGxWQrVu8LvUEDNXn86Ee9rH77UjJchmVvKyBuTJR8K9EBovD+YkFx8VwTQhEqYrfDp74qrtBjeFGWufR1HSpqbylCZaobBI1o26CHxmrwXYjVKC58rsZxvGnMzyxfe51w+lYmuyN7XADJy4RbvlJcmKamU07LQe/QlnNjNR+DtxmRSeeK8zmDlzxELySGto5kOEeVRwZrev9c8dG8poHm/Os4+Vh64OFMfc8XgGWhFsiuglR0Oihg1K0kLEJiv0Hm6DfC4lccEyrIszujY4HdPR8oUVYBSmO15wtM3GZD8Sgn6T9Qc6HZxfXwPtpcjUYpsnwQlyzeAdSo+RczWrNmknhBum2F407f/ic9aaWV/HyhOWbqXwrTUcOqXMzzyyAfjiK4MBiDvxGiImQ2OUcvJc6rh57XzBlsjWIxQd/EXWdbL3li1axBavkq/GELNgofsEWjOCPs5pZeJWwodxHwUDh4EA8SQUlr8iU7tn+L1BLAwQUAAAICAAAmJ/rB64wTm0AAAB4AAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAatWKkstKs7Mz1OyUjDRM9IztNRRUEovSizIKAaKGII4pZkpIHa0UlJyikmaaYqpkYGhkWlaormusUVqopGhgZmpuaGBuXGKhVIsUH1JZUGqX2JuKkRPQGJJRlpmXkpmXrqee1FmijvIaKXYWgBQSwECLQAUAAAICAAAmJ/r61Z74aICAAC1BQAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAAmJ/rB64wTm0AAAB4AAAACQAkAAAAAAAAAAAAAADvAgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAKcDAAAAAA==
     file_cachedStartup: {fileID: 0}
     cacheStartup: 0
   showNavGraphs: 1
