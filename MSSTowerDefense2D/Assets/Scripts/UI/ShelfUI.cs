@@ -32,6 +32,7 @@ public class ShelfUI : MonoBehaviour
     {
         fruits = new List<GameObject>() { F1, F2, F3};
         weapons = new List<GameObject>() { W1, W2, W3 };
+        potions = new List<GameObject>() { P1, P2, P3 };
         FruitShelvesOn();
         WeaponShelvesOn();
         PotionShelvesOn();
