@@ -344,9 +344,9 @@ public class GameManager : MonoBehaviour
     public void placingLove() => shelfPlacementManager.SetCurrentShelfPrefab(shelfPrefabs[7]);
     public void placingHaste() => shelfPlacementManager.SetCurrentShelfPrefab(shelfPrefabs[8]);
     public void placingPoison() => shelfPlacementManager.SetCurrentShelfPrefab(shelfPrefabs[9]);
-    public void placingCrystal() => shelfPlacementManager.SetCurrentShelfPrefab(shelfPrefabs[10]);
-    public void placingUnicorn() => shelfPlacementManager.SetCurrentShelfPrefab(shelfPrefabs[11]);
-    public void placingHalo() => shelfPlacementManager.SetCurrentShelfPrefab(shelfPrefabs[12]);
+    public void placingCrystal() => shelfPlacementManager.SetCurrentShelfPrefab(shelfPrefabs[12]);
+    public void placingUnicorn() => shelfPlacementManager.SetCurrentShelfPrefab(shelfPrefabs[10]);
+    public void placingHalo() => shelfPlacementManager.SetCurrentShelfPrefab(shelfPrefabs[11]);
 
 
 
