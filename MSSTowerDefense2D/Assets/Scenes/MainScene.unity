@@ -251,7 +251,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -11765,11 +11765,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaf280491bd16488bb6ea2572cca81a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  first: {fileID: 2019340994}
-  second: {fileID: 402731083}
-  third: {fileID: 2081587041}
-  fourth: {fileID: 180637656}
-  fifth: {fileID: 68977701}
   cart: {fileID: 21300000, guid: aee3768c9db3140b68fbeb6e5c70b7e4, type: 3}
   move: {fileID: 21300000, guid: 2abbdeb6fe51145e8b5435c6810d92e8, type: 3}
   stock: {fileID: 21300000, guid: d6638c5304e65475487c96c99e72bb27, type: 3}
@@ -21803,7 +21798,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1100092524}
   m_HandleRect: {fileID: 1100092523}
   m_Direction: 3
-  m_Value: 1.0000002
+  m_Value: 1
   m_Size: 0.56765485
   m_NumberOfSteps: 0
   m_OnValueChanged:

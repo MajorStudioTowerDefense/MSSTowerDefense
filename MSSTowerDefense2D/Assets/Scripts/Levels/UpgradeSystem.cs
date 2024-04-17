@@ -17,9 +17,11 @@ public class UpgradeSystem : MonoBehaviour
     [Header("Shelf Settings")]
     [SerializeField] List<ShelfScript> Shelves = new List<ShelfScript>();
     public float shelfVisibilityBoost;
+    private SkeletonCardStackingUIScript skeletonCardScript;
 
     private void Start()
     {
+        skeletonCardScript = GameObject.Find("Employee IDs").GetComponent<SkeletonCardStackingUIScript>();
         addEmployeeUseList.Add(FindObjectOfType<NormalEmployee>().gameObject);
     }
 
@@ -35,6 +37,8 @@ public class UpgradeSystem : MonoBehaviour
         emp.transform.SetParent(EmployeeArea.transform);
         
         addEmployeeUseList.Add(emp);
+        skeletonCardScript.CreateNewCard(emp);
+
     }
 
     public void BoostEmployee()
