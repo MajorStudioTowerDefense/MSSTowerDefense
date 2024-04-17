@@ -39,12 +39,14 @@ public class SkeletonCardStackingUIScript : MonoBehaviour
         IDs[curr].GetComponent<RectTransform>().position = middle;
         while (curr > 0) {
             curr--;
+            middle = firstID.GetComponent<RectTransform>().position;
             IDs[curr].GetComponent<RectTransform>().position = new Vector2(middle.x, IDs[curr + 1].GetComponent<RectTransform>().position.y + increment);
         }
         curr = length / 2;
         while (curr < length)
         {
             curr++;
+            middle = firstID.GetComponent<RectTransform>().position;
             IDs[curr].GetComponent<RectTransform>().position = new Vector2(middle.x, IDs[curr - 1].GetComponent<RectTransform>().position.y - increment);
         }
         if (length%2 == 0)
@@ -52,6 +54,7 @@ public class SkeletonCardStackingUIScript : MonoBehaviour
             int number = 10;
             foreach(GameObject id in IDs) {
                 number -= 1;
+                middle = firstID.GetComponent<RectTransform>().position;
                 id.GetComponent<RectTransform>().position = new Vector3(id.GetComponent<RectTransform>().position.x, middle.z - number);
             }
         }

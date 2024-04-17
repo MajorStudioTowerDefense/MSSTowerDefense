@@ -20,12 +20,19 @@ public class ShelfUI : MonoBehaviour
     public GameObject P2;
     public GameObject P3;
 
+    //t is for table
+    public GameObject T1;
+    public GameObject T2;
+    public GameObject T3;
+
+
     public GameObject ToDisable;
 
  
-    private List<GameObject> fruits; //shut up
+    private List<GameObject> fruits; 
     private List<GameObject> weapons;
     private List<GameObject> potions;
+    private List<GameObject> tables;
 
 
     private void Start()
@@ -33,9 +40,11 @@ public class ShelfUI : MonoBehaviour
         fruits = new List<GameObject>() { F1, F2, F3};
         weapons = new List<GameObject>() { W1, W2, W3 };
         potions = new List<GameObject>() { P1, P2, P3 };
+        tables = new List<GameObject>() { T1, T2, T3 };
         FruitShelvesOn();
         WeaponShelvesOn();
         PotionShelvesOn();
+        TableShelvesOn();
         //remove these one level building becomes a thing, will probably need to make structure edits
     }
 
@@ -93,6 +102,16 @@ public class ShelfUI : MonoBehaviour
         foreach (GameObject potion in potions)
         {
             potion.SetActive(true);
+        }
+
+
+    }
+
+    public void TableShelvesOn()
+    {
+        foreach (GameObject table in tables)
+        {
+            table.SetActive(true);
         }
 
 
