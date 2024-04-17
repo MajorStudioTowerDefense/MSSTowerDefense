@@ -273,7 +273,7 @@ TextureImporter:
         height: 135
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 16, y: 25, z: 16, w: 38}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -301,6 +301,27 @@ TextureImporter:
       bones: []
       spriteID: 7beb412583e95d54c9a261478b53d9c8
       internalID: 21255415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Untitled_Artwork 32 copy 2_4
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 627
+        width: 62
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 14, y: 14, z: 13, w: 12}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6db88ba0d3c0384f88a5a18f9b4276b
+      internalID: -1205342524
       vertices: []
       indices: 
       edges: []
