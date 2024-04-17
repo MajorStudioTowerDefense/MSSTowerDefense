@@ -3,6 +3,10 @@ using UnityEngine.EventSystems;
 
 public class TutorialEventTrigger : MonoBehaviour
 {
+    [Header("Entire Tutorials")]
+    public GameObject tutorialPanel;
+    public GameObject tutorialManager;
+
     [Header ("Customer Tutorial")]
     public GameObject customerTutorialTriggerUIObject;
     private bool isCustomerTutorialTriggered = false;
@@ -64,5 +68,22 @@ public class TutorialEventTrigger : MonoBehaviour
                 return;
             }
         }
+    }
+
+    public void ActivateTutorialPanel()
+    {
+        tutorialPanel.SetActive(true);
+    }
+
+    public void StartTutorial()
+    {
+        tutorialPanel.SetActive(false);
+    }
+
+    public void SkipTutorial()
+    {
+        GameManager.instance.TutorialEnds();
+        tutorialManager.SetActive(false);
+        tutorialPanel.SetActive(false);
     }
 }
