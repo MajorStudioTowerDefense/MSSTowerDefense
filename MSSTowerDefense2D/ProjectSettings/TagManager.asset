@@ -11,6 +11,7 @@ TagManager:
   - Customer
   - Door
   - Satisfaction
+  - Employee
   layers:
   - Default
   - TransparentFX

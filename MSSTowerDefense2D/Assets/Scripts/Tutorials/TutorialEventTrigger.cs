@@ -9,7 +9,7 @@ public class TutorialEventTrigger : MonoBehaviour
     private GameObject firstCustomer;
     private GameObject firstDoor;
 
-    [Header("Customer Tutorial")]
+    [Header("Employee and Restock Tutorial")]
     public GameObject employeeRestockTriggerUIObject;
 
     void Update()
@@ -42,8 +42,27 @@ public class TutorialEventTrigger : MonoBehaviour
         }
     }
 
+    private bool isRestockTutorialTriggered = false; 
+
     void TriggerEmployeeandRestockTutorial()
     {
+        if (isRestockTutorialTriggered) return;
 
+        ShelfScript[] shelves = FindObjectsOfType<ShelfScript>();
+        foreach (ShelfScript shelf in shelves)
+        {
+            if (shelf.loadAmount == 0)
+            {
+                PointerEventData pointerEventData = new PointerEventData(EventSystem.current)
+                {
+                    position = Camera.main.WorldToScreenPoint(employeeRestockTriggerUIObject.transform.position)
+                };
+
+                ExecuteEvents.Execute(employeeRestockTriggerUIObject, pointerEventData, ExecuteEvents.pointerClickHandler);
+
+                isRestockTutorialTriggered = true;
+                return;
+            }
+        }
     }
 }

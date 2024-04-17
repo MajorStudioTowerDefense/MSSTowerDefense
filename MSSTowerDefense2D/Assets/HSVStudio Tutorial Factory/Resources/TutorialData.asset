@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assignOnRuntime: 1
   targetCamera:
-    exposedName: f83d62709ce9a3a4e95a2262754442d6
+    exposedName: fa616fd8be2538447b0d52c4a60dc8e2
     defaultValue: {fileID: 0}
   targetCanvas:
-    exposedName: 4a9a73502d675e448940615bd8da8cc5
+    exposedName: 8895c9992758dfb4c93cc51bdf4c5b6b
     defaultValue: {fileID: 0}
   autoStart: 1
   autoStartIndex: -1
@@ -246,8 +246,8 @@ MonoBehaviour:
         useTrigger: 0
         triggerState: 0
       moduleConfigs:
-      - rid: 971211097452052624
-      - rid: 971211097452052625
+      - rid: 8266946843869970707
+      - rid: 8266946843869970708
       test: 0
     - index: 2
       stageIndex: 1
@@ -372,8 +372,8 @@ MonoBehaviour:
         useTrigger: 0
         triggerState: 0
       moduleConfigs:
-      - rid: 971211097452052626
-      - rid: 971211097452052627
+      - rid: 8266946843869970709
+      - rid: 8266946843869970710
       test: 0
     - index: 3
       stageIndex: 1
@@ -498,8 +498,8 @@ MonoBehaviour:
         useTrigger: 0
         triggerState: 0
       moduleConfigs:
-      - rid: 971211097452052628
-      - rid: 971211097452052629
+      - rid: 8266946843869970711
+      - rid: 8266946843869970712
       test: 0
     - index: 4
       stageIndex: 1
@@ -624,8 +624,8 @@ MonoBehaviour:
         useTrigger: 0
         triggerState: 0
       moduleConfigs:
-      - rid: 971211097452052630
-      - rid: 971211097452052631
+      - rid: 8266946843869970713
+      - rid: 8266946843869970714
       test: 0
   - index: 2
     stageName: Shelves
@@ -825,8 +825,8 @@ MonoBehaviour:
         useTrigger: 0
         triggerState: 0
       moduleConfigs:
-      - rid: 971211097452052632
-      - rid: 971211097452052633
+      - rid: 8266946843869970715
+      - rid: 8266946843869970716
       test: 0
     - index: 2
       stageIndex: 2
@@ -951,8 +951,8 @@ MonoBehaviour:
         useTrigger: 0
         triggerState: 0
       moduleConfigs:
-      - rid: 971211097452052634
-      - rid: 971211097452052635
+      - rid: 8266946843869970717
+      - rid: 8266946843869970718
       test: 0
     - index: 3
       stageIndex: 2
@@ -1028,7 +1028,7 @@ MonoBehaviour:
             m_Calls: []
       focusTargets: []
       moduleConfigs:
-      - rid: 971211097452052636
+      - rid: 8266946843869970719
       test: 0
   - index: 3
     stageName: Prep Phase and Timer
@@ -1252,8 +1252,8 @@ MonoBehaviour:
         useTrigger: 0
         triggerState: 0
       moduleConfigs:
-      - rid: 971211097452052637
-      - rid: 971211097452052638
+      - rid: 8266946843869970720
+      - rid: 8266946843869970721
       test: 0
     - index: 2
       stageIndex: 3
@@ -1378,8 +1378,8 @@ MonoBehaviour:
         useTrigger: 0
         triggerState: 0
       moduleConfigs:
-      - rid: 971211097452052639
-      - rid: 971211097452052640
+      - rid: 8266946843869970722
+      - rid: 8266946843869970723
       test: 0
     - index: 3
       stageIndex: 3
@@ -1504,8 +1504,8 @@ MonoBehaviour:
         useTrigger: 0
         triggerState: 0
       moduleConfigs:
-      - rid: 971211097452052641
-      - rid: 971211097452052642
+      - rid: 8266946843869970724
+      - rid: 8266946843869970725
       test: 0
     - index: 4
       stageIndex: 3
@@ -1630,8 +1630,8 @@ MonoBehaviour:
         useTrigger: 0
         triggerState: 0
       moduleConfigs:
-      - rid: 971211097452052643
-      - rid: 971211097452052644
+      - rid: 8266946843869970726
+      - rid: 8266946843869970727
       test: 0
     - index: 5
       stageIndex: 3
@@ -1707,7 +1707,7 @@ MonoBehaviour:
             m_Calls: []
       focusTargets: []
       moduleConfigs:
-      - rid: 971211097452052645
+      - rid: 8266946843869970728
       test: 0
   - index: 4
     stageName: Customers
@@ -1872,10 +1872,10 @@ MonoBehaviour:
         moduleMask: 0
         screenRect:
           serializedVersion: 2
-          x: 0
-          y: 0
-          width: 0
-          height: 0
+          x: 744
+          y: 486
+          width: 108
+          height: 108
         TargetBoundType: 1
         spawnEffect: 0
         effectPrefab: {fileID: 0}
@@ -1907,8 +1907,8 @@ MonoBehaviour:
         useTrigger: 0
         triggerState: 0
       moduleConfigs:
-      - rid: 971211097452052646
-      - rid: 971211097452052647
+      - rid: 8266946843869970729
+      - rid: 8266946843869970730
       test: 0
     - index: 2
       stageIndex: 4
@@ -1958,10 +1958,22 @@ MonoBehaviour:
         name: 
       events:
       - type: 0
-        enable: 0
+        enable: 1
         subEvent:
           m_PersistentCalls:
-            m_Calls: []
+            m_Calls:
+            - m_Target: {fileID: 0}
+              m_TargetAssemblyTypeName: CustomMatcher, Assembly-CSharp
+              m_MethodName: SelfDestroy
+              m_Mode: 1
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 0
+              m_CallState: 2
       - type: 1
         enable: 0
         subEvent:
@@ -2033,8 +2045,8 @@ MonoBehaviour:
         useTrigger: 0
         triggerState: 0
       moduleConfigs:
-      - rid: 971211097452052648
-      - rid: 971211097452052649
+      - rid: 8266946843869970731
+      - rid: 8266946843869970732
       test: 0
   - index: 5
     stageName: Customer Satisfaction
@@ -2246,9 +2258,9 @@ MonoBehaviour:
         useTrigger: 0
         triggerState: 0
       moduleConfigs:
-      - rid: 971211097452052650
-      - rid: 971211097452052651
-      - rid: 971211097452052652
+      - rid: 8266946843869970733
+      - rid: 8266946843869970734
+      - rid: 8266946843869970735
       test: 0
     - index: 2
       stageIndex: 5
@@ -2373,9 +2385,9 @@ MonoBehaviour:
         useTrigger: 0
         triggerState: 0
       moduleConfigs:
-      - rid: 971211097452052653
-      - rid: 971211097452052654
-      - rid: 971211097452052655
+      - rid: 8266946843869970736
+      - rid: 8266946843869970737
+      - rid: 8266946843869970738
       test: 0
     - index: 3
       stageIndex: 5
@@ -2524,9 +2536,1161 @@ MonoBehaviour:
         useTrigger: 0
         triggerState: 0
       moduleConfigs:
-      - rid: 971211097452052656
-      - rid: 971211097452052657
-      - rid: 971211097452052658
+      - rid: 8266946843869970739
+      - rid: 8266946843869970740
+      - rid: 8266946843869970741
+      test: 0
+  - index: 6
+    stageName: Employee & Restock
+    state: 0
+    startTrigger:
+      triggerType: 2
+      colliderConfig:
+        collider: {fileID: 0}
+        triggerOnClick: 0
+        layerFiltering: 0
+        filterLayer:
+          serializedVersion: 2
+          m_Bits: 0
+        tagFiltering: 0
+        filterTag: 
+        useRigidBodyTag: 0
+        pointerTrigger: 2
+      graphicConfig:
+        graphic: {fileID: 0}
+        pointerTrigger: 2
+      keyCode: 0
+      tagConfig:
+        targetTag: Customer
+    endTrigger:
+      triggerType: 0
+      colliderConfig:
+        collider: {fileID: 0}
+        triggerOnClick: 0
+        layerFiltering: 0
+        filterLayer:
+          serializedVersion: 2
+          m_Bits: 0
+        tagFiltering: 0
+        filterTag: 
+        useRigidBodyTag: 0
+        pointerTrigger: 2
+      graphicConfig:
+        graphic: {fileID: 0}
+        pointerTrigger: 2
+      keyCode: 0
+      tagConfig:
+        targetTag: Customer
+    advanceConfig:
+      advanceType: 1
+      index: -1
+      name: 
+    events:
+    - type: 0
+      enable: 0
+      subEvent:
+        m_PersistentCalls:
+          m_Calls: []
+    - type: 1
+      enable: 0
+      subEvent:
+        m_PersistentCalls:
+          m_Calls: []
+    - type: 2
+      enable: 0
+      subEvent:
+        m_PersistentCalls:
+          m_Calls: []
+    - type: 3
+      enable: 0
+      subEvent:
+        m_PersistentCalls:
+          m_Calls: []
+    - type: 4
+      enable: 0
+      subEvent:
+        m_PersistentCalls:
+          m_Calls: []
+    currentStep: 1
+    startObjectIndex: -1
+    allowMultiple: 0
+    tutorialObjects:
+    - index: 1
+      stageIndex: 6
+      Name: Empty Shelf
+      state: 0
+      startTrigger:
+        triggerType: 0
+        colliderConfig:
+          collider: {fileID: 0}
+          triggerOnClick: 0
+          layerFiltering: 0
+          filterLayer:
+            serializedVersion: 2
+            m_Bits: 0
+          tagFiltering: 0
+          filterTag: 
+          useRigidBodyTag: 0
+          pointerTrigger: 2
+        graphicConfig:
+          graphic: {fileID: 0}
+          pointerTrigger: 2
+        keyCode: 0
+        tagConfig:
+          targetTag: Customer
+      endTrigger:
+        triggerType: 0
+        colliderConfig:
+          collider: {fileID: 0}
+          triggerOnClick: 0
+          layerFiltering: 0
+          filterLayer:
+            serializedVersion: 2
+            m_Bits: 0
+          tagFiltering: 0
+          filterTag: 
+          useRigidBodyTag: 0
+          pointerTrigger: 2
+        graphicConfig:
+          graphic: {fileID: 0}
+          pointerTrigger: 2
+        keyCode: 0
+        tagConfig:
+          targetTag: Customer
+      advanceConfig:
+        advanceType: 1
+        index: -1
+        name: 
+      events:
+      - type: 0
+        enable: 1
+        subEvent:
+          m_PersistentCalls:
+            m_Calls:
+            - m_Target: {fileID: 0}
+              m_TargetAssemblyTypeName: PauseScript, Assembly-CSharp
+              m_MethodName: pauseGame
+              m_Mode: 1
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 0
+              m_CallState: 2
+      - type: 1
+        enable: 0
+        subEvent:
+          m_PersistentCalls:
+            m_Calls: []
+      - type: 2
+        enable: 0
+        subEvent:
+          m_PersistentCalls:
+            m_Calls: []
+      - type: 3
+        enable: 0
+        subEvent:
+          m_PersistentCalls:
+            m_Calls: []
+      - type: 4
+        enable: 0
+        subEvent:
+          m_PersistentCalls:
+            m_Calls: []
+      focusTargets:
+      - target: {fileID: 0}
+        rtTarget: {fileID: 0}
+        overrideSpawn: 0
+        spawnInfo:
+          spawnPos: {x: 0, y: 0, z: 0}
+          spawnRot: {x: 0, y: 0, z: 0}
+          spawnScale: {x: 0, y: 0, z: 0}
+        rtCanvas: {fileID: 0}
+        startInactive: 0
+        highlightTarget: 0
+        followTarget: 0
+        useModuleMask: 0
+        moduleMask: 0
+        screenRect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 0
+          height: 0
+        TargetBoundType: 1
+        spawnEffect: 0
+        effectPrefab: {fileID: 0}
+        effectRT: {fileID: 0}
+        overrideEffectInfo: 0
+        effectSpawnInfo:
+          spawnPos: {x: 0, y: 0, z: 0}
+          spawnRot: {x: 0, y: 0, z: 0}
+          spawnScale: {x: 0, y: 0, z: 0}
+        triggerConfig:
+          triggerType: 0
+          colliderConfig:
+            collider: {fileID: 0}
+            triggerOnClick: 0
+            layerFiltering: 0
+            filterLayer:
+              serializedVersion: 2
+              m_Bits: 0
+            tagFiltering: 0
+            filterTag: 
+            useRigidBodyTag: 0
+            pointerTrigger: 0
+          graphicConfig:
+            graphic: {fileID: 0}
+            pointerTrigger: 0
+          keyCode: 0
+          tagConfig:
+            targetTag: 
+        useTrigger: 0
+        triggerState: 0
+      moduleConfigs:
+      - rid: 8266946843869970742
+      - rid: 8266946843869970743
+      test: 0
+    - index: 2
+      stageIndex: 6
+      Name: Empty Shelf 2
+      state: 0
+      startTrigger:
+        triggerType: 0
+        colliderConfig:
+          collider: {fileID: 0}
+          triggerOnClick: 0
+          layerFiltering: 0
+          filterLayer:
+            serializedVersion: 2
+            m_Bits: 0
+          tagFiltering: 0
+          filterTag: 
+          useRigidBodyTag: 0
+          pointerTrigger: 2
+        graphicConfig:
+          graphic: {fileID: 0}
+          pointerTrigger: 2
+        keyCode: 0
+        tagConfig:
+          targetTag: Customer
+      endTrigger:
+        triggerType: 0
+        colliderConfig:
+          collider: {fileID: 0}
+          triggerOnClick: 0
+          layerFiltering: 0
+          filterLayer:
+            serializedVersion: 2
+            m_Bits: 0
+          tagFiltering: 0
+          filterTag: 
+          useRigidBodyTag: 0
+          pointerTrigger: 2
+        graphicConfig:
+          graphic: {fileID: 0}
+          pointerTrigger: 2
+        keyCode: 0
+        tagConfig:
+          targetTag: Customer
+      advanceConfig:
+        advanceType: 1
+        index: -1
+        name: 
+      events:
+      - type: 0
+        enable: 0
+        subEvent:
+          m_PersistentCalls:
+            m_Calls:
+            - m_Target: {fileID: 0}
+              m_TargetAssemblyTypeName: PauseScript, Assembly-CSharp
+              m_MethodName: pauseGame
+              m_Mode: 1
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 0
+              m_CallState: 2
+      - type: 1
+        enable: 0
+        subEvent:
+          m_PersistentCalls:
+            m_Calls: []
+      - type: 2
+        enable: 0
+        subEvent:
+          m_PersistentCalls:
+            m_Calls: []
+      - type: 3
+        enable: 0
+        subEvent:
+          m_PersistentCalls:
+            m_Calls: []
+      - type: 4
+        enable: 1
+        subEvent:
+          m_PersistentCalls:
+            m_Calls:
+            - m_Target: {fileID: 0}
+              m_TargetAssemblyTypeName: PauseScript, Assembly-CSharp
+              m_MethodName: resumeGame
+              m_Mode: 1
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 0
+              m_CallState: 2
+      focusTargets:
+      - target: {fileID: 0}
+        rtTarget: {fileID: 0}
+        overrideSpawn: 0
+        spawnInfo:
+          spawnPos: {x: 0, y: 0, z: 0}
+          spawnRot: {x: 0, y: 0, z: 0}
+          spawnScale: {x: 0, y: 0, z: 0}
+        rtCanvas: {fileID: 0}
+        startInactive: 0
+        highlightTarget: 0
+        followTarget: 0
+        useModuleMask: 0
+        moduleMask: 0
+        screenRect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 0
+          height: 0
+        TargetBoundType: 1
+        spawnEffect: 0
+        effectPrefab: {fileID: 0}
+        effectRT: {fileID: 0}
+        overrideEffectInfo: 0
+        effectSpawnInfo:
+          spawnPos: {x: 0, y: 0, z: 0}
+          spawnRot: {x: 0, y: 0, z: 0}
+          spawnScale: {x: 0, y: 0, z: 0}
+        triggerConfig:
+          triggerType: 0
+          colliderConfig:
+            collider: {fileID: 0}
+            triggerOnClick: 0
+            layerFiltering: 0
+            filterLayer:
+              serializedVersion: 2
+              m_Bits: 0
+            tagFiltering: 0
+            filterTag: 
+            useRigidBodyTag: 0
+            pointerTrigger: 0
+          graphicConfig:
+            graphic: {fileID: 0}
+            pointerTrigger: 0
+          keyCode: 0
+          tagConfig:
+            targetTag: 
+        useTrigger: 0
+        triggerState: 0
+      moduleConfigs:
+      - rid: 8266946843869970744
+      - rid: 8266946843869970745
+      test: 0
+    - index: 3
+      stageIndex: 6
+      Name: Empty Shelf 3
+      state: 0
+      startTrigger:
+        triggerType: 0
+        colliderConfig:
+          collider: {fileID: 0}
+          triggerOnClick: 0
+          layerFiltering: 0
+          filterLayer:
+            serializedVersion: 2
+            m_Bits: 0
+          tagFiltering: 0
+          filterTag: 
+          useRigidBodyTag: 0
+          pointerTrigger: 2
+        graphicConfig:
+          graphic: {fileID: 0}
+          pointerTrigger: 2
+        keyCode: 0
+        tagConfig:
+          targetTag: Customer
+      endTrigger:
+        triggerType: 0
+        colliderConfig:
+          collider: {fileID: 0}
+          triggerOnClick: 0
+          layerFiltering: 0
+          filterLayer:
+            serializedVersion: 2
+            m_Bits: 0
+          tagFiltering: 0
+          filterTag: 
+          useRigidBodyTag: 0
+          pointerTrigger: 2
+        graphicConfig:
+          graphic: {fileID: 0}
+          pointerTrigger: 2
+        keyCode: 0
+        tagConfig:
+          targetTag: Customer
+      advanceConfig:
+        advanceType: 1
+        index: -1
+        name: 
+      events:
+      - type: 0
+        enable: 1
+        subEvent:
+          m_PersistentCalls:
+            m_Calls:
+            - m_Target: {fileID: 0}
+              m_TargetAssemblyTypeName: PauseScript, Assembly-CSharp
+              m_MethodName: pauseGame
+              m_Mode: 1
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 0
+              m_CallState: 2
+      - type: 1
+        enable: 0
+        subEvent:
+          m_PersistentCalls:
+            m_Calls: []
+      - type: 2
+        enable: 0
+        subEvent:
+          m_PersistentCalls:
+            m_Calls: []
+      - type: 3
+        enable: 0
+        subEvent:
+          m_PersistentCalls:
+            m_Calls: []
+      - type: 4
+        enable: 0
+        subEvent:
+          m_PersistentCalls:
+            m_Calls:
+            - m_Target: {fileID: 0}
+              m_TargetAssemblyTypeName: PauseScript, Assembly-CSharp
+              m_MethodName: resumeGame
+              m_Mode: 1
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 0
+              m_CallState: 2
+            - m_Target: {fileID: 0}
+              m_TargetAssemblyTypeName: EmptyShelfMatcher, Assembly-CSharp
+              m_MethodName: SelfDestroy
+              m_Mode: 1
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 0
+              m_CallState: 2
+      focusTargets:
+      - target: {fileID: 0}
+        rtTarget: {fileID: 0}
+        overrideSpawn: 0
+        spawnInfo:
+          spawnPos: {x: 0, y: 0, z: 0}
+          spawnRot: {x: 0, y: 0, z: 0}
+          spawnScale: {x: 0, y: 0, z: 0}
+        rtCanvas: {fileID: 0}
+        startInactive: 0
+        highlightTarget: 0
+        followTarget: 0
+        useModuleMask: 0
+        moduleMask: 0
+        screenRect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 0
+          height: 0
+        TargetBoundType: 1
+        spawnEffect: 0
+        effectPrefab: {fileID: 0}
+        effectRT: {fileID: 0}
+        overrideEffectInfo: 0
+        effectSpawnInfo:
+          spawnPos: {x: 0, y: 0, z: 0}
+          spawnRot: {x: 0, y: 0, z: 0}
+          spawnScale: {x: 0, y: 0, z: 0}
+        triggerConfig:
+          triggerType: 0
+          colliderConfig:
+            collider: {fileID: 0}
+            triggerOnClick: 0
+            layerFiltering: 0
+            filterLayer:
+              serializedVersion: 2
+              m_Bits: 0
+            tagFiltering: 0
+            filterTag: 
+            useRigidBodyTag: 0
+            pointerTrigger: 0
+          graphicConfig:
+            graphic: {fileID: 0}
+            pointerTrigger: 0
+          keyCode: 0
+          tagConfig:
+            targetTag: 
+        useTrigger: 0
+        triggerState: 0
+      moduleConfigs:
+      - rid: 8266946843869970746
+      - rid: 8266946843869970747
+      test: 0
+    - index: 4
+      stageIndex: 6
+      Name: Empty Shelf 4
+      state: 0
+      startTrigger:
+        triggerType: 0
+        colliderConfig:
+          collider: {fileID: 0}
+          triggerOnClick: 0
+          layerFiltering: 0
+          filterLayer:
+            serializedVersion: 2
+            m_Bits: 0
+          tagFiltering: 0
+          filterTag: 
+          useRigidBodyTag: 0
+          pointerTrigger: 2
+        graphicConfig:
+          graphic: {fileID: 0}
+          pointerTrigger: 2
+        keyCode: 0
+        tagConfig:
+          targetTag: Customer
+      endTrigger:
+        triggerType: 1
+        colliderConfig:
+          collider: {fileID: 0}
+          triggerOnClick: 1
+          layerFiltering: 0
+          filterLayer:
+            serializedVersion: 2
+            m_Bits: 0
+          tagFiltering: 0
+          filterTag: 
+          useRigidBodyTag: 0
+          pointerTrigger: 2
+        graphicConfig:
+          graphic: {fileID: 0}
+          pointerTrigger: 2
+        keyCode: 0
+        tagConfig:
+          targetTag: Customer
+      advanceConfig:
+        advanceType: 1
+        index: -1
+        name: 
+      events:
+      - type: 0
+        enable: 1
+        subEvent:
+          m_PersistentCalls:
+            m_Calls:
+            - m_Target: {fileID: 0}
+              m_TargetAssemblyTypeName: PauseScript, Assembly-CSharp
+              m_MethodName: resumeGame
+              m_Mode: 1
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 0
+              m_CallState: 2
+      - type: 1
+        enable: 0
+        subEvent:
+          m_PersistentCalls:
+            m_Calls: []
+      - type: 2
+        enable: 0
+        subEvent:
+          m_PersistentCalls:
+            m_Calls: []
+      - type: 3
+        enable: 0
+        subEvent:
+          m_PersistentCalls:
+            m_Calls: []
+      - type: 4
+        enable: 1
+        subEvent:
+          m_PersistentCalls:
+            m_Calls:
+            - m_Target: {fileID: 0}
+              m_TargetAssemblyTypeName: CustomMatcher, Assembly-CSharp
+              m_MethodName: SelfDestroy
+              m_Mode: 1
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 0
+              m_CallState: 2
+      focusTargets:
+      - target: {fileID: 0}
+        rtTarget: {fileID: 0}
+        overrideSpawn: 0
+        spawnInfo:
+          spawnPos: {x: 0, y: 0, z: 0}
+          spawnRot: {x: 0, y: 0, z: 0}
+          spawnScale: {x: 0, y: 0, z: 0}
+        rtCanvas: {fileID: 0}
+        startInactive: 0
+        highlightTarget: 0
+        followTarget: 0
+        useModuleMask: 0
+        moduleMask: 0
+        screenRect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 0
+          height: 0
+        TargetBoundType: 1
+        spawnEffect: 0
+        effectPrefab: {fileID: 0}
+        effectRT: {fileID: 0}
+        overrideEffectInfo: 0
+        effectSpawnInfo:
+          spawnPos: {x: 0, y: 0, z: 0}
+          spawnRot: {x: 0, y: 0, z: 0}
+          spawnScale: {x: 0, y: 0, z: 0}
+        triggerConfig:
+          triggerType: 0
+          colliderConfig:
+            collider: {fileID: 0}
+            triggerOnClick: 0
+            layerFiltering: 0
+            filterLayer:
+              serializedVersion: 2
+              m_Bits: 0
+            tagFiltering: 0
+            filterTag: 
+            useRigidBodyTag: 0
+            pointerTrigger: 0
+          graphicConfig:
+            graphic: {fileID: 0}
+            pointerTrigger: 0
+          keyCode: 0
+          tagConfig:
+            targetTag: 
+        useTrigger: 0
+        triggerState: 0
+      moduleConfigs:
+      - rid: 8266946843869970748
+      - rid: 8266946843869970749
+      test: 0
+    - index: 5
+      stageIndex: 6
+      Name: Empty Shelf 5
+      state: 0
+      startTrigger:
+        triggerType: 0
+        colliderConfig:
+          collider: {fileID: 0}
+          triggerOnClick: 0
+          layerFiltering: 0
+          filterLayer:
+            serializedVersion: 2
+            m_Bits: 0
+          tagFiltering: 0
+          filterTag: 
+          useRigidBodyTag: 0
+          pointerTrigger: 2
+        graphicConfig:
+          graphic: {fileID: 0}
+          pointerTrigger: 2
+        keyCode: 0
+        tagConfig:
+          targetTag: Customer
+      endTrigger:
+        triggerType: 1
+        colliderConfig:
+          collider: {fileID: 0}
+          triggerOnClick: 1
+          layerFiltering: 0
+          filterLayer:
+            serializedVersion: 2
+            m_Bits: 0
+          tagFiltering: 0
+          filterTag: 
+          useRigidBodyTag: 0
+          pointerTrigger: 2
+        graphicConfig:
+          graphic: {fileID: 0}
+          pointerTrigger: 2
+        keyCode: 0
+        tagConfig:
+          targetTag: Customer
+      advanceConfig:
+        advanceType: 1
+        index: -1
+        name: 
+      events:
+      - type: 0
+        enable: 0
+        subEvent:
+          m_PersistentCalls:
+            m_Calls:
+            - m_Target: {fileID: 0}
+              m_TargetAssemblyTypeName: PauseScript, Assembly-CSharp
+              m_MethodName: pauseGame
+              m_Mode: 1
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 0
+              m_CallState: 2
+      - type: 1
+        enable: 0
+        subEvent:
+          m_PersistentCalls:
+            m_Calls: []
+      - type: 2
+        enable: 0
+        subEvent:
+          m_PersistentCalls:
+            m_Calls: []
+      - type: 3
+        enable: 1
+        subEvent:
+          m_PersistentCalls:
+            m_Calls:
+            - m_Target: {fileID: 0}
+              m_TargetAssemblyTypeName: EmptyShelfMatcher, Assembly-CSharp
+              m_MethodName: SelfDestroy
+              m_Mode: 1
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 0
+              m_CallState: 2
+      - type: 4
+        enable: 0
+        subEvent:
+          m_PersistentCalls:
+            m_Calls: []
+      focusTargets:
+      - target: {fileID: 0}
+        rtTarget: {fileID: 0}
+        overrideSpawn: 0
+        spawnInfo:
+          spawnPos: {x: 0, y: 0, z: 0}
+          spawnRot: {x: 0, y: 0, z: 0}
+          spawnScale: {x: 0, y: 0, z: 0}
+        rtCanvas: {fileID: 0}
+        startInactive: 0
+        highlightTarget: 0
+        followTarget: 0
+        useModuleMask: 0
+        moduleMask: 0
+        screenRect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 0
+          height: 0
+        TargetBoundType: 1
+        spawnEffect: 0
+        effectPrefab: {fileID: 0}
+        effectRT: {fileID: 0}
+        overrideEffectInfo: 0
+        effectSpawnInfo:
+          spawnPos: {x: 0, y: 0, z: 0}
+          spawnRot: {x: 0, y: 0, z: 0}
+          spawnScale: {x: 0, y: 0, z: 0}
+        triggerConfig:
+          triggerType: 0
+          colliderConfig:
+            collider: {fileID: 0}
+            triggerOnClick: 0
+            layerFiltering: 0
+            filterLayer:
+              serializedVersion: 2
+              m_Bits: 0
+            tagFiltering: 0
+            filterTag: 
+            useRigidBodyTag: 0
+            pointerTrigger: 0
+          graphicConfig:
+            graphic: {fileID: 0}
+            pointerTrigger: 0
+          keyCode: 0
+          tagConfig:
+            targetTag: 
+        useTrigger: 0
+        triggerState: 0
+      moduleConfigs:
+      - rid: 8266946843869970750
+      - rid: 8266946843869970751
+      test: 0
+  - index: 7
+    stageName: Moving Shelves
+    state: 0
+    startTrigger:
+      triggerType: 0
+      colliderConfig:
+        collider: {fileID: 0}
+        triggerOnClick: 0
+        layerFiltering: 0
+        filterLayer:
+          serializedVersion: 2
+          m_Bits: 0
+        tagFiltering: 0
+        filterTag: 
+        useRigidBodyTag: 0
+        pointerTrigger: 2
+      graphicConfig:
+        graphic: {fileID: 0}
+        pointerTrigger: 2
+      keyCode: 0
+      tagConfig:
+        targetTag: Customer
+    endTrigger:
+      triggerType: 0
+      colliderConfig:
+        collider: {fileID: 0}
+        triggerOnClick: 0
+        layerFiltering: 0
+        filterLayer:
+          serializedVersion: 2
+          m_Bits: 0
+        tagFiltering: 0
+        filterTag: 
+        useRigidBodyTag: 0
+        pointerTrigger: 2
+      graphicConfig:
+        graphic: {fileID: 0}
+        pointerTrigger: 2
+      keyCode: 0
+      tagConfig:
+        targetTag: Customer
+    advanceConfig:
+      advanceType: 1
+      index: -1
+      name: 
+    events:
+    - type: 0
+      enable: 0
+      subEvent:
+        m_PersistentCalls:
+          m_Calls: []
+    - type: 1
+      enable: 0
+      subEvent:
+        m_PersistentCalls:
+          m_Calls: []
+    - type: 2
+      enable: 0
+      subEvent:
+        m_PersistentCalls:
+          m_Calls: []
+    - type: 3
+      enable: 0
+      subEvent:
+        m_PersistentCalls:
+          m_Calls: []
+    - type: 4
+      enable: 0
+      subEvent:
+        m_PersistentCalls:
+          m_Calls: []
+    currentStep: 1
+    startObjectIndex: -1
+    allowMultiple: 0
+    tutorialObjects:
+    - index: 1
+      stageIndex: 7
+      Name: New Tutorial Objects_1
+      state: 0
+      startTrigger:
+        triggerType: 0
+        colliderConfig:
+          collider: {fileID: 0}
+          triggerOnClick: 0
+          layerFiltering: 0
+          filterLayer:
+            serializedVersion: 2
+            m_Bits: 0
+          tagFiltering: 0
+          filterTag: 
+          useRigidBodyTag: 0
+          pointerTrigger: 2
+        graphicConfig:
+          graphic: {fileID: 0}
+          pointerTrigger: 2
+        keyCode: 0
+        tagConfig:
+          targetTag: Customer
+      endTrigger:
+        triggerType: 0
+        colliderConfig:
+          collider: {fileID: 0}
+          triggerOnClick: 0
+          layerFiltering: 0
+          filterLayer:
+            serializedVersion: 2
+            m_Bits: 0
+          tagFiltering: 0
+          filterTag: 
+          useRigidBodyTag: 0
+          pointerTrigger: 2
+        graphicConfig:
+          graphic: {fileID: 0}
+          pointerTrigger: 2
+        keyCode: 0
+        tagConfig:
+          targetTag: Customer
+      advanceConfig:
+        advanceType: 1
+        index: -1
+        name: 
+      events:
+      - type: 0
+        enable: 0
+        subEvent:
+          m_PersistentCalls:
+            m_Calls: []
+      - type: 1
+        enable: 0
+        subEvent:
+          m_PersistentCalls:
+            m_Calls: []
+      - type: 2
+        enable: 0
+        subEvent:
+          m_PersistentCalls:
+            m_Calls: []
+      - type: 3
+        enable: 0
+        subEvent:
+          m_PersistentCalls:
+            m_Calls: []
+      - type: 4
+        enable: 0
+        subEvent:
+          m_PersistentCalls:
+            m_Calls: []
+      focusTargets:
+      - target: {fileID: 0}
+        rtTarget: {fileID: 0}
+        overrideSpawn: 0
+        spawnInfo:
+          spawnPos: {x: 0, y: 0, z: 0}
+          spawnRot: {x: 0, y: 0, z: 0}
+          spawnScale: {x: 0, y: 0, z: 0}
+        rtCanvas: {fileID: 0}
+        startInactive: 0
+        highlightTarget: 0
+        followTarget: 0
+        useModuleMask: 0
+        moduleMask: 0
+        screenRect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 0
+          height: 0
+        TargetBoundType: 1
+        spawnEffect: 0
+        effectPrefab: {fileID: 0}
+        effectRT: {fileID: 0}
+        overrideEffectInfo: 0
+        effectSpawnInfo:
+          spawnPos: {x: 0, y: 0, z: 0}
+          spawnRot: {x: 0, y: 0, z: 0}
+          spawnScale: {x: 0, y: 0, z: 0}
+        triggerConfig:
+          triggerType: 0
+          colliderConfig:
+            collider: {fileID: 0}
+            triggerOnClick: 0
+            layerFiltering: 0
+            filterLayer:
+              serializedVersion: 2
+              m_Bits: 0
+            tagFiltering: 0
+            filterTag: 
+            useRigidBodyTag: 0
+            pointerTrigger: 0
+          graphicConfig:
+            graphic: {fileID: 0}
+            pointerTrigger: 0
+          keyCode: 0
+          tagConfig:
+            targetTag: 
+        useTrigger: 0
+        triggerState: 0
+      moduleConfigs:
+      - rid: 8266946843869970752
+      - rid: 8266946843869970753
+      test: 0
+    - index: 2
+      stageIndex: 7
+      Name: New Tutorial Objects_2
+      state: 0
+      startTrigger:
+        triggerType: 0
+        colliderConfig:
+          collider: {fileID: 0}
+          triggerOnClick: 0
+          layerFiltering: 0
+          filterLayer:
+            serializedVersion: 2
+            m_Bits: 0
+          tagFiltering: 0
+          filterTag: 
+          useRigidBodyTag: 0
+          pointerTrigger: 2
+        graphicConfig:
+          graphic: {fileID: 0}
+          pointerTrigger: 2
+        keyCode: 0
+        tagConfig:
+          targetTag: Customer
+      endTrigger:
+        triggerType: 0
+        colliderConfig:
+          collider: {fileID: 0}
+          triggerOnClick: 0
+          layerFiltering: 0
+          filterLayer:
+            serializedVersion: 2
+            m_Bits: 0
+          tagFiltering: 0
+          filterTag: 
+          useRigidBodyTag: 0
+          pointerTrigger: 2
+        graphicConfig:
+          graphic: {fileID: 0}
+          pointerTrigger: 2
+        keyCode: 0
+        tagConfig:
+          targetTag: Customer
+      advanceConfig:
+        advanceType: 1
+        index: -1
+        name: 
+      events:
+      - type: 0
+        enable: 0
+        subEvent:
+          m_PersistentCalls:
+            m_Calls: []
+      - type: 1
+        enable: 0
+        subEvent:
+          m_PersistentCalls:
+            m_Calls: []
+      - type: 2
+        enable: 0
+        subEvent:
+          m_PersistentCalls:
+            m_Calls: []
+      - type: 3
+        enable: 0
+        subEvent:
+          m_PersistentCalls:
+            m_Calls: []
+      - type: 4
+        enable: 0
+        subEvent:
+          m_PersistentCalls:
+            m_Calls: []
+      focusTargets:
+      - target: {fileID: 0}
+        rtTarget: {fileID: 0}
+        overrideSpawn: 0
+        spawnInfo:
+          spawnPos: {x: 0, y: 0, z: 0}
+          spawnRot: {x: 0, y: 0, z: 0}
+          spawnScale: {x: 0, y: 0, z: 0}
+        rtCanvas: {fileID: 0}
+        startInactive: 0
+        highlightTarget: 0
+        followTarget: 0
+        useModuleMask: 0
+        moduleMask: 0
+        screenRect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 0
+          height: 0
+        TargetBoundType: 1
+        spawnEffect: 0
+        effectPrefab: {fileID: 0}
+        effectRT: {fileID: 0}
+        overrideEffectInfo: 0
+        effectSpawnInfo:
+          spawnPos: {x: 0, y: 0, z: 0}
+          spawnRot: {x: 0, y: 0, z: 0}
+          spawnScale: {x: 0, y: 0, z: 0}
+        triggerConfig:
+          triggerType: 0
+          colliderConfig:
+            collider: {fileID: 0}
+            triggerOnClick: 0
+            layerFiltering: 0
+            filterLayer:
+              serializedVersion: 2
+              m_Bits: 0
+            tagFiltering: 0
+            filterTag: 
+            useRigidBodyTag: 0
+            pointerTrigger: 0
+          graphicConfig:
+            graphic: {fileID: 0}
+            pointerTrigger: 0
+          keyCode: 0
+          tagConfig:
+            targetTag: 
+        useTrigger: 0
+        triggerState: 0
+      moduleConfigs:
+      - rid: 8266946843869970754
+      - rid: 8266946843869970755
       test: 0
   targetInfo:
   - info:
@@ -2534,105 +3698,154 @@ MonoBehaviour:
       tObjIndex: 0
       targetIndex: 0
     target:
-      exposedName: 7bbe71d1a8832db4892cc321e8a53b05
+      exposedName: fcff7d6bfe540e246ab67a5970ae3633
       defaultValue: {fileID: 0}
   - info:
       stageIndex: 0
       tObjIndex: 1
       targetIndex: 0
     target:
-      exposedName: f2fbf68a91f46a14fb9fcde5700837ac
+      exposedName: c5ff9c9a85eae6243b8674291d963839
       defaultValue: {fileID: 0}
   - info:
       stageIndex: 0
       tObjIndex: 2
       targetIndex: 0
     target:
-      exposedName: 497f5f846c22ef84b81ca6e9c1356e49
+      exposedName: 60e0070611b2ba74d9d8d3887e1ac838
       defaultValue: {fileID: 0}
   - info:
       stageIndex: 0
       tObjIndex: 3
       targetIndex: 0
     target:
-      exposedName: b64351b11210c8c4cbce36a04ee2ffcf
+      exposedName: e929451f8e2494e4fae6fe2e26f7647a
       defaultValue: {fileID: 0}
   - info:
       stageIndex: 1
       tObjIndex: 0
       targetIndex: 0
     target:
-      exposedName: eb271884be0749e4a886b5a785252f08
+      exposedName: 62d8a8c4e58e9d8479c94a3e8e60ad6a
       defaultValue: {fileID: 0}
   - info:
       stageIndex: 1
       tObjIndex: 1
       targetIndex: 0
     target:
-      exposedName: 4f935df397fa22b41b709c16079cf950
+      exposedName: 7d5207ddfb8013340bdb56fae449c2b9
       defaultValue: {fileID: 0}
   - info:
       stageIndex: 2
       tObjIndex: 0
       targetIndex: 0
     target:
-      exposedName: a2e5cf1f43b68824bbe160db03700ad1
+      exposedName: 6061d7f292dce494da9184cb255c0939
       defaultValue: {fileID: 0}
   - info:
       stageIndex: 2
       tObjIndex: 1
       targetIndex: 0
     target:
-      exposedName: 27058639a907c2d48a27e491bab07e9c
+      exposedName: 54f78fd5658d17140a4b85d23110054a
       defaultValue: {fileID: 0}
   - info:
       stageIndex: 2
       tObjIndex: 2
       targetIndex: 0
     target:
-      exposedName: 7b769f9483afb0748b503ca8016853f9
+      exposedName: 349f77e2ba3465648909e5f40a42d118
       defaultValue: {fileID: 0}
   - info:
       stageIndex: 2
       tObjIndex: 3
       targetIndex: 0
     target:
-      exposedName: d86bca83e6fd002409111d3b58f4997b
+      exposedName: 480c2ea863dbd0e4ba32b2033efc1421
       defaultValue: {fileID: 0}
   - info:
       stageIndex: 3
       tObjIndex: 0
       targetIndex: 0
     target:
-      exposedName: 5ba1a0577f799b6448923e48c117d2d4
+      exposedName: 89d266a005407d849b5558fb16d2b2c8
       defaultValue: {fileID: 0}
   - info:
       stageIndex: 3
       tObjIndex: 1
       targetIndex: 0
     target:
-      exposedName: 2348e8e9f5a90164bacb696ee0535f70
+      exposedName: b205a03de01a467439949be8c97a1b9c
       defaultValue: {fileID: 0}
   - info:
       stageIndex: 4
       tObjIndex: 0
       targetIndex: 0
     target:
-      exposedName: 73f56c06e206e094e8127e5391f1504d
+      exposedName: 918793b50a41f374985cfe85a0eb01a4
       defaultValue: {fileID: 0}
   - info:
       stageIndex: 4
       tObjIndex: 1
       targetIndex: 0
     target:
-      exposedName: d393824e8e8b34d48978aaa2ccd4a981
+      exposedName: e19fff94ac2fcd24e8dde76cf7957517
       defaultValue: {fileID: 0}
   - info:
       stageIndex: 4
       tObjIndex: 2
       targetIndex: 0
     target:
-      exposedName: 15b95703fd32fc340bccfd4dd0c4f5a8
+      exposedName: a16d4cecc122c8b4f855ae566b84849d
+      defaultValue: {fileID: 0}
+  - info:
+      stageIndex: 5
+      tObjIndex: 0
+      targetIndex: 0
+    target:
+      exposedName: 86378121b5512d642846637a5cc0ff0f
+      defaultValue: {fileID: 0}
+  - info:
+      stageIndex: 5
+      tObjIndex: 1
+      targetIndex: 0
+    target:
+      exposedName: 35486ed88392d9f42acf7549699fd25e
+      defaultValue: {fileID: 0}
+  - info:
+      stageIndex: 5
+      tObjIndex: 2
+      targetIndex: 0
+    target:
+      exposedName: f3594c85c02c49e4ea90aa6f74ad0c46
+      defaultValue: {fileID: 0}
+  - info:
+      stageIndex: 5
+      tObjIndex: 3
+      targetIndex: 0
+    target:
+      exposedName: fb140a31d28c7bd4994579cb41fcb960
+      defaultValue: {fileID: 0}
+  - info:
+      stageIndex: 5
+      tObjIndex: 4
+      targetIndex: 0
+    target:
+      exposedName: e3af5ca9debbbd54a8d99c954fa48c69
+      defaultValue: {fileID: 0}
+  - info:
+      stageIndex: 6
+      tObjIndex: 0
+      targetIndex: 0
+    target:
+      exposedName: 9090074fb4e5c864d91b0b0bba98f615
+      defaultValue: {fileID: 0}
+  - info:
+      stageIndex: 6
+      tObjIndex: 1
+      targetIndex: 0
+    target:
+      exposedName: c26bcf305e19eb341b409bd41b97c9b8
       defaultValue: {fileID: 0}
   triggerInfo:
   - isStage: 0
@@ -2646,7 +3859,7 @@ MonoBehaviour:
       exposedName: 
       defaultValue: {fileID: 0}
     graphic:
-      exposedName: 55511181a26da9f4a89926efe61bd65d
+      exposedName: 876f27d89d4340f47b5dba4ea335a781
       defaultValue: {fileID: 0}
   - isStage: 1
     isStart: 1
@@ -2656,7 +3869,7 @@ MonoBehaviour:
       tObjIndex: -1
       targetIndex: -1
     collider:
-      exposedName: d8514f9c8cff7234ebae0bd2e750214f
+      exposedName: dc62bba75b9b70041b1ce78c19375110
       defaultValue: {fileID: 0}
     graphic:
       exposedName: 
@@ -2669,7 +3882,7 @@ MonoBehaviour:
       tObjIndex: 0
       targetIndex: -1
     collider:
-      exposedName: f6717bf2e5ae0114ea999cd228f0628e
+      exposedName: a58b29c61613794428c174cd71f80978
       defaultValue: {fileID: 0}
     graphic:
       exposedName: 
@@ -2682,7 +3895,7 @@ MonoBehaviour:
       tObjIndex: 3
       targetIndex: -1
     collider:
-      exposedName: 3dd673920de937a4fa71d201f44d7c99
+      exposedName: 191b3f3deb3809e43ab11aea7e722142
       defaultValue: {fileID: 0}
     graphic:
       exposedName: 
@@ -2695,7 +3908,7 @@ MonoBehaviour:
       tObjIndex: 4
       targetIndex: -1
     collider:
-      exposedName: 9c7340e9b42e06548923473b65e1314e
+      exposedName: 69757b04dc1902b498fc575aeab85b24
       defaultValue: {fileID: 0}
     graphic:
       exposedName: 
@@ -2711,12 +3924,51 @@ MonoBehaviour:
       exposedName: 
       defaultValue: {fileID: 0}
     graphic:
-      exposedName: 77e49babb7197b74b9280c2c3a8458dc
+      exposedName: f7514110da5c3564e9c70ada948a6c80
+      defaultValue: {fileID: 0}
+  - isStage: 1
+    isStart: 1
+    isTarget: 0
+    info:
+      stageIndex: 5
+      tObjIndex: -1
+      targetIndex: -1
+    collider:
+      exposedName: 
+      defaultValue: {fileID: 0}
+    graphic:
+      exposedName: 1bbca6196bd379f4f80a6139a5732e3e
+      defaultValue: {fileID: 0}
+  - isStage: 0
+    isStart: 0
+    isTarget: 0
+    info:
+      stageIndex: 5
+      tObjIndex: 3
+      targetIndex: -1
+    collider:
+      exposedName: 580293b6c87e7004b8dd7f53817c9179
+      defaultValue: {fileID: 0}
+    graphic:
+      exposedName: 
+      defaultValue: {fileID: 0}
+  - isStage: 0
+    isStart: 0
+    isTarget: 0
+    info:
+      stageIndex: 5
+      tObjIndex: 4
+      targetIndex: -1
+    collider:
+      exposedName: 69f8af26b2b24994383ce574706ccf77
+      defaultValue: {fileID: 0}
+    graphic:
+      exposedName: 
       defaultValue: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 971211097452052624
+    - rid: 8266946843869970707
       type: {class: HSVInfoDisplayModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 761627783437471551, guid: 4cd73b67848d84f34aa97ff4a0547bc9, type: 3}
@@ -2767,7 +4019,7 @@ MonoBehaviour:
           textColor: {r: 1, g: 1, b: 1, a: 1}
           fontAsset: {fileID: 0}
         backButtonText: 
-    - rid: 971211097452052625
+    - rid: 8266946843869970708
       type: {class: HSVFocusDimModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 8096215429702445203, guid: 979329b36fadf4110967ab6f40b2c5ba, type: 3}
@@ -2783,7 +4035,7 @@ MonoBehaviour:
         followTarget: 0
         allowNoTarget: 0
         m_rectOffset: {x: 10, y: 10}
-    - rid: 971211097452052626
+    - rid: 8266946843869970709
       type: {class: HSVInfoDisplayModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 761627783437471551, guid: 4cd73b67848d84f34aa97ff4a0547bc9, type: 3}
@@ -2834,7 +4086,7 @@ MonoBehaviour:
           textColor: {r: 1, g: 1, b: 1, a: 1}
           fontAsset: {fileID: 0}
         backButtonText: 
-    - rid: 971211097452052627
+    - rid: 8266946843869970710
       type: {class: HSVFocusDimModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 8096215429702445203, guid: 979329b36fadf4110967ab6f40b2c5ba, type: 3}
@@ -2850,7 +4102,7 @@ MonoBehaviour:
         followTarget: 0
         allowNoTarget: 0
         m_rectOffset: {x: 10, y: 10}
-    - rid: 971211097452052628
+    - rid: 8266946843869970711
       type: {class: HSVInfoDisplayModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 761627783437471551, guid: 4cd73b67848d84f34aa97ff4a0547bc9, type: 3}
@@ -2902,7 +4154,7 @@ MonoBehaviour:
           textColor: {r: 1, g: 1, b: 1, a: 1}
           fontAsset: {fileID: 0}
         backButtonText: 
-    - rid: 971211097452052629
+    - rid: 8266946843869970712
       type: {class: HSVFocusDimModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 8096215429702445203, guid: 979329b36fadf4110967ab6f40b2c5ba, type: 3}
@@ -2918,7 +4170,7 @@ MonoBehaviour:
         followTarget: 0
         allowNoTarget: 0
         m_rectOffset: {x: 10, y: 10}
-    - rid: 971211097452052630
+    - rid: 8266946843869970713
       type: {class: HSVInfoDisplayModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 761627783437471551, guid: 4cd73b67848d84f34aa97ff4a0547bc9, type: 3}
@@ -2969,7 +4221,7 @@ MonoBehaviour:
           textColor: {r: 1, g: 1, b: 1, a: 1}
           fontAsset: {fileID: 0}
         backButtonText: 
-    - rid: 971211097452052631
+    - rid: 8266946843869970714
       type: {class: HSVFocusDimModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 8096215429702445203, guid: 979329b36fadf4110967ab6f40b2c5ba, type: 3}
@@ -2985,7 +4237,7 @@ MonoBehaviour:
         followTarget: 0
         allowNoTarget: 0
         m_rectOffset: {x: 10, y: 10}
-    - rid: 971211097452052632
+    - rid: 8266946843869970715
       type: {class: HSVFocusDimModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 8096215429702445203, guid: 979329b36fadf4110967ab6f40b2c5ba, type: 3}
@@ -3001,7 +4253,7 @@ MonoBehaviour:
         followTarget: 0
         allowNoTarget: 0
         m_rectOffset: {x: 10, y: 10}
-    - rid: 971211097452052633
+    - rid: 8266946843869970716
       type: {class: HSVInfoDisplayModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 761627783437471551, guid: 4cd73b67848d84f34aa97ff4a0547bc9, type: 3}
@@ -3021,7 +4273,7 @@ MonoBehaviour:
           height: 200
         scaleInOut: 0
         message: This is where you can purchase new shelves to place in your store.
-        overrideStyle: 0
+        overrideStyle: 1
         fontConfig:
           fontSize: 30
           fontStyle: 0
@@ -3052,7 +4304,7 @@ MonoBehaviour:
           textColor: {r: 1, g: 1, b: 1, a: 1}
           fontAsset: {fileID: 0}
         backButtonText: 
-    - rid: 971211097452052634
+    - rid: 8266946843869970717
       type: {class: HSVFocusDimModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 8096215429702445203, guid: 979329b36fadf4110967ab6f40b2c5ba, type: 3}
@@ -3068,7 +4320,7 @@ MonoBehaviour:
         followTarget: 0
         allowNoTarget: 0
         m_rectOffset: {x: 10, y: 10}
-    - rid: 971211097452052635
+    - rid: 8266946843869970718
       type: {class: HSVInfoDisplayModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 761627783437471551, guid: 4cd73b67848d84f34aa97ff4a0547bc9, type: 3}
@@ -3119,7 +4371,7 @@ MonoBehaviour:
           textColor: {r: 1, g: 1, b: 1, a: 1}
           fontAsset: {fileID: 0}
         backButtonText: 
-    - rid: 971211097452052636
+    - rid: 8266946843869970719
       type: {class: HSVInfoDisplayModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 761627783437471551, guid: 4cd73b67848d84f34aa97ff4a0547bc9, type: 3}
@@ -3128,8 +4380,8 @@ MonoBehaviour:
         m_smoothValue: 10
         fadeTime: 0.5
         customTransition: 0
-        overridePrefabColor: 0
-        color: {r: 1, g: 1, b: 1, a: 1}
+        overridePrefabColor: 1
+        color: {r: 0.654088, g: 0.9811321, b: 0.7478559, a: 0.23137255}
         m_sprite: {fileID: 0}
         displayRect:
           serializedVersion: 2
@@ -3171,7 +4423,7 @@ MonoBehaviour:
           textColor: {r: 1, g: 1, b: 1, a: 1}
           fontAsset: {fileID: 0}
         backButtonText: 
-    - rid: 971211097452052637
+    - rid: 8266946843869970720
       type: {class: HSVFocusDimModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 8096215429702445203, guid: 979329b36fadf4110967ab6f40b2c5ba, type: 3}
@@ -3187,7 +4439,7 @@ MonoBehaviour:
         followTarget: 0
         allowNoTarget: 0
         m_rectOffset: {x: 10, y: 10}
-    - rid: 971211097452052638
+    - rid: 8266946843869970721
       type: {class: HSVInfoDisplayModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 761627783437471551, guid: 4cd73b67848d84f34aa97ff4a0547bc9, type: 3}
@@ -3239,7 +4491,7 @@ MonoBehaviour:
           textColor: {r: 1, g: 1, b: 1, a: 1}
           fontAsset: {fileID: 0}
         backButtonText: 
-    - rid: 971211097452052639
+    - rid: 8266946843869970722
       type: {class: HSVFocusDimModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 8096215429702445203, guid: 979329b36fadf4110967ab6f40b2c5ba, type: 3}
@@ -3255,7 +4507,7 @@ MonoBehaviour:
         followTarget: 0
         allowNoTarget: 0
         m_rectOffset: {x: 10, y: 10}
-    - rid: 971211097452052640
+    - rid: 8266946843869970723
       type: {class: HSVInfoDisplayModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 761627783437471551, guid: 4cd73b67848d84f34aa97ff4a0547bc9, type: 3}
@@ -3306,7 +4558,7 @@ MonoBehaviour:
           textColor: {r: 1, g: 1, b: 1, a: 1}
           fontAsset: {fileID: 0}
         backButtonText: 
-    - rid: 971211097452052641
+    - rid: 8266946843869970724
       type: {class: HSVFocusDimModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 8096215429702445203, guid: 979329b36fadf4110967ab6f40b2c5ba, type: 3}
@@ -3322,7 +4574,7 @@ MonoBehaviour:
         followTarget: 0
         allowNoTarget: 0
         m_rectOffset: {x: 10, y: 10}
-    - rid: 971211097452052642
+    - rid: 8266946843869970725
       type: {class: HSVInfoDisplayModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 761627783437471551, guid: 4cd73b67848d84f34aa97ff4a0547bc9, type: 3}
@@ -3374,7 +4626,7 @@ MonoBehaviour:
           textColor: {r: 1, g: 1, b: 1, a: 1}
           fontAsset: {fileID: 0}
         backButtonText: 
-    - rid: 971211097452052643
+    - rid: 8266946843869970726
       type: {class: HSVFocusDimModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 8096215429702445203, guid: 979329b36fadf4110967ab6f40b2c5ba, type: 3}
@@ -3390,7 +4642,7 @@ MonoBehaviour:
         followTarget: 0
         allowNoTarget: 0
         m_rectOffset: {x: 10, y: 10}
-    - rid: 971211097452052644
+    - rid: 8266946843869970727
       type: {class: HSVInfoDisplayModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 761627783437471551, guid: 4cd73b67848d84f34aa97ff4a0547bc9, type: 3}
@@ -3441,7 +4693,7 @@ MonoBehaviour:
           textColor: {r: 1, g: 1, b: 1, a: 1}
           fontAsset: {fileID: 0}
         backButtonText: 
-    - rid: 971211097452052645
+    - rid: 8266946843869970728
       type: {class: HSVInfoDisplayModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 761627783437471551, guid: 4cd73b67848d84f34aa97ff4a0547bc9, type: 3}
@@ -3450,8 +4702,8 @@ MonoBehaviour:
         m_smoothValue: 10
         fadeTime: 0.5
         customTransition: 0
-        overridePrefabColor: 0
-        color: {r: 1, g: 1, b: 1, a: 1}
+        overridePrefabColor: 1
+        color: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 0.45882353}
         m_sprite: {fileID: 0}
         displayRect:
           serializedVersion: 2
@@ -3493,7 +4745,7 @@ MonoBehaviour:
           textColor: {r: 1, g: 1, b: 1, a: 1}
           fontAsset: {fileID: 0}
         backButtonText: 
-    - rid: 971211097452052646
+    - rid: 8266946843869970729
       type: {class: HSVInfoDisplayModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 761627783437471551, guid: 4cd73b67848d84f34aa97ff4a0547bc9, type: 3}
@@ -3502,8 +4754,8 @@ MonoBehaviour:
         m_smoothValue: 10
         fadeTime: 0.5
         customTransition: 0
-        overridePrefabColor: 0
-        color: {r: 1, g: 1, b: 1, a: 1}
+        overridePrefabColor: 1
+        color: {r: 0.5754717, g: 0.5754717, b: 0.5754717, a: 0.40392157}
         m_sprite: {fileID: 0}
         displayRect:
           serializedVersion: 2
@@ -3545,7 +4797,7 @@ MonoBehaviour:
           textColor: {r: 1, g: 1, b: 1, a: 1}
           fontAsset: {fileID: 0}
         backButtonText: 
-    - rid: 971211097452052647
+    - rid: 8266946843869970730
       type: {class: HSVArrowModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 3021184849822882565, guid: f254f9938a1fe446096e85b433190212, type: 3}
@@ -3615,7 +4867,7 @@ MonoBehaviour:
         m_rectOffset: {x: 10, y: 10}
         trackOutOfScreen: 0
         screenOffset: 1
-    - rid: 971211097452052648
+    - rid: 8266946843869970731
       type: {class: HSVInfoDisplayModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 761627783437471551, guid: 4cd73b67848d84f34aa97ff4a0547bc9, type: 3}
@@ -3667,7 +4919,7 @@ MonoBehaviour:
           textColor: {r: 1, g: 1, b: 1, a: 1}
           fontAsset: {fileID: 0}
         backButtonText: 
-    - rid: 971211097452052649
+    - rid: 8266946843869970732
       type: {class: HSVFocusDimModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 8096215429702445203, guid: 979329b36fadf4110967ab6f40b2c5ba, type: 3}
@@ -3683,7 +4935,7 @@ MonoBehaviour:
         followTarget: 0
         allowNoTarget: 0
         m_rectOffset: {x: 10, y: 10}
-    - rid: 971211097452052650
+    - rid: 8266946843869970733
       type: {class: HSVInfoDisplayModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 761627783437471551, guid: 4cd73b67848d84f34aa97ff4a0547bc9, type: 3}
@@ -3734,7 +4986,7 @@ MonoBehaviour:
           textColor: {r: 1, g: 1, b: 1, a: 1}
           fontAsset: {fileID: 0}
         backButtonText: 
-    - rid: 971211097452052651
+    - rid: 8266946843869970734
       type: {class: HSVFocusDimModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 8096215429702445203, guid: 979329b36fadf4110967ab6f40b2c5ba, type: 3}
@@ -3750,7 +5002,7 @@ MonoBehaviour:
         followTarget: 0
         allowNoTarget: 0
         m_rectOffset: {x: 10, y: 10}
-    - rid: 971211097452052652
+    - rid: 8266946843869970735
       type: {class: HSVArrowModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 3021184849822882565, guid: f254f9938a1fe446096e85b433190212, type: 3}
@@ -3820,7 +5072,7 @@ MonoBehaviour:
         m_rectOffset: {x: 10, y: 10}
         trackOutOfScreen: 0
         screenOffset: 1
-    - rid: 971211097452052653
+    - rid: 8266946843869970736
       type: {class: HSVInfoDisplayModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 761627783437471551, guid: 4cd73b67848d84f34aa97ff4a0547bc9, type: 3}
@@ -3872,7 +5124,7 @@ MonoBehaviour:
           textColor: {r: 1, g: 1, b: 1, a: 1}
           fontAsset: {fileID: 0}
         backButtonText: 
-    - rid: 971211097452052654
+    - rid: 8266946843869970737
       type: {class: HSVFocusDimModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 8096215429702445203, guid: 979329b36fadf4110967ab6f40b2c5ba, type: 3}
@@ -3888,7 +5140,7 @@ MonoBehaviour:
         followTarget: 0
         allowNoTarget: 0
         m_rectOffset: {x: 10, y: 10}
-    - rid: 971211097452052655
+    - rid: 8266946843869970738
       type: {class: HSVArrowModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 3021184849822882565, guid: f254f9938a1fe446096e85b433190212, type: 3}
@@ -3958,7 +5210,7 @@ MonoBehaviour:
         m_rectOffset: {x: 10, y: 10}
         trackOutOfScreen: 0
         screenOffset: 1
-    - rid: 971211097452052656
+    - rid: 8266946843869970739
       type: {class: HSVInfoDisplayModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 761627783437471551, guid: 4cd73b67848d84f34aa97ff4a0547bc9, type: 3}
@@ -4009,7 +5261,7 @@ MonoBehaviour:
           textColor: {r: 1, g: 1, b: 1, a: 1}
           fontAsset: {fileID: 0}
         backButtonText: 
-    - rid: 971211097452052657
+    - rid: 8266946843869970740
       type: {class: HSVFocusDimModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 8096215429702445203, guid: 979329b36fadf4110967ab6f40b2c5ba, type: 3}
@@ -4025,7 +5277,7 @@ MonoBehaviour:
         followTarget: 0
         allowNoTarget: 0
         m_rectOffset: {x: 10, y: 10}
-    - rid: 971211097452052658
+    - rid: 8266946843869970741
       type: {class: HSVArrowModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
       data:
         modulePrefab: {fileID: 3021184849822882565, guid: f254f9938a1fe446096e85b433190212, type: 3}
@@ -4095,3 +5347,476 @@ MonoBehaviour:
         m_rectOffset: {x: 10, y: 10}
         trackOutOfScreen: 0
         screenOffset: 1
+    - rid: 8266946843869970742
+      type: {class: HSVInfoDisplayModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
+      data:
+        modulePrefab: {fileID: 761627783437471551, guid: 4cd73b67848d84f34aa97ff4a0547bc9, type: 3}
+        maskPrefab: {fileID: 2039497102852256437, guid: 1ade444593cf046cc919fa628a3829e9, type: 3}
+        instantTransition: 1
+        m_smoothValue: 10
+        fadeTime: 0.5
+        customTransition: 0
+        overridePrefabColor: 0
+        color: {r: 1, g: 1, b: 1, a: 1}
+        m_sprite: {fileID: 0}
+        displayRect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 500
+          height: 200
+        scaleInOut: 0
+        message: Oh no! Your shelf has run dry!
+        overrideStyle: 1
+        fontConfig:
+          fontSize: 30
+          fontStyle: 0
+          textAlignment: 514
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          fontAsset: {fileID: 0}
+        overrideCloseButtonStyle: 0
+        closeButtonStyle:
+          fontSize: 30
+          fontStyle: 0
+          textAlignment: 514
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          fontAsset: {fileID: 0}
+        closeButtonText: 
+        overrideAdvanceButtonStyle: 0
+        advanceButtonStyle:
+          fontSize: 30
+          fontStyle: 0
+          textAlignment: 514
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          fontAsset: {fileID: 0}
+        advanceButtonText: 
+        overrideBackButtonStyle: 0
+        backButtonStyle:
+          fontSize: 30
+          fontStyle: 0
+          textAlignment: 514
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          fontAsset: {fileID: 0}
+        backButtonText: 
+    - rid: 8266946843869970743
+      type: {class: HSVFocusDimModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
+      data:
+        modulePrefab: {fileID: 8096215429702445203, guid: 979329b36fadf4110967ab6f40b2c5ba, type: 3}
+        maskPrefab: {fileID: 2039497102852256437, guid: 03d9a09d44d7d48a48cc74476f11534b, type: 3}
+        instantTransition: 1
+        m_smoothValue: 10
+        fadeTime: 0.5
+        customTransition: 0
+        overridePrefabColor: 0
+        color: {r: 0.25, g: 0.25, b: 0.25, a: 0.6}
+        m_sprite: {fileID: 0}
+        overrideFollowTarget: 0
+        followTarget: 0
+        allowNoTarget: 0
+        m_rectOffset: {x: 10, y: 10}
+    - rid: 8266946843869970744
+      type: {class: HSVInfoDisplayModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
+      data:
+        modulePrefab: {fileID: 761627783437471551, guid: 4cd73b67848d84f34aa97ff4a0547bc9, type: 3}
+        maskPrefab: {fileID: 2039497102852256437, guid: 1ade444593cf046cc919fa628a3829e9, type: 3}
+        instantTransition: 1
+        m_smoothValue: 10
+        fadeTime: 0.5
+        customTransition: 0
+        overridePrefabColor: 0
+        color: {r: 1, g: 1, b: 1, a: 1}
+        m_sprite: {fileID: 0}
+        displayRect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 500
+          height: 200
+        scaleInOut: 0
+        message: Fear not, you have an employee to restock it for you!
+        overrideStyle: 1
+        fontConfig:
+          fontSize: 30
+          fontStyle: 0
+          textAlignment: 514
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          fontAsset: {fileID: 0}
+        overrideCloseButtonStyle: 0
+        closeButtonStyle:
+          fontSize: 30
+          fontStyle: 0
+          textAlignment: 514
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          fontAsset: {fileID: 0}
+        closeButtonText: 
+        overrideAdvanceButtonStyle: 0
+        advanceButtonStyle:
+          fontSize: 30
+          fontStyle: 0
+          textAlignment: 514
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          fontAsset: {fileID: 0}
+        advanceButtonText: 
+        overrideBackButtonStyle: 0
+        backButtonStyle:
+          fontSize: 30
+          fontStyle: 0
+          textAlignment: 514
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          fontAsset: {fileID: 0}
+        backButtonText: 
+    - rid: 8266946843869970745
+      type: {class: HSVFocusDimModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
+      data:
+        modulePrefab: {fileID: 8096215429702445203, guid: 979329b36fadf4110967ab6f40b2c5ba, type: 3}
+        maskPrefab: {fileID: 2039497102852256437, guid: 03d9a09d44d7d48a48cc74476f11534b, type: 3}
+        instantTransition: 1
+        m_smoothValue: 10
+        fadeTime: 0.5
+        customTransition: 0
+        overridePrefabColor: 0
+        color: {r: 0.25, g: 0.25, b: 0.25, a: 0.6}
+        m_sprite: {fileID: 0}
+        overrideFollowTarget: 0
+        followTarget: 0
+        allowNoTarget: 0
+        m_rectOffset: {x: 10, y: 10}
+    - rid: 8266946843869970746
+      type: {class: HSVInfoDisplayModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
+      data:
+        modulePrefab: {fileID: 761627783437471551, guid: 4cd73b67848d84f34aa97ff4a0547bc9, type: 3}
+        maskPrefab: {fileID: 2039497102852256437, guid: 1ade444593cf046cc919fa628a3829e9, type: 3}
+        instantTransition: 1
+        m_smoothValue: 10
+        fadeTime: 0.5
+        customTransition: 0
+        overridePrefabColor: 0
+        color: {r: 1, g: 1, b: 1, a: 1}
+        m_sprite: {fileID: 0}
+        displayRect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 500
+          height: 200
+        scaleInOut: 0
+        message: Here's your trusty skeleton employee!
+        overrideStyle: 1
+        fontConfig:
+          fontSize: 30
+          fontStyle: 0
+          textAlignment: 514
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          fontAsset: {fileID: 0}
+        overrideCloseButtonStyle: 0
+        closeButtonStyle:
+          fontSize: 30
+          fontStyle: 0
+          textAlignment: 514
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          fontAsset: {fileID: 0}
+        closeButtonText: 
+        overrideAdvanceButtonStyle: 0
+        advanceButtonStyle:
+          fontSize: 30
+          fontStyle: 0
+          textAlignment: 514
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          fontAsset: {fileID: 0}
+        advanceButtonText: 
+        overrideBackButtonStyle: 0
+        backButtonStyle:
+          fontSize: 30
+          fontStyle: 0
+          textAlignment: 514
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          fontAsset: {fileID: 0}
+        backButtonText: 
+    - rid: 8266946843869970747
+      type: {class: HSVFocusDimModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
+      data:
+        modulePrefab: {fileID: 8096215429702445203, guid: 979329b36fadf4110967ab6f40b2c5ba, type: 3}
+        maskPrefab: {fileID: 2039497102852256437, guid: 03d9a09d44d7d48a48cc74476f11534b, type: 3}
+        instantTransition: 1
+        m_smoothValue: 10
+        fadeTime: 0.5
+        customTransition: 0
+        overridePrefabColor: 0
+        color: {r: 0.25, g: 0.25, b: 0.25, a: 0.6}
+        m_sprite: {fileID: 0}
+        overrideFollowTarget: 0
+        followTarget: 0
+        allowNoTarget: 0
+        m_rectOffset: {x: 10, y: 10}
+    - rid: 8266946843869970748
+      type: {class: HSVInfoDisplayModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
+      data:
+        modulePrefab: {fileID: 761627783437471551, guid: 4cd73b67848d84f34aa97ff4a0547bc9, type: 3}
+        maskPrefab: {fileID: 2039497102852256437, guid: 1ade444593cf046cc919fa628a3829e9, type: 3}
+        instantTransition: 1
+        m_smoothValue: 10
+        fadeTime: 0.5
+        customTransition: 0
+        overridePrefabColor: 0
+        color: {r: 1, g: 1, b: 1, a: 1}
+        m_sprite: {fileID: 0}
+        displayRect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 500
+          height: 400
+        scaleInOut: 0
+        message: You can command employees to restock empty shelves! Go ahead and
+          click on him now.
+        overrideStyle: 1
+        fontConfig:
+          fontSize: 30
+          fontStyle: 0
+          textAlignment: 514
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          fontAsset: {fileID: 0}
+        overrideCloseButtonStyle: 0
+        closeButtonStyle:
+          fontSize: 30
+          fontStyle: 0
+          textAlignment: 514
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          fontAsset: {fileID: 0}
+        closeButtonText: 
+        overrideAdvanceButtonStyle: 0
+        advanceButtonStyle:
+          fontSize: 30
+          fontStyle: 0
+          textAlignment: 514
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          fontAsset: {fileID: 0}
+        advanceButtonText: 
+        overrideBackButtonStyle: 0
+        backButtonStyle:
+          fontSize: 30
+          fontStyle: 0
+          textAlignment: 514
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          fontAsset: {fileID: 0}
+        backButtonText: 
+    - rid: 8266946843869970749
+      type: {class: HSVFocusDimModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
+      data:
+        modulePrefab: {fileID: 8096215429702445203, guid: 979329b36fadf4110967ab6f40b2c5ba, type: 3}
+        maskPrefab: {fileID: 2039497102852256437, guid: 03d9a09d44d7d48a48cc74476f11534b, type: 3}
+        instantTransition: 1
+        m_smoothValue: 10
+        fadeTime: 0.5
+        customTransition: 0
+        overridePrefabColor: 0
+        color: {r: 0.25, g: 0.25, b: 0.25, a: 0.6}
+        m_sprite: {fileID: 0}
+        overrideFollowTarget: 0
+        followTarget: 0
+        allowNoTarget: 0
+        m_rectOffset: {x: 10, y: 10}
+    - rid: 8266946843869970750
+      type: {class: HSVInfoDisplayModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
+      data:
+        modulePrefab: {fileID: 761627783437471551, guid: 4cd73b67848d84f34aa97ff4a0547bc9, type: 3}
+        maskPrefab: {fileID: 2039497102852256437, guid: 1ade444593cf046cc919fa628a3829e9, type: 3}
+        instantTransition: 1
+        m_smoothValue: 10
+        fadeTime: 0.5
+        customTransition: 0
+        overridePrefabColor: 0
+        color: {r: 1, g: 1, b: 1, a: 1}
+        m_sprite: {fileID: 0}
+        displayRect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 500
+          height: 200
+        scaleInOut: 0
+        message: Now click on the empty shelf to have your employee restock it!
+        overrideStyle: 1
+        fontConfig:
+          fontSize: 30
+          fontStyle: 0
+          textAlignment: 514
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          fontAsset: {fileID: 0}
+        overrideCloseButtonStyle: 0
+        closeButtonStyle:
+          fontSize: 30
+          fontStyle: 0
+          textAlignment: 514
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          fontAsset: {fileID: 0}
+        closeButtonText: 
+        overrideAdvanceButtonStyle: 0
+        advanceButtonStyle:
+          fontSize: 30
+          fontStyle: 0
+          textAlignment: 514
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          fontAsset: {fileID: 0}
+        advanceButtonText: 
+        overrideBackButtonStyle: 0
+        backButtonStyle:
+          fontSize: 30
+          fontStyle: 0
+          textAlignment: 514
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          fontAsset: {fileID: 0}
+        backButtonText: 
+    - rid: 8266946843869970751
+      type: {class: HSVFocusDimModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
+      data:
+        modulePrefab: {fileID: 8096215429702445203, guid: 979329b36fadf4110967ab6f40b2c5ba, type: 3}
+        maskPrefab: {fileID: 2039497102852256437, guid: 03d9a09d44d7d48a48cc74476f11534b, type: 3}
+        instantTransition: 1
+        m_smoothValue: 10
+        fadeTime: 0.5
+        customTransition: 0
+        overridePrefabColor: 0
+        color: {r: 0.25, g: 0.25, b: 0.25, a: 0.6}
+        m_sprite: {fileID: 0}
+        overrideFollowTarget: 0
+        followTarget: 0
+        allowNoTarget: 0
+        m_rectOffset: {x: 10, y: 10}
+    - rid: 8266946843869970752
+      type: {class: HSVFocusDimModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
+      data:
+        modulePrefab: {fileID: 8096215429702445203, guid: 979329b36fadf4110967ab6f40b2c5ba, type: 3}
+        maskPrefab: {fileID: 2039497102852256437, guid: 03d9a09d44d7d48a48cc74476f11534b, type: 3}
+        instantTransition: 1
+        m_smoothValue: 10
+        fadeTime: 0.5
+        customTransition: 0
+        overridePrefabColor: 0
+        color: {r: 0.25, g: 0.25, b: 0.25, a: 0.6}
+        m_sprite: {fileID: 0}
+        overrideFollowTarget: 0
+        followTarget: 0
+        allowNoTarget: 0
+        m_rectOffset: {x: 10, y: 10}
+    - rid: 8266946843869970753
+      type: {class: HSVInfoDisplayModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
+      data:
+        modulePrefab: {fileID: 761627783437471551, guid: 4cd73b67848d84f34aa97ff4a0547bc9, type: 3}
+        maskPrefab: {fileID: 2039497102852256437, guid: 1ade444593cf046cc919fa628a3829e9, type: 3}
+        instantTransition: 1
+        m_smoothValue: 10
+        fadeTime: 0.5
+        customTransition: 0
+        overridePrefabColor: 0
+        color: {r: 1, g: 1, b: 1, a: 1}
+        m_sprite: {fileID: 0}
+        displayRect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 500
+          height: 500
+        scaleInOut: 0
+        message: During your daily time to prepare, you can rearrange your shelves
+          by clicking on the shelf, then clicking a second time wherever in the store
+          you could like to move it to.
+        overrideStyle: 1
+        fontConfig:
+          fontSize: 30
+          fontStyle: 0
+          textAlignment: 514
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          fontAsset: {fileID: 0}
+        overrideCloseButtonStyle: 0
+        closeButtonStyle:
+          fontSize: 30
+          fontStyle: 0
+          textAlignment: 514
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          fontAsset: {fileID: 0}
+        closeButtonText: 
+        overrideAdvanceButtonStyle: 0
+        advanceButtonStyle:
+          fontSize: 30
+          fontStyle: 0
+          textAlignment: 514
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          fontAsset: {fileID: 0}
+        advanceButtonText: 
+        overrideBackButtonStyle: 0
+        backButtonStyle:
+          fontSize: 30
+          fontStyle: 0
+          textAlignment: 514
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          fontAsset: {fileID: 0}
+        backButtonText: 
+    - rid: 8266946843869970754
+      type: {class: HSVFocusDimModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
+      data:
+        modulePrefab: {fileID: 8096215429702445203, guid: 979329b36fadf4110967ab6f40b2c5ba, type: 3}
+        maskPrefab: {fileID: 2039497102852256437, guid: 03d9a09d44d7d48a48cc74476f11534b, type: 3}
+        instantTransition: 1
+        m_smoothValue: 10
+        fadeTime: 0.5
+        customTransition: 0
+        overridePrefabColor: 0
+        color: {r: 0.25, g: 0.25, b: 0.25, a: 0.6}
+        m_sprite: {fileID: 0}
+        overrideFollowTarget: 0
+        followTarget: 0
+        allowNoTarget: 0
+        m_rectOffset: {x: 10, y: 10}
+    - rid: 8266946843869970755
+      type: {class: HSVInfoDisplayModuleConfig, ns: HSVStudio.Tutorial, asm: Assembly-CSharp}
+      data:
+        modulePrefab: {fileID: 761627783437471551, guid: 4cd73b67848d84f34aa97ff4a0547bc9, type: 3}
+        maskPrefab: {fileID: 2039497102852256437, guid: 1ade444593cf046cc919fa628a3829e9, type: 3}
+        instantTransition: 1
+        m_smoothValue: 10
+        fadeTime: 0.5
+        customTransition: 0
+        overridePrefabColor: 0
+        color: {r: 1, g: 1, b: 1, a: 1}
+        m_sprite: {fileID: 0}
+        displayRect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 500
+          height: 200
+        scaleInOut: 0
+        message: Now that we have all the basics out of the way, let's finish up
+          your first day!
+        overrideStyle: 1
+        fontConfig:
+          fontSize: 30
+          fontStyle: 0
+          textAlignment: 514
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          fontAsset: {fileID: 0}
+        overrideCloseButtonStyle: 0
+        closeButtonStyle:
+          fontSize: 30
+          fontStyle: 0
+          textAlignment: 514
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          fontAsset: {fileID: 0}
+        closeButtonText: 
+        overrideAdvanceButtonStyle: 0
+        advanceButtonStyle:
+          fontSize: 30
+          fontStyle: 0
+          textAlignment: 514
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          fontAsset: {fileID: 0}
+        advanceButtonText: 
+        overrideBackButtonStyle: 0
+        backButtonStyle:
+          fontSize: 30
+          fontStyle: 0
+          textAlignment: 514
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          fontAsset: {fileID: 0}
+        backButtonText: 
