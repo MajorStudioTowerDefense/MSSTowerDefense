@@ -33,7 +33,7 @@ public class GameSpeedController : MonoBehaviour
         multipleGameSpeed.SetGameSpeed();
     }
 
-    if(Input.GetKeyDown(KeyCode.BackQuote))
+    if(Input.GetKeyDown(KeyCode.BackQuote) || Input.GetKeyDown(KeyCode.Space))
     {
         if (!isPaused)
         {
