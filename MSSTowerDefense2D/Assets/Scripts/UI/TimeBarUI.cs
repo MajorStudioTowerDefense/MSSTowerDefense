@@ -25,7 +25,7 @@ public class TimeBarUI : MonoBehaviour
     IEnumerator shrink()
     {
         yield return new WaitForSeconds(0.04f);
-        timeBarRect.sizeDelta = new Vector2((timeBarRect.sizeDelta.x-shrinkUnit), timeBarRect.sizeDelta.y);
+        if(GameManager.instance.isTimer)timeBarRect.sizeDelta = new Vector2((timeBarRect.sizeDelta.x-shrinkUnit)*Time.timeScale, timeBarRect.sizeDelta.y);
         timeBarRect = GetComponent<RectTransform>();
         if (timeBarRect.sizeDelta.x <= 0f)
         {
@@ -48,7 +48,7 @@ public class TimeBarUI : MonoBehaviour
     {
         timeBarRect = GetComponent<RectTransform>();
         yield return new WaitForSeconds(0.04f);
-        timeBarRect.sizeDelta = new Vector2((timeBarRect.sizeDelta.x + growUnit), timeBarRect.sizeDelta.y);
+        if(GameManager.instance.isTimer)timeBarRect.sizeDelta = new Vector2((timeBarRect.sizeDelta.x + growUnit)*Time.timeScale, timeBarRect.sizeDelta.y);
         if (timeBarRect.sizeDelta.x >= 481.5711f)
         {
             timeBarRect.sizeDelta = new Vector2(481.5711f, timeBarRect.sizeDelta.y);

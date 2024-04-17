@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Clock Settings")]
     [HideInInspector] public float timer;
-    private bool isTimer;
+    [HideInInspector]public bool isTimer;
     [SerializeField] private float timeScaleFactor;
     [SerializeField] private Vector2 startStoreTime;
     [SerializeField] private Vector2 endTime;
