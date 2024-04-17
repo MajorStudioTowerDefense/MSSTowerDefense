@@ -80,7 +80,8 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         
-        if (ES3.Load<bool>("isNewGame")==false && ES3.KeyExists("money"))
+        
+        if (GameObject.Find("saveLoad") && saveLoadSystem.instance.isLoadingGame && ES3.KeyExists("money"))
         {
 
             money = ES3.Load("money", money);

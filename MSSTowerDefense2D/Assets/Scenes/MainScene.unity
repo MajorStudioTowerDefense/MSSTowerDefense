@@ -1486,7 +1486,7 @@ MonoBehaviour:
           m_StringArgument: pauseGame
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 142694686}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PauseScript, Assembly-CSharp
         m_MethodName: resumeHighSpeed
         m_Mode: 1

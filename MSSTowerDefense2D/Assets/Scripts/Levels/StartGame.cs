@@ -7,14 +7,14 @@ public class StartGame : MonoBehaviour
 
     public void StartGameButton()
     {
-        ES3.Save<bool>("isNewGame", true);
+        saveLoadSystem.instance.isLoadingGame = false;
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
         
     }
 
     public void loadGameButton()
     {
-        ES3.Save<bool>("isNewGame", false);
+        saveLoadSystem.instance.isLoadingGame = true;
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
         
     }
