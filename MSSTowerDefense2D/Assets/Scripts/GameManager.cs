@@ -87,21 +87,16 @@ public class GameManager : MonoBehaviour
         //GenerateGrid();
         //GenerateWalls();\
        
-        /**
-       if (ES3.KeyExists("money"))
-        {
-            
-            money = ES3.Load("money", money);
-            employeeArea = ES3.Load("Employees", employeeArea);
-            ES3.Load("Shelves");
-        }**/
+       
 
         FindObjectOfType<AstarPath>().Scan();
         
     }
 
+    int reloadInt = 0;
     private void Update()
     {
+        
         if (isTimer)
         {
             timer += timeScaleFactor * Time.deltaTime;
@@ -125,6 +120,20 @@ public class GameManager : MonoBehaviour
                 isTimer = false;
                 break;
         }
+
+        /*
+        if (reloadInt == 0)
+        {
+            if (ES3.KeyExists("money"))
+            {
+
+                money = ES3.Load("money", money);
+                employeeArea = ES3.Load("Employees", employeeArea);
+                shelfPlacementManager.shelfCollectionForReload = ES3.Load("Shelves",shelfPlacementManager.shelfCollectionForReload);
+            }
+            reloadInt++;
+        }
+        */
     }
 
     private void InitializeLevel()
@@ -317,8 +326,8 @@ public class GameManager : MonoBehaviour
     {
         ES3.Save("money", money);
         ES3.Save("Employees", employeeArea);
-        GameObject[] shelves = GameObject.FindGameObjectsWithTag("interactedShelf");
-        ES3.Save("Shelves", shelves);
+        
+        ES3.Save("Shelves", shelfPlacementManager.shelfCollectionForReload);
         ES3.Save("Level", level);
     }
 }

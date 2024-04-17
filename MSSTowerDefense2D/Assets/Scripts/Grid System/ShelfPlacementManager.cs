@@ -128,6 +128,7 @@ public class ShelfPlacementManager : MonoBehaviour
         return currentShelfInstance;
     }
 
+    public GameObject shelfCollectionForReload;
     public void SnapShelfToGridAvoidOverlap()
     {
         Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -143,6 +144,7 @@ public class ShelfPlacementManager : MonoBehaviour
             if (currentShelfInstance == null)
             {
                 currentShelfInstance = Instantiate(currentShelfPrefab, gridPosition, Quaternion.identity);
+                currentShelfInstance.gameObject.transform.SetParent(shelfCollectionForReload.transform);
             }
             else
             {
