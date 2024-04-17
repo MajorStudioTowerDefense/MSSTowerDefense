@@ -3994,6 +3994,10 @@ MonoBehaviour:
   gridCellSize: 1
   alternativeAreaWidth: 3
   alternativeAreaHeight: 3
+  plantProbabilities: []
+  outdoorGridWidth: 40
+  outdoorGridHeight: 40
+  plantSpacing: 2
   currentState: 0
   exit: {fileID: 0}
   revenue: 0
@@ -8631,7 +8635,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c91eed92fc75c1a40b2620cec3a91d44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentTime: {fileID: 0}
+  currentTime: {fileID: 590425182}
   hours: 0
   minutes: 0
 --- !u!114 &590425182
@@ -14851,7 +14855,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 3c58293d8128c8c4a83f7ddceb6b83f2, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -24116,7 +24120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -26762,7 +26766,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 66.7, y: 67.7}
+  m_AnchoredPosition: {x: 66.7, y: 11}
   m_SizeDelta: {x: 41.7645, y: -22.6225}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1752224520

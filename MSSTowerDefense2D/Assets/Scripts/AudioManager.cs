@@ -20,9 +20,7 @@ public class AudioManager : MonoBehaviour
         timerScript = GameObject.Find("ClockNumbers").GetComponent<ClockDisplayUI>(); // Grabs the ClockUI script from the "ClockNumbers" GameObect
         audioSource.clip = Ticking;
         audioSource2.clip = StartShift;
-        // Calls up Stopping Coroutine
-        StartCoroutine(StopSoundAfterDelay());
-
+       
     }
     private void Awake()
     {
@@ -84,31 +82,7 @@ public class AudioManager : MonoBehaviour
             source.volume = volume;
         }
     }
-    //Stops the ticking from playing after 60 seconds
- IEnumerator StopSoundAfterDelay()
-    {
-        // Wait for 'duration' seconds
-        yield return null;
-        //yield return new WaitForSeconds(ClockDisplayUI.currentTime = 18);
-
-        // Stop the sound
-        audioSource.Stop();
-
-        //start the whistle
-        StartCoroutine(StartSoundAfterDelay());
-
-
-    }
-
-    IEnumerator StartSoundAfterDelay()
-    {   
-        // Wait for 'duration' seconds
-        yield return new WaitForSeconds(2f);
-        
-        //start sound
-        //audioSource2.Start();
-
-    }
+   
 
     void Update()
     {
@@ -118,6 +92,14 @@ public class AudioManager : MonoBehaviour
             int timerValueMinutes = timerScript.minutes;  //updates only the minutes
                                               
         }
+        if (timerScript.hours == 7 && timerScript.minutes == 0){
+            audioSource.Play();
+        }
+        if (timerScript.hours == 9 && timerScript.minutes == 0)
+        {
+            audioSource2.Play();
+
+        } 
     }
 
 }
