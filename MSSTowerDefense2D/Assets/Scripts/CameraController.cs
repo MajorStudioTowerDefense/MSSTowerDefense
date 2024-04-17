@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class CameraController : MonoBehaviour
 {
@@ -25,15 +26,14 @@ public class CameraController : MonoBehaviour
         float moveY = Input.GetAxis("Vertical");
 
         // Middle Mouse Button Drag
-        if (Input.GetMouseButtonDown(2)) 
+        if (Input.GetMouseButtonDown(2))
         {
             lastMousePosition = Input.mousePosition;
         }
 
-        if (Input.GetMouseButton(2)) 
+        if (Input.GetMouseButton(2))
         {
             Vector3 delta = Input.mousePosition - lastMousePosition;
-            
             moveX -= delta.x * maxMoveSpeed * cameraDragSpeed;
             moveY -= delta.y * maxMoveSpeed * cameraDragSpeed;
             lastMousePosition = Input.mousePosition;
@@ -46,10 +46,13 @@ public class CameraController : MonoBehaviour
         pos.x += moveVelocity.x * Time.deltaTime;
         pos.y += moveVelocity.y * Time.deltaTime;
 
-        // Zoom
-        float zoomChange = Input.GetAxis("Mouse ScrollWheel");
-        Camera.main.orthographicSize -= zoomChange * zoomSpeed * 100f * Time.deltaTime;
-        Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize, minZoom, maxZoom);
+        // Zoom only if not over any UI element
+        if (!EventSystem.current.IsPointerOverGameObject())
+        {
+            float zoomChange = Input.GetAxis("Mouse ScrollWheel");
+            Camera.main.orthographicSize -= zoomChange * zoomSpeed * 100f * Time.deltaTime;
+            Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize, minZoom, maxZoom);
+        }
 
         // Apply limits to prevent the camera from moving too far away
         pos.x = Mathf.Clamp(pos.x, -moveLimit.x, moveLimit.x);
@@ -57,4 +60,5 @@ public class CameraController : MonoBehaviour
 
         transform.position = pos;
     }
+
 }

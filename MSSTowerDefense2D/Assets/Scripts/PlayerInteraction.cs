@@ -5,6 +5,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class PlayerInteraction : MonoBehaviour
 {
@@ -210,7 +211,7 @@ public class PlayerInteraction : MonoBehaviour
             clickedEmployeeForEmployee.eStage = employeeStage.isSelected;
         }
         //如果点击的是货架
-        else if (clicked.GetComponent<ShelfScript>() != null && clicked.GetComponent<ShelfScript>().loadAllowed)
+        else if (!EventSystem.current.IsPointerOverGameObject() && clicked.GetComponent<ShelfScript>() != null && clicked.GetComponent<ShelfScript>().loadAllowed)
         {
             //如果当前没有货架被选中则选择当前货架
             if(clickedShelfForEmployee == null) { clickedShelfForEmployee = clicked.GetComponent<ShelfScript>(); }
