@@ -36,6 +36,19 @@ public class GameManager : MonoBehaviour
     public int alternativeAreaWidth = 3;
     public int alternativeAreaHeight = 2;
 
+    [Header("Environment")]
+    public PlantProbability[] plantProbabilities;
+    public int outdoorGridWidth = 40;
+    public int outdoorGridHeight = 40;
+    public float plantSpacing = 2.0f;
+
+    [System.Serializable]
+    public class PlantProbability
+    {
+        public GameObject plantPrefab;
+        public float probability;  // Probability of this plant being spawned
+    }
+
     private List<List<string>> room;
 
     public static GameManager instance { get; private set; }
@@ -144,6 +157,8 @@ public class GameManager : MonoBehaviour
         timer = InitialTime.x * 60 + InitialTime.y;
 
         GenerateWalls();
+        GenerateOutdoorPlants();
+
         currentState = GameStates.PREP;
         isTimer = true;
     }
@@ -290,6 +305,32 @@ public class GameManager : MonoBehaviour
 
                 if (prefabToInstantiate != null)
                     Instantiate(prefabToInstantiate, position, Quaternion.identity, transform);
+            }
+        }
+    }
+
+    void GenerateOutdoorPlants()
+    {
+        float halfWidth = outdoorGridWidth * plantSpacing * 0.5f;
+        float halfHeight = outdoorGridHeight * plantSpacing * 0.5f;
+        HashSet<Vector2> occupiedPositions = new HashSet<Vector2>();
+
+        for (int x = 0; x < outdoorGridWidth; x++)
+        {
+            for (int y = 0; y < outdoorGridHeight; y++)
+            {
+                Vector3 position = new Vector3((x * plantSpacing) - halfWidth, (y * plantSpacing) - halfHeight, 0);
+                Vector2 flatPosition = new Vector2(position.x, position.y);
+
+                foreach (var plantProbability in plantProbabilities)
+                {
+                    if (Random.Range(0f, 1f) < plantProbability.probability && !occupiedPositions.Contains(flatPosition))
+                    {
+                        Instantiate(plantProbability.plantPrefab, position, Quaternion.identity);
+                        occupiedPositions.Add(flatPosition);
+                        break; 
+                    }
+                }
             }
         }
     }
