@@ -19309,8 +19309,8 @@ MonoBehaviour:
   database: {fileID: 11400000, guid: e150840ee473b2247b7bc87e74be78ed, type: 2}
   tmEditorList:
   - index: 1
-    stageIndex: 5
-    Name: Satisfaciton Indicator
+    stageIndex: 4
+    Name: Customer 1
     state: 0
     startTrigger:
       triggerType: 0
@@ -19356,22 +19356,10 @@ MonoBehaviour:
       name: 
     events:
     - type: 0
-      enable: 1
+      enable: 0
       subEvent:
         m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 779099065}
-            m_TargetAssemblyTypeName: PauseScript, Assembly-CSharp
-            m_MethodName: pauseGame
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
+          m_Calls: []
     - type: 1
       enable: 0
       subEvent:
@@ -19393,7 +19381,7 @@ MonoBehaviour:
         m_PersistentCalls:
           m_Calls: []
     focusTargets:
-    - target: {fileID: 393336745}
+    - target: {fileID: 730574874}
       rtTarget: {fileID: 0}
       overrideSpawn: 0
       spawnInfo:
@@ -19403,7 +19391,7 @@ MonoBehaviour:
       rtCanvas: {fileID: 0}
       startInactive: 0
       highlightTarget: 0
-      followTarget: 0
+      followTarget: 1
       useModuleMask: 0
       moduleMask: 0
       screenRect:
@@ -19443,13 +19431,12 @@ MonoBehaviour:
       useTrigger: 0
       triggerState: 0
     moduleConfigs:
-    - rid: 971211097452052551
-    - rid: 971211097452052552
-    - rid: 971211097452052553
+    - rid: 8266946823575568451
+    - rid: 971211097452052621
     test: 0
   - index: 2
-    stageIndex: 5
-    Name: Satisfaciton Indicator 2
+    stageIndex: 4
+    Name: Customer 2
     state: 0
     startTrigger:
       triggerType: 0
@@ -19495,171 +19482,12 @@ MonoBehaviour:
       name: 
     events:
     - type: 0
-      enable: 0
-      subEvent:
-        m_PersistentCalls:
-          m_Calls: []
-    - type: 1
-      enable: 0
-      subEvent:
-        m_PersistentCalls:
-          m_Calls: []
-    - type: 2
-      enable: 0
-      subEvent:
-        m_PersistentCalls:
-          m_Calls: []
-    - type: 3
-      enable: 0
-      subEvent:
-        m_PersistentCalls:
-          m_Calls: []
-    - type: 4
-      enable: 0
-      subEvent:
-        m_PersistentCalls:
-          m_Calls: []
-    focusTargets:
-    - target: {fileID: 393336745}
-      rtTarget: {fileID: 0}
-      overrideSpawn: 0
-      spawnInfo:
-        spawnPos: {x: 0, y: 0, z: 0}
-        spawnRot: {x: 0, y: 0, z: 0}
-        spawnScale: {x: 0, y: 0, z: 0}
-      rtCanvas: {fileID: 0}
-      startInactive: 0
-      highlightTarget: 0
-      followTarget: 0
-      useModuleMask: 0
-      moduleMask: 0
-      screenRect:
-        serializedVersion: 2
-        x: 744
-        y: 486
-        width: 108
-        height: 108
-      TargetBoundType: 1
-      spawnEffect: 0
-      effectPrefab: {fileID: 0}
-      effectRT: {fileID: 0}
-      overrideEffectInfo: 0
-      effectSpawnInfo:
-        spawnPos: {x: 0, y: 0, z: 0}
-        spawnRot: {x: 0, y: 0, z: 0}
-        spawnScale: {x: 0, y: 0, z: 0}
-      triggerConfig:
-        triggerType: 0
-        colliderConfig:
-          collider: {fileID: 0}
-          triggerOnClick: 0
-          layerFiltering: 0
-          filterLayer:
-            serializedVersion: 2
-            m_Bits: 0
-          tagFiltering: 0
-          filterTag: 
-          useRigidBodyTag: 0
-          pointerTrigger: 0
-        graphicConfig:
-          graphic: {fileID: 0}
-          pointerTrigger: 0
-        keyCode: 0
-        tagConfig:
-          targetTag: 
-      useTrigger: 0
-      triggerState: 0
-    moduleConfigs:
-    - rid: 971211097452052581
-    - rid: 971211097452052582
-    - rid: 971211097452052583
-    test: 0
-  - index: 3
-    stageIndex: 5
-    Name: Satisfaciton Indicator 3
-    state: 0
-    startTrigger:
-      triggerType: 0
-      colliderConfig:
-        collider: {fileID: 0}
-        triggerOnClick: 0
-        layerFiltering: 0
-        filterLayer:
-          serializedVersion: 2
-          m_Bits: 0
-        tagFiltering: 0
-        filterTag: 
-        useRigidBodyTag: 0
-        pointerTrigger: 2
-      graphicConfig:
-        graphic: {fileID: 0}
-        pointerTrigger: 2
-      keyCode: 0
-      tagConfig:
-        targetTag: Customer
-    endTrigger:
-      triggerType: 0
-      colliderConfig:
-        collider: {fileID: 0}
-        triggerOnClick: 0
-        layerFiltering: 0
-        filterLayer:
-          serializedVersion: 2
-          m_Bits: 0
-        tagFiltering: 0
-        filterTag: 
-        useRigidBodyTag: 0
-        pointerTrigger: 2
-      graphicConfig:
-        graphic: {fileID: 0}
-        pointerTrigger: 2
-      keyCode: 0
-      tagConfig:
-        targetTag: Customer
-    advanceConfig:
-      advanceType: 1
-      index: -1
-      name: 
-    events:
-    - type: 0
-      enable: 0
-      subEvent:
-        m_PersistentCalls:
-          m_Calls: []
-    - type: 1
-      enable: 0
-      subEvent:
-        m_PersistentCalls:
-          m_Calls: []
-    - type: 2
-      enable: 0
-      subEvent:
-        m_PersistentCalls:
-          m_Calls: []
-    - type: 3
-      enable: 0
-      subEvent:
-        m_PersistentCalls:
-          m_Calls: []
-    - type: 4
       enable: 1
       subEvent:
         m_PersistentCalls:
           m_Calls:
-          - m_Target: {fileID: 779099065}
-            m_TargetAssemblyTypeName: PauseScript, Assembly-CSharp
-            m_MethodName: resumeGame
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-          - m_Target: {fileID: 393336747}
-            m_TargetAssemblyTypeName: SatisfactionMatcher, Assembly-CSharp
+          - m_Target: {fileID: 730574876}
+            m_TargetAssemblyTypeName: CustomMatcher, Assembly-CSharp
             m_MethodName: SelfDestroy
             m_Mode: 1
             m_Arguments:
@@ -19670,8 +19498,28 @@ MonoBehaviour:
               m_StringArgument: 
               m_BoolArgument: 0
             m_CallState: 2
+    - type: 1
+      enable: 0
+      subEvent:
+        m_PersistentCalls:
+          m_Calls: []
+    - type: 2
+      enable: 0
+      subEvent:
+        m_PersistentCalls:
+          m_Calls: []
+    - type: 3
+      enable: 0
+      subEvent:
+        m_PersistentCalls:
+          m_Calls: []
+    - type: 4
+      enable: 0
+      subEvent:
+        m_PersistentCalls:
+          m_Calls: []
     focusTargets:
-    - target: {fileID: 393336745}
+    - target: {fileID: 1245806838}
       rtTarget: {fileID: 0}
       overrideSpawn: 0
       spawnInfo:
@@ -19686,10 +19534,10 @@ MonoBehaviour:
       moduleMask: 0
       screenRect:
         serializedVersion: 2
-        x: 744
-        y: 486
-        width: 108
-        height: 108
+        x: 0
+        y: 0
+        width: 0
+        height: 0
       TargetBoundType: 1
       spawnEffect: 0
       effectPrefab: {fileID: 0}
@@ -19721,9 +19569,8 @@ MonoBehaviour:
       useTrigger: 0
       triggerState: 0
     moduleConfigs:
-    - rid: 971211097452052584
-    - rid: 971211097452052585
-    - rid: 971211097452052586
+    - rid: 971211097452052526
+    - rid: 971211097452052623
     test: 0
   references:
     version: 2
@@ -21069,8 +20916,8 @@ MonoBehaviour:
         m_sprite: {fileID: 0}
         displayRect:
           serializedVersion: 2
-          x: 0
-          y: 0
+          x: 300
+          y: 100
           width: 500
           height: 300
         scaleInOut: 0
@@ -26958,39 +26805,39 @@ MonoBehaviour:
   - 94c404b4016939844a51af426ed99009
   - 7562addc00ebff347b30f4fdc0c39544
   - 56ac057215825754fa1ee152022f84c2
-  - fa616fd8be2538447b0d52c4a60dc8e2
-  - 8895c9992758dfb4c93cc51bdf4c5b6b
-  - fcff7d6bfe540e246ab67a5970ae3633
-  - c5ff9c9a85eae6243b8674291d963839
-  - 60e0070611b2ba74d9d8d3887e1ac838
-  - e929451f8e2494e4fae6fe2e26f7647a
-  - 62d8a8c4e58e9d8479c94a3e8e60ad6a
-  - 7d5207ddfb8013340bdb56fae449c2b9
-  - 6061d7f292dce494da9184cb255c0939
-  - 54f78fd5658d17140a4b85d23110054a
-  - 349f77e2ba3465648909e5f40a42d118
-  - 480c2ea863dbd0e4ba32b2033efc1421
-  - 89d266a005407d849b5558fb16d2b2c8
-  - b205a03de01a467439949be8c97a1b9c
-  - 918793b50a41f374985cfe85a0eb01a4
-  - e19fff94ac2fcd24e8dde76cf7957517
-  - a16d4cecc122c8b4f855ae566b84849d
-  - 86378121b5512d642846637a5cc0ff0f
-  - 35486ed88392d9f42acf7549699fd25e
-  - f3594c85c02c49e4ea90aa6f74ad0c46
-  - fb140a31d28c7bd4994579cb41fcb960
-  - e3af5ca9debbbd54a8d99c954fa48c69
-  - 9090074fb4e5c864d91b0b0bba98f615
-  - c26bcf305e19eb341b409bd41b97c9b8
-  - 876f27d89d4340f47b5dba4ea335a781
-  - dc62bba75b9b70041b1ce78c19375110
-  - a58b29c61613794428c174cd71f80978
-  - 191b3f3deb3809e43ab11aea7e722142
-  - 69757b04dc1902b498fc575aeab85b24
-  - f7514110da5c3564e9c70ada948a6c80
-  - 1bbca6196bd379f4f80a6139a5732e3e
-  - 580293b6c87e7004b8dd7f53817c9179
-  - 69f8af26b2b24994383ce574706ccf77
+  - 52112f3ba11142947a7bd26843f4efbc
+  - 8c1abb30711b1cd409ffd46597b17215
+  - 759f804fbd16a754da191a023abe9a05
+  - b6bbe14f09e0ea841b2bc014e77e1279
+  - 7ee5778977e7bea43a77d18f4e91fa08
+  - c905d6bcaa3ef5c46afc851cba6ca475
+  - a3a606df53195dd4a94039ede7d71d24
+  - afc7b731ba271164bbf6ff13f8669566
+  - 46d106bf614cc334e8847b21cf3a0321
+  - a60c7fb0256f52d4b8b2005de47f71ba
+  - 0206dbdead6c1f94594df1c23470a0ab
+  - e70486fe8d7998f44995ef4a54f40549
+  - 071f6f704952eb741946588190424e42
+  - 23fd6701cb3a9d040a7b884be977fd4f
+  - 3b0859bcac6f5ee42b2500440769410d
+  - 125425182c5ef894fa135981053940e1
+  - 4612a23988d43a349bb7ae8df4f91a95
+  - 098ff7829dc0aff48ad6e7cf60deae19
+  - f628a6f9c2eb6c944af00f4a7796cb6b
+  - 990a3034702cb944583098487fe734e1
+  - 36941ff45851a9b4da3d5b063135db25
+  - 831c2256d91461f44bbb52e67624d3e1
+  - 2f7c93573f419434ba3682d38b6ae50a
+  - 26f7285ba07f9e94da6771ba8e5ce045
+  - 1c9a2f19e04bb9b45baf5becc9696e28
+  - ee88a2b4ae2905745aaf967374720a17
+  - 81eb1292cf887864bb5426b4b056398a
+  - 7212bdf03ac76ff428a1c44c315b6e84
+  - 62e8ed1362b4142439421757a3dbe866
+  - 738c10db39bbed24a9592e6d6b71e722
+  - 5113e7e76a610d04790512df2a3336d3
+  - 388a9f560309036468f60d4f42195f40
+  - e2be19b5dea9952459c8c96bac606e08
   listReference:
   - {fileID: 0}
   - {fileID: 0}
