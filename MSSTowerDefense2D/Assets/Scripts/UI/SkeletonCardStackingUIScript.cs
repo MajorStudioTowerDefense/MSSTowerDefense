@@ -19,7 +19,7 @@ public class SkeletonCardStackingUIScript : MonoBehaviour
         IDs = new List<GameObject>() { firstID };
         topright = GetComponentInParent<RectTransform>().offsetMax;
         bottomleft = GetComponentInParent<RectTransform>().offsetMin;
-        middle = new Vector2((topright.x+bottomleft.x)/2, (topright.y+bottomleft.y)/2);
+        middle = firstID.GetComponent<RectTransform>().position;
     }
 
     public void CreateNewCard(GameObject emp)

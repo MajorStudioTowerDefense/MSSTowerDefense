@@ -3994,6 +3994,10 @@ MonoBehaviour:
   gridCellSize: 1
   alternativeAreaWidth: 3
   alternativeAreaHeight: 3
+  plantProbabilities: []
+  outdoorGridWidth: 40
+  outdoorGridHeight: 40
+  plantSpacing: 2
   currentState: 0
   exit: {fileID: 0}
   revenue: 0
@@ -4002,6 +4006,7 @@ MonoBehaviour:
   money: 125
   yesterdayMoney: 0
   timer: 0
+  isTimer: 0
   timeScaleFactor: 5
   startStoreTime: {x: 9, y: 0}
   endTime: {x: 18, y: 0}
@@ -24112,7 +24117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -26758,7 +26763,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 66.7, y: 67.7}
+  m_AnchoredPosition: {x: 66.7, y: 11}
   m_SizeDelta: {x: 41.7645, y: -22.6225}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1752224520
