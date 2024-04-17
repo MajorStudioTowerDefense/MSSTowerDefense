@@ -48,6 +48,12 @@ public class UpgradeSystem : MonoBehaviour
     }
 
     public GameObject ShelfPointerUI;
+
+    void Awake()
+    {
+        DontDestroyOnLoad(ShelfPointerUI);
+    }
+
     public void AddShelfRange()
     {
         GameManager.instance.upgradePanel.SetActive(false);

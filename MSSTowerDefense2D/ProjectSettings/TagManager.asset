@@ -9,6 +9,8 @@ TagManager:
   - interactedShelf
   - Timer
   - Customer
+  - Door
+  - Satisfaction
   layers:
   - Default
   - TransparentFX

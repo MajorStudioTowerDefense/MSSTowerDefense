@@ -465,7 +465,7 @@ GameObject:
   - component: {fileID: 1122669741261647094}
   m_Layer: 0
   m_Name: Desire
-  m_TagString: Untagged
+  m_TagString: Satisfaction
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
