@@ -302,15 +302,15 @@ RectTransform:
   m_GameObject: {fileID: 34034390}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4414133, y: 0.4414133, z: 0.4414133}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2137930526}
-  m_RootOrder: 2
+  m_Father: {fileID: 331623598}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -366.44492, y: 196.37419}
+  m_AnchoredPosition: {x: 5.561859, y: 7.6213837}
   m_SizeDelta: {x: 228.0592, y: 826.9664}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &34034392
@@ -1562,7 +1562,7 @@ MonoBehaviour:
           m_StringArgument: pauseGame
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 142694686}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PauseScript, Assembly-CSharp
         m_MethodName: resumeHighSpeed
         m_Mode: 1
@@ -3081,10 +3081,12 @@ RectTransform:
   m_LocalScale: {x: 0.44141325, y: 0.44141325, z: 0.44141325}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 502149940}
   - {fileID: 2052799383}
   - {fileID: 1861528441}
+  - {fileID: 34034391}
   m_Father: {fileID: 2137930526}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3813,7 +3815,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -5253,17 +5255,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 502149939}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.2654507, y: 2.2654507, z: 2.2654507}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2137930526}
+  m_Father: {fileID: 331623598}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -368.1094, y: 192.3906}
+  m_AnchoredPosition: {x: 1.7909851, y: -1.4031982}
   m_SizeDelta: {x: 79.7218, y: 338.5336}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &502149941
@@ -8610,8 +8612,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 29, y: -230.6}
-  m_SizeDelta: {x: 500.439, y: 169.6105}
+  m_AnchoredPosition: {x: 9.124609, y: -256.0674}
+  m_SizeDelta: {x: 160.2528, y: 118.6759}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &590425181
 MonoBehaviour:
@@ -8711,7 +8713,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 104.17499, y: 49.091064, z: 149.54138, w: 0}
+  m_margin: {x: 2.3059082, y: -0.4668579, z: 0.8675537, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -10731,7 +10733,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -13396,8 +13398,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 418}
-  m_SizeDelta: {x: 20, y: -240.5553}
+  m_AnchoredPosition: {x: -1.1550999, y: -81}
+  m_SizeDelta: {x: 17.6898, y: -130.2562}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1100092524
 MonoBehaviour:
@@ -21571,8 +21573,8 @@ MonoBehaviour:
   database: {fileID: 11400000, guid: e150840ee473b2247b7bc87e74be78ed, type: 2}
   tmEditorList:
   - index: 1
-    stageIndex: 4
-    Name: Customer 1
+    stageIndex: 1
+    Name: Intro Text 1
     state: 0
     startTrigger:
       triggerType: 0
@@ -21592,7 +21594,7 @@ MonoBehaviour:
         pointerTrigger: 2
       keyCode: 0
       tagConfig:
-        targetTag: Customer
+        targetTag: 
     endTrigger:
       triggerType: 0
       colliderConfig:
@@ -21611,7 +21613,7 @@ MonoBehaviour:
         pointerTrigger: 2
       keyCode: 0
       tagConfig:
-        targetTag: Customer
+        targetTag: 
     advanceConfig:
       advanceType: 1
       index: -1
@@ -21622,144 +21624,6 @@ MonoBehaviour:
       subEvent:
         m_PersistentCalls:
           m_Calls: []
-    - type: 1
-      enable: 0
-      subEvent:
-        m_PersistentCalls:
-          m_Calls: []
-    - type: 2
-      enable: 0
-      subEvent:
-        m_PersistentCalls:
-          m_Calls: []
-    - type: 3
-      enable: 0
-      subEvent:
-        m_PersistentCalls:
-          m_Calls: []
-    - type: 4
-      enable: 0
-      subEvent:
-        m_PersistentCalls:
-          m_Calls: []
-    focusTargets:
-    - target: {fileID: 730574874}
-      rtTarget: {fileID: 0}
-      overrideSpawn: 0
-      spawnInfo:
-        spawnPos: {x: 0, y: 0, z: 0}
-        spawnRot: {x: 0, y: 0, z: 0}
-        spawnScale: {x: 0, y: 0, z: 0}
-      rtCanvas: {fileID: 0}
-      startInactive: 0
-      highlightTarget: 0
-      followTarget: 1
-      useModuleMask: 0
-      moduleMask: 0
-      screenRect:
-        serializedVersion: 2
-        x: 744
-        y: 486
-        width: 108
-        height: 108
-      TargetBoundType: 1
-      spawnEffect: 0
-      effectPrefab: {fileID: 0}
-      effectRT: {fileID: 0}
-      overrideEffectInfo: 0
-      effectSpawnInfo:
-        spawnPos: {x: 0, y: 0, z: 0}
-        spawnRot: {x: 0, y: 0, z: 0}
-        spawnScale: {x: 0, y: 0, z: 0}
-      triggerConfig:
-        triggerType: 0
-        colliderConfig:
-          collider: {fileID: 0}
-          triggerOnClick: 0
-          layerFiltering: 0
-          filterLayer:
-            serializedVersion: 2
-            m_Bits: 0
-          tagFiltering: 0
-          filterTag: 
-          useRigidBodyTag: 0
-          pointerTrigger: 0
-        graphicConfig:
-          graphic: {fileID: 0}
-          pointerTrigger: 0
-        keyCode: 0
-        tagConfig:
-          targetTag: 
-      useTrigger: 0
-      triggerState: 0
-    moduleConfigs:
-    - rid: 8266946823575568451
-    - rid: 971211097452052621
-    test: 0
-  - index: 2
-    stageIndex: 4
-    Name: Customer 2
-    state: 0
-    startTrigger:
-      triggerType: 0
-      colliderConfig:
-        collider: {fileID: 0}
-        triggerOnClick: 0
-        layerFiltering: 0
-        filterLayer:
-          serializedVersion: 2
-          m_Bits: 0
-        tagFiltering: 0
-        filterTag: 
-        useRigidBodyTag: 0
-        pointerTrigger: 2
-      graphicConfig:
-        graphic: {fileID: 0}
-        pointerTrigger: 2
-      keyCode: 0
-      tagConfig:
-        targetTag: Customer
-    endTrigger:
-      triggerType: 0
-      colliderConfig:
-        collider: {fileID: 0}
-        triggerOnClick: 0
-        layerFiltering: 0
-        filterLayer:
-          serializedVersion: 2
-          m_Bits: 0
-        tagFiltering: 0
-        filterTag: 
-        useRigidBodyTag: 0
-        pointerTrigger: 2
-      graphicConfig:
-        graphic: {fileID: 0}
-        pointerTrigger: 2
-      keyCode: 0
-      tagConfig:
-        targetTag: Customer
-    advanceConfig:
-      advanceType: 1
-      index: -1
-      name: 
-    events:
-    - type: 0
-      enable: 1
-      subEvent:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 730574876}
-            m_TargetAssemblyTypeName: CustomMatcher, Assembly-CSharp
-            m_MethodName: SelfDestroy
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
     - type: 1
       enable: 0
       subEvent:
@@ -21831,8 +21695,386 @@ MonoBehaviour:
       useTrigger: 0
       triggerState: 0
     moduleConfigs:
-    - rid: 971211097452052526
-    - rid: 971211097452052623
+    - rid: 8266946820872863745
+    - rid: 8266946820872863756
+    test: 0
+  - index: 2
+    stageIndex: 1
+    Name: Intro Text 2
+    state: 0
+    startTrigger:
+      triggerType: 0
+      colliderConfig:
+        collider: {fileID: 0}
+        triggerOnClick: 0
+        layerFiltering: 0
+        filterLayer:
+          serializedVersion: 2
+          m_Bits: 0
+        tagFiltering: 0
+        filterTag: 
+        useRigidBodyTag: 0
+        pointerTrigger: 2
+      graphicConfig:
+        graphic: {fileID: 0}
+        pointerTrigger: 2
+      keyCode: 0
+      tagConfig:
+        targetTag: 
+    endTrigger:
+      triggerType: 0
+      colliderConfig:
+        collider: {fileID: 0}
+        triggerOnClick: 0
+        layerFiltering: 0
+        filterLayer:
+          serializedVersion: 2
+          m_Bits: 0
+        tagFiltering: 0
+        filterTag: 
+        useRigidBodyTag: 0
+        pointerTrigger: 2
+      graphicConfig:
+        graphic: {fileID: 0}
+        pointerTrigger: 2
+      keyCode: 0
+      tagConfig:
+        targetTag: 
+    advanceConfig:
+      advanceType: 1
+      index: -1
+      name: 
+    events:
+    - type: 0
+      enable: 0
+      subEvent:
+        m_PersistentCalls:
+          m_Calls: []
+    - type: 1
+      enable: 0
+      subEvent:
+        m_PersistentCalls:
+          m_Calls: []
+    - type: 2
+      enable: 0
+      subEvent:
+        m_PersistentCalls:
+          m_Calls: []
+    - type: 3
+      enable: 0
+      subEvent:
+        m_PersistentCalls:
+          m_Calls: []
+    - type: 4
+      enable: 0
+      subEvent:
+        m_PersistentCalls:
+          m_Calls: []
+    focusTargets:
+    - target: {fileID: 1245806838}
+      rtTarget: {fileID: 0}
+      overrideSpawn: 0
+      spawnInfo:
+        spawnPos: {x: 0, y: 0, z: 0}
+        spawnRot: {x: 0, y: 0, z: 0}
+        spawnScale: {x: 0, y: 0, z: 0}
+      rtCanvas: {fileID: 0}
+      startInactive: 0
+      highlightTarget: 0
+      followTarget: 0
+      useModuleMask: 0
+      moduleMask: 0
+      screenRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      TargetBoundType: 1
+      spawnEffect: 0
+      effectPrefab: {fileID: 0}
+      effectRT: {fileID: 0}
+      overrideEffectInfo: 0
+      effectSpawnInfo:
+        spawnPos: {x: 0, y: 0, z: 0}
+        spawnRot: {x: 0, y: 0, z: 0}
+        spawnScale: {x: 0, y: 0, z: 0}
+      triggerConfig:
+        triggerType: 0
+        colliderConfig:
+          collider: {fileID: 0}
+          triggerOnClick: 0
+          layerFiltering: 0
+          filterLayer:
+            serializedVersion: 2
+            m_Bits: 0
+          tagFiltering: 0
+          filterTag: 
+          useRigidBodyTag: 0
+          pointerTrigger: 0
+        graphicConfig:
+          graphic: {fileID: 0}
+          pointerTrigger: 0
+        keyCode: 0
+        tagConfig:
+          targetTag: 
+      useTrigger: 0
+      triggerState: 0
+    moduleConfigs:
+    - rid: 8266946820872863746
+    - rid: 8266946820872863761
+    test: 0
+  - index: 3
+    stageIndex: 1
+    Name: Intro Text 3
+    state: 0
+    startTrigger:
+      triggerType: 0
+      colliderConfig:
+        collider: {fileID: 0}
+        triggerOnClick: 0
+        layerFiltering: 0
+        filterLayer:
+          serializedVersion: 2
+          m_Bits: 0
+        tagFiltering: 0
+        filterTag: 
+        useRigidBodyTag: 0
+        pointerTrigger: 2
+      graphicConfig:
+        graphic: {fileID: 0}
+        pointerTrigger: 2
+      keyCode: 0
+      tagConfig:
+        targetTag: 
+    endTrigger:
+      triggerType: 0
+      colliderConfig:
+        collider: {fileID: 0}
+        triggerOnClick: 0
+        layerFiltering: 0
+        filterLayer:
+          serializedVersion: 2
+          m_Bits: 0
+        tagFiltering: 0
+        filterTag: 
+        useRigidBodyTag: 0
+        pointerTrigger: 2
+      graphicConfig:
+        graphic: {fileID: 0}
+        pointerTrigger: 2
+      keyCode: 0
+      tagConfig:
+        targetTag: 
+    advanceConfig:
+      advanceType: 1
+      index: -1
+      name: 
+    events:
+    - type: 0
+      enable: 0
+      subEvent:
+        m_PersistentCalls:
+          m_Calls: []
+    - type: 1
+      enable: 0
+      subEvent:
+        m_PersistentCalls:
+          m_Calls: []
+    - type: 2
+      enable: 0
+      subEvent:
+        m_PersistentCalls:
+          m_Calls: []
+    - type: 3
+      enable: 0
+      subEvent:
+        m_PersistentCalls:
+          m_Calls: []
+    - type: 4
+      enable: 0
+      subEvent:
+        m_PersistentCalls:
+          m_Calls: []
+    focusTargets:
+    - target: {fileID: 1245806838}
+      rtTarget: {fileID: 0}
+      overrideSpawn: 0
+      spawnInfo:
+        spawnPos: {x: 0, y: 0, z: 0}
+        spawnRot: {x: 0, y: 0, z: 0}
+        spawnScale: {x: 0, y: 0, z: 0}
+      rtCanvas: {fileID: 0}
+      startInactive: 0
+      highlightTarget: 0
+      followTarget: 0
+      useModuleMask: 0
+      moduleMask: 0
+      screenRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      TargetBoundType: 1
+      spawnEffect: 0
+      effectPrefab: {fileID: 0}
+      effectRT: {fileID: 0}
+      overrideEffectInfo: 0
+      effectSpawnInfo:
+        spawnPos: {x: 0, y: 0, z: 0}
+        spawnRot: {x: 0, y: 0, z: 0}
+        spawnScale: {x: 0, y: 0, z: 0}
+      triggerConfig:
+        triggerType: 0
+        colliderConfig:
+          collider: {fileID: 0}
+          triggerOnClick: 0
+          layerFiltering: 0
+          filterLayer:
+            serializedVersion: 2
+            m_Bits: 0
+          tagFiltering: 0
+          filterTag: 
+          useRigidBodyTag: 0
+          pointerTrigger: 0
+        graphicConfig:
+          graphic: {fileID: 0}
+          pointerTrigger: 0
+        keyCode: 0
+        tagConfig:
+          targetTag: 
+      useTrigger: 0
+      triggerState: 0
+    moduleConfigs:
+    - rid: 8266946820872863749
+    - rid: 8266946820872863762
+    test: 0
+  - index: 4
+    stageIndex: 1
+    Name: Intro Text 4
+    state: 0
+    startTrigger:
+      triggerType: 0
+      colliderConfig:
+        collider: {fileID: 0}
+        triggerOnClick: 0
+        layerFiltering: 0
+        filterLayer:
+          serializedVersion: 2
+          m_Bits: 0
+        tagFiltering: 0
+        filterTag: 
+        useRigidBodyTag: 0
+        pointerTrigger: 2
+      graphicConfig:
+        graphic: {fileID: 0}
+        pointerTrigger: 2
+      keyCode: 0
+      tagConfig:
+        targetTag: 
+    endTrigger:
+      triggerType: 0
+      colliderConfig:
+        collider: {fileID: 0}
+        triggerOnClick: 0
+        layerFiltering: 0
+        filterLayer:
+          serializedVersion: 2
+          m_Bits: 0
+        tagFiltering: 0
+        filterTag: 
+        useRigidBodyTag: 0
+        pointerTrigger: 2
+      graphicConfig:
+        graphic: {fileID: 0}
+        pointerTrigger: 2
+      keyCode: 0
+      tagConfig:
+        targetTag: 
+    advanceConfig:
+      advanceType: 1
+      index: -1
+      name: 
+    events:
+    - type: 0
+      enable: 0
+      subEvent:
+        m_PersistentCalls:
+          m_Calls: []
+    - type: 1
+      enable: 0
+      subEvent:
+        m_PersistentCalls:
+          m_Calls: []
+    - type: 2
+      enable: 0
+      subEvent:
+        m_PersistentCalls:
+          m_Calls: []
+    - type: 3
+      enable: 0
+      subEvent:
+        m_PersistentCalls:
+          m_Calls: []
+    - type: 4
+      enable: 0
+      subEvent:
+        m_PersistentCalls:
+          m_Calls: []
+    focusTargets:
+    - target: {fileID: 1245806838}
+      rtTarget: {fileID: 0}
+      overrideSpawn: 0
+      spawnInfo:
+        spawnPos: {x: 0, y: 0, z: 0}
+        spawnRot: {x: 0, y: 0, z: 0}
+        spawnScale: {x: 0, y: 0, z: 0}
+      rtCanvas: {fileID: 0}
+      startInactive: 0
+      highlightTarget: 0
+      followTarget: 0
+      useModuleMask: 0
+      moduleMask: 0
+      screenRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      TargetBoundType: 1
+      spawnEffect: 0
+      effectPrefab: {fileID: 0}
+      effectRT: {fileID: 0}
+      overrideEffectInfo: 0
+      effectSpawnInfo:
+        spawnPos: {x: 0, y: 0, z: 0}
+        spawnRot: {x: 0, y: 0, z: 0}
+        spawnScale: {x: 0, y: 0, z: 0}
+      triggerConfig:
+        triggerType: 0
+        colliderConfig:
+          collider: {fileID: 0}
+          triggerOnClick: 0
+          layerFiltering: 0
+          filterLayer:
+            serializedVersion: 2
+            m_Bits: 0
+          tagFiltering: 0
+          filterTag: 
+          useRigidBodyTag: 0
+          pointerTrigger: 0
+        graphicConfig:
+          graphic: {fileID: 0}
+          pointerTrigger: 0
+        keyCode: 0
+        tagConfig:
+          targetTag: 
+      useTrigger: 0
+      triggerState: 0
+    moduleConfigs:
+    - rid: 8266946820872863750
+    - rid: 8266946820872863763
     test: 0
   references:
     version: 2
@@ -26107,7 +26349,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -27216,13 +27458,13 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1861528440}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 90}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2105708175}
   m_Father: {fileID: 331623598}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -29115,7 +29357,7 @@ RectTransform:
   m_Children:
   - {fileID: 733694928}
   m_Father: {fileID: 331623598}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -29932,9 +30174,7 @@ RectTransform:
   m_LocalScale: {x: 2.2654507, y: 2.2654507, z: 2.2654507}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 502149940}
   - {fileID: 331623598}
-  - {fileID: 34034391}
   m_Father: {fileID: 1541597223}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

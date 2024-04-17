@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Clock Settings")]
     [HideInInspector] public float timer;
-    private bool isTimer;
+    [HideInInspector]public bool isTimer;
     [SerializeField] private float timeScaleFactor;
     [SerializeField] private Vector2 startStoreTime;
     [SerializeField] private Vector2 endTime;
@@ -80,7 +80,8 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         
-        if (ES3.Load<bool>("isNewGame")==false && ES3.KeyExists("money"))
+        
+        if (GameObject.Find("saveLoad") && saveLoadSystem.instance.isLoadingGame && ES3.KeyExists("money"))
         {
 
             money = ES3.Load("money", money);
