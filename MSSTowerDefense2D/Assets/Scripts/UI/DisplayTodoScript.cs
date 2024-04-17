@@ -17,45 +17,45 @@ public class DisplayTodoScript : MonoBehaviour
     public Sprite stock;
     public Sprite stand;
 
-    private Image[] test;
-
     public NormalEmployee employee;
     private SkeletonCardStackingUIScript script;
 
     private void Start()
-    {
-        script = GameObject.Find("Employee IDs").GetComponent<SkeletonCardStackingUIScript>();
-        employee = script.lastSkeleton.GetComponent<NormalEmployee>();
-        test = GetComponentsInChildren<Image>();
-        first = transform.GetChild(0).GetComponent<Image>();
-        second = transform.GetChild(1).GetComponent<Image>();
-        third = transform.GetChild(2).GetComponent<Image>();
-        fourth = transform.GetChild(3).GetComponent<Image>();
-        fifth = transform.GetChild(4).GetComponent<Image>();
+{
+    Debug.Log("Start called on: " + gameObject.name);
+
+    script = GameObject.Find("Employee IDs").GetComponent<SkeletonCardStackingUIScript>();
+    employee = script.lastSkeleton.GetComponent<NormalEmployee>();
+
+    if (employee == null) {
+        Debug.LogError("Employee component not found!");
     }
 
-    private void Update()
-    {
-        first = transform.GetChild(0).GetComponent<Image>();
-        second = transform.GetChild(1).GetComponent<Image>();
-        third = transform.GetChild(2).GetComponent<Image>();
-        fourth = transform.GetChild(3).GetComponent<Image>();
-        fifth = transform.GetChild(4).GetComponent<Image>();
+    first = transform.GetChild(0).GetComponent<Image>();
+    if (first == null) {
+        Debug.LogError("First image component not found on: " + transform.GetChild(0).name);
+    }
+
+    second = transform.GetChild(1).GetComponent<Image>();
+    third = transform.GetChild(2).GetComponent<Image>();
+    fourth = transform.GetChild(3).GetComponent<Image>();
+    fifth = transform.GetChild(4).GetComponent<Image>();
+}
+
+private void Update()
+{
+    // if (first == null) {
+    //     Debug.LogError("First is null in Update");
+    //     return;
+    // }
+    first = transform.GetChild(0).GetComponent<Image>();
+    second = transform.GetChild(1).GetComponent<Image>();
+    third = transform.GetChild(2).GetComponent<Image>();
+    fourth = transform.GetChild(3).GetComponent<Image>();
+    fifth = transform.GetChild(4).GetComponent<Image>();
+
         if (employee.eStage == employeeStage.standBy)
         {
-            int i = 0;
-            foreach (Image image in test)
-            {
-                if (i == 0)
-                {
-                    i++;
-                    image.sprite = stand;
-                }
-                else
-                {
-                    image.sprite = null;
-                }
-            }
             first.sprite = stand;
             second.sprite = null;
             third.sprite = null;
@@ -94,7 +94,10 @@ public class DisplayTodoScript : MonoBehaviour
             fourth.sprite = null;
             fifth.sprite = null;
         }
-
+        else
+        {
+            first = transform.GetChild(0).GetComponent<Image>();
+        }
     }
 
 }
