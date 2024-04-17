@@ -41,13 +41,32 @@ public class ShelfUI : MonoBehaviour
 
     private void Update()
     {
-        if((GameManager.instance.currentState != GameStates.PREP && GameManager.instance.currentState != GameStates.TUTORIAL && GameManager.instance.previousState != GameStates.PREP))
+        if (GameManager.instance.currentState == GameStates.TUTORIAL)
+        {
+            StartCoroutine(FindCustomer());
+        }
+        else if(GameManager.instance.currentState == GameStates.PREP)
+        {
+            ToDisable.SetActive(true);
+        }
+        else
+        {
+            ToDisable.SetActive(false);
+        }
+    }
+
+    IEnumerator FindCustomer()
+    {
+        yield return new WaitForSeconds(1.5f);
+        GameObject[] tags = GameObject.FindGameObjectsWithTag("Customer");
+
+        if (tags[0] != null)
         {
             ToDisable.SetActive(false);
         }
         else
         {
-            ToDisable.SetActive(true);
+            StartCoroutine(FindCustomer());
         }
     }
 
