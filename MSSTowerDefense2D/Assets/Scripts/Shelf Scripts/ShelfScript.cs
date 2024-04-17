@@ -77,6 +77,7 @@ public class ShelfScript : MonoBehaviour
 
     void Start()
     {
+        canvas = GetComponentInChildren<Canvas>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         loadAmount = initalLoadAmount;
 
@@ -337,7 +338,7 @@ public class ShelfScript : MonoBehaviour
         Bot customer = customerData.bot;
         float moneyGained = ItemManager.Instance.GetPricePerUnit(sellingItem.GetItem()) + purchasePower;
         GameManager.instance.AddMoney(moneyGained);
-        Debug.Log("Finish purchase!" + customer.selectedItem.GetItem());
+        
         showGainedMoney(moneyGained);
         customer.needs.Remove(customer.selectedItem);
         customer.selectedItem = null;

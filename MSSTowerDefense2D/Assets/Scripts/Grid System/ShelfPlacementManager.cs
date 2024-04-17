@@ -161,7 +161,10 @@ public class ShelfPlacementManager : MonoBehaviour
 
         if (hit.collider != null && hit.collider.gameObject.GetComponent<ShelfScript>() != null)
         {
+            
+
             shelfBeingRepositioned = hit.collider.gameObject;
+            Debug.Log("Shelf selected for repositioning."+shelfBeingRepositioned.name);
         }
     }
 
@@ -227,6 +230,7 @@ public class ShelfPlacementManager : MonoBehaviour
         // First, check if the new position is within the grid and not occupied
         if (IsWithinGrid(x, y) && !shelfPlacementGrid[x, y])
         {
+            
             // Find the previous position of the shelf being repositioned
             int prevX, prevY;
             gridSystem.GetXY(shelfBeingRepositioned.transform.position, out prevX, out prevY);

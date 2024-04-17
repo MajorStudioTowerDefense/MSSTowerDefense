@@ -38,6 +38,13 @@ public class UpgradeSystem : MonoBehaviour
         
         addEmployeeUseList.Add(emp);
         skeletonCardScript.CreateNewCard(emp);
+        ES3.Save("money", GameManager.instance.money);
+
+        ES3.Save("Employees", GameManager.instance.employeeArea);
+
+        ES3.Save("Shelves", GameManager.instance.shelfPlacementManager.shelfCollectionForReload);
+
+        ES3.Save("Level", GameManager.instance.level);
 
     }
 
@@ -49,6 +56,13 @@ public class UpgradeSystem : MonoBehaviour
         {
             e.aiPath.maxSpeed += employeeSpeedBoost;
         }
+        ES3.Save("money", GameManager.instance.money);
+
+        ES3.Save("Employees", GameManager.instance.employeeArea);
+
+        ES3.Save("Shelves", GameManager.instance.shelfPlacementManager.shelfCollectionForReload);
+
+        ES3.Save("Level", GameManager.instance.level);
     }
 
     public GameObject ShelfPointerUI;
@@ -64,6 +78,7 @@ public class UpgradeSystem : MonoBehaviour
         Shelves.Clear();
         Shelves.AddRange(FindObjectsOfType<ShelfScript>().Where(shelf => shelf.visibility > 0));
         ShelfPointerUI.SetActive(true);
+
     }
 
     private void AddShelfRangeInUpdate()
@@ -84,6 +99,13 @@ public class UpgradeSystem : MonoBehaviour
                         {
                             shelf.visibility += shelfVisibilityBoost;
                             ShelfPointerUI.SetActive(false);
+                            ES3.Save("money", GameManager.instance.money);
+
+                            ES3.Save("Employees", GameManager.instance.employeeArea);
+
+                            ES3.Save("Shelves", GameManager.instance.shelfPlacementManager.shelfCollectionForReload);
+
+                            ES3.Save("Level", GameManager.instance.level);
                             GameManager.instance.confirmUpgrade();
                         }
                     }

@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Vector2 InitialTime;
 
     [Header("Game Loop Settings")]
-    [SerializeField] private int level = 1;
+    public int level = 1;
     [SerializeField] private float difficultyFactor = 1.2f;
 
     [Header("Tutorials")]
@@ -79,6 +79,17 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        
+        if (ES3.Load<bool>("isNewGame")==false && ES3.KeyExists("money"))
+        {
+
+            money = ES3.Load("money", money);
+            
+            employeeArea = ES3.Load("Employees", employeeArea);
+            
+            shelfPlacementManager.shelfCollectionForReload = ES3.Load("Shelves", shelfPlacementManager.shelfCollectionForReload);
+            
+        }
         InitializeLevel();
         //gridSystem = new GridSystem(gridCellLength, gridCellHeight, gridCellSize, Vector3.zero);
         //shelfPlacementManager.gridSystem = gridSystem;
@@ -86,14 +97,15 @@ public class GameManager : MonoBehaviour
 
         //GenerateGrid();
         //GenerateWalls();\
-       
-       
+
+
+        
 
         FindObjectOfType<AstarPath>().Scan();
         
     }
 
-    int reloadInt = 0;
+    
     private void Update()
     {
         
@@ -121,19 +133,6 @@ public class GameManager : MonoBehaviour
                 break;
         }
 
-        /*
-        if (reloadInt == 0)
-        {
-            if (ES3.KeyExists("money"))
-            {
-
-                money = ES3.Load("money", money);
-                employeeArea = ES3.Load("Employees", employeeArea);
-                shelfPlacementManager.shelfCollectionForReload = ES3.Load("Shelves",shelfPlacementManager.shelfCollectionForReload);
-            }
-            reloadInt++;
-        }
-        */
     }
 
     private void InitializeLevel()
@@ -222,10 +221,13 @@ public class GameManager : MonoBehaviour
     }
     private void StartNextLevel()
     {
+        
+
         level++;
         ReInitLevel();
         GameObject.Find("TheBar").GetComponent<TimeBarUI>().startCo();
         
+
 
     }
 
@@ -322,12 +324,5 @@ public class GameManager : MonoBehaviour
     }
 
     public GameObject employeeArea;
-    private void OnApplicationQuit()
-    {
-        ES3.Save("money", money);
-        ES3.Save("Employees", employeeArea);
-        
-        ES3.Save("Shelves", shelfPlacementManager.shelfCollectionForReload);
-        ES3.Save("Level", level);
-    }
+
 }
