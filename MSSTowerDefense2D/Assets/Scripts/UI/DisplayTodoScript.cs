@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 using TMPro;
 
 public class DisplayTodoScript : MonoBehaviour
@@ -36,6 +36,11 @@ public class DisplayTodoScript : MonoBehaviour
 
     private void Update()
     {
+        first = transform.GetChild(0).GetComponent<Image>();
+        second = transform.GetChild(1).GetComponent<Image>();
+        third = transform.GetChild(2).GetComponent<Image>();
+        fourth = transform.GetChild(3).GetComponent<Image>();
+        fifth = transform.GetChild(4).GetComponent<Image>();
         if (employee.eStage == employeeStage.standBy)
         {
             int i = 0;
