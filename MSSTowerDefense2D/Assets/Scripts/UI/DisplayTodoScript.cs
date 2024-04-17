@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.UIElements;
 using TMPro;
 
 public class DisplayTodoScript : MonoBehaviour
@@ -17,6 +17,8 @@ public class DisplayTodoScript : MonoBehaviour
     public Sprite stock;
     public Sprite stand;
 
+    private Image[] test;
+
     public NormalEmployee employee;
     private SkeletonCardStackingUIScript script;
 
@@ -24,17 +26,31 @@ public class DisplayTodoScript : MonoBehaviour
     {
         script = GameObject.Find("Employee IDs").GetComponent<SkeletonCardStackingUIScript>();
         employee = script.lastSkeleton.GetComponent<NormalEmployee>();
+        test = GetComponentsInChildren<Image>();
         first = transform.GetChild(0).GetComponent<Image>();
         second = transform.GetChild(1).GetComponent<Image>();
         third = transform.GetChild(2).GetComponent<Image>();
         fourth = transform.GetChild(3).GetComponent<Image>();
-        fifth = transform.GetChild(1).GetComponent<Image>();
+        fifth = transform.GetChild(4).GetComponent<Image>();
     }
 
     private void Update()
     {
         if (employee.eStage == employeeStage.standBy)
         {
+            int i = 0;
+            foreach (Image image in test)
+            {
+                if (i == 0)
+                {
+                    i++;
+                    image.sprite = stand;
+                }
+                else
+                {
+                    image.sprite = null;
+                }
+            }
             first.sprite = stand;
             second.sprite = null;
             third.sprite = null;
