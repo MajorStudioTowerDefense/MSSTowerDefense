@@ -86,13 +86,15 @@ public class GameManager : MonoBehaviour
 
         //GenerateGrid();
         //GenerateWalls();\
-        
-        //if (ES3.KeyExists("money"))
-        //{
-        //    Debug.Log("Loading");
-        //    money = ES3.Load("money", money);
-        //    employeeArea = ES3.Load("Employees", employeeArea);
-        //}
+       
+        /**
+       if (ES3.KeyExists("money"))
+        {
+            
+            money = ES3.Load("money", money);
+            employeeArea = ES3.Load("Employees", employeeArea);
+            ES3.Load("Shelves");
+        }**/
 
         FindObjectOfType<AstarPath>().Scan();
         
@@ -315,5 +317,8 @@ public class GameManager : MonoBehaviour
     {
         ES3.Save("money", money);
         ES3.Save("Employees", employeeArea);
+        GameObject[] shelves = GameObject.FindGameObjectsWithTag("interactedShelf");
+        ES3.Save("Shelves", shelves);
+        ES3.Save("Level", level);
     }
 }
