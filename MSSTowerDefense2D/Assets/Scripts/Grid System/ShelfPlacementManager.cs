@@ -34,6 +34,13 @@ public class ShelfPlacementManager : MonoBehaviour
 
     private void Update()
     {
+<<<<<<< Updated upstream
+=======
+        alternativeAreaWidth = GameManager.instance.alternativeAreaWidth;
+        alternativeAreaHeight = GameManager.instance.alternativeAreaHeight;
+        alternativeAreaStartY = 2;
+
+>>>>>>> Stashed changes
         if (GameManager.instance.currentState == GameStates.STORE)
         {
             return;
@@ -259,7 +266,18 @@ public class ShelfPlacementManager : MonoBehaviour
 
     private bool IsWithinGrid(int x, int y)
     {
+<<<<<<< Updated upstream
         // Check if the x and y coordinates are within the grid bounds
         return x >= 0 && y >= 0 && x < gridSystem.GetWidth() && y < gridSystem.GetHeight();
+=======
+        bool isWithinBasicGrid = x >= 2 && y >= 1 && x < gridSystem.GetWidth() + 2 && y < gridSystem.GetHeight() + 1;
+
+        bool isInRestrictedArea = x >= alternativeAreaStartX && x < alternativeAreaStartX + alternativeAreaWidth + 2 &&
+                                  y >= alternativeAreaStartY + 1 && y < alternativeAreaStartY + alternativeAreaHeight + 1;
+
+        //Debug.Log("Employee Area Width: " + alternativeAreaWidth);
+
+        return !isWithinBasicGrid && !isInRestrictedArea;
+>>>>>>> Stashed changes
     }
 }

@@ -25,12 +25,32 @@ public class GameManager : MonoBehaviour
     public GameObject entrancePrefab;
     public GameObject exitPrefab;
 
+<<<<<<< Updated upstream
     public int gridCellLength = 10, gridCellHeight = 10;
     public float gridCellSize = 1f;
     public float money = 100;
     public float yesterdayMoney = 0;
+=======
+    [Header("Level Initialization Perameters")]
+    public int gridCellLength = 15;
+    public int gridCellHeight = 11;
+    public float gridCellSize = 1f;
+    public int alternativeAreaWidth = 3;
+    public int alternativeAreaHeight = 3;
 
-    private List<List<string>> room;
+    [Header("Environment")]
+    public PlantProbability[] plantProbabilities;
+    public int outdoorGridWidth = 40;
+    public int outdoorGridHeight = 40;
+    public float plantSpacing = 2.0f;
+
+    [System.Serializable]
+    public class PlantProbability
+    {
+        public GameObject plantPrefab;
+        public float probability;  // Probability of this plant being spawned
+    }
+>>>>>>> Stashed changes
 
     public static GameManager instance { get; private set; }
     public GameStates currentState;
@@ -42,6 +62,8 @@ public class GameManager : MonoBehaviour
     public float total;
     public float rent;
 
+    private int day = 0;
+
     [Header("Clock Settings")]
     [HideInInspector] public float timer;
     private bool isTimer;
@@ -49,11 +71,22 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Vector2 startStoreTime;
     [SerializeField] private Vector2 endTime;
     [SerializeField] private Vector2 InitialTime;
+    [SerializeField] private Room roomPrefab;
+    List<Room> rooms;
 
     [Header("Game Loop Settings")]
     [SerializeField] private int level = 1;
     [SerializeField] private float difficultyFactor = 1.2f;
 
+<<<<<<< Updated upstream
+=======
+    [Header("Tutorials")]
+    public GameStates previousState;
+
+    [Header("Map Layouts")]
+    [SerializeField] private TextAsset[] layouts;
+
+>>>>>>> Stashed changes
     private void Awake()
     {
         if (instance == null)
@@ -61,7 +94,13 @@ public class GameManager : MonoBehaviour
             instance = this;
         }
         else Destroy(this.gameObject);
+<<<<<<< Updated upstream
         room = CSVReader.Read("LevelEditor");
+=======
+
+        DontDestroyOnLoad(this);
+        rooms = new List<Room>();
+>>>>>>> Stashed changes
     }
 
     private void Start()
@@ -77,6 +116,10 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+<<<<<<< Updated upstream
+=======
+        if (Input.GetKeyDown(KeyCode.Space)) GenerateWalls();
+>>>>>>> Stashed changes
         if (isTimer)
         {
             timer += timeScaleFactor * Time.deltaTime;
@@ -121,6 +164,8 @@ public class GameManager : MonoBehaviour
 
     private void ReInitLevel()
     {
+        day++;
+        if (day % 6 == 0) GenerateWalls();
         CustomerGenerator[] customerGenerators = FindObjectsOfType<CustomerGenerator>();
         if (customerGenerators.Length > 0)
         {
@@ -220,13 +265,30 @@ public class GameManager : MonoBehaviour
 
     private void GenerateWalls()
     {
+        Room currentRoom;
+        List<List<string>> room;
+        room = CSVReader.Read(layouts[Random.Range(0, layouts.Length - 1)]);
+
+        if (rooms.Count == 0) currentRoom = Instantiate<Room>(roomPrefab, Vector3.zero, Quaternion.identity);
+        else
+        {
+            currentRoom = Instantiate<Room>(roomPrefab);
+            Room selectedRoom = rooms[Random.Range(0, rooms.Count)];
+            currentRoom.Init(selectedRoom.AddRoom(currentRoom));
+        }
+        rooms.Add(currentRoom);
+        gridSystem.GetXY(currentRoom.roomPos, out int initX, out int initY);
         for (int y = 0; y < room.Count; y++)
         {
             for (int x = 0; x < room[y].Count; x++)
             {
+<<<<<<< Updated upstream
                 Vector3 position = gridSystem.GetWorldPosition(x, y) + new Vector3(gridCellSize, gridCellSize) * 0.5f;
+=======
+                Vector3 position = gridSystem.GetWorldPosition(x+initX, initY-y) + new Vector3(gridCellSize, gridCellSize);
+>>>>>>> Stashed changes
                 GameObject prefabToInstantiate = null;
-
+                Transform wallParent = null;
                 switch (room[y][x])
                 {
                     case "t":
@@ -234,28 +296,78 @@ public class GameManager : MonoBehaviour
                         break;
                     case "i":
                         prefabToInstantiate = entrancePrefab;
+                        if(x == initX) wallParent = currentRoom.walls[2].transform;
+                        else if (y>initY) wallParent = currentRoom.walls[0].transform;
                         break;
                     case "o":
                         prefabToInstantiate = exitPrefab;
+                        if (x > initX) wallParent = currentRoom.walls[2].transform;
+                        else if (y == initY) wallParent = currentRoom.walls[0].transform;
                         break;
                     case "tw":
+                        wallParent = currentRoom.walls[0].transform;
                         prefabToInstantiate = topWallPrefab;
                         break;
-                    case "sw":
+                    case "lw":
+                        wallParent = currentRoom.walls[2].transform;
+                        prefabToInstantiate = sideWallPrefab;
+                        break;
+                    case "rw":
+                        wallParent = currentRoom.walls[3].transform;
                         prefabToInstantiate = sideWallPrefab;
                         break;
                     case "bw":
+                        wallParent = currentRoom.walls[1].transform;
                         prefabToInstantiate = bottomWallPrefab;
                         break;
+<<<<<<< Updated upstream
+=======
+                    case "wh":
+                        prefabToInstantiate = alternativeCellTilePrefab;
+                        break;
+                    case "br":
+                        prefabToInstantiate = bottomWallPrefab;
+                        break;
+>>>>>>> Stashed changes
 
                 }
 
                 if (prefabToInstantiate != null)
-                    Instantiate(prefabToInstantiate, position, Quaternion.identity, transform);
+                    Instantiate(prefabToInstantiate, position, Quaternion.identity, transform).transform.parent = wallParent;
             }
         }
     }
 
+<<<<<<< Updated upstream
+=======
+
+    void GenerateOutdoorPlants()
+    {
+        float halfWidth = outdoorGridWidth * plantSpacing * 0.5f;
+        float halfHeight = outdoorGridHeight * plantSpacing * 0.5f;
+        HashSet<Vector2> occupiedPositions = new HashSet<Vector2>();
+
+        for (int x = 0; x < outdoorGridWidth; x++)
+        {
+            for (int y = 0; y < outdoorGridHeight; y++)
+            {
+                Vector3 position = new Vector3((x * plantSpacing) - halfWidth, (y * plantSpacing) - halfHeight, 0);
+                Vector2 flatPosition = new Vector2(position.x, position.y);
+
+                foreach (var plantProbability in plantProbabilities)
+                {
+                    if (Random.Range(0f, 1f) < plantProbability.probability && !occupiedPositions.Contains(flatPosition))
+                    {
+                        Instantiate(plantProbability.plantPrefab, position, Quaternion.identity);
+                        occupiedPositions.Add(flatPosition);
+                        break; 
+                    }
+                }
+            }
+        }
+    }
+
+>>>>>>> Stashed changes
     public void placingApple() => shelfPlacementManager.SetCurrentShelfPrefab(shelfPrefabs[1]);
     public void placingDurian() => shelfPlacementManager.SetCurrentShelfPrefab(shelfPrefabs[2]);
     public void placingDragonFruit() => shelfPlacementManager.SetCurrentShelfPrefab(shelfPrefabs[3]);
