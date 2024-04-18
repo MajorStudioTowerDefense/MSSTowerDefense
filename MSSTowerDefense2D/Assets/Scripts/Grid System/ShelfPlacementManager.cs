@@ -31,16 +31,13 @@ public class ShelfPlacementManager : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        
-    }
 
     private void Update()
     {
         alternativeAreaWidth = GameManager.instance.alternativeAreaWidth;
         alternativeAreaHeight = GameManager.instance.alternativeAreaHeight;
-        alternativeAreaStartY = gridSystem.GetHeight() - alternativeAreaHeight;
+        alternativeAreaStartY = 2;
+
 
         if (GameManager.instance.currentState == GameStates.STORE)
         {
