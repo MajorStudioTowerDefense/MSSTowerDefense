@@ -83,9 +83,6 @@ public class GameManager : MonoBehaviour
     [Header("Map Layouts")]
     [SerializeField] private TextAsset[] layouts;
 
-    [Header("Tutorials")]
-    public GameStates previousState;
-
     private void Awake()
     {
         if (instance == null)
@@ -339,32 +336,6 @@ public class GameManager : MonoBehaviour
 
                 if (prefabToInstantiate != null)
                     Instantiate(prefabToInstantiate, position, Quaternion.identity, transform).transform.parent = wallParent;
-            }
-        }
-    }
-
-    void GenerateOutdoorPlants()
-    {
-        float halfWidth = outdoorGridWidth * plantSpacing * 0.5f;
-        float halfHeight = outdoorGridHeight * plantSpacing * 0.5f;
-        HashSet<Vector2> occupiedPositions = new HashSet<Vector2>();
-
-        for (int x = 0; x < outdoorGridWidth; x++)
-        {
-            for (int y = 0; y < outdoorGridHeight; y++)
-            {
-                Vector3 position = new Vector3((x * plantSpacing) - halfWidth, (y * plantSpacing) - halfHeight, 0);
-                Vector2 flatPosition = new Vector2(position.x, position.y);
-
-                foreach (var plantProbability in plantProbabilities)
-                {
-                    if (Random.Range(0f, 1f) < plantProbability.probability && !occupiedPositions.Contains(flatPosition))
-                    {
-                        Instantiate(plantProbability.plantPrefab, position, Quaternion.identity);
-                        occupiedPositions.Add(flatPosition);
-                        break; 
-                    }
-                }
             }
         }
     }

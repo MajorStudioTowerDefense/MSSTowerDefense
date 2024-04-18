@@ -13,11 +13,11 @@ public class ShelfPlacementManager : MonoBehaviour
 
     private bool isShelfGridCreated = false;
     public AudioClip ShelfPlaced;
-
-    private int alternativeAreaWidth;
+    public int alternativeAreaWidth;
+    private int alternativeAreaStartY;
     private int alternativeAreaHeight;
     private int alternativeAreaStartX = 0;
-    private int alternativeAreaStartY;
+
 
     private void Awake()
     {
