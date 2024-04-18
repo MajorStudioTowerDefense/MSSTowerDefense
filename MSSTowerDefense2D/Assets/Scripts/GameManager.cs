@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
     public float gridCellSize = 1f;
     public int alternativeAreaWidth = 3;
     public int alternativeAreaHeight = 2;
+    public AstarPath aStar;
 
     [Header("Environment")]
     public PlantProbability[] plantProbabilities;
@@ -128,7 +129,7 @@ public class GameManager : MonoBehaviour
     
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) GenerateWalls();
+        if (Input.GetKeyDown(KeyCode.Alpha0)) GenerateWalls();
 
         if (isTimer)
         {
@@ -331,6 +332,8 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+
+        aStar.Scan();
     }
 
     private GameObject GetPrefabForIdentifier(string identifier, int x, int initX, int y, int initY, Room currentRoom)
