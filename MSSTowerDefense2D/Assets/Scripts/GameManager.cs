@@ -24,19 +24,16 @@ public class GameManager : MonoBehaviour
     public GameObject bottomWallPrefab;
     public GameObject entrancePrefab;
     public GameObject exitPrefab;
+    public GameObject alternativeCellTilePrefab;
 
-<<<<<<< Updated upstream
-    public int gridCellLength = 10, gridCellHeight = 10;
-    public float gridCellSize = 1f;
-    public float money = 100;
-    public float yesterdayMoney = 0;
-=======
     [Header("Level Initialization Perameters")]
     public int gridCellLength = 15;
     public int gridCellHeight = 11;
     public float gridCellSize = 1f;
     public int alternativeAreaWidth = 3;
     public int alternativeAreaHeight = 3;
+    public float money = 100;
+    public float yesterdayMoney = 0;
 
     [Header("Environment")]
     public PlantProbability[] plantProbabilities;
@@ -50,7 +47,6 @@ public class GameManager : MonoBehaviour
         public GameObject plantPrefab;
         public float probability;  // Probability of this plant being spawned
     }
->>>>>>> Stashed changes
 
     public static GameManager instance { get; private set; }
     public GameStates currentState;
@@ -78,15 +74,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int level = 1;
     [SerializeField] private float difficultyFactor = 1.2f;
 
-<<<<<<< Updated upstream
-=======
     [Header("Tutorials")]
     public GameStates previousState;
 
     [Header("Map Layouts")]
     [SerializeField] private TextAsset[] layouts;
 
->>>>>>> Stashed changes
     private void Awake()
     {
         if (instance == null)
@@ -94,13 +87,9 @@ public class GameManager : MonoBehaviour
             instance = this;
         }
         else Destroy(this.gameObject);
-<<<<<<< Updated upstream
-        room = CSVReader.Read("LevelEditor");
-=======
 
         DontDestroyOnLoad(this);
         rooms = new List<Room>();
->>>>>>> Stashed changes
     }
 
     private void Start()
@@ -116,10 +105,8 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-<<<<<<< Updated upstream
-=======
         if (Input.GetKeyDown(KeyCode.Space)) GenerateWalls();
->>>>>>> Stashed changes
+
         if (isTimer)
         {
             timer += timeScaleFactor * Time.deltaTime;
@@ -148,14 +135,6 @@ public class GameManager : MonoBehaviour
         gridSystem = new GridSystem(gridCellLength, gridCellHeight, gridCellSize, Vector3.zero);
         shelfPlacementManager.gridSystem = gridSystem;
         timer = InitialTime.x * 60 + InitialTime.y;
-
-        for (int i = 0; i < room.Count; i++)
-        {
-            for (int j = 0; j < room[i].Count; j++)
-            {
-                Debug.Log(room[i][j]);
-            }
-        }
 
         GenerateWalls();
         currentState = GameStates.PREP;
@@ -282,11 +261,7 @@ public class GameManager : MonoBehaviour
         {
             for (int x = 0; x < room[y].Count; x++)
             {
-<<<<<<< Updated upstream
-                Vector3 position = gridSystem.GetWorldPosition(x, y) + new Vector3(gridCellSize, gridCellSize) * 0.5f;
-=======
                 Vector3 position = gridSystem.GetWorldPosition(x+initX, initY-y) + new Vector3(gridCellSize, gridCellSize);
->>>>>>> Stashed changes
                 GameObject prefabToInstantiate = null;
                 Transform wallParent = null;
                 switch (room[y][x])
@@ -320,15 +295,12 @@ public class GameManager : MonoBehaviour
                         wallParent = currentRoom.walls[1].transform;
                         prefabToInstantiate = bottomWallPrefab;
                         break;
-<<<<<<< Updated upstream
-=======
                     case "wh":
                         prefabToInstantiate = alternativeCellTilePrefab;
                         break;
                     case "br":
                         prefabToInstantiate = bottomWallPrefab;
                         break;
->>>>>>> Stashed changes
 
                 }
 
@@ -337,9 +309,6 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
-<<<<<<< Updated upstream
-=======
 
     void GenerateOutdoorPlants()
     {
@@ -367,7 +336,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
->>>>>>> Stashed changes
     public void placingApple() => shelfPlacementManager.SetCurrentShelfPrefab(shelfPrefabs[1]);
     public void placingDurian() => shelfPlacementManager.SetCurrentShelfPrefab(shelfPrefabs[2]);
     public void placingDragonFruit() => shelfPlacementManager.SetCurrentShelfPrefab(shelfPrefabs[3]);
