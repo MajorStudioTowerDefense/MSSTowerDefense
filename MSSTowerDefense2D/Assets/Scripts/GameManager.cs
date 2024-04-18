@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
 {
     public GridSystem gridSystem;
     public ShelfPlacementManager shelfPlacementManager;
+    public Dictionary<Vector2Int, bool> shelfPlacementGrid = new Dictionary<Vector2Int, bool>();
     public GameObject[] shelfPrefabs;
     public GameObject cellTilePrefab;
 
@@ -272,6 +273,16 @@ public class GameManager : MonoBehaviour
     }
     */
 
+    private void UpdateShelfPlacement(Vector2Int gridPosition, bool canPlaceShelf)
+    {
+        shelfPlacementGrid[gridPosition] = canPlaceShelf;
+    }
+
+    private bool CanPlaceShelf(Vector2Int gridPosition)
+    {
+        return shelfPlacementGrid.TryGetValue(gridPosition, out bool canPlace) && canPlace;
+    }
+
     private void GenerateWalls()
     {
         Room currentRoom;
@@ -291,53 +302,61 @@ public class GameManager : MonoBehaviour
         {
             for (int x = 0; x < room[y].Count; x++)
             {
-                Vector3 position = gridSystem.GetWorldPosition(x+initX, initY-y) + new Vector3(gridCellSize, gridCellSize);
+                Vector3 position = gridSystem.GetWorldPosition(x + initX, initY - y) + new Vector3(gridCellSize, gridCellSize);
                 GameObject prefabToInstantiate = null;
                 Transform wallParent = null;
                 switch (room[y][x])
                 {
                     case "t":
                         prefabToInstantiate = cellTilePrefab;
+                        UpdateShelfPlacement(new Vector2Int(x + initX, initY - y), true);
                         break;
                     case "i":
-                        prefabToInstantiate = entrancePrefab;
-                        if(x == initX) wallParent = currentRoom.walls[2].transform;
-                        else if (y>initY) wallParent = currentRoom.walls[0].transform;
-                        break;
                     case "o":
-                        prefabToInstantiate = exitPrefab;
-                        if (x > initX) wallParent = currentRoom.walls[2].transform;
-                        else if (y == initY) wallParent = currentRoom.walls[0].transform;
-                        break;
                     case "tw":
-                        wallParent = currentRoom.walls[0].transform;
-                        prefabToInstantiate = topWallPrefab;
-                        break;
                     case "lw":
-                        wallParent = currentRoom.walls[2].transform;
-                        prefabToInstantiate = sideWallPrefab;
-                        break;
                     case "rw":
-                        wallParent = currentRoom.walls[3].transform;
-                        prefabToInstantiate = sideWallPrefab;
-                        break;
                     case "bw":
-                        wallParent = currentRoom.walls[1].transform;
-                        prefabToInstantiate = bottomWallPrefab;
-                        break;
                     case "wh":
-                        prefabToInstantiate = alternativeCellTilePrefab;
-                        break;
                     case "br":
-                        prefabToInstantiate = bottomWallPrefab;
+                        prefabToInstantiate = GetPrefabForIdentifier(room[y][x], x, initX, y, initY, currentRoom);
+                        UpdateShelfPlacement(new Vector2Int(x + initX, initY - y), false);
                         break;
-
                 }
 
                 if (prefabToInstantiate != null)
-                    Instantiate(prefabToInstantiate, position, Quaternion.identity, transform).transform.parent = wallParent;
+                {
+                    GameObject createdObject = Instantiate(prefabToInstantiate, position, Quaternion.identity, transform);
+                    if (wallParent != null) createdObject.transform.parent = wallParent;
+                }
             }
         }
+    }
+
+    private GameObject GetPrefabForIdentifier(string identifier, int x, int initX, int y, int initY, Room currentRoom)
+    {
+        // Logic to determine the correct prefab and possibly the wallParent
+        // For example:
+        switch (identifier)
+        {
+            case "i":
+                return entrancePrefab;
+            case "o":
+                return exitPrefab;
+            case "tw":
+                return topWallPrefab;
+            case "lw":
+                return sideWallPrefab;
+            case "rw":
+                return sideWallPrefab;
+            case "bw":
+                return bottomWallPrefab;
+            case "wh":
+                return alternativeCellTilePrefab;
+            case "br":
+                return bottomWallPrefab;
+        }
+        return null;
     }
 
     void GenerateOutdoorPlants()

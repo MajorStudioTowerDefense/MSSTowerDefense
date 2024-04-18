@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class ShelfPlacementManager : MonoBehaviour
 {
@@ -9,7 +11,7 @@ public class ShelfPlacementManager : MonoBehaviour
     private GameObject currentShelfInstance;
     private int currentPrefabIndex = -1;
     public GameObject shelfBeingRepositioned = null;
-    private bool[,] shelfPlacementGrid;
+    private Dictionary<Vector2Int, bool> shelfPlacementGrid = new Dictionary<Vector2Int, bool>();
 
     private bool isShelfGridCreated = false;
     public AudioClip ShelfPlaced;
@@ -73,25 +75,7 @@ public class ShelfPlacementManager : MonoBehaviour
 
         if (shelfBeingRepositioned == null && currentShelfPrefab != null)
         {
-            if (gridSystem != null)
-            {
-                if (!isShelfGridCreated)
-                {
-                    shelfPlacementGrid = new bool[gridSystem.GetWidth() + 2, gridSystem.GetHeight() + 1];
-                    for (int x = 0; x < gridSystem.GetWidth() + 2; x++)
-                    {
-                        for (int y = 0; y < gridSystem.GetHeight() + 1; y++)
-                        {
-                            shelfPlacementGrid[x, y] = false;
-                        }
-                    }
-                    isShelfGridCreated = true;
-                }
-            }
-            else
-            {
-                Debug.LogError("Grid System is null.");
-            }
+            shelfPlacementGrid = GameManager.instance.shelfPlacementGrid;
 
             SnapShelfToGridAvoidOverlap();
         }
@@ -133,8 +117,8 @@ public class ShelfPlacementManager : MonoBehaviour
 
         int x, y;
         gridSystem.GetXY(mouseWorldPosition, out x, out y);
-
-        if (IsWithinGrid(x, y) && !shelfPlacementGrid[x, y]) // Check if the position is free
+        Vector2Int position = new Vector2Int(x, y);
+        if (IsWithinGrid(x, y) && GameManager.instance.shelfPlacementGrid.TryGetValue(position, out bool canPlace)) // Check if the position is free
         {
             Vector3 gridPosition = gridSystem.GetWorldPosition(x, y);
 
@@ -197,12 +181,14 @@ public class ShelfPlacementManager : MonoBehaviour
         gridSystem.GetXY(shadowPosition, out x, out y);
 
         // First, check if the new position is within the grid and not occupied
-        if (IsWithinGrid(x, y) && !shelfPlacementGrid[x, y])
+        Vector2Int position = new Vector2Int(x, y);
+        if (IsWithinGrid(x, y) && GameManager.instance.shelfPlacementGrid.TryGetValue(position, out bool canPlace))
         {
             // Find the previous position of the shelf being repositioned
             int prevX, prevY;
+            
             gridSystem.GetXY(selectedShelf.transform.position, out prevX, out prevY);
-
+            Vector2Int prevPosition = new Vector2Int(prevX, prevY);
             // Update the shelf's position to the corresponding grid position
             Vector3 gridPosition = gridSystem.GetWorldPosition(x, y);
             selectedShelf.transform.position = gridPosition;
@@ -210,9 +196,15 @@ public class ShelfPlacementManager : MonoBehaviour
             // Update the shelf placement grid: mark the new position as occupied and the previous one as free
             if (IsWithinGrid(prevX, prevY))
             {
-                shelfPlacementGrid[prevX, prevY] = false;
+                if (GameManager.instance.shelfPlacementGrid.ContainsKey(prevPosition))
+                {
+                    GameManager.instance.shelfPlacementGrid[prevPosition] = true;
+                }
             }
-            shelfPlacementGrid[x, y] = true;
+            if (GameManager.instance.shelfPlacementGrid.ContainsKey(prevPosition))
+            {
+                GameManager.instance.shelfPlacementGrid[prevPosition] = false;
+            }
         }
     }
 
@@ -223,14 +215,16 @@ public class ShelfPlacementManager : MonoBehaviour
 
         int x, y;
         gridSystem.GetXY(mouseWorldPosition, out x, out y);
+        Vector2Int position = new Vector2Int(x, y);
 
         // First, check if the new position is within the grid and not occupied
-        if (IsWithinGrid(x, y) && !shelfPlacementGrid[x, y])
+        if (IsWithinGrid(x, y) && GameManager.instance.shelfPlacementGrid.TryGetValue(position, out bool canPlace))
         {
             
             // Find the previous position of the shelf being repositioned
             int prevX, prevY;
             gridSystem.GetXY(shelfBeingRepositioned.transform.position, out prevX, out prevY);
+            Vector2Int prevPosition = new Vector2Int(prevX, prevY);
 
             // Update the shelf's position to the corresponding grid position
             Vector3 gridPosition = gridSystem.GetWorldPosition(x, y);
@@ -239,9 +233,15 @@ public class ShelfPlacementManager : MonoBehaviour
             // Update the shelf placement grid: mark the new position as occupied and the previous one as free
             if (IsWithinGrid(prevX, prevY))
             {
-                shelfPlacementGrid[prevX, prevY] = false;
+                if (GameManager.instance.shelfPlacementGrid.ContainsKey(prevPosition))
+                {
+                    GameManager.instance.shelfPlacementGrid[prevPosition] = false;
+                }
             }
-            shelfPlacementGrid[x, y] = true;
+            if (GameManager.instance.shelfPlacementGrid.ContainsKey(prevPosition))
+            {
+                GameManager.instance.shelfPlacementGrid[prevPosition] = false;
+            }
         }
     }
 
@@ -251,11 +251,15 @@ public class ShelfPlacementManager : MonoBehaviour
         mousePos.z = 0;
         int x, y;
         gridSystem.GetXY(mousePos, out x, out y);
-        if (IsWithinGrid(x, y) && !shelfPlacementGrid[x, y]) // Check if the position is free
+        Vector2Int position = new Vector2Int(x, y);
+        if (IsWithinGrid(x, y) && GameManager.instance.shelfPlacementGrid.TryGetValue(position, out bool canPlace)) // Check if the position is free
         {
             GameManager.instance.money -= currentShelfPrefab.GetComponent<ShelfScript>().Cost;
             // Mark the grid position as occupied
-            shelfPlacementGrid[x, y] = true;
+            if (GameManager.instance.shelfPlacementGrid.ContainsKey(position))
+            {
+                GameManager.instance.shelfPlacementGrid[position] = false;
+            }
             currentShelfPrefab = null;
             currentShelfInstance = null;
         }
@@ -270,13 +274,8 @@ public class ShelfPlacementManager : MonoBehaviour
 
     private bool IsWithinGrid(int x, int y)
     {
-        bool isWithinBasicGrid = x >= 2 && y >= 1 && x < gridSystem.GetWidth() + 2 && y < gridSystem.GetHeight() + 1;
-
-        bool isInRestrictedArea = x >= alternativeAreaStartX && x < alternativeAreaStartX + alternativeAreaWidth + 2 &&
-                                  y >= alternativeAreaStartY + 1 && y < alternativeAreaStartY + alternativeAreaHeight + 1;
-
-        //Debug.Log("Employee Area Width: " + alternativeAreaWidth);
-
-        return isWithinBasicGrid && !isInRestrictedArea;
+        Vector2Int position = new Vector2Int(x, y);
+        return GameManager.instance.shelfPlacementGrid.TryGetValue(position, out bool canPlace) && canPlace;
     }
+
 }
