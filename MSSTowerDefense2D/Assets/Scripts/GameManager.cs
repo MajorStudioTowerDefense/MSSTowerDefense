@@ -181,7 +181,7 @@ public class GameManager : MonoBehaviour
             }
 
             float newCustomersAmount = 0;
-            newCustomersAmount = (float)customerGenerators[0].maxCustomers + 5;
+            newCustomersAmount = (float)customerGenerators[0].maxCustomers * difficultyFactor;
             customerGenerators[0].maxCustomers = Mathf.RoundToInt(newCustomersAmount);
         }
 
@@ -237,10 +237,14 @@ public class GameManager : MonoBehaviour
     }
     private void StartNextLevel()
     {
-        Debug.Log("Next level start");
+        
+
         level++;
         ReInitLevel();
         GameObject.Find("TheBar").GetComponent<TimeBarUI>().startCo();
+        
+
+
     }
 
     /*
