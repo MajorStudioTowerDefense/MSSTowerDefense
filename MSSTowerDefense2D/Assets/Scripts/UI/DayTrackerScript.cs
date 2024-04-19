@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class DayTrackerScript : MonoBehaviour
 {
-    public Sprite greenArrow, redArrow, X;
     public GameObject Mon, Tue, Wed, Thu, Fri, Sat, Sun;
     public GameManager gameManager;
     public List<GameObject> week;
@@ -44,23 +43,8 @@ public class DayTrackerScript : MonoBehaviour
 
     void doUI()
     {
-        currDay.GetComponent<RectTransform>().position = upPosition;
-        icon = currDay.transform.GetChild(2).GetComponent<Image>();
+        icon = currDay.transform.GetChild(3).GetComponent<Image>();
         icon.enabled = true;
-
-        if (revenue > passableRevenue)
-        {
-            icon.sprite = greenArrow;
-        }
-        else if (revenue > 0)
-        {
-            icon.sprite = redArrow;
-        }
-        else
-        {
-            icon.sprite = X;
-        }
-
     }
 
     private void checkForPassing()

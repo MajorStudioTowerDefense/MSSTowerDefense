@@ -69,7 +69,7 @@ public class ShelfUI : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         GameObject[] tags = GameObject.FindGameObjectsWithTag("Customer");
 
-        if (tags[0] != null)
+        if (tags != null)
         {
             ToDisable.SetActive(false);
         }
