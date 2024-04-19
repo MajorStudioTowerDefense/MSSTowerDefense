@@ -87,14 +87,8 @@ public class AudioManager : MonoBehaviour
    
 
     void Update()
-    {
-        if (timerScript != null)
-        {
-            float currentTime = clockScript.GetCurrentTime(); // Access the current time from ClockScript
-            int timerValueHours = timerScript.hours; // updates only the hour that the clock is at
-            int timerValueMinutes = timerScript.minutes;  //updates only the minutes
-                                              
-        }
+    {   //tie real time to ambiance
+        
         if (timerScript.hours == 7 && timerScript.minutes == 0){
             audioSource.Play();
         }
@@ -104,28 +98,7 @@ public class AudioManager : MonoBehaviour
 
         } 
         
-        UpdateMusic();
-    }
-    void UpdateMusic()
-    {
-        if (timerScript.hours == 7 && timerScript.minutes == 0)
-            {
-                PlayMusic(morningMusic);
-            }
-            else if (timerScript.hours == 9 && timerScript.minutes == 0)
-            {
-                PlayMusic(afternoonMusic);
-            }
+        
 
-    }
-    void PlayMusic(AudioClip clip)
-    {
-        // Only change the music if it's different from the current track
-        if (audioSource.clip != clip)
-        {
-            musicSource.clip = clip;
-            musicSource.Play();
-        }
-    }
-
+}
 }
