@@ -6,22 +6,20 @@ public class AudioManager : MonoBehaviour
 {
 // Setting up the Audio Sources
     public static AudioManager instance;
-    public GameManager gameManager; 
-    public AudioSource[] audioSources;
-    public AudioSource audioSource;
+    public List<AudioSource> audioSources;
+    public AudioSource audioSource1;
     public AudioSource audioSource2;
     public AudioClip Ticking;
     public AudioClip StartShift;
-    public GameObject ambiHalt;
-    public GameObject abmiResume;
+    public bool allowCheck;
 
     //Assigning certain sounds to play for a limited amount of time
     private void Start()
     {
-        ambiHalt = gameManager.TutorialStarts(); // Grabs the tutorial starting method from the game manager script
-        abmiResume = gameManager.TutorialEnds(); //Grabs the tutorial ending method from the game manager script
-        audioSource.clip = Ticking;
-        audioSource2.clip = StartShift;
+        audioSources = new() {audioSource1, audioSource2};
+        //audioSource1.clip = Ticking;
+        //audioSource2.clip = StartShift;
+        allowCheck = true;
         // Start playing music based on the initial time
         
        
@@ -40,9 +38,6 @@ public class AudioManager : MonoBehaviour
         }
 	
         DontDestroyOnLoad(gameObject);
-
-        // Initialize audio sources
-        audioSources = GetComponents<AudioSource>();
     }
 
     // Play a single audio clip
@@ -89,18 +84,24 @@ public class AudioManager : MonoBehaviour
    
 
     void Update()
-    {   //tie real time to ambiance
-        
-        if (!ambiHalt){
-            audioSource.Play();
+    {
+
+        if (GameManager.instance.currentState == GameStates.TUTORIAL)
+        {
+            StopAllSounds();
+            allowCheck = true;
         }
-        if (abmiResume)
+        else if (GameManager.instance.currentState == GameStates.PREP & allowCheck)
+        {
+            audioSource1.Play();
+            allowCheck = false;
+            Debug.Log("audio1");
+        }
+        else if (GameManager.instance.currentState == GameStates.STORE && !allowCheck)
         {
             audioSource2.Play();
-
-        } 
-        
-        
-
-}
+            allowCheck = true;
+            Debug.Log("audio2");
+        }
+    }
 }
