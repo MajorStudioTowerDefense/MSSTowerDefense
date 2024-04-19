@@ -84,6 +84,10 @@ public class GameManager : MonoBehaviour
 
     [Header("Map Layouts")]
     [SerializeField] private TextAsset[] layouts;
+    private bool isRoomAdded = false;
+    private CameraController cameraController;
+    private float initialCameraMaxZoom;
+    private float initialMoveLimit;
 
     private void Awake()
     {
@@ -99,7 +103,9 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        
+        cameraController = FindFirstObjectByType<CameraController>();
+        initialCameraMaxZoom = cameraController.maxZoom;
+        initialMoveLimit = cameraController.moveLimit.x;
         
         if (GameObject.Find("saveLoad") && saveLoadSystem.instance.isLoadingGame && ES3.KeyExists("money"))
         {
@@ -265,6 +271,17 @@ public class GameManager : MonoBehaviour
 
     private void GenerateWalls()
     {
+        if (isRoomAdded)
+        {
+            cameraController.maxZoom += initialCameraMaxZoom / 2;
+            cameraController.moveLimit.x += initialMoveLimit;
+            cameraController.moveLimit.y += initialMoveLimit;
+        }
+        else
+        {
+            isRoomAdded = true;
+        }
+
         Room currentRoom;
         List<List<string>> room;
         room = CSVReader.Read(layouts[Random.Range(0, layouts.Length - 1)]);
