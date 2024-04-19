@@ -6,7 +6,7 @@ public class ShelfPlacementManager : MonoBehaviour
     public GridSystem gridSystem;
     public GameObject[] shelfPrefabs;
     private GameObject currentShelfPrefab;
-    private GameObject currentShelfInstance;
+    [SerializeField]private GameObject currentShelfInstance;
     private int currentPrefabIndex = -1;
     public GameObject shelfBeingRepositioned = null;
     private bool[,] shelfPlacementGrid;
@@ -38,12 +38,15 @@ public class ShelfPlacementManager : MonoBehaviour
 
     private void Update()
     {
+
         alternativeAreaWidth = GameManager.instance.alternativeAreaWidth;
         alternativeAreaHeight = GameManager.instance.alternativeAreaHeight;
         alternativeAreaStartY = gridSystem.GetHeight() - alternativeAreaHeight;
 
         if (GameManager.instance.currentState == GameStates.STORE)
         {
+
+            
             return;
         }
 
@@ -281,5 +284,14 @@ public class ShelfPlacementManager : MonoBehaviour
         //Debug.Log("Employee Area Width: " + alternativeAreaWidth);
 
         return isWithinBasicGrid && !isInRestrictedArea;
+    }
+
+    public void PutDownShelfWhenEnterShopState()
+    {
+        if (currentShelfInstance != null)
+        {
+            FinalizePlacement();
+            AudioManager.instance.PlaySound(ShelfPlaced);
+        }
     }
 }

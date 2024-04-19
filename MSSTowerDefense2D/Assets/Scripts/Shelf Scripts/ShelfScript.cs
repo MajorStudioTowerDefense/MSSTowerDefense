@@ -70,7 +70,7 @@ public class ShelfScript : MonoBehaviour
 
     public float Cost { get { return costToBuy; } }
 
-    private TMP_Text loadAmountText;
+    private TextMeshProUGUI loadAmountText;
     [Space(10)]
     public int costToMaintain = 5;
 
@@ -81,7 +81,7 @@ public class ShelfScript : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         loadAmount = initalLoadAmount;
 
-        loadAmountText = GetComponentInChildren<TMP_Text>();
+        loadAmountText = GetComponentInChildren<TextMeshProUGUI>();
         canvas.worldCamera = Camera.main;
 
         if (loadAmountText == null)

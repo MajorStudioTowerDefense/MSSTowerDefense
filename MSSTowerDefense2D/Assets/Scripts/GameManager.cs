@@ -126,7 +126,11 @@ public class GameManager : MonoBehaviour
         if (isTimer)
         {
             timer += timeScaleFactor * Time.deltaTime;
-            if (timer >= startStoreTime.x * 60 + startStoreTime.y && currentState == GameStates.PREP) currentState = GameStates.STORE;
+            if (timer >= startStoreTime.x * 60 + startStoreTime.y && currentState == GameStates.PREP)
+            {
+                shelfPlacementManager.PutDownShelfWhenEnterShopState();
+                currentState = GameStates.STORE;
+            }
             if (currentState == GameStates.STORE && timer >= endTime.x * 60 + endTime.y) currentState = GameStates.END;
             if (currentState == GameStates.END) SummaryOfTheDay();
         }
