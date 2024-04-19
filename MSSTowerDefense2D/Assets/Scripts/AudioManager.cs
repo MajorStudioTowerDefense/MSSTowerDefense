@@ -20,6 +20,8 @@ public class AudioManager : MonoBehaviour
         timerScript = GameObject.Find("ClockNumbers").GetComponent<ClockDisplayUI>(); // Grabs the ClockUI script from the "ClockNumbers" GameObect
         audioSource.clip = Ticking;
         audioSource2.clip = StartShift;
+        // Start playing music based on the initial time
+        UpdateMusic();
        
     }
     private void Awake()
@@ -88,6 +90,7 @@ public class AudioManager : MonoBehaviour
     {
         if (timerScript != null)
         {
+            float currentTime = clockScript.GetCurrentTime(); // Access the current time from ClockScript
             int timerValueHours = timerScript.hours; // updates only the hour that the clock is at
             int timerValueMinutes = timerScript.minutes;  //updates only the minutes
                                               
@@ -100,6 +103,29 @@ public class AudioManager : MonoBehaviour
             audioSource2.Play();
 
         } 
+        
+        UpdateMusic();
+    }
+    void UpdateMusic()
+    {
+        if (timerScript.hours == 7 && timerScript.minutes == 0)
+            {
+                PlayMusic(morningMusic);
+            }
+            else if (timerScript.hours == 9 && timerScript.minutes == 0)
+            {
+                PlayMusic(afternoonMusic);
+            }
+
+    }
+    void PlayMusic(AudioClip clip)
+    {
+        // Only change the music if it's different from the current track
+        if (audioSource.clip != clip)
+        {
+            musicSource.clip = clip;
+            musicSource.Play();
+        }
     }
 
 }
