@@ -160,7 +160,7 @@ public class GameManager : MonoBehaviour
     private void InitializeLevel()
     {
         yesterdayMoney = money;
-        gridSystem = new GridSystem(gridCellLength, gridCellHeight, gridCellSize, Vector3.zero);
+        gridSystem = new GridSystem(gridCellLength, gridCellHeight, gridCellSize, new Vector3(-5,5,0));
         shelfPlacementManager.gridSystem = gridSystem;
         timer = InitialTime.x * 60 + InitialTime.y;
 
@@ -253,27 +253,6 @@ public class GameManager : MonoBehaviour
         GameObject.Find("TheBar").GetComponent<TimeBarUI>().startCo();
     }
 
-    /*
-    private void GenerateGrid()
-    {
-        for (int x = 0; x < gridCellLength; x++)
-        {
-            for (int y = 0; y < gridCellHeight; y++)
-            {
-                Vector3 cellPosition = gridSystem.GetWorldPosition(x, y) + new Vector3(gridCellSize, gridCellSize) * 0.5f;
-                GameObject prefabToUse = cellTilePrefab;
-
-                if (x < alternativeAreaWidth && y >= gridCellHeight - alternativeAreaHeight)
-                {
-                    prefabToUse = alternativeCellTilePrefab;
-                }
-
-                Instantiate(prefabToUse, cellPosition, Quaternion.identity, transform);
-            }
-        }
-    }
-    */
-
     private void UpdateShelfPlacement(Vector2Int gridPosition, bool canPlaceShelf)
     {
         shelfPlacementGrid[gridPosition] = canPlaceShelf;
@@ -290,7 +269,11 @@ public class GameManager : MonoBehaviour
         List<List<string>> room;
         room = CSVReader.Read(layouts[Random.Range(0, layouts.Length - 1)]);
 
-        if (rooms.Count == 0) currentRoom = Instantiate<Room>(roomPrefab, Vector3.zero, Quaternion.identity);
+        if (rooms.Count == 0) 
+        {
+            currentRoom = Instantiate<Room>(roomPrefab, gridSystem.originPosition, Quaternion.identity);
+            currentRoom.Init(gridSystem.originPosition);
+        }
         else
         {
             currentRoom = Instantiate<Room>(roomPrefab);
@@ -303,7 +286,7 @@ public class GameManager : MonoBehaviour
         {
             for (int x = 0; x < room[y].Count; x++)
             {
-                Vector3 position = gridSystem.GetWorldPosition(x + initX, initY - y) + new Vector3(gridCellSize, gridCellSize);
+                Vector3 position = gridSystem.GetWorldPosition(x + initX, initY - y) * gridCellSize;
                 GameObject prefabToInstantiate = null;
                 Transform wallParent = null;
                 switch (room[y][x])
@@ -313,13 +296,30 @@ public class GameManager : MonoBehaviour
                         UpdateShelfPlacement(new Vector2Int(x + initX, initY - y), true);
                         break;
                     case "i":
-                    case "o":
-                    case "tw":
+                        if(rooms.Count > 1)
+                        {
+                            wallParent = currentRoom.walls[2].transform;
+                            prefabToInstantiate = sideWallPrefab;
+                            UpdateShelfPlacement(new Vector2Int(x + initX, initY - y), false);
+                            break;
+                        }
+                        goto case "lw";
                     case "lw":
+                        wallParent = currentRoom.walls[2].transform;
+                        goto default;
+                    case "o":
                     case "rw":
+                        wallParent = currentRoom.walls[3].transform;
+                        goto default;
+                    case "tw":
+                        wallParent = currentRoom.walls[0].transform;
+                        goto default;
                     case "bw":
+                        wallParent = currentRoom.walls[1].transform;
+                        goto default;
                     case "wh":
                     case "br":
+                    default:
                         prefabToInstantiate = GetPrefabForIdentifier(room[y][x], x, initX, y, initY, currentRoom);
                         UpdateShelfPlacement(new Vector2Int(x + initX, initY - y), false);
                         break;

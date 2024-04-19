@@ -10,15 +10,16 @@ public class Room : MonoBehaviour
 
     public void Init(Vector3 positon)
     {
+        Debug.Log(positon);
         roomPos = positon;
-        transform.position = roomPos;
+        transform.position = positon;
     }
 
     public Vector3 AddRoom(Room current)
     {
         int index = Random.Range(0, walls.Length);
         GameObject wall = walls[index];
-        if (!wall.activeSelf) return AddRoom(current);
+        if (!wall.activeSelf || index == 2) return AddRoom(current);
         else if (wall.activeSelf)
         {
             switch (index)

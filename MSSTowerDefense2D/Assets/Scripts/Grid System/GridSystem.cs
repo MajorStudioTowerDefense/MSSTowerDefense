@@ -7,7 +7,7 @@ public class GridSystem
     private int width;
     private int height;
     private float cellSize;
-    private Vector3 originPosition;
+    [HideInInspector]public Vector3 originPosition;
     private int roomCount;
     public List<GridArea> areas = new List<GridArea>();
 
@@ -21,7 +21,12 @@ public class GridSystem
 
     public Vector3 GetWorldPosition(int x, int y)
     {
-        return new Vector3(x, y) * cellSize + originPosition;
+        return new Vector3(x, y) * cellSize  + originPosition;
+    }
+
+    public Vector3 GetPosition(int x, int y)
+    {
+        return new Vector3(x, y) * cellSize;
     }
 
     public void GetXY(Vector3 worldPosition, out int x, out int y)
