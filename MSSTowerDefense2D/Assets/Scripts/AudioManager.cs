@@ -6,22 +6,24 @@ public class AudioManager : MonoBehaviour
 {
 // Setting up the Audio Sources
     public static AudioManager instance;
-
+    public GameManager gameManager; 
     public AudioSource[] audioSources;
     public AudioSource audioSource;
     public AudioSource audioSource2;
     public AudioClip Ticking;
     public AudioClip StartShift;
-    private ClockDisplayUI timerScript;
+    public GameObject ambiHalt;
+    public GameObject abmiResume;
 
     //Assigning certain sounds to play for a limited amount of time
     private void Start()
     {
-        timerScript = GameObject.Find("ClockNumbers").GetComponent<ClockDisplayUI>(); // Grabs the ClockUI script from the "ClockNumbers" GameObect
+        ambiHalt = gameManager.TutorialStarts(); // Grabs the tutorial starting method from the game manager script
+        abmiResume = gameManager.TutorialEnds(); //Grabs the tutorial ending method from the game manager script
         audioSource.clip = Ticking;
         audioSource2.clip = StartShift;
         // Start playing music based on the initial time
-        UpdateMusic();
+        
        
     }
     private void Awake()
@@ -89,10 +91,10 @@ public class AudioManager : MonoBehaviour
     void Update()
     {   //tie real time to ambiance
         
-        if (timerScript.hours == 7 && timerScript.minutes == 0){
+        if (!ambiHalt){
             audioSource.Play();
         }
-        if (timerScript.hours == 9 && timerScript.minutes == 0)
+        if (abmiResume)
         {
             audioSource2.Play();
 
