@@ -157,7 +157,7 @@ public class GameManager : MonoBehaviour
     {
         yesterdayMoney = money;
         gridSystem = new GridSystem(gridCellLength, gridCellHeight, gridCellSize, Vector3.zero);
-        shelfPlacementManager.gridSystem = gridSystem;
+        shelfPlacementManager.SetGridSystem(gridSystem);
         timer = InitialTime.x * 60 + InitialTime.y;
 
         GenerateWalls();

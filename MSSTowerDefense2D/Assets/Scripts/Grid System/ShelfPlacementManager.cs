@@ -5,13 +5,12 @@ public class ShelfPlacementManager : MonoBehaviour
     public static ShelfPlacementManager instance;
     public GridSystem gridSystem;
     public GameObject[] shelfPrefabs;
-    private GameObject currentShelfPrefab;
+    [SerializeField]private GameObject currentShelfPrefab;
     [SerializeField]private GameObject currentShelfInstance;
     private int currentPrefabIndex = -1;
     public GameObject shelfBeingRepositioned = null;
-    private bool[,] shelfPlacementGrid;
+    [SerializeField]private bool[,] shelfPlacementGrid;
 
-    private bool isShelfGridCreated = false;
     public AudioClip ShelfPlaced;
 
     private int alternativeAreaWidth;
@@ -33,9 +32,26 @@ public class ShelfPlacementManager : MonoBehaviour
 
     private void Start()
     {
-        
+
     }
 
+    public void SetGridSystem(GridSystem system)
+    {
+        gridSystem = system;
+        InitializeShelfPlacementGrid();
+    }
+    private void InitializeShelfPlacementGrid()
+    {
+        shelfPlacementGrid = new bool[gridSystem.GetWidth() + 2, gridSystem.GetHeight() + 1];
+        for (int x = 0; x < gridSystem.GetWidth() + 2; x++)
+        {
+            for (int y = 0; y < gridSystem.GetHeight() + 1; y++)
+            {
+                shelfPlacementGrid[x, y] = false;
+            }
+        }
+
+    }
     private void Update()
     {
 
@@ -54,10 +70,12 @@ public class ShelfPlacementManager : MonoBehaviour
         {
             if (shelfBeingRepositioned == null && currentShelfInstance == null)
             {
+                Debug.Log("Trying to select shelf for repositioning.");
                 TrySelectShelfForRepositioning();
             }
             else if (shelfBeingRepositioned != null)
             {
+                Debug.Log("Finalizing repositioning.");
                 // Finalize repositioning if within grid
                 Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 mousePos.z = 0;
@@ -79,25 +97,6 @@ public class ShelfPlacementManager : MonoBehaviour
 
         if (shelfBeingRepositioned == null && currentShelfPrefab != null)
         {
-            if (gridSystem != null)
-            {
-                if (!isShelfGridCreated)
-                {
-                    shelfPlacementGrid = new bool[gridSystem.GetWidth() + 2, gridSystem.GetHeight() + 1];
-                    for (int x = 0; x < gridSystem.GetWidth() + 2; x++)
-                    {
-                        for (int y = 0; y < gridSystem.GetHeight() + 1; y++)
-                        {
-                            shelfPlacementGrid[x, y] = false;
-                        }
-                    }
-                    isShelfGridCreated = true;
-                }
-            }
-            else
-            {
-                Debug.LogError("Grid System is null.");
-            }
 
             SnapShelfToGridAvoidOverlap();
         }
@@ -201,7 +200,7 @@ public class ShelfPlacementManager : MonoBehaviour
     {
         int x, y;
         gridSystem.GetXY(shadowPosition, out x, out y);
-
+        
         // First, check if the new position is within the grid and not occupied
         if (IsWithinGrid(x, y) && !shelfPlacementGrid[x, y])
         {
@@ -229,7 +228,25 @@ public class ShelfPlacementManager : MonoBehaviour
 
         int x, y;
         gridSystem.GetXY(mouseWorldPosition, out x, out y);
+        Debug.Log("x is" + x + "and y is" + y);
 
+        if (gridSystem == null)
+        {
+            Debug.LogError("GridSystem is not initialized.");
+            return;
+        }
+
+        if (shelfBeingRepositioned == null)
+        {
+            Debug.LogError("No shelf is being repositioned.");
+            return;
+        }
+
+        if (shelfPlacementGrid == null)
+        {
+            Debug.LogError("Shelf placement grid is not initialized.");
+            return;
+        }
         // First, check if the new position is within the grid and not occupied
         if (IsWithinGrid(x, y) && !shelfPlacementGrid[x, y])
         {

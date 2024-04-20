@@ -54,7 +54,8 @@ public class UpgradeSystem : MonoBehaviour
         NormalEmployee[] Es = FindObjectsOfType<NormalEmployee>();
         foreach (var e in Es)
         {
-            e.aiPath.maxSpeed += employeeSpeedBoost;
+            e.stayShelfDuration -= employeeSpeedBoost;
+            e.stayShelfDuration = Mathf.Clamp(e.stayShelfDuration, 0.5f, 10f);
         }
         ES3.Save("money", GameManager.instance.money);
 
