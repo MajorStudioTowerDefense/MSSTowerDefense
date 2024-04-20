@@ -376,8 +376,8 @@ MonoBehaviour:
   nameTextOffsetY: 1
   ShopExit: {fileID: 0}
   currentDestination: {x: 0, y: 0, z: 0}
-  areaPartitionSizeX: 5
-  areaPartitionSizeY: 3
+  areaPartitionSizeX: 6
+  areaPartitionSizeY: 4
   WalkingHeavy: {fileID: 0}
   Walking: {fileID: 0}
   thump: {fileID: 0}

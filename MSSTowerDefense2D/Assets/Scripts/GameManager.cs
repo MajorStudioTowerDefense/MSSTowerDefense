@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Vector2 endTime;
     [SerializeField] private Vector2 InitialTime;
     [SerializeField] private Room roomPrefab;
-    List<Room> rooms;
+    [HideInInspector] public List<Room> rooms;
 
     [Header("Game Loop Settings")]
     public int level = 1;
@@ -264,7 +264,7 @@ public class GameManager : MonoBehaviour
         shelfPlacementGrid[gridPosition] = canPlaceShelf;
     }
 
-    private bool CanPlaceShelf(Vector2Int gridPosition)
+    public bool CanPlaceShelf(Vector2Int gridPosition)
     {
         return shelfPlacementGrid.TryGetValue(gridPosition, out bool canPlace) && canPlace;
     }
@@ -283,30 +283,34 @@ public class GameManager : MonoBehaviour
         }
 
         Room currentRoom;
-        List<List<string>> room;
-        room = CSVReader.Read(layouts[Random.Range(0, layouts.Length - 1)]);
+List<List<string>> roomLayout = CSVReader.Read(layouts[Random.Range(0, layouts.Length - 1)]);
 
-        if (rooms.Count == 0) 
-        {
-            currentRoom = Instantiate<Room>(roomPrefab, gridSystem.originPosition, Quaternion.identity);
-            currentRoom.Init(gridSystem.originPosition);
-        }
-        else
-        {
-            currentRoom = Instantiate<Room>(roomPrefab);
-            Room selectedRoom = rooms[Random.Range(0, rooms.Count)];
-            currentRoom.Init(selectedRoom.AddRoom(currentRoom));
-        }
-        rooms.Add(currentRoom);
+if (rooms.Count == 0) 
+{
+    currentRoom = Instantiate<Room>(roomPrefab, gridSystem.originPosition, Quaternion.identity);
+    currentRoom.Init(gridSystem.originPosition, roomLayout);
+}
+else
+{
+    currentRoom = Instantiate<Room>(roomPrefab);
+    Room selectedRoom = rooms[Random.Range(0, rooms.Count)];
+    Vector3 newPosition = selectedRoom.AddRoom(currentRoom);
+    currentRoom.Init(newPosition, roomLayout);
+}
+rooms.Add(currentRoom);
+
+int roomWidth = currentRoom.GetWidth();
+int roomHeight = currentRoom.GetHeight();
+
         gridSystem.GetXY(currentRoom.roomPos, out int initX, out int initY);
-        for (int y = 0; y < room.Count; y++)
+        for (int y = 0; y < roomLayout.Count; y++)
         {
-            for (int x = 0; x < room[y].Count; x++)
+            for (int x = 0; x < roomLayout[y].Count; x++)
             {
                 Vector3 position = gridSystem.GetWorldPosition(x + initX, initY - y) * gridCellSize;
                 GameObject prefabToInstantiate = null;
                 Transform wallParent = null;
-                switch (room[y][x])
+                switch (roomLayout[y][x])
                 {
                     case "t":
                         prefabToInstantiate = cellTilePrefab;
@@ -337,7 +341,7 @@ public class GameManager : MonoBehaviour
                     case "wh":
                     case "br":
                     default:
-                        prefabToInstantiate = GetPrefabForIdentifier(room[y][x], x, initX, y, initY, currentRoom);
+                        prefabToInstantiate = GetPrefabForIdentifier(roomLayout[y][x], x, initX, y, initY, currentRoom);
                         UpdateShelfPlacement(new Vector2Int(x + initX, initY - y), false);
                         break;
                 }
@@ -441,5 +445,36 @@ public class GameManager : MonoBehaviour
     }
 
     public GameObject employeeArea;
+
+public int GetGridWidth()
+{
+    if (shelfPlacementGrid.Count == 0) return 0;
+    int minX = int.MaxValue;
+    int maxX = int.MinValue;
+
+    foreach (var key in shelfPlacementGrid.Keys)
+    {
+        if (key.x < minX) minX = key.x;
+        if (key.x > maxX) maxX = key.x;
+    }
+
+    return maxX - minX + 1; 
+}
+
+public int GetGridHeight()
+{
+    if (shelfPlacementGrid.Count == 0) return 0;
+    int minY = int.MaxValue;
+    int maxY = int.MinValue;
+
+    foreach (var key in shelfPlacementGrid.Keys)
+    {
+        if (key.y < minY) minY = key.y;
+        if (key.y > maxY) maxY = key.y;
+    }
+
+    return maxY - minY + 1;
+}
+
 
 }

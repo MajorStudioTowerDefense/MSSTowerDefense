@@ -7,12 +7,32 @@ public class Room : MonoBehaviour
     //0:U, 1:D, 2:L, 3:R
     public GameObject[] walls;
     [HideInInspector] public Vector3 roomPos;
+public List<List<string>> roomLayout; 
 
-    public void Init(Vector3 positon)
+    public void Init(Vector3 position, List<List<string>> layout)
     {
-        Debug.Log(positon);
-        roomPos = positon;
-        transform.position = positon;
+        Debug.Log(position);
+        roomPos = position;
+        transform.position = position;
+        roomLayout = layout;
+    }
+
+    public int GetWidth()
+    {
+        if (roomLayout != null && roomLayout.Count > 0)
+        {
+            return roomLayout[0].Count;
+        }
+        return 0;
+    }
+
+    public int GetHeight()
+    {
+        if (roomLayout != null)
+        {
+            return roomLayout.Count;
+        }
+        return 0;
     }
 
     public Vector3 AddRoom(Room current)
