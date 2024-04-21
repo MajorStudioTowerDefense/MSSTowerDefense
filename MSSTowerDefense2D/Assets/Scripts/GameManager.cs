@@ -332,6 +332,8 @@ public class GameManager : MonoBehaviour
                         wallParent = currentRoom.walls[2].transform;
                         goto default;
                     case "o":
+                        currentRoom.exitPos.Add(position);
+                        break;
                     case "rw":
                         wallParent = currentRoom.walls[3].transform;
                         goto default;
@@ -358,6 +360,14 @@ public class GameManager : MonoBehaviour
         }
 
         aStar.Scan();
+    }
+
+    public void CloseExits(List<Vector2> exits)
+    {
+        foreach (Vector2 exit in exits)
+        {
+            Instantiate(sideWallPrefab, exit, Quaternion.identity);
+        }
     }
 
     private GameObject GetPrefabForIdentifier(string identifier, int x, int initX, int y, int initY, Room currentRoom)
