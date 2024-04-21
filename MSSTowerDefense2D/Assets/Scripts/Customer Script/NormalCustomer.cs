@@ -51,7 +51,7 @@ public class NormalCustomer : Bot
         {
             for (int y = startY; y < startY + roomHeight; y += areaPartitionSizeY)
             {
-                Vector3 centerPosition = Vector3.zero;
+                Vector2 centerPosition = Vector2.zero;
                 int validCells = 0;
 
                 for (int xi = x; xi < x + areaPartitionSizeX && xi < startX + roomWidth; xi++)
@@ -60,7 +60,7 @@ public class NormalCustomer : Bot
                     {
                         if (GameManager.instance.CanPlaceShelf(new Vector2Int(xi, yi)))
                         {
-                            Vector3 worldPos = GameManager.instance.gridSystem.GetWorldPosition(xi, yi);
+                            Vector2 worldPos = GameManager.instance.gridSystem.GetWorldPosition(xi, yi);
                             centerPosition += worldPos;
                             validCells++;
                         }
@@ -97,6 +97,11 @@ public class NormalCustomer : Bot
     {
         base.Update();
 
+        if (Vector2.Distance(transform.position, ShopExit.position) <= 1.5f)
+        {
+            Destroy(gameObject);
+        }
+
         if (patience <= 0)
         {
             MoveToExit();
@@ -119,14 +124,7 @@ public class NormalCustomer : Bot
             MoveToExit();
             AudioManager.instance.PlaySound(thump);
         }
-
-        float distance = Vector3.Distance(transform.position, ShopExit.position);
         //Debug.Log(gameObject.name + " distance from exit: " + distance);
-
-        if (Vector3.Distance(transform.position, ShopExit.position) <= 1f)
-        {
-            Destroy(gameObject);
-        }
     }
 
     void UpdateColorBasedOnPatience()
@@ -155,7 +153,7 @@ public class NormalCustomer : Bot
     {
         if (!movingToExit && !isWaiting)
         {
-            if (unvisitedAreas.Count > 0 && Vector3.Distance(transform.position, currentDestination) < 1f)
+            if (unvisitedAreas.Count > 0 && Vector2.Distance(transform.position, currentDestination) < 1f)
             {
                 StartCoroutine(WaitAtArea(stopDuration));
             }
@@ -196,7 +194,7 @@ public class NormalCustomer : Bot
         if (unvisitedAreas.Count == 0 || isWaiting) return;
 
         unvisitedAreas = unvisitedAreas.OrderBy(area =>
-            Vector3.Distance(this.transform.position, area.CenterPosition)).ToList();
+            Vector2.Distance(this.transform.position, area.CenterPosition)).ToList();
         GridArea nextArea = unvisitedAreas[0];
         currentDestination = nextArea.CenterPosition;
         destinationSetter.targetPosition = currentDestination;
