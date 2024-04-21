@@ -83,6 +83,7 @@ public class GameManager : MonoBehaviour
     public GameStates previousState;
 
     [Header("Map Layouts")]
+    [SerializeField] private TextAsset initLayout;
     [SerializeField] private TextAsset[] layouts;
     private bool isRoomAdded = false;
     private CameraController cameraController;
@@ -283,24 +284,26 @@ public class GameManager : MonoBehaviour
         }
 
         Room currentRoom;
-List<List<string>> roomLayout = CSVReader.Read(layouts[Random.Range(0, layouts.Length - 1)]);
+        List<List<string>> roomLayout = CSVReader.Read(initLayout);
 
-if (rooms.Count == 0) 
-{
-    currentRoom = Instantiate<Room>(roomPrefab, gridSystem.originPosition, Quaternion.identity);
-    currentRoom.Init(gridSystem.originPosition, roomLayout);
-}
-else
-{
-    currentRoom = Instantiate<Room>(roomPrefab);
-    Room selectedRoom = rooms[Random.Range(0, rooms.Count)];
-    Vector3 newPosition = selectedRoom.AddRoom(currentRoom);
-    currentRoom.Init(newPosition, roomLayout);
-}
-rooms.Add(currentRoom);
+        if (rooms.Count == 0) 
+        {
+            currentRoom = Instantiate<Room>(roomPrefab, gridSystem.originPosition, Quaternion.identity);
+            currentRoom.Init(gridSystem.originPosition, roomLayout);
+        }
+        else
+        {
 
-int roomWidth = currentRoom.GetWidth();
-int roomHeight = currentRoom.GetHeight();
+            roomLayout = CSVReader.Read(layouts[Random.Range(0, layouts.Length - 1)]);
+            currentRoom = Instantiate<Room>(roomPrefab);
+            Room selectedRoom = rooms[Random.Range(0, rooms.Count)];
+            Vector3 newPosition = selectedRoom.AddRoom(currentRoom);
+            currentRoom.Init(newPosition, roomLayout);
+        }
+        rooms.Add(currentRoom);
+
+        int roomWidth = currentRoom.GetWidth();
+        int roomHeight = currentRoom.GetHeight();
 
         gridSystem.GetXY(currentRoom.roomPos, out int initX, out int initY);
         for (int y = 0; y < roomLayout.Count; y++)
