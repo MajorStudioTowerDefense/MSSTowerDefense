@@ -297,6 +297,7 @@ public class GameManager : MonoBehaviour
             roomLayout = CSVReader.Read(layouts[Random.Range(0, layouts.Length - 1)]);
             currentRoom = Instantiate<Room>(roomPrefab);
             Room selectedRoom = rooms[Random.Range(0, rooms.Count)];
+            CloseExits(rooms[rooms.Count - 1].exitPos);
             Vector3 newPosition = selectedRoom.AddRoom(currentRoom);
             currentRoom.Init(newPosition, roomLayout);
         }
