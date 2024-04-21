@@ -357,6 +357,14 @@ MonoBehaviour:
   aiPath: {fileID: 6430688495216814448}
   destinationSetter: {fileID: 6430688495216814455}
   tags: 1
+  likedItems:
+  - {fileID: 11400000, guid: a41856e1d723cb64e9a49865f8341870, type: 2}
+  - {fileID: 11400000, guid: 011163cdb31c31744b8d39272e5378b6, type: 2}
+  - {fileID: 11400000, guid: 19a4f9728dac99b4b96bb11846401a6b, type: 2}
+  - {fileID: 11400000, guid: 1d538a75481f3480e9db0507f04b4a6b, type: 2}
+  - {fileID: 11400000, guid: c868db8ccba8f71448fefe0093a480ee, type: 2}
+  - {fileID: 11400000, guid: 39e9010e4516ffa45868b59b47d26871, type: 2}
+  desireAmount: 3
   needs:
   - {fileID: 11400000, guid: 1d538a75481f3480e9db0507f04b4a6b, type: 2}
   - {fileID: 11400000, guid: a41856e1d723cb64e9a49865f8341870, type: 2}

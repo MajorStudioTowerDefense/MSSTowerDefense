@@ -37,6 +37,8 @@ public class Bot : MonoBehaviour
     public BotTags tags = 0;
 
     //Item the customer is looking for
+    public List<Items> likedItems  = new List<Items>();
+    public int desireAmount = 0;
     public List<Items> needs = new List<Items>();
     public Items selectedItem;
 
@@ -45,6 +47,10 @@ public class Bot : MonoBehaviour
     public TextMeshPro budgetText;
     public float nameTextOffsetX = 0f;
     public float nameTextOffsetY = 1f;
+
+    void Start(){
+        likedItems = SelectRandomItems(likedItems, desireAmount);
+    }
     
     /////////////////////////////////
 
@@ -168,5 +174,22 @@ public class Bot : MonoBehaviour
     protected virtual void Update()
     {
         botUIUpdate();
+    }
+
+    public List<Items> SelectRandomItems(List<Items> sourceItems, int numberToSelect)
+    {
+        List<Items> selectedItems = new List<Items>();
+        List<Items> tempList = new List<Items>(sourceItems); 
+
+        numberToSelect = Mathf.Min(numberToSelect, tempList.Count);
+
+        for (int i = 0; i < numberToSelect; i++)
+        {
+            int index = Random.Range(0, tempList.Count); 
+            selectedItems.Add(tempList[index]); 
+            tempList.RemoveAt(index); 
+        }
+
+        return selectedItems;
     }
 }

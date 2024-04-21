@@ -5,8 +5,8 @@ public class CustomerGenerator : MonoBehaviour
 {
     public GameObject[] customerPrefabs; // Array to hold different customer prefabs
     public Transform spawnPoint; // The GameObject's Transform where customers will be spawned
-    public float minGenerateDelay = 1f; // Minimum delay between generating customers
-    public float maxGenerateDelay = 3f; // Maximum delay between generating customers
+    private float minGenerateDelay = 1f; // Minimum delay between generating customers
+    private float maxGenerateDelay = 3f; // Maximum delay between generating customers
     public int maxCustomers = 10; // Maximum number of customers allowed
 
     private float nextGenerateTime = 0f; // When the next customer should be generated
@@ -18,6 +18,9 @@ public class CustomerGenerator : MonoBehaviour
 
     void Update()
     {
+        maxGenerateDelay = 120 / maxCustomers;
+        minGenerateDelay = maxGenerateDelay / 2;
+
         if (GameManager.instance.currentState == GameStates.STORE)
         {
             // Check if it's time to generate a new customer and if the current number of customers is below the maximum
