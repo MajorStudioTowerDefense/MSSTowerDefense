@@ -7,7 +7,8 @@ public class Room : MonoBehaviour
     //0:U, 1:D, 2:L, 3:R
     public GameObject[] walls;
     [HideInInspector] public Vector3 roomPos;
-public List<List<string>> roomLayout; 
+    public List<List<string>> roomLayout;
+    [HideInInspector] public List<Vector2> exitPos;
 
     public void Init(Vector3 position, List<List<string>> layout)
     {

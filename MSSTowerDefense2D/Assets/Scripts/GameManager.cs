@@ -296,9 +296,10 @@ public class GameManager : MonoBehaviour
 
             roomLayout = CSVReader.Read(layouts[Random.Range(0, layouts.Length - 1)]);
             currentRoom = Instantiate<Room>(roomPrefab);
-            Room selectedRoom = rooms[Random.Range(0, rooms.Count)];
+            Room selectedRoom = rooms[rooms.Count-1];
             Vector3 newPosition = selectedRoom.AddRoom(currentRoom);
             currentRoom.Init(newPosition, roomLayout);
+            CloseExits(rooms[rooms.Count - 1].exitPos);
         }
         rooms.Add(currentRoom);
 
@@ -332,6 +333,9 @@ public class GameManager : MonoBehaviour
                         wallParent = currentRoom.walls[2].transform;
                         goto default;
                     case "o":
+                        wallParent = currentRoom.walls[3].transform;
+                        currentRoom.exitPos.Add(position);
+                        goto default;
                     case "rw":
                         wallParent = currentRoom.walls[3].transform;
                         goto default;
@@ -359,6 +363,20 @@ public class GameManager : MonoBehaviour
 
         aStar.Scan();
     }
+
+    public void CloseExits(List<Vector2> exits)
+    {
+        foreach (Vector2 exit in exits)
+        {
+            Collider2D[] hitBoxs = Physics2D.OverlapPointAll(exit);
+            foreach (Collider2D hit in hitBoxs)
+            {
+                if(hit.CompareTag("Exit")) Destroy(hit.gameObject);
+            }
+            Instantiate(sideWallPrefab, exit, Quaternion.identity);
+        }
+    }
+
 
     private GameObject GetPrefabForIdentifier(string identifier, int x, int initX, int y, int initY, Room currentRoom)
     {
