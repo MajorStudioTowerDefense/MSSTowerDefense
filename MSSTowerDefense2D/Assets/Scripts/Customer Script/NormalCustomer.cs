@@ -38,23 +38,45 @@ public class NormalCustomer : Bot
         AudioManager.instance.PlaySound(WalkingHeavy);
     }
 
-    void InitializeAreas()
+   void InitializeAreas()
+{
+    foreach (Room room in GameManager.instance.rooms)
     {
-        GridSystem gridSystem = GameManager.instance.gridSystem;
-        int partitionsX = gridSystem.GetWidth() / areaPartitionSizeX;
-        int partitionsY = gridSystem.GetHeight() / areaPartitionSizeY;
+        int startX = Mathf.FloorToInt(room.transform.position.x);
+        int startY = Mathf.FloorToInt(room.transform.position.y);
+        int roomWidth = room.GetWidth();
+        int roomHeight = room.GetHeight();
 
-        for (int i = 0; i < partitionsX; i++)
+        for (int x = startX; x < startX + roomWidth; x += areaPartitionSizeX)
         {
-            for (int j = 0; j < partitionsY; j++)
+            for (int y = startY; y < startY + roomHeight; y += areaPartitionSizeY)
             {
-                Vector3 centerPosition = gridSystem.GetWorldPosition(i * areaPartitionSizeX + areaPartitionSizeX / 2, j * areaPartitionSizeY + areaPartitionSizeY / 2);
-                unvisitedAreas.Add(new GridArea($"Area_{i}_{j}", centerPosition));
+                Vector2 centerPosition = Vector2.zero;
+                int validCells = 0;
+
+                for (int xi = x; xi < x + areaPartitionSizeX && xi < startX + roomWidth; xi++)
+                {
+                    for (int yi = y; yi < y + areaPartitionSizeY && yi < startY + roomHeight; yi++)
+                    {
+                        if (GameManager.instance.CanPlaceShelf(new Vector2Int(xi, yi)))
+                        {
+                            Vector2 worldPos = GameManager.instance.gridSystem.GetWorldPosition(xi, yi);
+                            centerPosition += worldPos;
+                            validCells++;
+                        }
+                    }
+                }
+
+                if (validCells > 0)
+                {
+                    centerPosition /= validCells; // Calculate the center of this sub-area
+                    unvisitedAreas.Add(new GridArea($"Area_{x}_{y}", centerPosition));
+                }
             }
         }
-
-        unvisitedAreas = unvisitedAreas.OrderBy(a => Random.value).ToList();
     }
+    unvisitedAreas = unvisitedAreas.OrderBy(a => Random.value).ToList();
+}
 
     void SetFirstAreaDestination()
     {
@@ -74,6 +96,11 @@ public class NormalCustomer : Bot
     protected override void Update()
     {
         base.Update();
+
+        if (Vector2.Distance(transform.position, ShopExit.position) <= 1.5f)
+        {
+            Destroy(gameObject);
+        }
 
         if (patience <= 0)
         {
@@ -97,14 +124,7 @@ public class NormalCustomer : Bot
             MoveToExit();
             AudioManager.instance.PlaySound(thump);
         }
-
-        float distance = Vector3.Distance(transform.position, ShopExit.position);
-        Debug.Log(gameObject.name + " distance from exit: " + distance);
-
-        if (Vector3.Distance(transform.position, ShopExit.position) <= 1f)
-        {
-            Destroy(gameObject);
-        }
+        //Debug.Log(gameObject.name + " distance from exit: " + distance);
     }
 
     void UpdateColorBasedOnPatience()
@@ -133,7 +153,7 @@ public class NormalCustomer : Bot
     {
         if (!movingToExit && !isWaiting)
         {
-            if (unvisitedAreas.Count > 0 && Vector3.Distance(transform.position, currentDestination) < 1f)
+            if (unvisitedAreas.Count > 0 && Vector2.Distance(transform.position, currentDestination) < 1f)
             {
                 StartCoroutine(WaitAtArea(stopDuration));
             }
@@ -170,10 +190,11 @@ public class NormalCustomer : Bot
 
     void MoveToNextArea()
     {
+        Debug.Log("Moving... Unvisited areas: " + unvisitedAreas.Count);
         if (unvisitedAreas.Count == 0 || isWaiting) return;
 
         unvisitedAreas = unvisitedAreas.OrderBy(area =>
-            Vector3.Distance(this.transform.position, area.CenterPosition)).ToList();
+            Vector2.Distance(this.transform.position, area.CenterPosition)).ToList();
         GridArea nextArea = unvisitedAreas[0];
         currentDestination = nextArea.CenterPosition;
         destinationSetter.targetPosition = currentDestination;
