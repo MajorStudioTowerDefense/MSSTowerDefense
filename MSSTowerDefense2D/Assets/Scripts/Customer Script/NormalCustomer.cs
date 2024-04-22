@@ -38,45 +38,23 @@ public class NormalCustomer : Bot
         AudioManager.instance.PlaySound(WalkingHeavy);
     }
 
-   void InitializeAreas()
-{
-    foreach (Room room in GameManager.instance.rooms)
+    void InitializeAreas()
     {
-        int startX = Mathf.FloorToInt(room.transform.position.x);
-        int startY = Mathf.FloorToInt(room.transform.position.y);
-        int roomWidth = room.GetWidth();
-        int roomHeight = room.GetHeight();
+        GridSystem gridSystem = GameManager.instance.gridSystem;
+        int partitionsX = gridSystem.GetWidth() / areaPartitionSizeX;
+        int partitionsY = gridSystem.GetHeight() / areaPartitionSizeY;
 
-        for (int x = startX; x < startX + roomWidth; x += areaPartitionSizeX)
+        for (int i = 0; i < partitionsX; i++)
         {
-            for (int y = startY; y < startY + roomHeight; y += areaPartitionSizeY)
+            for (int j = 0; j < partitionsY; j++)
             {
-                Vector3 centerPosition = Vector3.zero;
-                int validCells = 0;
-
-                for (int xi = x; xi < x + areaPartitionSizeX && xi < startX + roomWidth; xi++)
-                {
-                    for (int yi = y; yi < y + areaPartitionSizeY && yi < startY + roomHeight; yi++)
-                    {
-                        if (GameManager.instance.CanPlaceShelf(new Vector2Int(xi, yi)))
-                        {
-                            Vector3 worldPos = GameManager.instance.gridSystem.GetWorldPosition(xi, yi);
-                            centerPosition += worldPos;
-                            validCells++;
-                        }
-                    }
-                }
-
-                if (validCells > 0)
-                {
-                    centerPosition /= validCells; // Calculate the center of this sub-area
-                    unvisitedAreas.Add(new GridArea($"Area_{x}_{y}", centerPosition));
-                }
+                Vector3 centerPosition = gridSystem.GetWorldPosition(i * areaPartitionSizeX + areaPartitionSizeX / 2, j * areaPartitionSizeY + areaPartitionSizeY / 2);
+                unvisitedAreas.Add(new GridArea($"Area_{i}_{j}", centerPosition));
             }
         }
+
+        unvisitedAreas = unvisitedAreas.OrderBy(a => Random.value).ToList();
     }
-    unvisitedAreas = unvisitedAreas.OrderBy(a => Random.value).ToList();
-}
 
     void SetFirstAreaDestination()
     {
@@ -121,7 +99,7 @@ public class NormalCustomer : Bot
         }
 
         float distance = Vector3.Distance(transform.position, ShopExit.position);
-        //Debug.Log(gameObject.name + " distance from exit: " + distance);
+        Debug.Log(gameObject.name + " distance from exit: " + distance);
 
         if (Vector3.Distance(transform.position, ShopExit.position) <= 1f)
         {
@@ -192,7 +170,6 @@ public class NormalCustomer : Bot
 
     void MoveToNextArea()
     {
-        Debug.Log("Moving... Unvisited areas: " + unvisitedAreas.Count);
         if (unvisitedAreas.Count == 0 || isWaiting) return;
 
         unvisitedAreas = unvisitedAreas.OrderBy(area =>
