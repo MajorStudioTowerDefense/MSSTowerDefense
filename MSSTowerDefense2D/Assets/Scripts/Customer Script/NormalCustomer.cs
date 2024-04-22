@@ -20,6 +20,7 @@ public class NormalCustomer : Bot
 
     public AudioClip WalkingHeavy;
     public AudioClip Walking;
+    public AudioClip CustomerPissed;
 
     public AudioClip thump;
 

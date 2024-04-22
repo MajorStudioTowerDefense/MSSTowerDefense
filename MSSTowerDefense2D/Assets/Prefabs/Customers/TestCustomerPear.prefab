@@ -273,11 +273,11 @@ MonoBehaviour:
   nameTextOffsetY: 1
   ShopExit: {fileID: 0}
   currentDestination: {x: 0, y: 0, z: 0}
-  areaPartitionSizeX: 6
-  areaPartitionSizeY: 4
-  WalkingHeavy: {fileID: 0}
+  areaPartitionSizeX: 4
+  areaPartitionSizeY: 5
+  WalkingHeavy: {fileID: 8300000, guid: 9d837a4559d987d40a8861a9014f3c16, type: 3}
   Walking: {fileID: 0}
-  thump: {fileID: 0}
+  thump: {fileID: 8300000, guid: 64d39d97f0b0a66458ba0b20f4e1cccd, type: 3}
   maxPatience: 35
   patienceSpriteRenderer: {fileID: 1122669741261647094}
 --- !u!82 &-1235564854328231557
