@@ -381,6 +381,7 @@ MonoBehaviour:
   areaPartitionSizeY: 3
   WalkingHeavy: {fileID: 0}
   Walking: {fileID: 8300000, guid: 3b6f26366ba3461468ed335962c9b308, type: 3}
+  CustomerPissed: {fileID: 8300000, guid: c572bf2b3e4da25469ad21dd4f99ca21, type: 3}
   thump: {fileID: 8300000, guid: 64d39d97f0b0a66458ba0b20f4e1cccd, type: 3}
   maxPatience: 35
   patienceSpriteRenderer: {fileID: 6956124681929144039}
