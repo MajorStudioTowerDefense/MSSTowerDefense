@@ -144,6 +144,7 @@ public class NormalCustomer : Bot
         else
         {
             targetColor = Color.Lerp(red, yellow, normalizedPatience * 2);
+            AudioManager.instance.PlaySound(CustomerPissed);
         }
 
         patienceSpriteRenderer.color = targetColor;
