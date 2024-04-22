@@ -42,7 +42,6 @@ public List<List<string>> roomLayout;
         if (!wall.activeSelf || index == 2) return AddRoom(current);
         else if (wall.activeSelf)
         {
-            GameManager.instance.CloseExits(exitPos);
             switch (index)
             {
                 case 0:
