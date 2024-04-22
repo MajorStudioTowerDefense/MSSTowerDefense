@@ -62,7 +62,6 @@ public class Room : MonoBehaviour
                     current.walls[2].SetActive(false);
                     return new Vector3(transform.position.x + GameManager.instance.gridCellLength, transform.position.y);
             }
-
         }
         return Vector3.zero;
 
