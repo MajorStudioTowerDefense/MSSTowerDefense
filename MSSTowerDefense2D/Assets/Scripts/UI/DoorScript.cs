@@ -44,7 +44,7 @@ public class DoorScript : MonoBehaviour, IPointerEnterHandler
             }
             else
             {
-                rectTransform.localScale = new Vector2(rectTransform.localScale.x - 0.008f, startScale.y);
+                rectTransform.localScale = new Vector2(rectTransform.localScale.x - 1.1f*Time.deltaTime, startScale.y);
             }
         }
         else
@@ -55,7 +55,7 @@ public class DoorScript : MonoBehaviour, IPointerEnterHandler
             }
             else
             {
-                rectTransform.localScale = new Vector2(rectTransform.localScale.x + 0.002f, startScale.y);
+                rectTransform.localScale = new Vector2(rectTransform.localScale.x + 0.2f * Time.deltaTime, startScale.y);
 
             }
         }
