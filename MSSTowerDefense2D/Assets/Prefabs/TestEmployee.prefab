@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 3657788893970173141}
   - component: {fileID: 3490880514150617043}
   - component: {fileID: 5601782775479133670}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TestEmployee
   m_TagString: Employee
   m_Icon: {fileID: 0}
@@ -897,7 +897,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1608415128669521447}
   - component: {fileID: 6103915451358643982}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: InteractionCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

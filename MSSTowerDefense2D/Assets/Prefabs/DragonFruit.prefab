@@ -1,63 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &333815902551606279
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1363517502042677086}
-  - component: {fileID: 3025468386942415219}
-  m_Layer: 9
-  m_Name: InteractionCollider
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1363517502042677086
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 333815902551606279}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4971062859645332144}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &3025468386942415219
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 333815902551606279}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!1 &1651917455691503601
 GameObject:
   m_ObjectHideFlags: 0
@@ -762,7 +704,6 @@ Transform:
   - {fileID: 2606767789544531563}
   - {fileID: 4082101884891769501}
   - {fileID: 2542033125323946152}
-  - {fileID: 1363517502042677086}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1022,10 +963,8 @@ MonoBehaviour:
     - {fileID: 4812646712752174805}
     - {fileID: 11400000, guid: c868db8ccba8f71448fefe0093a480ee, type: 2}
     - {fileID: 2800000, guid: 93c830765659840478dafc8f059654cf, type: 3}
-    - {fileID: 1363517502042677086}
-    - {fileID: 333815902551606279}
-    - {fileID: 3025468386942415219}
-    _Values: 66ad8e7d5abe014c17e71d24b040134fd4b4855014797448f608e48af6b7df5aecce527814f1ba356e5d6e1c260b1b510ae4c929a35ae8611ed0f98d733cc964c070798af8e1f026369bf04f629bee4c356817e4c92690342fbc9b5aa9fa19519dcba5e9b8e241799734a6ea58eee8352908f70a9c790466aeada51f7ead1063b561c8aecc61ff2067536e02b4b0346eefa536c508018a526f40948614836a660a2514f88200450c3487638dc443f472b30860261ca3be14180d794a5594d9615bedbbb85479465c313f840de4c6ff7b5df300642bdb375613bf131e47e41c3ff90554e2e15b68483ed57e573a251421198c0499e7a4ea213dd808b969bcc31bd50ea5204afadd60d56078ea0ac68814a1b1e826581dc42ba62ada0dbfb52e0e339dc674acdd9f69483c958ea7a0fd0ff0d369d6deb49b36235ce90cd83f311ba56c66f1bb9d8f0b5cea46ba922c902344f6824a85ecca2a24a343e0eb7a544114d85d41205d0d7d115b6c8be451a673a05e54b485c1f81b4a8fbae3a201c13fe22bdd900487fd14c31082cc3315114665d1a172ea67b005344fd2f5e9b28f3a2cfe3c4da8ddc21ab5182fe72468ed1dbee654203c13da10c241c40e2c18c6012d31043257d9eb18e0cd2bf14e68b46a65828b682e8c560b63243dcf0607ae228bbc428563824b4ccb03194267bcf147ae59f93c724ddb6f7f4789e277508b5656e597d5a24d48484acb15578f922d36abbc3ff240de3c4bfcd065d8d009d3715bb04afd6c0c750a3043463872a68477793b71e0b9dee767d1179f16adb72b038466334aa6cba45b30df3f6da65ef031c6db534208d53125dbe0ee19acbcba2ccae5ea4d059b415408f0548a11e15b618c5587dfe0135d25d0afb21ad866fd5b45d53af704a9c44365a280b6bc064947d17e7ca5ae186c730f9d2a8a8cf2817c2a7c97f127bec04189a9898647ac446f1d2db0f6664082463222a09ca03592532da3bc2a4c157572d78a5413a6447f7429a09b536b457f24e86959cf599a7476311c7a8967e5360fc5f1ac7ecb4ce24f5effb48a68ed6b227230bf492f148c61
+    - {fileID: 0}
+    _Values: 66ad8e7d5abe014c17e71d24b040134fd4b4855014797448f608e48af6b7df5aecce527814f1ba356e5d6e1c260b1b510ae4c929a35ae8611ed0f98d733cc964c070798af8e1f026369bf04f629bee4c356817e4c92690342fbc9b5aa9fa19519dcba5e9b8e241799734a6ea58eee8352908f70a9c790466aeada51f7ead1063b561c8aecc61ff2067536e02b4b0346eefa536c508018a526f40948614836a660a2514f88200450c3487638dc443f472b30860261ca3be14180d794a5594d9615bedbbb85479465c313f840de4c6ff7b5df300642bdb375613bf131e47e41c3ff90554e2e15b68483ed57e573a251421198c0499e7a4ea213dd808b969bcc31bd50ea5204afadd60d56078ea0ac68814a1b1e826581dc42ba62ada0dbfb52e0e339dc674acdd9f69483c958ea7a0fd0ff0d369d6deb49b36235ce90cd83f311ba56c66f1bb9d8f0b5cea46ba922c902344f6824a85ecca2a24a343e0eb7a544114d85d41205d0d7d115b6c8be451a673a05e54b485c1f81b4a8fbae3a201c13fe22bdd900487fd14c31082cc3315114665d1a172ea67b005344fd2f5e9b28f3a2cfe3c4da8ddc21ab5182fe72468ed1dbee654203c13da10c241c40e2c18c6012d31043257d9eb18e0cd2bf14e68b46a65828b682e8c560b63243dcf0607ae228bbc428563824b4ccb03194267bcf147ae59f93c724ddb6f7f4789e277508b5656e597d5a24d48484acb15578f922d36abbc3ff240de3c4bfcd065d8d009d3715bb04afd6c0c750a3043463872a68477793b71e0b9dee767d1179f16adb72b038466334aa6cba45b30df3f6da65ef031c6db534208d53125dbe0ee19acbcba2ccae5ea4d059b415408f0548a11e15b618c5587dfe0135d25d0afb21ad866fd5b45d53af704a9c44365a280b6bc064947d17e7ca5ae186c730f9d2a8a8cf2817c2a7c97f127bec04189a9898647ac446f1d2db0f6664082463222a09ca03592532da3bc2a4c157572d78a5413a6447f7429a09b536b457f24e86959cf599a7476311c7a8967e5360fc5f1ac7ecb4ce24f
 --- !u!1 &5010003699079719547
 GameObject:
   m_ObjectHideFlags: 0

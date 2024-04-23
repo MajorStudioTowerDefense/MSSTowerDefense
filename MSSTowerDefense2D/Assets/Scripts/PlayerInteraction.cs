@@ -517,11 +517,20 @@ public class PlayerInteraction : MonoBehaviour
     void MouseHoverOnInteractable()
     {
         Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero, interactionLayer);
-        if(hit.collider != null) { onCorrectLayer = true; }
-        else { onCorrectLayer = false; }
-        Debug.Log("on correct layer is "+onCorrectLayer);
+        Vector2 mousePos = new Vector2(worldPoint.x, worldPoint.y);
+        RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero,Mathf.Infinity,interactionLayer);
 
+        if(hit.collider!=null)
+        {
+            onCorrectLayer = true;
+        }
+        else
+        {
+            onCorrectLayer = false;
+        }
+        Debug.Log("on correct layer is "+onCorrectLayer);
+        Debug.Log("on hit layer is "+LayerMask.LayerToName(hit.collider.gameObject.layer));
+        Debug.DrawRay(worldPoint, Vector2.zero, Color.red);
 
     }
 

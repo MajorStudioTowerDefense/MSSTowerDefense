@@ -1,63 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1544167278543796143
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4753697704713337271}
-  - component: {fileID: 2976829265344731128}
-  m_Layer: 9
-  m_Name: InteractionCollider
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4753697704713337271
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1544167278543796143}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4971062859645332144}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &2976829265344731128
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1544167278543796143}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.5946742}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 2.1893485}
-  m_EdgeRadius: 0
 --- !u!1 &1651917455691503601
 GameObject:
   m_ObjectHideFlags: 0
@@ -762,7 +704,6 @@ Transform:
   - {fileID: 2606767789544531563}
   - {fileID: 4082101884891769501}
   - {fileID: 5649140879589255713}
-  - {fileID: 4753697704713337271}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -831,7 +772,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.53065765}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.24}
@@ -842,7 +783,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 2.0613153}
   m_EdgeRadius: 0
 --- !u!114 &4971062859645332149
 MonoBehaviour:
@@ -1022,10 +963,8 @@ MonoBehaviour:
     - {fileID: 6775836055236962274}
     - {fileID: 922003672201034488}
     - {fileID: 2800000, guid: 93c830765659840478dafc8f059654cf, type: 3}
-    - {fileID: 4753697704713337271}
-    - {fileID: 1544167278543796143}
-    - {fileID: 2976829265344731128}
-    _Values: 985dac8a8e350512a1d9bbe8f472e56d6954eee4188e446dfc91065706b9bf5ac972fff19715221d8d3d7548cf387954cfa81a4fcf59853267e94ad16bebc212f90c5b8e44e410334cdc3537bc89756bdf982a1c99f3b06f7f987a3d9f591e7454d7b22038e6f72f38a5588160f4885e34c6ddd030a9446f3f5481286fd2f4347a63af718befc6026e96d9d741039d0fa249ee610b74c848e7013dcb71798d5755081a1f2bba1b3cf10d6df63fcea4342cf8588c2d92740c8dda3ab841ac08660949df1705275210f10ac3289976512c7b5eb3cfc07ca3741d82fa8794ad1e34c8688425b3763b59413209c8251ebb528e273d47840f0d30f67d7c95ae83294552be69ff193a0302fb5a7c37559ca66c62dd7eb1b441a1492937b574b00a6e30abb22c9a0094e01d0439a072ade5e225164bfa82851f3232039e5c3d51687709ddeac9b9258e5c64ce6996c7f46e6f28f093dff3d422ae362b17e373a222146bb1a996c31c28005aa75e50eeb5f926710e854dbe88833401670070f255173e54abd5e9b52853f3186cc5b38a2e407f23e004bc20f08eb6456ecbd5b2c940d0577f9430a99866c47e36e26c3f81f04e78eabc54d67ba1cc5061c3455b03be9562c9d39c2d24590845c93aea0e2176c37d7e5d9d8595a6d321c8e047d520687a0c88308851acdfab443b65614973258d27793c279fa4e40822017af504a1de6630b6f69652ff15295c0ae24a2f4489ae126e6f4e5d8f1ab06dc755aed92b4f195c0031947c8f3b286313ca96c29ad8dd76341c8defd33c3f3058fb745698b0ce46c9ee3013f531835697b1705ab073071178370e47dd08303b903b2a755081033c6622055357367f65611ba7de331b801af462ced0be162340420b5ccea4075815ae33f38d6db3ba51b773e7c160520854bc4581eeb3337e50023aeeb4254f3e678c427398f1f17840598378cd011a5e6b13b0125e8669627a4c5c71585d91886636804da3c5a04635cc414637ac4c5119247c38299d621222e0f8e44d62d09e39f7a424d0e838941f2914084e73b9b3574636346e84a4b35e5997e496bc5cf64b
+    - {fileID: 0}
+    _Values: 985dac8a8e350512a1d9bbe8f472e56d6954eee4188e446dfc91065706b9bf5ac972fff19715221d8d3d7548cf387954cfa81a4fcf59853267e94ad16bebc212f90c5b8e44e410334cdc3537bc89756bdf982a1c99f3b06f7f987a3d9f591e7454d7b22038e6f72f38a5588160f4885e34c6ddd030a9446f3f5481286fd2f4347a63af718befc6026e96d9d741039d0fa249ee610b74c848e7013dcb71798d5755081a1f2bba1b3cf10d6df63fcea4342cf8588c2d92740c8dda3ab841ac08660949df1705275210f10ac3289976512c7b5eb3cfc07ca3741d82fa8794ad1e34c8688425b3763b59413209c8251ebb528e273d47840f0d30f67d7c95ae83294552be69ff193a0302fb5a7c37559ca66c62dd7eb1b441a1492937b574b00a6e30abb22c9a0094e01d0439a072ade5e225164bfa82851f3232039e5c3d51687709ddeac9b9258e5c64ce6996c7f46e6f28f093dff3d422ae362b17e373a222146bb1a996c31c28005aa75e50eeb5f926710e854dbe88833401670070f255173e54abd5e9b52853f3186cc5b38a2e407f23e004bc20f08eb6456ecbd5b2c940d0577f9430a99866c47e36e26c3f81f04e78eabc54d67ba1cc5061c3455b03be9562c9d39c2d24590845c93aea0e2176c37d7e5d9d8595a6d321c8e047d520687a0c88308851acdfab443b65614973258d27793c279fa4e40822017af504a1de6630b6f69652ff15295c0ae24a2f4489ae126e6f4e5d8f1ab06dc755aed92b4f195c0031947c8f3b286313ca96c29ad8dd76341c8defd33c3f3058fb745698b0ce46c9ee3013f531835697b1705ab073071178370e47dd08303b903b2a755081033c6622055357367f65611ba7de331b801af462ced0be162340420b5ccea4075815ae33f38d6db3ba51b773e7c160520854bc4581eeb3337e50023aeeb4254f3e678c427398f1f17840598378cd011a5e6b13b0125e8669627a4c5c71585d91886636804da3c5a04635cc414637ac4c5119247c38299d621222e0f8e44d62d09e39f7a424d0e838941f2914084e73b9b357
 --- !u!1 &5010003699079719547
 GameObject:
   m_ObjectHideFlags: 0

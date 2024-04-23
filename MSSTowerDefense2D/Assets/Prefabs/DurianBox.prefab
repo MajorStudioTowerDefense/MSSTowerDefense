@@ -704,7 +704,6 @@ Transform:
   - {fileID: 2606767789544531563}
   - {fileID: 4082101884891769501}
   - {fileID: 409507175849002957}
-  - {fileID: 5142197351462272164}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -964,10 +963,8 @@ MonoBehaviour:
     - {fileID: 1114064171964202643}
     - {fileID: 11400000, guid: c868db8ccba8f71448fefe0093a480ee, type: 2}
     - {fileID: 2800000, guid: 93c830765659840478dafc8f059654cf, type: 3}
-    - {fileID: 5142197351462272164}
-    - {fileID: 7226494276659933446}
-    - {fileID: 823667374316268598}
-    _Values: 3a37103484fcac1b3204d4d5203b8a3a0a0db22a9641450f6a6b661027de3b4c766649a6339ffc2db82439042df2ff1ea85e1469e71c7f1dbb1114d0da2e3425c77e35a42e4dbf3ab5303ec84fc984749885068288b4522e722b76ed8f0a1f57d8fa495f5c6b4461f503ebbe43125a0961a790354c19b66498d5ed68ddeb31635c738844580bf902152031ef53d1b2787eb9c6a7da9dff1d89f901d2bad7de664e18bacf094a8f4aa9b00695b1e09b3a434ea1f2d33a9674d3c3056c4cf313031bc30023a82a413fa531ed25b6cc07557114d82999af607ee2e41ab6fb095f552195ac850a288c1fb4643f24714f3725f52edcbce3e0bc74006cead2cbcba5215503581246b3a7437f7577ac83538571bcfb4bb76acee5491bffbf7c52c5081534c07d13472e6a789f59a4d8351af671a2f5bee5d00f307ace901dc1e522d14660deda946ad2cf7cf49ce089e72ddd61bb174faf57a3664da63f6f7c6bf7e06c24997a48a1814d0c09da93f368a6ac1b51df13d48cd3ec21c2bf9d95b14deb76e18425d888eb357585de8c8f1cc34c1c3b028b110858fb42416758dc4f1a117ff6d286f3d92c460ffa455041affb1e323f67e1f8df9a012619bbf71216f4bb4b76e64722b4d0992293719ec8480b4b35f22745eff6e4f90e98fdcbcd12c8993b6d97c80564d64f094acf1347c3ce020dff430d5c44fdfb64ed5f8a09da295b5ec6e4cf1eef321e514668e4bd2bef09209ced3e9035f2280ce7266b326ddb867b3ff0910e8134724d9757066d12306607d104a5045de2dc3f807deb23ea77e623b76823f9da63995f2bdb17f2f96eeb35baadfa00cbe82339746337444ca8c072a651f6ea7b7dae42a5b5164bc58a9478d6e9c817f3ebc732fa4f3128a262434c6d5d416836ad5c2828d7d3d74913661dd37bd20e5dd15a3c19756b2ba9cd3f7e093d3e05760293506f75c03a7659be054ab83af04f18a64508d8c9cca2d8932f37889c2f75ea4f40477ff81bf00c9f305fc840d73e263b74e5eb47dca9e8d60f3dd042a7afcf41785f1122fa33260a3e424b186811d6e919bb37b6dc85a2405f
+    - {fileID: 0}
+    _Values: 3a37103484fcac1b3204d4d5203b8a3a0a0db22a9641450f6a6b661027de3b4c766649a6339ffc2db82439042df2ff1ea85e1469e71c7f1dbb1114d0da2e3425c77e35a42e4dbf3ab5303ec84fc984749885068288b4522e722b76ed8f0a1f57d8fa495f5c6b4461f503ebbe43125a0961a790354c19b66498d5ed68ddeb31635c738844580bf902152031ef53d1b2787eb9c6a7da9dff1d89f901d2bad7de664e18bacf094a8f4aa9b00695b1e09b3a434ea1f2d33a9674d3c3056c4cf313031bc30023a82a413fa531ed25b6cc07557114d82999af607ee2e41ab6fb095f552195ac850a288c1fb4643f24714f3725f52edcbce3e0bc74006cead2cbcba5215503581246b3a7437f7577ac83538571bcfb4bb76acee5491bffbf7c52c5081534c07d13472e6a789f59a4d8351af671a2f5bee5d00f307ace901dc1e522d14660deda946ad2cf7cf49ce089e72ddd61bb174faf57a3664da63f6f7c6bf7e06c24997a48a1814d0c09da93f368a6ac1b51df13d48cd3ec21c2bf9d95b14deb76e18425d888eb357585de8c8f1cc34c1c3b028b110858fb42416758dc4f1a117ff6d286f3d92c460ffa455041affb1e323f67e1f8df9a012619bbf71216f4bb4b76e64722b4d0992293719ec8480b4b35f22745eff6e4f90e98fdcbcd12c8993b6d97c80564d64f094acf1347c3ce020dff430d5c44fdfb64ed5f8a09da295b5ec6e4cf1eef321e514668e4bd2bef09209ced3e9035f2280ce7266b326ddb867b3ff0910e8134724d9757066d12306607d104a5045de2dc3f807deb23ea77e623b76823f9da63995f2bdb17f2f96eeb35baadfa00cbe82339746337444ca8c072a651f6ea7b7dae42a5b5164bc58a9478d6e9c817f3ebc732fa4f3128a262434c6d5d416836ad5c2828d7d3d74913661dd37bd20e5dd15a3c19756b2ba9cd3f7e093d3e05760293506f75c03a7659be054ab83af04f18a64508d8c9cca2d8932f37889c2f75ea4f40477ff81bf00c9f305fc840d73e263b74e5eb47dca9e8d60f3dd042a7afcf41785f1122fa33260a3e
 --- !u!1 &5010003699079719547
 GameObject:
   m_ObjectHideFlags: 0
@@ -1250,64 +1247,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!1 &7226494276659933446
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5142197351462272164}
-  - component: {fileID: 823667374316268598}
-  m_Layer: 9
-  m_Name: InteractionCollider
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5142197351462272164
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7226494276659933446}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4971062859645332144}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &823667374316268598
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7226494276659933446}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!1 &7743418051178745389
 GameObject:
   m_ObjectHideFlags: 0
