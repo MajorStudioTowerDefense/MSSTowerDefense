@@ -169,7 +169,7 @@ public class GameManager : MonoBehaviour
 
     private void ReInitLevel()
     {
-        CustomerGenerator[] customerGenerators = FindObjectsOfType<CustomerGenerator>();
+        PredeterminedCustomerGenerator[] customerGenerators = FindObjectsOfType<PredeterminedCustomerGenerator>();
         if (customerGenerators.Length > 0)
         {
             for (int i = customerGenerators[0].customersList.Count - 1; i >= 0; i--)
