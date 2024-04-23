@@ -40,6 +40,7 @@ public class PlayerInteraction : MonoBehaviour
 
     [Header("Layermasks")]
     public LayerMask interactionLayer;
+    bool onCorrectLayer = false;
 
     enum interactionStage
     {
@@ -54,6 +55,7 @@ public class PlayerInteraction : MonoBehaviour
     }
     private void Update()
     {
+        MouseHoverOnInteractable();
         if(GameManager.instance.currentState == GameStates.END)
         {
             ResetAllAtEndStage();
@@ -515,7 +517,10 @@ public class PlayerInteraction : MonoBehaviour
     void MouseHoverOnInteractable()
     {
         Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+        RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero, interactionLayer);
+        if(hit.collider != null) { onCorrectLayer = true; }
+        else { onCorrectLayer = false; }
+        Debug.Log("on correct layer is "+onCorrectLayer);
 
 
     }
