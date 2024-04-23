@@ -118,7 +118,7 @@ public class ShelfScript : MonoBehaviour
         {
             targetStateIndex = 0; 
         }
-        else if (loadAmount > 0 && loadAmount < loadAmountMax / 2)
+        else if (loadAmount > 0 && loadAmount <= loadAmountMax / 2)
         {
             targetStateIndex = 1; 
         }

@@ -38,6 +38,9 @@ public class PlayerInteraction : MonoBehaviour
     [Header("Employee")]
     public UpgradeSystem upgradeSystem;
 
+    [Header("Layermasks")]
+    public LayerMask interactionLayer;
+
     enum interactionStage
     {
         primary,
@@ -94,6 +97,7 @@ public class PlayerInteraction : MonoBehaviour
             // 重置长按标志，以便下一次检测
             holdLongEnough = false;
         }
+        Debug.Log("current STage is "+currentStage);
     }
     void assignPrimaryTask()
     {
@@ -102,7 +106,7 @@ public class PlayerInteraction : MonoBehaviour
             //如果鼠标左键点击且点到了物体
             if(isMouseButtonDown() && DetectMouseButton() == "Left" && CheckClickTarget()!=null)
             {
-
+                Debug.Log("click");
                 GameObject clicked = CheckClickTarget().gameObject;
                 if (clicked != null)
                 {
@@ -210,7 +214,7 @@ public class PlayerInteraction : MonoBehaviour
             clickedEmployeeForEmployee = clicked.GetComponent<NormalEmployee>();
             clickedEmployeeForEmployee.eStage = employeeStage.isSelected;
         }
-        //如果点击的是货架
+        //如果点击的是货架 
         else if (!EventSystem.current.IsPointerOverGameObject() && clicked.GetComponent<ShelfScript>() != null && clicked.GetComponent<ShelfScript>().loadAllowed)
         {
             //如果当前没有货架被选中则选择当前货架
@@ -465,6 +469,7 @@ public class PlayerInteraction : MonoBehaviour
         mouseUIPrefab.sprite = mouseUIs[index];
     }
 
+
     bool isMouseButtonDown()
     {
         if(Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
@@ -505,6 +510,14 @@ public class PlayerInteraction : MonoBehaviour
             return hit.collider;
         }
         return null;
+    }
+
+    void MouseHoverOnInteractable()
+    {
+        Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+
+
     }
 
     Vector3 PrintMousePosition()
