@@ -40,7 +40,7 @@ public class PlayerInteraction : MonoBehaviour
 
     [Header("Layermasks")]
     public LayerMask interactionLayer;
-    bool onCorrectLayer = false;
+    [SerializeField]bool onCorrectLayer = false;
 
     enum interactionStage
     {
@@ -56,51 +56,20 @@ public class PlayerInteraction : MonoBehaviour
     private void Update()
     {
         MouseHoverOnInteractable();
+        HandleMouseInput();
         if(GameManager.instance.currentState == GameStates.END)
         {
-            ResetAllAtEndStage();
+            //ResetAllAtEndStage();
             return;
         }
-        if (currentStage == interactionStage.primary) { assignPrimaryTask(); }
-        if(currentStage == interactionStage.findTarget) { assignTaskTarget(); }
+       // if (currentStage == interactionStage.primary) { assignPrimaryTask(); }
+        //if(currentStage == interactionStage.findTarget) { assignTaskTarget(); }
 
         
-        // 检测鼠标按下事件
-        if (Input.GetMouseButtonDown(0))
-        {
-            mouseDownTime = Time.time; // 记录按下时刻
-            timerOn = true;
-        }
-
-        // 如果鼠标仍被按下，检查是否达到长按时长
-        if (Input.GetMouseButton(0) && timerOn)
-        {
-            float duration = Time.time - mouseDownTime;
-            if(duration >= 0.3f && duration<holdMouseDuration)
-            {
-                if(mouseUIPrefab.sprite == mouseUIs[0]) { changeMouseUI(3); }
-                
-                mouseUIPrefab.fillAmount = duration/holdMouseDuration;
-            }
-            if (duration >= holdMouseDuration)
-            {
-                mouseUIPrefab.fillAmount = 1;
-                holdLongEnough = true; // 表示鼠标已经按下足够长的时间
-            }
-        }
-
-        // 当鼠标抬起时重置状态，准备下一次检测
-        if (Input.GetMouseButtonUp(0))
-        {
-            if(mouseUIPrefab.sprite == mouseUIs[3]) { changeMouseUI(0); }
-
-            mouseUIPrefab.fillAmount = 1;
-            timerOn = false; // 重置计时器标志
-            // 重置长按标志，以便下一次检测
-            holdLongEnough = false;
-        }
+        
         Debug.Log("current STage is "+currentStage);
     }
+    /**
     void assignPrimaryTask()
     {
         if (GameManager.instance.currentState == GameStates.STORE)
@@ -466,42 +435,14 @@ public class PlayerInteraction : MonoBehaviour
         assignedTask = null;
         shelfPlacementManager.SetCurrentShelfInstance(null);
     }
+    
+
+    **/
+
     void changeMouseUI(int index)
     {
         mouseUIPrefab.sprite = mouseUIs[index];
     }
-
-
-    bool isMouseButtonDown()
-    {
-        if(Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
-        {
-            return true;
-        }
-        return false;
-    }
-
-    string DetectMouseButton()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            timerOn = true;
-            mouseDownTime = Time.time;
-            return "Left";
-        }
-        else if (Input.GetMouseButtonUp(0))
-        {
-            timerOn = false;
-        }
-
-        if (Input.GetMouseButtonDown(1))
-        {
-            return "Right";
-        }
-
-        return null;
-    }
-
     Collider2D CheckClickTarget()
     {
         Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -514,6 +455,70 @@ public class PlayerInteraction : MonoBehaviour
         return null;
     }
 
+    //on correct layer bool
+    #region newCode
+    private void HandleMouseInput()
+    {
+        if (onCorrectLayer)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                StartMouseDownTimer();
+            }
+
+            if (Input.GetMouseButton(0) && timerOn)
+            {
+                CheckHoldDuration();
+            }
+
+            if (Input.GetMouseButtonUp(0))
+            {
+                ResetMouseDownTimer();
+            }
+        }
+
+    }
+
+    private void StartMouseDownTimer()
+    {
+        mouseDownTime = Time.time;
+        timerOn = true;
+    }
+
+    private void CheckHoldDuration()
+    {
+        float duration = Time.time - mouseDownTime;
+        UpdateMouseUI(duration);
+        if (duration >= holdMouseDuration)
+        {
+            holdLongEnough = true;
+        }
+    }
+
+    private void UpdateMouseUI(float duration)
+    {
+        if (duration >= 0.3f && duration < holdMouseDuration)
+        {
+            if (mouseUIPrefab.sprite == mouseUIs[0]) { changeMouseUI(3); }
+
+            mouseUIPrefab.fillAmount = duration / holdMouseDuration;
+        }
+        else if (duration >= holdMouseDuration)
+        {
+            mouseUIPrefab.fillAmount = 1;
+        }
+    }
+
+    private void ResetMouseDownTimer()
+    {
+        if (mouseUIPrefab.sprite == mouseUIs[3]) { changeMouseUI(0); }
+
+        mouseUIPrefab.fillAmount = 1;
+        timerOn = false;
+        holdLongEnough = false;
+    }
+
+    [SerializeField] LayerMask clickedLayerMask;
     void MouseHoverOnInteractable()
     {
         Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -523,16 +528,18 @@ public class PlayerInteraction : MonoBehaviour
         if(hit.collider!=null)
         {
             onCorrectLayer = true;
+            clickedLayerMask = hit.collider.gameObject.layer;
         }
         else
         {
             onCorrectLayer = false;
+            clickedLayerMask = 0;
         }
-        Debug.Log("on correct layer is "+onCorrectLayer);
-        Debug.Log("on hit layer is "+LayerMask.LayerToName(hit.collider.gameObject.layer));
-        Debug.DrawRay(worldPoint, Vector2.zero, Color.red);
+
 
     }
+
+    #endregion
 
     Vector3 PrintMousePosition()
     {
