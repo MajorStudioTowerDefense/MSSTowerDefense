@@ -81,13 +81,13 @@ public class ShelfScript : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         loadAmount = initalLoadAmount;
 
-        loadAmountText = GetComponentInChildren<TextMeshProUGUI>();
+        //loadAmountText = GetComponentInChildren<TextMeshProUGUI>();
         canvas.worldCamera = Camera.main;
 
-        if (loadAmountText == null)
-        {
-            Debug.LogError("TextMeshPro component not found on the child object!");
-        }
+        //if (loadAmountText == null)
+        //{
+        //    Debug.LogError("TextMeshPro component not found on the child object!");
+        //}
 
         threeStates = new List<Sprite[]>();
         threeStates.Add(ShelfManager.Instance.shelfSpritesEmpty);
@@ -104,10 +104,10 @@ public class ShelfScript : MonoBehaviour
         showVisibility();
         DetectAndManageCustomers();
         updateSprite();
-        if (loadAmountText != null)
-        {
-            loadAmountText.text = $"Load Amount: {loadAmount}";
-        }
+        //if (loadAmountText != null)
+        //{
+        //    loadAmountText.text = $"Load Amount: {loadAmount}";
+        //}
     }
 
     void updateSprite()
