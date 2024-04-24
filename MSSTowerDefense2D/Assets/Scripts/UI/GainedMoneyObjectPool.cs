@@ -8,7 +8,8 @@ public class GainedMoneyObjectPool : MonoBehaviour
     public List<GameObject> pooledObjects;
     public GameObject objectToPool;
     public int amountToPool;
-
+    public AudioSource cashier;
+    
     void Awake()
     {
         SharedInstance = this;

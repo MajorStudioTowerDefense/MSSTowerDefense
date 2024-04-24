@@ -16,7 +16,7 @@ namespace ES3Types
 		{
 			var instance = (NormalEmployee)obj;
 			
-			writer.WritePropertyByRef("Walking", instance.Walking);
+			writer.WritePropertyByRef("Walking", instance.EmployeeWalking);
 			writer.WriteProperty("isCarrying", instance.isCarrying, ES3Type_bool.Instance);
 			writer.WriteProperty("carryMax", instance.carryMax, ES3Type_int.Instance);
 			writer.WriteProperty("carryCount", instance.carryCount, ES3Type_int.Instance);
@@ -48,7 +48,7 @@ namespace ES3Types
 				{
 					
 					case "Walking":
-						instance.Walking = reader.Read<UnityEngine.AudioClip>(ES3Type_AudioClip.Instance);
+						instance.EmployeeWalking = reader.Read<UnityEngine.AudioClip>(ES3Type_AudioClip.Instance);
 						break;
 					case "isCarrying":
 						instance.isCarrying = reader.Read<System.Boolean>(ES3Type_bool.Instance);
