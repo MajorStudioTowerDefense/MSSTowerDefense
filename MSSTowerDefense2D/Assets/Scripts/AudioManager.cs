@@ -16,8 +16,8 @@ public class AudioManager : MonoBehaviour
     //Assigning certain sounds to play for a limited amount of time
     private void Start()
     {
-        audioSources = new() {audioSource1, audioSource2};
-        //audioSource1.clip = Ticking;
+       
+        audioSource1.volume = 0.7f;
         //audioSource2.clip = StartShift;
         allowCheck = true;
         // Start playing music based on the initial time
@@ -90,12 +90,6 @@ public class AudioManager : MonoBehaviour
         {
             StopAllSounds();
             allowCheck = true;
-        }
-        else if (GameManager.instance.currentState == GameStates.PREP & allowCheck)
-        {
-            audioSource1.Play();
-            allowCheck = false;
-            Debug.Log("audio1");
         }
         else if (GameManager.instance.currentState == GameStates.STORE && !allowCheck)
         {

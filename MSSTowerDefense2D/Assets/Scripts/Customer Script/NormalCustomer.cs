@@ -27,7 +27,8 @@ public class NormalCustomer : Bot
     public float maxPatience = 30f;
     private float patience;
     public SpriteRenderer patienceSpriteRenderer;
-
+    public AudioClip StartShift;
+    public AudioSource audioSource;
     void Start()
     {
         base.init();
