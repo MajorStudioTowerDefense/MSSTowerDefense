@@ -17,7 +17,7 @@ public class CharacterTurning : MonoBehaviour
     void Start()
     {
         thisRenderer = GetComponent<SpriteRenderer>();
-        path = GetComponent<IAstarAI>();
+        path = GetComponentInParent<IAstarAI>();
         right = new Vector3(-1, 1, 1);
         left = Vector3.one;
     }
