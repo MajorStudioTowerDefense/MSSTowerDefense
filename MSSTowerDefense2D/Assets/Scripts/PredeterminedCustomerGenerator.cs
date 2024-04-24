@@ -15,7 +15,8 @@ public class PredeterminedCustomerGenerator : MonoBehaviour
     private bool isShopOpened = false;
     private bool allowNewList = true; //bool to only generate list once;
 
-    public int numBeard, numRhino, numElf; //number of objects upcoming in predList
+    public int numHalfling, numRhino, numElf; //number of objects upcoming in predList
+    private IncomingCustomers incCustomersScript;
 
     public List<GameObject> customersList = new List<GameObject>();
     public List<GameObject> predeterminedCustomersList = new List<GameObject>();
@@ -23,17 +24,22 @@ public class PredeterminedCustomerGenerator : MonoBehaviour
 
     void Update()
     {
+        incCustomersScript = GameObject.Find("Customer Info").GetComponent<IncomingCustomers>();
+
         maxGenerateDelay = 120 / maxCustomers;
         minGenerateDelay = maxGenerateDelay / 2;
 
 
         if (GameManager.instance.currentState == GameStates.PREP && allowNewList == true)
         {
-            numBeard = 0;
+            numHalfling = 0;
             numRhino = 0;
             numElf = 0;
             GenerateCustomers();
             allowNewList = false;
+            incCustomersScript.halfling.text = numHalfling.ToString();
+            incCustomersScript.rhino.text = numRhino.ToString();
+            incCustomersScript.elf.text = numElf.ToString();
         }
         else if (GameManager.instance.currentState == GameStates.END)
         {
@@ -68,7 +74,7 @@ public class PredeterminedCustomerGenerator : MonoBehaviour
                 {
                     customerPrefab = customerPrefabs[0];
                     predeterminedCustomersList.Add(customerPrefab);
-                    numBeard++;
+                    numHalfling++;
                 }
                 else if (chance < 0.8f) //some more for the middle one cuz I added the third final customer sry if i leave the rest of the commented numbers wrong
                 {
@@ -87,7 +93,7 @@ public class PredeterminedCustomerGenerator : MonoBehaviour
             {
                 customerPrefab = customerPrefabs[0];
                 predeterminedCustomersList.Add(customerPrefab);
-                numBeard++;
+                numHalfling++;
             }
         }
        
