@@ -3,7 +3,20 @@ guid: 8e73ce38e9a4d42649649ec536b9a1db
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - F1: {fileID: 4971062859645332145, guid: 74bcaef7db9a3e14dbd95f9342c98a5c, type: 3}
+  - F2: {fileID: 4971062859645332145, guid: d8fc89b9f54a5a8449521019a4ea0ab1, type: 3}
+  - F3: {fileID: 4971062859645332145, guid: ee2cafccec825d240880cdba70d597d0, type: 3}
+  - W1: {fileID: 4971062859645332145, guid: bdd0364e43923744e8a98f6306509a6a, type: 3}
+  - W2: {fileID: 4971062859645332145, guid: 8fc4fb534cb5cbc4e8539d3024ade9b0, type: 3}
+  - W3: {fileID: 4971062859645332145, guid: 6c9eb62c35f276144badc432b74f2026, type: 3}
+  - P1: {fileID: 4971062859645332145, guid: f0535af4c6ac66740adbab2ac8c48144, type: 3}
+  - P2: {fileID: 4971062859645332145, guid: 42f40bf855631e44b9fbdc14a6431a86, type: 3}
+  - P3: {fileID: 4971062859645332145, guid: 9a1066b6771c88f4e9f2e159ff696385, type: 3}
+  - T1: {fileID: 4971062859645332145, guid: f0403e05fbe9a2e40a5995e4fc02630d, type: 3}
+  - T2: {fileID: 4971062859645332145, guid: f131f9f65e9ad0d4b9ecdca2c4723c63, type: 3}
+  - T3: {fileID: 4971062859645332145, guid: f1ab539f1a94ec048b56518869bf9d58, type: 3}
+  - ToDisable: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
