@@ -64,24 +64,7 @@ public class ShelfPlacementManager : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(0))
         {
-            
-            if (shelfBeingRepositioned != null)
-            {
-                Debug.Log("Mouse Down");
-                // Finalize repositioning if within grid
-                Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                mousePos.z = 0;
-                int x, y;
-                gridSystem.GetXY(mousePos, out x, out y);
-                Debug.Log("grid pos x is "+x+"pos y is "+y);
-                Debug.Log("is within grid"+IsWithinGrid(x, y));
-                if (IsWithinGrid(x, y))
-                {
-                    shelfBeingRepositioned = null;
-                }
- 
-            }
-            else if (currentShelfInstance != null)
+            if (currentShelfInstance != null && shelfBeingRepositioned==null)
             {
                 // Finalize initial placement if within grid
                 FinalizePlacement();
@@ -159,6 +142,7 @@ public class ShelfPlacementManager : MonoBehaviour
         if (playerInteraction.longHoldGameObject!=null && playerInteraction.longHoldGameObject.GetComponent<ShelfScript>() != null)
         {
             shelfBeingRepositioned = playerInteraction.longHoldGameObject;
+            setPreviousPosInGrid();
             Debug.Log("Shelf selected for repositioning."+shelfBeingRepositioned.name);
         }
     }
@@ -222,6 +206,14 @@ public class ShelfPlacementManager : MonoBehaviour
         }
     }
 
+    Vector2Int prevPositionForRepo;
+    void setPreviousPosInGrid()
+    {
+        // Find the previous position of the shelf being repositioned
+        int prevX, prevY;
+        gridSystem.GetXY(shelfBeingRepositioned.transform.position, out prevX, out prevY);
+        prevPositionForRepo = new Vector2Int(prevX, prevY);
+    }
     public void RepositionShelfAvoidOverlap()
     {
         Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -230,32 +222,33 @@ public class ShelfPlacementManager : MonoBehaviour
         int x, y;
         gridSystem.GetXY(mouseWorldPosition, out x, out y);
         Vector2Int position = new Vector2Int(x, y);
-
         // First, check if the new position is within the grid and not occupied
         if (IsWithinGrid(x, y) && GameManager.instance.shelfPlacementGrid.TryGetValue(position, out bool canPlace))
         {
             
-            // Find the previous position of the shelf being repositioned
-            int prevX, prevY;
-            gridSystem.GetXY(shelfBeingRepositioned.transform.position, out prevX, out prevY);
-            Vector2Int prevPosition = new Vector2Int(prevX, prevY);
 
             // Update the shelf's position to the corresponding grid position
             Vector3 gridPosition = gridSystem.GetWorldPosition(x, y);
             shelfBeingRepositioned.transform.position = gridPosition;
 
-            // Update the shelf placement grid: mark the new position as occupied and the previous one as free
-            if (IsWithinGrid(prevX, prevY))
+            if (Input.GetMouseButtonDown(0))
             {
-                if (GameManager.instance.shelfPlacementGrid.ContainsKey(prevPosition))
+                // Update the shelf placement grid: mark the new position as occupied and the previous one as free
+                if (GameManager.instance.shelfPlacementGrid.ContainsKey(prevPositionForRepo))
                 {
-                    GameManager.instance.shelfPlacementGrid[prevPosition] = false;
+                    GameManager.instance.shelfPlacementGrid[prevPositionForRepo] = true; // Mark the previous position as free
                 }
+                
+                GameManager.instance.shelfPlacementGrid[position] = false; // Mark the new position as occupied
+                shelfBeingRepositioned = null;
+                Debug.Log("Shelf moved from " + prevPositionForRepo + " to " + position);
+                //if (GameManager.instance.shelfPlacementGrid.ContainsKey(prevPosition))
+                //{
+                //    GameManager.instance.shelfPlacementGrid[prevPosition] = false;
+                //}
             }
-            if (GameManager.instance.shelfPlacementGrid.ContainsKey(prevPosition))
-            {
-                GameManager.instance.shelfPlacementGrid[prevPosition] = false;
-            }
+
+
         }
     }
 
