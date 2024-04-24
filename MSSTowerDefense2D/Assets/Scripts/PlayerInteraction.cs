@@ -15,7 +15,7 @@ public class PlayerInteraction : MonoBehaviour
     public float holdMouseDuration = 1f;
     [SerializeField]private bool holdLongEnough = false;
 
-    delegate void AssignTaskDelegate(Collider2D clickedCol);
+    delegate void AssignTaskDelegate(GameObject chosen);
     AssignTaskDelegate assignedTask;
 
     interactionStage currentStage = interactionStage.primary;
@@ -26,7 +26,7 @@ public class PlayerInteraction : MonoBehaviour
 
     [Header("clickedGameObject")]
     [SerializeField] private NormalEmployee EmployeeChosenInPrimaryTask;
-    [SerializeField] private ShelfScript clickedShelfForEmployee;
+    [SerializeField] private ShelfScript shelfChosenForReload;
     [SerializeField] private ShelfScript ShelfChosenInPrimaryTask;
 
 
@@ -63,7 +63,7 @@ public class PlayerInteraction : MonoBehaviour
             return;
         }
         if (currentStage == interactionStage.primary) { assignPrimaryTask(); }
-        //if(currentStage == interactionStage.findTarget) { assignTaskTarget(); }
+        if(currentStage == interactionStage.findTarget) { assignTaskTarget(); }
 
         
         
@@ -97,7 +97,7 @@ public class PlayerInteraction : MonoBehaviour
                                 changeMouseUI(1);
                             }
                             currentStage = interactionStage.findTarget;
-                            //assignedTask = assignTaskTargetForEmployee;
+                            assignedTask = assignTaskTargetForEmployee;
                         }
                             
                     }
@@ -137,13 +137,13 @@ public class PlayerInteraction : MonoBehaviour
         }
     }
 
-    /**
+
     //该程序选择任务目标
     void assignTaskTarget()
     {
 
         //如果点击右键,则取消当前行为
-        if(DetectMouseButton() == "Right")
+        if(Input.GetMouseButtonDown(1))
         {
             Debug.Log("cancel");
             currentStage = interactionStage.primary;
@@ -151,32 +151,42 @@ public class PlayerInteraction : MonoBehaviour
             return;
         }
         //如果点击的是左键，则为任务选择目标
-        if(DetectMouseButton() == "Left")
+        if(Input.GetMouseButtonDown(0))
         {
             if(assignedTask!=null)
             {
-                assignedTask(CheckClickTarget());
+                if (hoverGameObject != null)
+                {
+                    assignedTask(hoverGameObject);
+                }
+                else if(!IsClickOverButton())
+                {
+                    currentStage = interactionStage.primary;
+                    resetEverythingToDefault();
+                    return;
+                }
+                
                 
             }
         }
-
+        
+        /*
         if (assignedTask == assignTaskTargetForShelf && shelfPlacementManager.GetCurrentShelfInstance()!=null)
         {
             
             shelfPlacementManager.SnapShelfToGridAvoidOverlap();
-        }
+        }*/
         
     }
 
-    /**
     [SerializeField] Button[] shelfStockButtons;
     //员工执行任务时所分配的目标
-    void assignTaskTargetForEmployee(Collider2D clickedCol)
+    void assignTaskTargetForEmployee(GameObject clicked)
     {
-        if (clickedCol == null) { return; }
-        GameObject clicked = clickedCol.gameObject;
+        if (clicked == null) { return; }
+        
         //如果点击的是员工
-        if (clicked.GetComponent<NormalEmployee>() != null)
+        if (clicked.tag=="Employee")
         {
             //清除当前员工状态
             EmployeeChosenInPrimaryTask.eStage = employeeStage.standBy;
@@ -186,27 +196,27 @@ public class PlayerInteraction : MonoBehaviour
             EmployeeChosenInPrimaryTask.eStage = employeeStage.isSelected;
         }
         //如果点击的是货架 
-        else if (!EventSystem.current.IsPointerOverGameObject() && clicked.GetComponent<ShelfScript>() != null && clicked.GetComponent<ShelfScript>().loadAllowed)
+        else if (!IsClickOverButton() && clicked.tag=="interactedShelf" && clicked.GetComponent<ShelfScript>().loadAllowed)
         {
             //如果当前没有货架被选中则选择当前货架
-            if(clickedShelfForEmployee == null) { clickedShelfForEmployee = clicked.GetComponent<ShelfScript>(); }
+            if(shelfChosenForReload == null) { shelfChosenForReload = clicked.GetComponent<ShelfScript>(); }
             //如果点击的货架不是当前选中的货架，则关闭按钮后切换货架
-            else if(clickedShelfForEmployee != clicked.GetComponent<ShelfScript>())
+            else if(shelfChosenForReload != clicked.GetComponent<ShelfScript>())
             {
                 Debug.Log("switch shelf");
-                foreach (Button button in clickedShelfForEmployee.GetComponentsInChildren<Button>(true))
+                foreach (Button button in shelfChosenForReload.GetComponentsInChildren<Button>(true))
                 {
                     button.onClick.RemoveAllListeners();
                     button.gameObject.SetActive(false);
                 }
-                clickedShelfForEmployee = clicked.GetComponent<ShelfScript>();
+                shelfChosenForReload = clicked.GetComponent<ShelfScript>();
             }
             
             
-            shelfStockButtons = clickedShelfForEmployee.GetComponentsInChildren<Button>(true);
+            shelfStockButtons = shelfChosenForReload.GetComponentsInChildren<Button>(true);
 
             //如果货架上没有物品则显示三个按钮
-            if(clickedShelfForEmployee.loadAmount == 0)
+            if(shelfChosenForReload.loadAmount == 0)
             {
                 for (int i = 0; i < shelfStockButtons.Length; i++)
                 {
@@ -214,7 +224,7 @@ public class PlayerInteraction : MonoBehaviour
                     button.gameObject.SetActive(true);
                     button.onClick.RemoveAllListeners();
                     //根据不同货架类型显示不同的物品
-                    shelvesType type = clickedShelfForEmployee.thisType;
+                    shelvesType type = shelfChosenForReload.thisType;
                     foreach(Transform child in button.transform)
                     {
                         Image image = child.GetComponent<Image>();
@@ -236,7 +246,7 @@ public class PlayerInteraction : MonoBehaviour
                     }
                     
                     button.GetComponent<RectTransform>().anchoredPosition = new Vector2(-80 + i*80f, 110.4f);
-                    goods product = clickedShelfForEmployee.itemsCanBeSold[i].GetItem();
+                    goods product = shelfChosenForReload.itemsCanBeSold[i].GetItem();
                     button.onClick.AddListener(() => OnButtonClick(product));
                 }
             }
@@ -254,7 +264,7 @@ public class PlayerInteraction : MonoBehaviour
                         foreach(Transform child in button.transform)
                         {
                             Image image = child.GetComponent<Image>();
-                            image.sprite = ItemManager.Instance.shelfItemSprites[(int)clickedShelfForEmployee.sellingItem.GetItem()];
+                            image.sprite = ItemManager.Instance.shelfItemSprites[(int)shelfChosenForReload.sellingItem.GetItem()];
                         }
                         
                     }else if (i != 0)
@@ -262,7 +272,7 @@ public class PlayerInteraction : MonoBehaviour
                         button.gameObject.SetActive(false);
                     }
                     
-                    button.onClick.AddListener(() => OnButtonClick(clickedShelfForEmployee.sellingItem.GetItem()));
+                    button.onClick.AddListener(() => OnButtonClick(shelfChosenForReload.sellingItem.GetItem()));
                 }
             }
             
@@ -273,11 +283,12 @@ public class PlayerInteraction : MonoBehaviour
     public void OnButtonClick(goods product)
     {
         EmployeeChosenInPrimaryTask.eAction = employeeAction.reload;
-        EmployeeChosenInPrimaryTask.reloadShelf(clickedShelfForEmployee,product);
+        EmployeeChosenInPrimaryTask.reloadShelf(shelfChosenForReload,product);
         
         resetSomethingToDefault();
     }
 
+    /*
     public TextMeshProUGUI warningText;
     //货架放置时所分配的目标
     void assignTaskTargetForShelf(Collider2D clickedCol) 
@@ -305,6 +316,7 @@ public class PlayerInteraction : MonoBehaviour
         resetEverythingToDefault();
 
     }
+    */
 
     //重置某些状态至默认,选择完target后使用
     void resetSomethingToDefault()
@@ -325,13 +337,14 @@ public class PlayerInteraction : MonoBehaviour
                 EmployeeChosenInPrimaryTask = null;
                 
             }
-            if(clickedShelfForEmployee != null)
+            if(shelfChosenForReload != null)
             {
-                clickedShelfForEmployee = null;
+                shelfChosenForReload = null;
             }
             changeMouseUI(0);
             currentStage = interactionStage.primary;
         }
+        /*
         if (assignedTask == assignTaskTargetForShelf)
         {
             if (ShelfChosenInPrimaryTask != null)
@@ -345,7 +358,7 @@ public class PlayerInteraction : MonoBehaviour
             changeMouseUI(0);
             assignedTask = null;
             shelfPlacementManager.SetCurrentShelfInstance(null);
-        }
+        }*/
     }
 
     //重置所有状态至默认,取消选项时使用
@@ -369,13 +382,13 @@ public class PlayerInteraction : MonoBehaviour
                 }
                 shelfStockButtons = null;
             }
-            if(clickedShelfForEmployee != null)
+            if(shelfChosenForReload != null)
             {
-                clickedShelfForEmployee = null;
+                shelfChosenForReload = null;
             }
             assignedTask = null;
         }
-
+        /*
         if(assignedTask == assignTaskTargetForShelf)
         {
             if(ShelfChosenInPrimaryTask != null)
@@ -391,7 +404,7 @@ public class PlayerInteraction : MonoBehaviour
             changeMouseUI(0);
             assignedTask = null;
             shelfPlacementManager.SetCurrentShelfInstance(null);
-        }
+        }*/
     }
 
     private void ResetAllAtEndStage()
@@ -412,9 +425,9 @@ public class PlayerInteraction : MonoBehaviour
             }
             shelfStockButtons = null;
         }
-        if (clickedShelfForEmployee != null)
+        if (shelfChosenForReload != null)
         {
-            clickedShelfForEmployee = null;
+            shelfChosenForReload = null;
         }
         if (ShelfChosenInPrimaryTask != null)
         {
@@ -437,7 +450,7 @@ public class PlayerInteraction : MonoBehaviour
     }
     
 
-    **/
+    
 
     void changeMouseUI(int index)
     {
@@ -476,8 +489,6 @@ public class PlayerInteraction : MonoBehaviour
             }
         }
         
-        
-
     }
 
     private void StartMouseDownTimer()
@@ -547,6 +558,26 @@ public class PlayerInteraction : MonoBehaviour
     public bool getHoldLongEnough()
     {
         return holdLongEnough;
+    }
+
+    bool IsClickOverButton()
+    {
+        // 创建一个新的 PointerEventData 实例
+        PointerEventData pointerData = new PointerEventData(EventSystem.current) { position = Input.mousePosition };
+
+        // 创建一个用于接收结果的 RaycastResult 列表
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(pointerData, results);
+
+        // 检查结果，查找带有 Button 组件的游戏对象
+        foreach (RaycastResult result in results)
+        {
+            if (result.gameObject.GetComponent<Button>() != null)
+            {
+                return true; // 发现一个实际的 Button 元素
+            }
+        }
+        return false; // 没有发现任何 Button 元素
     }
 
     #endregion

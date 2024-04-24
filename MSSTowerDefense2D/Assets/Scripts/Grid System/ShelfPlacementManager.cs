@@ -40,7 +40,7 @@ public class ShelfPlacementManager : MonoBehaviour
         playerInteraction = this.gameObject.GetComponent<PlayerInteraction>();
     }
 
-
+    bool stageChangedFromPrepToStore = false;
     private void Update()
     {
         alternativeAreaWidth = GameManager.instance.alternativeAreaWidth;
@@ -50,6 +50,21 @@ public class ShelfPlacementManager : MonoBehaviour
 
         if (GameManager.instance.currentState != GameStates.PREP)
         {
+            if(GameManager.instance.currentState == GameStates.STORE && !stageChangedFromPrepToStore)
+            {
+                stageChangedFromPrepToStore = true;
+                if (currentShelfInstance != null && shelfBeingRepositioned == null)
+                {
+                    // Finalize initial placement if within grid
+                    FinalizePlacement();
+                    AudioManager.instance.PlaySound(ShelfPlaced);
+                }
+                if (shelfBeingRepositioned != null)
+                {
+                    RepositionShelfAvoidOverlap(stageChangedFromPrepToStore);
+                }
+
+            }
             return;
         }
 
@@ -239,6 +254,44 @@ public class ShelfPlacementManager : MonoBehaviour
                     GameManager.instance.shelfPlacementGrid[prevPositionForRepo] = true; // Mark the previous position as free
                 }
                 
+                GameManager.instance.shelfPlacementGrid[position] = false; // Mark the new position as occupied
+                shelfBeingRepositioned = null;
+                Debug.Log("Shelf moved from " + prevPositionForRepo + " to " + position);
+                //if (GameManager.instance.shelfPlacementGrid.ContainsKey(prevPosition))
+                //{
+                //    GameManager.instance.shelfPlacementGrid[prevPosition] = false;
+                //}
+            }
+
+
+        }
+    }
+
+    public void RepositionShelfAvoidOverlap(bool turn)
+    {
+        Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mouseWorldPosition.z = 0; // Ensure it's in the 2D plane for a 2D game
+
+        int x, y;
+        gridSystem.GetXY(mouseWorldPosition, out x, out y);
+        Vector2Int position = new Vector2Int(x, y);
+        // First, check if the new position is within the grid and not occupied
+        if (IsWithinGrid(x, y) && GameManager.instance.shelfPlacementGrid.TryGetValue(position, out bool canPlace))
+        {
+
+
+            // Update the shelf's position to the corresponding grid position
+            Vector3 gridPosition = gridSystem.GetWorldPosition(x, y);
+            shelfBeingRepositioned.transform.position = gridPosition;
+
+            if (turn)
+            {
+                // Update the shelf placement grid: mark the new position as occupied and the previous one as free
+                if (GameManager.instance.shelfPlacementGrid.ContainsKey(prevPositionForRepo))
+                {
+                    GameManager.instance.shelfPlacementGrid[prevPositionForRepo] = true; // Mark the previous position as free
+                }
+
                 GameManager.instance.shelfPlacementGrid[position] = false; // Mark the new position as occupied
                 shelfBeingRepositioned = null;
                 Debug.Log("Shelf moved from " + prevPositionForRepo + " to " + position);
