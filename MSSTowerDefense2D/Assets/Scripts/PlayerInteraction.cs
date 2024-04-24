@@ -13,7 +13,7 @@ public class PlayerInteraction : MonoBehaviour
     private float mouseDownTime;
     private bool timerOn = false;
     public float holdMouseDuration = 1f;
-    private bool holdLongEnough = false;
+    [SerializeField]private bool holdLongEnough = false;
 
     delegate void AssignTaskDelegate(Collider2D clickedCol);
     AssignTaskDelegate assignedTask;
@@ -25,9 +25,9 @@ public class PlayerInteraction : MonoBehaviour
     public Image mouseUIPrefab;
 
     [Header("clickedGameObject")]
-    [SerializeField] private NormalEmployee clickedEmployeeForEmployee;
+    [SerializeField] private NormalEmployee EmployeeChosenInPrimaryTask;
     [SerializeField] private ShelfScript clickedShelfForEmployee;
-    [SerializeField] private ShelfScript clickedShelfForShelf;
+    [SerializeField] private ShelfScript ShelfChosenInPrimaryTask;
 
 
     [Header("ShelfPlacementManager")]
@@ -44,7 +44,7 @@ public class PlayerInteraction : MonoBehaviour
 
     enum interactionStage
     {
-        primary,
+        primary = 0,
         findTarget
     }
 
@@ -62,55 +62,48 @@ public class PlayerInteraction : MonoBehaviour
             //ResetAllAtEndStage();
             return;
         }
-       // if (currentStage == interactionStage.primary) { assignPrimaryTask(); }
+        if (currentStage == interactionStage.primary) { assignPrimaryTask(); }
         //if(currentStage == interactionStage.findTarget) { assignTaskTarget(); }
 
         
         
         Debug.Log("current STage is "+currentStage);
     }
-    /**
+    
     void assignPrimaryTask()
     {
         if (GameManager.instance.currentState == GameStates.STORE)
         {
             //如果鼠标左键点击且点到了物体
-            if(isMouseButtonDown() && DetectMouseButton() == "Left" && CheckClickTarget()!=null)
+            //If mose left click and clicked on interacted object
+            if(Input.GetMouseButtonDown(0) && onCorrectLayer)
             {
-                Debug.Log("click");
-                GameObject clicked = CheckClickTarget().gameObject;
+                GameObject clicked = hoverGameObject;
                 if (clicked != null)
                 {
-                    ////如果点击的是bot脚本携带者
-                    ////if clicked is a bot script carrier
-                    if (clicked.GetComponent<Bot>() != null)
+                    //如果点击的是员工
+                    //if clicked is an employee
+                    if(clicked.tag == "Employee")
                     {
-                        Bot clickedBot = clicked.GetComponent<Bot>();
-                        //如果点击的是员工
-                        //if clicked is an employee
-                        if(clickedBot.tags == BotTags.employee)
+                        EmployeeChosenInPrimaryTask = clicked.GetComponent<NormalEmployee>();
+                        //如果员工处于standBy状态
+                        //if the employee is in standBy state
+                        if (EmployeeChosenInPrimaryTask.eStage == employeeStage.standBy)
                         {
-                            clickedEmployeeForEmployee = clicked.GetComponent<NormalEmployee>();
-                            //如果员工处于standBy状态
-                            //if the employee is in standBy state
-                            if (clickedEmployeeForEmployee.eStage == employeeStage.standBy)
-                            {
                                 
-                                clickedEmployeeForEmployee.eStage = employeeStage.isSelected;
-                                if(mouseUIs.Length > 0)
-                                {
-                                    changeMouseUI(1);
-                                }
-                                currentStage = interactionStage.findTarget;
-                                assignedTask = assignTaskTargetForEmployee;
+                            EmployeeChosenInPrimaryTask.eStage = employeeStage.isSelected;
+                            if(mouseUIs.Length > 0)
+                            {
+                                changeMouseUI(1);
                             }
-                            
+                            currentStage = interactionStage.findTarget;
+                            //assignedTask = assignTaskTargetForEmployee;
                         }
-                        
+                            
                     }
                     ////如果点击的是货架
                     ////if clicked is a shelf
-                    if(clicked.GetComponent<ShelfScript>() != null)
+                    if (clicked.tag == "interactedShelf")
                     {
                         Debug.Log("shelf clicked");
                         //单次点击目前没有功能
@@ -118,27 +111,33 @@ public class PlayerInteraction : MonoBehaviour
                 }
             }
             //如果鼠标长按并释放且点到了shelf
-            else if(holdLongEnough && CheckClickTarget().GetComponent<ShelfScript>() != null  && CheckClickTarget().GetComponent<ShelfScript>().loadAllowed)
+            else if(holdLongEnough && longHoldGameObject!=null  && longHoldGameObject.tag == "interactedShelf" && longHoldGameObject.GetComponent<ShelfScript>().loadAllowed)
             {
-                GameObject clicked = CheckClickTarget().gameObject;
+                GameObject clicked = longHoldGameObject;
                 Debug.Log("hold long enough");
-                clickedShelfForShelf = clicked.GetComponent<ShelfScript>();
-                clickedShelfForShelf.loadAllowed = false;
+                ShelfChosenInPrimaryTask = clicked.GetComponent<ShelfScript>();
+                if(ShelfChosenInPrimaryTask.loadAmount == ShelfChosenInPrimaryTask.loadAmountMax)
+                {
+                    Debug.Log("shelf full");
+                    return;
+                }/**
+                ShelfChosenInPrimaryTask.loadAllowed = false;
                 currentStage = interactionStage.findTarget;
                 assignedTask = assignTaskTargetForShelf;
                 shadowShelf = Instantiate(shadowShelfPrefab, PrintMousePosition(), Quaternion.identity);
-                shadowShelf.GetComponent<SpriteRenderer>().sprite = clickedShelfForShelf.GetComponent<SpriteRenderer>().sprite;
-                clickedShelfForShelf.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.5f);
-                clickedShelfForShelf.gameObject.tag = "interactedShelf";
+                shadowShelf.GetComponent<SpriteRenderer>().sprite = ShelfChosenInPrimaryTask.GetComponent<SpriteRenderer>().sprite;
+                ShelfChosenInPrimaryTask.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.5f);
+                ShelfChosenInPrimaryTask.gameObject.tag = "interactedShelf";
                 shelfPlacementManager.SetCurrentShelfInstance(shadowShelf);
                 if (mouseUIs.Length > 0)
                 {
                     changeMouseUI(2);
-                }
+                }**/
             }
         }
     }
 
+    /**
     //该程序选择任务目标
     void assignTaskTarget()
     {
@@ -169,6 +168,7 @@ public class PlayerInteraction : MonoBehaviour
         
     }
 
+    /**
     [SerializeField] Button[] shelfStockButtons;
     //员工执行任务时所分配的目标
     void assignTaskTargetForEmployee(Collider2D clickedCol)
@@ -179,11 +179,11 @@ public class PlayerInteraction : MonoBehaviour
         if (clicked.GetComponent<NormalEmployee>() != null)
         {
             //清除当前员工状态
-            clickedEmployeeForEmployee.eStage = employeeStage.standBy;
-            clickedEmployeeForEmployee.eAction = employeeAction.noAction;
+            EmployeeChosenInPrimaryTask.eStage = employeeStage.standBy;
+            EmployeeChosenInPrimaryTask.eAction = employeeAction.noAction;
             //切换至新点击员工并改变其状态
-            clickedEmployeeForEmployee = clicked.GetComponent<NormalEmployee>();
-            clickedEmployeeForEmployee.eStage = employeeStage.isSelected;
+            EmployeeChosenInPrimaryTask = clicked.GetComponent<NormalEmployee>();
+            EmployeeChosenInPrimaryTask.eStage = employeeStage.isSelected;
         }
         //如果点击的是货架 
         else if (!EventSystem.current.IsPointerOverGameObject() && clicked.GetComponent<ShelfScript>() != null && clicked.GetComponent<ShelfScript>().loadAllowed)
@@ -272,8 +272,8 @@ public class PlayerInteraction : MonoBehaviour
 
     public void OnButtonClick(goods product)
     {
-        clickedEmployeeForEmployee.eAction = employeeAction.reload;
-        clickedEmployeeForEmployee.reloadShelf(clickedShelfForEmployee,product);
+        EmployeeChosenInPrimaryTask.eAction = employeeAction.reload;
+        EmployeeChosenInPrimaryTask.reloadShelf(clickedShelfForEmployee,product);
         
         resetSomethingToDefault();
     }
@@ -291,7 +291,7 @@ public class PlayerInteraction : MonoBehaviour
             {
                 employee.eAction = employeeAction.moveShelf;
                 employee.eStage = employeeStage.isSelected;
-                employee.moveShelf(clickedShelfForShelf,shadowShelf);
+                employee.moveShelf(ShelfChosenInPrimaryTask,shadowShelf);
                 currentStage = interactionStage.primary;
                 resetSomethingToDefault();
                 return;
@@ -320,9 +320,9 @@ public class PlayerInteraction : MonoBehaviour
                 }
                 shelfStockButtons = null;
             }
-            if(clickedEmployeeForEmployee != null)
+            if(EmployeeChosenInPrimaryTask != null)
             {
-                clickedEmployeeForEmployee = null;
+                EmployeeChosenInPrimaryTask = null;
                 
             }
             if(clickedShelfForEmployee != null)
@@ -334,9 +334,9 @@ public class PlayerInteraction : MonoBehaviour
         }
         if (assignedTask == assignTaskTargetForShelf)
         {
-            if (clickedShelfForShelf != null)
+            if (ShelfChosenInPrimaryTask != null)
             {
-                clickedShelfForShelf = null;
+                ShelfChosenInPrimaryTask = null;
             }
             if (shadowShelf != null)
             {
@@ -353,11 +353,11 @@ public class PlayerInteraction : MonoBehaviour
     {
         if(assignedTask == assignTaskTargetForEmployee)
         {
-            if(clickedEmployeeForEmployee != null)
+            if(EmployeeChosenInPrimaryTask != null)
             {
-                clickedEmployeeForEmployee.eStage = employeeStage.standBy;
-                clickedEmployeeForEmployee.eAction = employeeAction.noAction;
-                clickedEmployeeForEmployee = null;
+                EmployeeChosenInPrimaryTask.eStage = employeeStage.standBy;
+                EmployeeChosenInPrimaryTask.eAction = employeeAction.noAction;
+                EmployeeChosenInPrimaryTask = null;
                 changeMouseUI(0);
             }
             if(shelfStockButtons != null)
@@ -378,11 +378,11 @@ public class PlayerInteraction : MonoBehaviour
 
         if(assignedTask == assignTaskTargetForShelf)
         {
-            if(clickedShelfForShelf != null)
+            if(ShelfChosenInPrimaryTask != null)
             {
-                clickedShelfForShelf.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
-                clickedShelfForShelf.loadAllowed = true;
-                clickedShelfForShelf = null;
+                ShelfChosenInPrimaryTask.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+                ShelfChosenInPrimaryTask.loadAllowed = true;
+                ShelfChosenInPrimaryTask = null;
             }
             if(shadowShelf!=null)
             {
@@ -396,11 +396,11 @@ public class PlayerInteraction : MonoBehaviour
 
     private void ResetAllAtEndStage()
     {
-        if (clickedEmployeeForEmployee != null)
+        if (EmployeeChosenInPrimaryTask != null)
         {
-            clickedEmployeeForEmployee.eStage = employeeStage.standBy;
-            clickedEmployeeForEmployee.eAction = employeeAction.noAction;
-            clickedEmployeeForEmployee = null;
+            EmployeeChosenInPrimaryTask.eStage = employeeStage.standBy;
+            EmployeeChosenInPrimaryTask.eAction = employeeAction.noAction;
+            EmployeeChosenInPrimaryTask = null;
             changeMouseUI(0);
         }
         if (shelfStockButtons != null)
@@ -416,11 +416,11 @@ public class PlayerInteraction : MonoBehaviour
         {
             clickedShelfForEmployee = null;
         }
-        if (clickedShelfForShelf != null)
+        if (ShelfChosenInPrimaryTask != null)
         {
-            clickedShelfForShelf.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
-            clickedShelfForShelf.loadAllowed = true;
-            clickedShelfForShelf = null;
+            ShelfChosenInPrimaryTask.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+            ShelfChosenInPrimaryTask.loadAllowed = true;
+            ShelfChosenInPrimaryTask = null;
         }
         if (shadowShelf != null)
         {
@@ -443,39 +443,40 @@ public class PlayerInteraction : MonoBehaviour
     {
         mouseUIPrefab.sprite = mouseUIs[index];
     }
-    Collider2D CheckClickTarget()
-    {
-        Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
-
-        if (hit.collider != null)
-        {
-            return hit.collider;
-        }
-        return null;
-    }
 
     //on correct layer bool
     #region newCode
     private void HandleMouseInput()
     {
-        if (onCorrectLayer)
+        if(currentStage == interactionStage.primary)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (onCorrectLayer)
             {
-                StartMouseDownTimer();
-            }
+                changeMouseUI(4);
+                if(hoverGameObject.tag == "interactedShelf")
+                {
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        StartMouseDownTimer();
+                    }
+                }
 
+            }
             if (Input.GetMouseButton(0) && timerOn)
             {
                 CheckHoldDuration();
             }
-
             if (Input.GetMouseButtonUp(0))
             {
                 ResetMouseDownTimer();
             }
+            if (!timerOn && !onCorrectLayer)
+            {
+                changeMouseUI(0);
+            }
         }
+        
+        
 
     }
 
@@ -483,6 +484,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         mouseDownTime = Time.time;
         timerOn = true;
+        longHoldGameObject = hoverGameObject;
     }
 
     private void CheckHoldDuration()
@@ -492,6 +494,7 @@ public class PlayerInteraction : MonoBehaviour
         if (duration >= holdMouseDuration)
         {
             holdLongEnough = true;
+            
         }
     }
 
@@ -499,7 +502,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (duration >= 0.3f && duration < holdMouseDuration)
         {
-            if (mouseUIPrefab.sprite == mouseUIs[0]) { changeMouseUI(3); }
+            if (mouseUIPrefab.sprite == mouseUIs[4]) { changeMouseUI(3); }
 
             mouseUIPrefab.fillAmount = duration / holdMouseDuration;
         }
@@ -516,9 +519,11 @@ public class PlayerInteraction : MonoBehaviour
         mouseUIPrefab.fillAmount = 1;
         timerOn = false;
         holdLongEnough = false;
+        longHoldGameObject = null;
     }
 
-    [SerializeField] LayerMask clickedLayerMask;
+    [SerializeField] GameObject hoverGameObject;
+    public GameObject longHoldGameObject;
     void MouseHoverOnInteractable()
     {
         Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -528,15 +533,20 @@ public class PlayerInteraction : MonoBehaviour
         if(hit.collider!=null)
         {
             onCorrectLayer = true;
-            clickedLayerMask = hit.collider.gameObject.layer;
+            hoverGameObject = hit.collider.transform.parent.gameObject;
         }
         else
         {
             onCorrectLayer = false;
-            clickedLayerMask = 0;
+            hoverGameObject = null;
         }
 
 
+    }
+
+    public bool getHoldLongEnough()
+    {
+        return holdLongEnough;
     }
 
     #endregion

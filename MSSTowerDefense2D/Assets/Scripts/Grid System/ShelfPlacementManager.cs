@@ -8,7 +8,7 @@ public class ShelfPlacementManager : MonoBehaviour
     public GridSystem gridSystem;
     public GameObject[] shelfPrefabs;
     private GameObject currentShelfPrefab;
-    private GameObject currentShelfInstance;
+    [SerializeField] private GameObject currentShelfInstance;
     private int currentPrefabIndex = -1;
     public GameObject shelfBeingRepositioned = null;
     private Dictionary<Vector2Int, bool> shelfPlacementGrid = new Dictionary<Vector2Int, bool>();
@@ -19,6 +19,8 @@ public class ShelfPlacementManager : MonoBehaviour
     private int alternativeAreaStartY;
     private int alternativeAreaHeight;
     private int alternativeAreaStartX = 0;
+
+    [SerializeField] PlayerInteraction playerInteraction;
 
 
     private void Awake()
@@ -33,6 +35,11 @@ public class ShelfPlacementManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        playerInteraction = this.gameObject.GetComponent<PlayerInteraction>();
+    }
+
 
     private void Update()
     {
@@ -41,37 +48,49 @@ public class ShelfPlacementManager : MonoBehaviour
         alternativeAreaStartY = 2;
 
 
-        if (GameManager.instance.currentState == GameStates.STORE)
+        if (GameManager.instance.currentState != GameStates.PREP)
         {
             return;
         }
 
-        if (Input.GetMouseButtonDown(0))
+        if (playerInteraction.getHoldLongEnough() == true && shelfBeingRepositioned == null)
         {
             if (shelfBeingRepositioned == null && currentShelfInstance == null)
             {
                 TrySelectShelfForRepositioning();
+
             }
-            else if (shelfBeingRepositioned != null)
+            
+        }
+        if (Input.GetMouseButtonDown(0))
+        {
+            
+            if (shelfBeingRepositioned != null)
             {
+                Debug.Log("Mouse Down");
                 // Finalize repositioning if within grid
                 Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 mousePos.z = 0;
                 int x, y;
                 gridSystem.GetXY(mousePos, out x, out y);
+                Debug.Log("grid pos x is "+x+"pos y is "+y);
+                Debug.Log("is within grid"+IsWithinGrid(x, y));
                 if (IsWithinGrid(x, y))
                 {
                     shelfBeingRepositioned = null;
                 }
+ 
             }
             else if (currentShelfInstance != null)
             {
                 // Finalize initial placement if within grid
                 FinalizePlacement();
                 AudioManager.instance.PlaySound(ShelfPlaced);
-
             }
+
+
         }
+        
 
         if (shelfBeingRepositioned == null && currentShelfPrefab != null)
         {
@@ -137,14 +156,9 @@ public class ShelfPlacementManager : MonoBehaviour
     void TrySelectShelfForRepositioning()
     {
 
-        Vector2 rayPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(rayPos, Vector2.zero);
-
-        if (hit.collider != null && hit.collider.gameObject.GetComponent<ShelfScript>() != null)
+        if (playerInteraction.longHoldGameObject!=null && playerInteraction.longHoldGameObject.GetComponent<ShelfScript>() != null)
         {
-            
-
-            shelfBeingRepositioned = hit.collider.gameObject;
+            shelfBeingRepositioned = playerInteraction.longHoldGameObject;
             Debug.Log("Shelf selected for repositioning."+shelfBeingRepositioned.name);
         }
     }
