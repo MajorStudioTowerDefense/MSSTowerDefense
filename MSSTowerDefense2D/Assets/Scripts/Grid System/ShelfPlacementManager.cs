@@ -90,7 +90,6 @@ public class ShelfPlacementManager : MonoBehaviour
             {
                 // Finalize initial placement if within grid
                 FinalizePlacement();
-                AudioManager.instance.PlaySound(ShelfPlaced);
 
             }
         }
@@ -112,6 +111,7 @@ public class ShelfPlacementManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && currentShelfInstance == null && shelfBeingRepositioned == null)
         {
             SelectNextShelfPrefab();
+            
         }
     }
 
@@ -274,6 +274,8 @@ public class ShelfPlacementManager : MonoBehaviour
         mousePos.z = 0;
         int x, y;
         gridSystem.GetXY(mousePos, out x, out y);
+        AudioManager.instance.PlaySound(ShelfPlaced);
+
         if (IsWithinGrid(x, y) && !shelfPlacementGrid[x, y]) // Check if the position is free
         {
             GameManager.instance.money -= currentShelfPrefab.GetComponent<ShelfScript>().Cost;
