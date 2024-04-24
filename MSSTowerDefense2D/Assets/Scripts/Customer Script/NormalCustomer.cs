@@ -36,9 +36,11 @@ public class NormalCustomer : Bot
         InitializeAreas();
         SetFirstAreaDestination();
         bot = GetComponent<Bot>();
-        AudioManager.instance.PlaySound(WalkingHeavy);
+    if (audioSource != null && !audioSource.isPlaying)
+        {
+           AudioManager.instance.PlaySound(StartShift);
+        }
     }
-
    void InitializeAreas()
 {
     foreach (Room room in GameManager.instance.rooms)

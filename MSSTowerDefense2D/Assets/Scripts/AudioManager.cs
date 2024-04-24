@@ -9,7 +9,7 @@ public class AudioManager : MonoBehaviour
     public List<AudioSource> audioSources;
     public AudioSource audioSource1;
     public AudioSource audioSource2;
-    public AudioClip Ticking;
+    
     public AudioClip StartShift;
     public bool allowCheck;
 
