@@ -52,33 +52,32 @@ public class ShelfUI : MonoBehaviour
     {
         if (GameManager.instance.currentState == GameStates.TUTORIAL)
         {
-            //StartCoroutine(FindCustomer());
-            ToDisable.SetActive(true);
+            StartCoroutine(FindCustomer());
         }
-        if(GameManager.instance.currentState == GameStates.PREP)
+        else if(GameManager.instance.currentState == GameStates.PREP)
         {
             ToDisable.SetActive(true);
         }
-        if (GameManager.instance.currentState == GameStates.STORE)
+        else
         {
             ToDisable.SetActive(false);
         }
     }
 
-    //IEnumerator FindCustomer()
-    //{
-    //    yield return new WaitForSeconds(1.5f);
-    //    GameObject[] tags = GameObject.FindGameObjectsWithTag("Customer");
+    IEnumerator FindCustomer()
+    {
+        yield return new WaitForSeconds(1.5f);
+        GameObject[] tags = GameObject.FindGameObjectsWithTag("Customer");
 
-    //    if (tags != null)
-    //    {
-    //        ToDisable.SetActive(false);
-    //    }
-    //    else
-    //    {
-    //        StartCoroutine(FindCustomer());
-    //    }
-    //}
+        if (tags != null)
+        {
+            ToDisable.SetActive(false);
+        }
+        else
+        {
+            StartCoroutine(FindCustomer());
+        }
+    }
 
     public void FruitShelvesOn()
     {

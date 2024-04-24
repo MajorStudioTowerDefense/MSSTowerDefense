@@ -25,8 +25,8 @@ public class ClockDisplayUI : MonoBehaviour
     string GetMessageBasedOnTime(int hours)
     {
         return "";
-        //if (hours < 9) return "Prepare your shop!";
-        //else if (hours < 18) return "The Shop is opened!";
-        //else return "The shop is closed...";
+        if (hours < 9) return "Prepare your shop!";
+        else if (hours < 18) return "The Shop is opened!";
+        else return "The shop is closed...";
     }
 }
