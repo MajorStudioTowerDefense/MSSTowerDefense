@@ -37531,9 +37531,9 @@ MonoBehaviour:
   P1: {fileID: 1947919949}
   P2: {fileID: 475061422}
   P3: {fileID: 2133289724}
-  T1: {fileID: 0}
-  T2: {fileID: 0}
-  T3: {fileID: 0}
+  T1: {fileID: 4971062859645332145, guid: f0403e05fbe9a2e40a5995e4fc02630d, type: 3}
+  T2: {fileID: 4971062859645332145, guid: f131f9f65e9ad0d4b9ecdca2c4723c63, type: 3}
+  T3: {fileID: 4971062859645332145, guid: f1ab539f1a94ec048b56518869bf9d58, type: 3}
   ToDisable: {fileID: 331623597}
 --- !u!1 &2138761448 stripped
 GameObject:
