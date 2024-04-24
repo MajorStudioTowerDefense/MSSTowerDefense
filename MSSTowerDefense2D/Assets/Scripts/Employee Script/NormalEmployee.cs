@@ -39,7 +39,7 @@ public class NormalEmployee : Bot
     public float employeeAreaOffsetXMin = 0.5f;
     public float employeeAreaOffsetYMin = 0.4f;
     public float employeeAreaOffsetYMax = 1.2f;
-    public Vector3 myEmployeeAreaPos;
+    public Vector3 myEmployeeAreaPos = Vector3.zero;
 
     private bool endStage = false;
 
