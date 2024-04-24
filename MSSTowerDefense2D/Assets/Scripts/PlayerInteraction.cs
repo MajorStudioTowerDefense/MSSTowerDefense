@@ -203,6 +203,8 @@ public class PlayerInteraction : MonoBehaviour
             //如果点击的货架不是当前选中的货架，则关闭按钮后切换货架
             else if(shelfChosenForReload != clicked.GetComponent<ShelfScript>())
             {
+                Canvas lastShelfCanvas = shelfChosenForReload.GetComponentInChildren<Canvas>();
+                lastShelfCanvas.sortingOrder = 0;
                 Debug.Log("switch shelf");
                 foreach (Button button in shelfChosenForReload.GetComponentsInChildren<Button>(true))
                 {
@@ -214,7 +216,8 @@ public class PlayerInteraction : MonoBehaviour
             
             
             shelfStockButtons = shelfChosenForReload.GetComponentsInChildren<Button>(true);
-
+            Canvas ShelfCanvas = shelfChosenForReload.GetComponentInChildren<Canvas>();
+            ShelfCanvas.sortingOrder = 1;
             //如果货架上没有物品则显示三个按钮
             if(shelfChosenForReload.loadAmount == 0)
             {
@@ -245,7 +248,7 @@ public class PlayerInteraction : MonoBehaviour
                         }
                     }
                     
-                    button.GetComponent<RectTransform>().anchoredPosition = new Vector2(-80 + i*80f, 110.4f);
+                    button.GetComponent<RectTransform>().anchoredPosition = new Vector2(-80 + i*80f, button.GetComponent<RectTransform>().anchoredPosition.y);
                     goods product = shelfChosenForReload.itemsCanBeSold[i].GetItem();
                     button.onClick.AddListener(() => OnButtonClick(product));
                 }
@@ -257,7 +260,7 @@ public class PlayerInteraction : MonoBehaviour
                 {
                     Button button = shelfStockButtons[i];
                     button.onClick.RemoveAllListeners();
-                    button.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 110.4f);
+                    button.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, button.GetComponent<RectTransform>().anchoredPosition.y);
                     if (i == 0)
                     {
                         button.gameObject.SetActive(true);
@@ -323,7 +326,8 @@ public class PlayerInteraction : MonoBehaviour
     {
         if(assignedTask == assignTaskTargetForEmployee)
         {
-            if(shelfStockButtons != null)
+            
+            if (shelfStockButtons != null)
             {
                 foreach(Button button in shelfStockButtons)
                 {
@@ -339,6 +343,8 @@ public class PlayerInteraction : MonoBehaviour
             }
             if(shelfChosenForReload != null)
             {
+                Canvas ShelfCanvas = shelfChosenForReload.GetComponentInChildren<Canvas>();
+                ShelfCanvas.sortingOrder = 0;
                 shelfChosenForReload = null;
             }
             changeMouseUI(0);
@@ -384,6 +390,8 @@ public class PlayerInteraction : MonoBehaviour
             }
             if(shelfChosenForReload != null)
             {
+                Canvas ShelfCanvas = shelfChosenForReload.GetComponentInChildren<Canvas>();
+                ShelfCanvas.sortingOrder = 0;
                 shelfChosenForReload = null;
             }
             assignedTask = null;
@@ -427,6 +435,8 @@ public class PlayerInteraction : MonoBehaviour
         }
         if (shelfChosenForReload != null)
         {
+            Canvas ShelfCanvas = shelfChosenForReload.GetComponentInChildren<Canvas>();
+            ShelfCanvas.sortingOrder = 0;
             shelfChosenForReload = null;
         }
         if (ShelfChosenInPrimaryTask != null)

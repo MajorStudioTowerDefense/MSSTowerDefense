@@ -33,6 +33,7 @@ public class NormalEmployee : Bot
 
     private float timeAtShelf = 0f;
     public float stayShelfDuration = 5f;
+    public float reachTolerance = 1f;
 
     public float employeeAreaOffsetXMax = 2f;
     public float employeeAreaOffsetXMin = 0.5f;
@@ -211,7 +212,7 @@ public class NormalEmployee : Bot
 
     public virtual void onWayToGrabShelf()
     {
-        if(destinationSetter.targetPosition == moveShelfNeeded.transform.position && aiPath.reachedDestination)
+        if(destinationSetter.targetPosition == moveShelfNeeded.transform.position && IsCloseToDestination())
         {
             Debug.Log("Arrived at the shelf");
             carriedShelfSprite.sprite = moveShelfNeeded.GetComponent<SpriteRenderer>().sprite;
@@ -224,7 +225,7 @@ public class NormalEmployee : Bot
 
     public virtual void onWayToMoveShelf()
     {
-        if (destinationSetter.targetPosition == shadowNeeded.transform.position && aiPath.reachedDestination)
+        if (destinationSetter.targetPosition == shadowNeeded.transform.position && IsCloseToDestination())
         {
             Debug.Log("Arrived at the shadow");
             moveShelfNeeded.gameObject.SetActive(true);
@@ -241,7 +242,7 @@ public class NormalEmployee : Bot
 
     public virtual void successReload()
     {
-        if(destinationSetter.targetPosition == NeededShelf.transform.position && aiPath.reachedDestination)
+        if(destinationSetter.targetPosition == NeededShelf.transform.position && IsCloseToDestination())
         {
             int actualIncrease = Mathf.Min(carryCount, NeededShelf.loadAmountMax - NeededShelf.loadAmount);
 
@@ -282,7 +283,7 @@ public class NormalEmployee : Bot
 
     public virtual void returnToStandBy()
     {
-        if(destinationSetter.targetPosition == myEmployeeAreaPos && aiPath.reachedDestination)
+        if(destinationSetter.targetPosition == myEmployeeAreaPos && IsCloseToDestination())
         {
             eStage = employeeStage.standBy;
             eAction = employeeAction.noAction;
@@ -292,6 +293,23 @@ public class NormalEmployee : Bot
         }
 
     }
-    //change
+
+    private bool IsCloseToDestination()
+    {
+        float distance = Vector3.Distance(transform.position, destinationSetter.targetPosition);
+        return distance <= reachTolerance;
+    }
+
+    void OnDrawGizmos()
+    {
+        if (destinationSetter != null)
+        {
+            // 设置Gizmos颜色为蓝色
+            Gizmos.color = Color.blue;
+
+            // 绘制一个圆圈表示接近目的地的区域
+            Gizmos.DrawWireSphere(destinationSetter.targetPosition, reachTolerance);
+        }
+    }
 
 }

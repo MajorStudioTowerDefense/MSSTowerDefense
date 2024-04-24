@@ -268,7 +268,7 @@ MonoBehaviour:
   endReachedDistance: 0.8
   alwaysDrawGizmos: 1
   slowWhenNotFacingTarget: 1
-  whenCloseToDestination: 1
+  whenCloseToDestination: 0
   constrainInsideGraph: 0
 --- !u!114 &-6095185238316118098
 MonoBehaviour:
@@ -318,6 +318,7 @@ MonoBehaviour:
   carryMax: 3
   carryCount: 3
   stayShelfDuration: 5
+  reachTolerance: 1.6
   employeeAreaOffsetXMax: 0.4
   employeeAreaOffsetXMin: 0.2
   employeeAreaOffsetYMin: 0.2

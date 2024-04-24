@@ -5,7 +5,7 @@ using Pathfinding;
 using System.Linq;
 using TMPro;
 using static UnityEngine.GraphicsBuffer;
-
+using UnityEditor.Tilemaps;
 
 public class CustomerData
 {
@@ -43,6 +43,9 @@ public class ShelfScript : MonoBehaviour
     private GameObject gridBlockRight;
     private GameObject gridBlockAbove;
     private GameObject gridBlockBelow;
+    public GridSystem gridSystem;
+    public BoxCollider2D interactableCollider;
+    public RectTransform hoverPanel;
 
     public float visibility = 1f;
     public float purchaseRadius = 1f;
@@ -94,7 +97,7 @@ public class ShelfScript : MonoBehaviour
         threeStates.Add(ShelfManager.Instance.shelfSpritesHalf);
         threeStates.Add(ShelfManager.Instance.shelfSpritesFull);
         
-        
+        gridSystem = GameManager.instance.gridSystem;
         
         
     }
@@ -104,8 +107,10 @@ public class ShelfScript : MonoBehaviour
         showVisibility();
         DetectAndManageCustomers();
         updateSprite();
+        ChangeRaycastAreaSizeDueToOverlap();
         if (loadAmountText != null)
         {
+            Debug.Log("Load Amount Text is not null");
             loadAmountText.text = $"Load Amount: {loadAmount}/{loadAmountMax}";
         }
     }
@@ -382,5 +387,81 @@ public class ShelfScript : MonoBehaviour
         float scaleValue = visibility;
         if (visibilityIndicator != null)
             visibilityIndicator.localScale = new Vector3(scaleValue, scaleValue, 1);
+    }
+
+    
+    void ChangeRaycastAreaSizeDueToOverlap()
+    {
+        int cX,cY;
+
+        gridSystem.GetXY(this.gameObject.transform.position, out cX, out cY);
+        Vector2Int inGridPos = new Vector2Int(cX, cY);
+        if(IsUpperSlotOccupied(inGridPos))
+        {
+            
+            interactableCollider.size = new Vector2(1, 1);
+            interactableCollider.offset = new Vector2(0, 0);
+            // 修改垂直位置
+            Vector2 anchoredPosition = hoverPanel.anchoredPosition;
+            anchoredPosition.y = 0;
+            hoverPanel.anchoredPosition = anchoredPosition;
+
+            // 修改高度
+            Vector2 sizeDelta = hoverPanel.sizeDelta;
+            sizeDelta.y = 90;
+            hoverPanel.sizeDelta = sizeDelta;
+
+        }
+        else
+        {
+            if(thisType == shelvesType.Rack)
+            {
+                interactableCollider.size = new Vector2(1, 2.207247f);
+                interactableCollider.offset = new Vector2(0, 0.6036236f);
+                // 修改垂直位置
+                Vector2 anchoredPosition = hoverPanel.anchoredPosition;
+                anchoredPosition.y = 61.79f;
+                hoverPanel.anchoredPosition = anchoredPosition;
+
+                // 修改高度
+                Vector2 sizeDelta = hoverPanel.sizeDelta;
+                sizeDelta.y = 213.57f;
+                hoverPanel.sizeDelta = sizeDelta;
+            }
+            else if (thisType == shelvesType.HighShelf)
+            {
+                interactableCollider.size = new Vector2(1, 2.072241f);
+                interactableCollider.offset = new Vector2(0, 0.5361205f);
+                // 修改垂直位置
+                Vector2 anchoredPosition = hoverPanel.anchoredPosition;
+                anchoredPosition.y = 61.79f;
+                hoverPanel.anchoredPosition = anchoredPosition;
+
+                // 修改高度
+                Vector2 sizeDelta = hoverPanel.sizeDelta;
+                sizeDelta.y = 213.57f;
+                hoverPanel.sizeDelta = sizeDelta;
+            }
+            else
+            {
+                interactableCollider.size = new Vector2(1, 1);
+                interactableCollider.offset = new Vector2(0, 0);
+            }
+        }
+    }
+
+    public bool IsUpperSlotOccupied(Vector2Int gridPosition)
+    {
+        // 计算上方一格的位置
+        Vector2Int upperPosition = new Vector2Int(gridPosition.x, gridPosition.y + 1);
+
+        // 检查GameManager的shelfPlacementGrid中这个位置是否被占用
+        if (GameManager.instance.shelfPlacementGrid.TryGetValue(upperPosition, out bool isOccupied))
+        {
+            return !isOccupied;
+        }
+
+        // 如果没有信息，默认为不被占用
+        return true;
     }
 }

@@ -257,10 +257,7 @@ public class ShelfPlacementManager : MonoBehaviour
                 GameManager.instance.shelfPlacementGrid[position] = false; // Mark the new position as occupied
                 shelfBeingRepositioned = null;
                 Debug.Log("Shelf moved from " + prevPositionForRepo + " to " + position);
-                //if (GameManager.instance.shelfPlacementGrid.ContainsKey(prevPosition))
-                //{
-                //    GameManager.instance.shelfPlacementGrid[prevPosition] = false;
-                //}
+                AudioManager.instance.PlaySound(ShelfPlaced);
             }
 
 
