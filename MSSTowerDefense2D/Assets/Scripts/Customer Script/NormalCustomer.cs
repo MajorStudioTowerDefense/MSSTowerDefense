@@ -20,9 +20,11 @@ public class NormalCustomer : Bot
 
     public AudioClip WalkingHeavy;
     public AudioClip Walking;
+    public AudioSource audioSource;
 
     public AudioClip thump;
 
+    public AudioClip StartShift;
     public float maxPatience = 30f;
     private float patience;
     public SpriteRenderer patienceSpriteRenderer;
@@ -36,6 +38,12 @@ public class NormalCustomer : Bot
         SetFirstAreaDestination();
         bot = GetComponent<Bot>();
         AudioManager.instance.PlaySound(WalkingHeavy);
+       if (audioSource != null && !audioSource.isPlaying)
+        {
+           AudioManager.instance.PlaySound(StartShift);
+        }
+          
+
     }
 
     void InitializeAreas()
