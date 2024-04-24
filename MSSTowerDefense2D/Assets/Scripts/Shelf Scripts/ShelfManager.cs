@@ -8,7 +8,10 @@ public class ShelfManager : MonoBehaviour
     public Sprite[] shelfSpritesHalf;
     public Sprite[] shelfSpritesEmpty;
     public static ShelfManager Instance { get; private set; }
-    
+    public AudioSource audioSource;
+     public AudioClip Refilled;
+    void Start(){
+    }
     void Awake()
     {
         if (Instance == null)
@@ -25,6 +28,8 @@ public class ShelfManager : MonoBehaviour
     public Sprite GetShelfSpriteFull(int index)
     {
         return shelfSpritesFull[index];
+        AudioManager.instance.PlaySound(Refilled);
+
     }
 
     public Sprite GetShelfSpriteHalf(int index)

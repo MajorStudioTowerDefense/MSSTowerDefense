@@ -27,8 +27,7 @@ public class NormalCustomer : Bot
     public float maxPatience = 30f;
     private float patience;
     public SpriteRenderer patienceSpriteRenderer;
-    public AudioClip StartShift;
-    public AudioSource audioSource;
+    
     void Start()
     {
         base.init();
@@ -37,10 +36,7 @@ public class NormalCustomer : Bot
         InitializeAreas();
         SetFirstAreaDestination();
         bot = GetComponent<Bot>();
-    if (audioSource != null && !audioSource.isPlaying)
-        {
-           AudioManager.instance.PlaySound(StartShift);
-        }
+   
     }
    void InitializeAreas()
 {
