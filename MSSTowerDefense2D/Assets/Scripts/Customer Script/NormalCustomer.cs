@@ -24,10 +24,14 @@ public class NormalCustomer : Bot
 
     public AudioClip thump;
 
+    [Header ("Patience")]
     public float maxPatience = 30f;
     private float patience;
+    public Sprite highPatienceSprite;
+    public Sprite mediumPatienceSprite;
+    public Sprite lowPatienceSprite;
     public SpriteRenderer patienceSpriteRenderer;
-    
+
     void Start()
     {
         base.init();
@@ -108,7 +112,7 @@ public class NormalCustomer : Bot
             return; 
         }
 
-        UpdateColorBasedOnPatience();
+        UpdatePatienceSprite();
 
         switch (bot.isPurchasing)
         {
@@ -127,27 +131,23 @@ public class NormalCustomer : Bot
         //Debug.Log(gameObject.name + " distance from exit: " + distance);
     }
 
-    void UpdateColorBasedOnPatience()
+    void UpdatePatienceSprite()
     {
         float normalizedPatience = patience / maxPatience;
 
-        Color green = Color.green;
-        Color yellow = Color.yellow;
-        Color red = Color.red;
-
-        Color targetColor;
-
-        if (normalizedPatience > 0.5f)
+        if (normalizedPatience > 0.66f)  // High patience
         {
-            targetColor = Color.Lerp(yellow, green, (normalizedPatience - 0.5f) * 2);
+            patienceSpriteRenderer.sprite = highPatienceSprite;
         }
-        else
+        else if (normalizedPatience > 0.33f)  // Medium patience
         {
-            targetColor = Color.Lerp(red, yellow, normalizedPatience * 2);
+            patienceSpriteRenderer.sprite = mediumPatienceSprite;
+        }
+        else  // Low patience
+        {
+            patienceSpriteRenderer.sprite = lowPatienceSprite;
             AudioManager.instance.PlaySound(CustomerPissed);
         }
-
-        patienceSpriteRenderer.color = targetColor;
     }
 
     void PerformWonderingActions()

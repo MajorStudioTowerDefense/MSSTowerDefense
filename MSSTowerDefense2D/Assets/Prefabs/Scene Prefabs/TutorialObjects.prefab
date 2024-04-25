@@ -1083,10 +1083,22 @@ MonoBehaviour:
         name: 
       events:
       - type: 0
-        enable: 0
+        enable: 1
         subEvent:
           m_PersistentCalls:
-            m_Calls: []
+            m_Calls:
+            - m_Target: {fileID: 8537078404843760147}
+              m_TargetAssemblyTypeName: TutorialEventTrigger, Assembly-CSharp
+              m_MethodName: TriggerAppleShelfTutorial
+              m_Mode: 1
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 0
+              m_CallState: 2
       - type: 1
         enable: 0
         subEvent:
@@ -3903,8 +3915,134 @@ MonoBehaviour:
   database: {fileID: 11400000, guid: e150840ee473b2247b7bc87e74be78ed, type: 2}
   tmEditorList:
   - index: 1
-    stageIndex: 1
-    Name: Intro Text 1
+    stageIndex: 2
+    Name: SHELF MENU
+    state: 0
+    startTrigger:
+      triggerType: 0
+      colliderConfig:
+        collider: {fileID: 0}
+        triggerOnClick: 0
+        layerFiltering: 0
+        filterLayer:
+          serializedVersion: 2
+          m_Bits: 0
+        tagFiltering: 0
+        filterTag: 
+        useRigidBodyTag: 0
+        pointerTrigger: 2
+      graphicConfig:
+        graphic: {fileID: 0}
+        pointerTrigger: 2
+      keyCode: 0
+      tagConfig:
+        targetTag: 
+    endTrigger:
+      triggerType: 0
+      colliderConfig:
+        collider: {fileID: 0}
+        triggerOnClick: 0
+        layerFiltering: 0
+        filterLayer:
+          serializedVersion: 2
+          m_Bits: 0
+        tagFiltering: 0
+        filterTag: 
+        useRigidBodyTag: 0
+        pointerTrigger: 2
+      graphicConfig:
+        graphic: {fileID: 0}
+        pointerTrigger: 2
+      keyCode: 0
+      tagConfig:
+        targetTag: 
+    advanceConfig:
+      advanceType: 1
+      index: -1
+      name: 
+    events:
+    - type: 0
+      enable: 0
+      subEvent:
+        m_PersistentCalls:
+          m_Calls: []
+    - type: 1
+      enable: 0
+      subEvent:
+        m_PersistentCalls:
+          m_Calls: []
+    - type: 2
+      enable: 0
+      subEvent:
+        m_PersistentCalls:
+          m_Calls: []
+    - type: 3
+      enable: 0
+      subEvent:
+        m_PersistentCalls:
+          m_Calls: []
+    - type: 4
+      enable: 0
+      subEvent:
+        m_PersistentCalls:
+          m_Calls: []
+    focusTargets:
+    - target: {fileID: 0}
+      rtTarget: {fileID: 0}
+      overrideSpawn: 0
+      spawnInfo:
+        spawnPos: {x: 0, y: 0, z: 0}
+        spawnRot: {x: 0, y: 0, z: 0}
+        spawnScale: {x: 0, y: 0, z: 0}
+      rtCanvas: {fileID: 0}
+      startInactive: 0
+      highlightTarget: 0
+      followTarget: 0
+      useModuleMask: 0
+      moduleMask: 0
+      screenRect:
+        serializedVersion: 2
+        x: 17.74469
+        y: -481.18616
+        width: 176.00003
+        height: 1330
+      TargetBoundType: 2
+      spawnEffect: 0
+      effectPrefab: {fileID: 0}
+      effectRT: {fileID: 0}
+      overrideEffectInfo: 0
+      effectSpawnInfo:
+        spawnPos: {x: 0, y: 0, z: 0}
+        spawnRot: {x: 0, y: 0, z: 0}
+        spawnScale: {x: 0, y: 0, z: 0}
+      triggerConfig:
+        triggerType: 0
+        colliderConfig:
+          collider: {fileID: 0}
+          triggerOnClick: 0
+          layerFiltering: 0
+          filterLayer:
+            serializedVersion: 2
+            m_Bits: 0
+          tagFiltering: 0
+          filterTag: 
+          useRigidBodyTag: 0
+          pointerTrigger: 0
+        graphicConfig:
+          graphic: {fileID: 0}
+          pointerTrigger: 0
+        keyCode: 0
+        tagConfig:
+          targetTag: 
+      useTrigger: 0
+      triggerState: 0
+    moduleConfigs:
+    - rid: 8266946820872863796
+    - rid: 8266946820872863797
+    test: 0
+  - index: 2
+    stageIndex: 2
+    Name: SHELF MENU 2
     state: 0
     startTrigger:
       triggerType: 0
@@ -3956,7 +4094,7 @@ MonoBehaviour:
           m_Calls:
           - m_Target: {fileID: 8537078404843760147}
             m_TargetAssemblyTypeName: TutorialEventTrigger, Assembly-CSharp
-            m_MethodName: ActivateTutorialPanel
+            m_MethodName: TriggerAppleShelfTutorial
             m_Mode: 1
             m_Arguments:
               m_ObjectArgument: {fileID: 0}
@@ -3987,7 +4125,7 @@ MonoBehaviour:
         m_PersistentCalls:
           m_Calls: []
     focusTargets:
-    - target: {fileID: 8537078403032960173}
+    - target: {fileID: 0}
       rtTarget: {fileID: 0}
       overrideSpawn: 0
       spawnInfo:
@@ -4002,11 +4140,11 @@ MonoBehaviour:
       moduleMask: 0
       screenRect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 0
-        height: 0
-      TargetBoundType: 1
+        x: 46.069275
+        y: 718.81384
+        width: 130
+        height: 130
+      TargetBoundType: 2
       spawnEffect: 0
       effectPrefab: {fileID: 0}
       effectRT: {fileID: 0}
@@ -4037,137 +4175,12 @@ MonoBehaviour:
       useTrigger: 0
       triggerState: 0
     moduleConfigs:
-    - rid: 971211116747161867
-    test: 0
-  - index: 2
-    stageIndex: 1
-    Name: Intro Text 2
-    state: 0
-    startTrigger:
-      triggerType: 0
-      colliderConfig:
-        collider: {fileID: 0}
-        triggerOnClick: 0
-        layerFiltering: 0
-        filterLayer:
-          serializedVersion: 2
-          m_Bits: 0
-        tagFiltering: 0
-        filterTag: 
-        useRigidBodyTag: 0
-        pointerTrigger: 2
-      graphicConfig:
-        graphic: {fileID: 0}
-        pointerTrigger: 2
-      keyCode: 0
-      tagConfig:
-        targetTag: 
-    endTrigger:
-      triggerType: 0
-      colliderConfig:
-        collider: {fileID: 0}
-        triggerOnClick: 0
-        layerFiltering: 0
-        filterLayer:
-          serializedVersion: 2
-          m_Bits: 0
-        tagFiltering: 0
-        filterTag: 
-        useRigidBodyTag: 0
-        pointerTrigger: 2
-      graphicConfig:
-        graphic: {fileID: 0}
-        pointerTrigger: 2
-      keyCode: 0
-      tagConfig:
-        targetTag: 
-    advanceConfig:
-      advanceType: 1
-      index: -1
-      name: 
-    events:
-    - type: 0
-      enable: 0
-      subEvent:
-        m_PersistentCalls:
-          m_Calls: []
-    - type: 1
-      enable: 0
-      subEvent:
-        m_PersistentCalls:
-          m_Calls: []
-    - type: 2
-      enable: 0
-      subEvent:
-        m_PersistentCalls:
-          m_Calls: []
-    - type: 3
-      enable: 0
-      subEvent:
-        m_PersistentCalls:
-          m_Calls: []
-    - type: 4
-      enable: 0
-      subEvent:
-        m_PersistentCalls:
-          m_Calls: []
-    focusTargets:
-    - target: {fileID: 8537078403032960173}
-      rtTarget: {fileID: 0}
-      overrideSpawn: 0
-      spawnInfo:
-        spawnPos: {x: 0, y: 0, z: 0}
-        spawnRot: {x: 0, y: 0, z: 0}
-        spawnScale: {x: 0, y: 0, z: 0}
-      rtCanvas: {fileID: 0}
-      startInactive: 0
-      highlightTarget: 0
-      followTarget: 0
-      useModuleMask: 0
-      moduleMask: 0
-      screenRect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 0
-        height: 0
-      TargetBoundType: 1
-      spawnEffect: 0
-      effectPrefab: {fileID: 0}
-      effectRT: {fileID: 0}
-      overrideEffectInfo: 0
-      effectSpawnInfo:
-        spawnPos: {x: 0, y: 0, z: 0}
-        spawnRot: {x: 0, y: 0, z: 0}
-        spawnScale: {x: 0, y: 0, z: 0}
-      triggerConfig:
-        triggerType: 0
-        colliderConfig:
-          collider: {fileID: 0}
-          triggerOnClick: 0
-          layerFiltering: 0
-          filterLayer:
-            serializedVersion: 2
-            m_Bits: 0
-          tagFiltering: 0
-          filterTag: 
-          useRigidBodyTag: 0
-          pointerTrigger: 0
-        graphicConfig:
-          graphic: {fileID: 0}
-          pointerTrigger: 0
-        keyCode: 0
-        tagConfig:
-          targetTag: 
-      useTrigger: 0
-      triggerState: 0
-    moduleConfigs:
-    - rid: 8266946820872863746
-    - rid: 8266946820872863761
+    - rid: 8266946820872863808
+    - rid: 8266946820872863809
     test: 0
   - index: 3
-    stageIndex: 1
-    Name: Intro Text 3
+    stageIndex: 2
+    Name: Shelf 3
     state: 0
     startTrigger:
       triggerType: 0
@@ -4204,7 +4217,7 @@ MonoBehaviour:
       graphicConfig:
         graphic: {fileID: 0}
         pointerTrigger: 2
-      keyCode: 0
+      keyCode: 323
       tagConfig:
         targetTag: 
     advanceConfig:
@@ -4237,185 +4250,9 @@ MonoBehaviour:
       subEvent:
         m_PersistentCalls:
           m_Calls: []
-    focusTargets:
-    - target: {fileID: 8537078403032960173}
-      rtTarget: {fileID: 0}
-      overrideSpawn: 0
-      spawnInfo:
-        spawnPos: {x: 0, y: 0, z: 0}
-        spawnRot: {x: 0, y: 0, z: 0}
-        spawnScale: {x: 0, y: 0, z: 0}
-      rtCanvas: {fileID: 0}
-      startInactive: 0
-      highlightTarget: 0
-      followTarget: 0
-      useModuleMask: 0
-      moduleMask: 0
-      screenRect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 0
-        height: 0
-      TargetBoundType: 1
-      spawnEffect: 0
-      effectPrefab: {fileID: 0}
-      effectRT: {fileID: 0}
-      overrideEffectInfo: 0
-      effectSpawnInfo:
-        spawnPos: {x: 0, y: 0, z: 0}
-        spawnRot: {x: 0, y: 0, z: 0}
-        spawnScale: {x: 0, y: 0, z: 0}
-      triggerConfig:
-        triggerType: 0
-        colliderConfig:
-          collider: {fileID: 0}
-          triggerOnClick: 0
-          layerFiltering: 0
-          filterLayer:
-            serializedVersion: 2
-            m_Bits: 0
-          tagFiltering: 0
-          filterTag: 
-          useRigidBodyTag: 0
-          pointerTrigger: 0
-        graphicConfig:
-          graphic: {fileID: 0}
-          pointerTrigger: 0
-        keyCode: 0
-        tagConfig:
-          targetTag: 
-      useTrigger: 0
-      triggerState: 0
+    focusTargets: []
     moduleConfigs:
-    - rid: 8266946820872863749
-    - rid: 8266946820872863762
-    test: 0
-  - index: 4
-    stageIndex: 1
-    Name: Intro Text 4
-    state: 0
-    startTrigger:
-      triggerType: 0
-      colliderConfig:
-        collider: {fileID: 0}
-        triggerOnClick: 0
-        layerFiltering: 0
-        filterLayer:
-          serializedVersion: 2
-          m_Bits: 0
-        tagFiltering: 0
-        filterTag: 
-        useRigidBodyTag: 0
-        pointerTrigger: 2
-      graphicConfig:
-        graphic: {fileID: 0}
-        pointerTrigger: 2
-      keyCode: 0
-      tagConfig:
-        targetTag: 
-    endTrigger:
-      triggerType: 0
-      colliderConfig:
-        collider: {fileID: 0}
-        triggerOnClick: 0
-        layerFiltering: 0
-        filterLayer:
-          serializedVersion: 2
-          m_Bits: 0
-        tagFiltering: 0
-        filterTag: 
-        useRigidBodyTag: 0
-        pointerTrigger: 2
-      graphicConfig:
-        graphic: {fileID: 0}
-        pointerTrigger: 2
-      keyCode: 0
-      tagConfig:
-        targetTag: 
-    advanceConfig:
-      advanceType: 1
-      index: -1
-      name: 
-    events:
-    - type: 0
-      enable: 0
-      subEvent:
-        m_PersistentCalls:
-          m_Calls: []
-    - type: 1
-      enable: 0
-      subEvent:
-        m_PersistentCalls:
-          m_Calls: []
-    - type: 2
-      enable: 0
-      subEvent:
-        m_PersistentCalls:
-          m_Calls: []
-    - type: 3
-      enable: 0
-      subEvent:
-        m_PersistentCalls:
-          m_Calls: []
-    - type: 4
-      enable: 0
-      subEvent:
-        m_PersistentCalls:
-          m_Calls: []
-    focusTargets:
-    - target: {fileID: 8537078403032960173}
-      rtTarget: {fileID: 0}
-      overrideSpawn: 0
-      spawnInfo:
-        spawnPos: {x: 0, y: 0, z: 0}
-        spawnRot: {x: 0, y: 0, z: 0}
-        spawnScale: {x: 0, y: 0, z: 0}
-      rtCanvas: {fileID: 0}
-      startInactive: 0
-      highlightTarget: 0
-      followTarget: 0
-      useModuleMask: 0
-      moduleMask: 0
-      screenRect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 0
-        height: 0
-      TargetBoundType: 1
-      spawnEffect: 0
-      effectPrefab: {fileID: 0}
-      effectRT: {fileID: 0}
-      overrideEffectInfo: 0
-      effectSpawnInfo:
-        spawnPos: {x: 0, y: 0, z: 0}
-        spawnRot: {x: 0, y: 0, z: 0}
-        spawnScale: {x: 0, y: 0, z: 0}
-      triggerConfig:
-        triggerType: 0
-        colliderConfig:
-          collider: {fileID: 0}
-          triggerOnClick: 0
-          layerFiltering: 0
-          filterLayer:
-            serializedVersion: 2
-            m_Bits: 0
-          tagFiltering: 0
-          filterTag: 
-          useRigidBodyTag: 0
-          pointerTrigger: 0
-        graphicConfig:
-          graphic: {fileID: 0}
-          pointerTrigger: 0
-        keyCode: 0
-        tagConfig:
-          targetTag: 
-      useTrigger: 0
-      triggerState: 0
-    moduleConfigs:
-    - rid: 8266946820872863750
-    - rid: 8266946820872863763
+    - rid: 8266946820872863822
     test: 0
   references:
     version: 2
@@ -5332,7 +5169,7 @@ MonoBehaviour:
         fadeTime: 0.5
         customTransition: 0
         overridePrefabColor: 1
-        color: {r: 0.654088, g: 0.9811321, b: 0.7478559, a: 0.23137255}
+        color: {r: 0.2179779, g: 0.735849, b: 0.3677238, a: 0.49803922}
         m_sprite: {fileID: 0}
         displayRect:
           serializedVersion: 2
@@ -7061,6 +6898,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tutorialPanel: {fileID: 0}
   tutorialManager: {fileID: 8537078403519427597}
+  appleShelfButton: {fileID: 0}
   customerTutorialTriggerUIObject: {fileID: 8537078403332226213}
   employeeRestockTriggerUIObject: {fileID: 8537078404335098497}
 --- !u!1 &8537078404935386188

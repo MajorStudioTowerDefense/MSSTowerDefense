@@ -280,6 +280,9 @@ MonoBehaviour:
   CustomerPissed: {fileID: 8300000, guid: 8b44cbbce1c6c8b4e9dce211968d5add, type: 3}
   thump: {fileID: 8300000, guid: 64d39d97f0b0a66458ba0b20f4e1cccd, type: 3}
   maxPatience: 35
+  highPatienceSprite: {fileID: 1205277927, guid: 6e2d73cca9a95a14d8cb3ae80479ac74, type: 3}
+  mediumPatienceSprite: {fileID: -289482232, guid: 6e2d73cca9a95a14d8cb3ae80479ac74, type: 3}
+  lowPatienceSprite: {fileID: 1675742690, guid: 6e2d73cca9a95a14d8cb3ae80479ac74, type: 3}
   patienceSpriteRenderer: {fileID: 1122669741261647094}
 --- !u!82 &-1235564854328231557
 AudioSource:
@@ -491,9 +494,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6891590087796108944}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.011, y: 1.182, z: 0}
-  m_LocalScale: {x: 0.41329357, y: 0.41329357, z: 0.41329357}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0.54, y: 1.31, z: 0}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 4945052144316110025}
   m_RootOrder: 1
@@ -539,8 +542,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.5208192, a: 1}
+  m_Sprite: {fileID: 1205277927, guid: 6e2d73cca9a95a14d8cb3ae80479ac74, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
