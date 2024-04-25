@@ -16059,6 +16059,10 @@ PrefabInstance:
       value: Game Manager
       objectReference: {fileID: 0}
     - target: {fileID: 6712996876442050152, guid: 3886e2976353d0b43955345cc98dff06, type: 3}
+      propertyPath: warningText
+      value: 
+      objectReference: {fileID: 1104061735}
+    - target: {fileID: 6712996876442050152, guid: 3886e2976353d0b43955345cc98dff06, type: 3}
       propertyPath: mouseUIPrefab
       value: 
       objectReference: {fileID: 909313304}
