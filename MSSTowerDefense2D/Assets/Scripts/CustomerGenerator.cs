@@ -8,6 +8,9 @@ public class CustomerGenerator : MonoBehaviour
     private float minGenerateDelay = 1f; // Minimum delay between generating customers
     private float maxGenerateDelay = 3f; // Maximum delay between generating customers
     public int maxCustomers = 10; // Maximum number of customers allowed
+    public AudioClip StartShift;
+    public AudioSource audioSource2;
+    private bool hasPlayedShiftSound = false;
 
     private float nextGenerateTime = 0f; // When the next customer should be generated
     [HideInInspector] public int currentCustomers = 0; // Current number of generated customers
@@ -15,7 +18,23 @@ public class CustomerGenerator : MonoBehaviour
     private bool isShopOpened = false;
 
     public List<GameObject> customersList = new List<GameObject>();
+void Start()
+{ audioSource2.clip = StartShift;
+        // Check if the shift sound is assigned
+        if (StartShift == null)
+        {
+            Debug.LogError("Shift sound is not assigned to the AudioManager!");
+            return;
+        }
 
+        // Play the shift sound only once when the first NPC spawns
+        if (!hasPlayedShiftSound && GameObject.FindGameObjectsWithTag("Customer").Length == 1)
+        {
+            GetComponent<AudioSource>().PlayOneShot(audioSource2.clip);
+            hasPlayedShiftSound = true;
+        }
+
+}
     void Update()
     {
         maxGenerateDelay = 120 / maxCustomers;

@@ -19,6 +19,26 @@ public class PredeterminedCustomerGenerator : MonoBehaviour
 
     public List<GameObject> customersList = new List<GameObject>();
     public List<GameObject> predeterminedCustomersList = new List<GameObject>();
+    public AudioSource audioSource;
+    public AudioClip StartShift;
+    private bool hasPlayedShiftSound = false;
+
+    private void Start()
+    {    audioSource.clip = StartShift;
+        // Check if the shift sound is assigned
+        if (StartShift == null)
+        {
+            Debug.LogError("Shift sound is not assigned to the AudioManager!");
+            return;
+        }
+
+        // Play the shift sound only once when the first NPC spawns
+        if (!hasPlayedShiftSound && GameObject.FindGameObjectsWithTag("Customer").Length == 1)
+        {
+            GetComponent<AudioSource>().PlayOneShot(audioSource.clip);
+            hasPlayedShiftSound = true;
+        }
+    }
 
 
     void Update()

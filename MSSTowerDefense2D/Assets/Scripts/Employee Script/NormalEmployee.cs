@@ -22,7 +22,7 @@ public enum employeeAction
 }
 public class NormalEmployee : Bot
 {
-    public AudioClip Walking;
+    public AudioClip EmployeeWalking;
 
     
     //the shelf being selected
@@ -78,7 +78,6 @@ public class NormalEmployee : Bot
     private void Start()
     {
         init();
-        AudioManager.instance.PlaySound(Walking);
         employeeCanvas = GetComponentInChildren<Canvas>();
         employeeCanvas.worldCamera = Camera.main;
         employeeLoadingImage = employeeCanvas.GetComponentInChildren<Image>();
@@ -142,6 +141,8 @@ public class NormalEmployee : Bot
         else if (eStage == employeeStage.finishing)
         {
             if(eAction == employeeAction.moveShelf)
+            AudioManager.instance.PlaySound(EmployeeWalking);
+
             onWayToMoveShelf();
         }
         else if (eStage == employeeStage.backToStandBy)
