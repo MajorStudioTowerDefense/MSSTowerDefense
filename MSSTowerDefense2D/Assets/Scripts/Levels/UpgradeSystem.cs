@@ -19,6 +19,8 @@ public class UpgradeSystem : MonoBehaviour
     public float shelfVisibilityBoost;
     private SkeletonCardStackingUIScript skeletonCardScript;
 
+    [SerializeField] private LayerMask target;
+
     private void Start()
     {
         skeletonCardScript = GameObject.Find("Employee IDs").GetComponent<SkeletonCardStackingUIScript>();
@@ -92,12 +94,11 @@ public class UpgradeSystem : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 Vector2 mousePos = GetMouseWorldPosition();
-                RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
+                RaycastHit2D hit = Physics2D.Raycast(mousePos, (mousePos-(Vector2)Camera.main.transform.position).normalized,Mathf.Infinity,target);
                 if (hit.collider != null)
                 {
-                    if (hit.collider.gameObject.layer == 6)
+                    if (hit.collider.gameObject.CompareTag("interactedShelf"))
                     {
-                        Debug.Log("hit!");
                         ShelfScript shelf = hit.collider.GetComponent<ShelfScript>();
                         if (Shelves.Contains(shelf))
                         {

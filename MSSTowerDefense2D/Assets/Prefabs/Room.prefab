@@ -40,9 +40,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6442843697279716845}
-  - component: {fileID: 4645374899627004159}
   - component: {fileID: 436910518630651224}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Room
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,32 +67,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &4645374899627004159
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 584952864008237393}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 7.990816, y: -4.0017195}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 12.985069, y: 9.036736}
-  m_EdgeRadius: 0
 --- !u!114 &436910518630651224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,6 +85,7 @@ MonoBehaviour:
   - {fileID: 6426535241273597792}
   - {fileID: 7014240401617488494}
   roomPos: {x: 0, y: 0, z: 0}
+  exitPos: []
 --- !u!1 &1338431081108342144
 GameObject:
   m_ObjectHideFlags: 0
