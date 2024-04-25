@@ -83,9 +83,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3512315190433346689}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.041, y: 0.909, z: 0}
-  m_LocalScale: {x: 0.41329357, y: 0.41329357, z: 0.41329357}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0.42, y: 0.97, z: 0}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6430688495216814453}
   m_RootOrder: 0
@@ -131,8 +131,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 1205277927, guid: 6e2d73cca9a95a14d8cb3ae80479ac74, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -384,6 +384,9 @@ MonoBehaviour:
   CustomerPissed: {fileID: 8300000, guid: c572bf2b3e4da25469ad21dd4f99ca21, type: 3}
   thump: {fileID: 8300000, guid: 64d39d97f0b0a66458ba0b20f4e1cccd, type: 3}
   maxPatience: 35
+  highPatienceSprite: {fileID: 1205277927, guid: 6e2d73cca9a95a14d8cb3ae80479ac74, type: 3}
+  mediumPatienceSprite: {fileID: -289482232, guid: 6e2d73cca9a95a14d8cb3ae80479ac74, type: 3}
+  lowPatienceSprite: {fileID: 1675742690, guid: 6e2d73cca9a95a14d8cb3ae80479ac74, type: 3}
   patienceSpriteRenderer: {fileID: 6956124681929144039}
 --- !u!114 &-9108921441225004776
 MonoBehaviour:

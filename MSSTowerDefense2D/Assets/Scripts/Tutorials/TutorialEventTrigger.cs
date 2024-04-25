@@ -7,6 +7,9 @@ public class TutorialEventTrigger : MonoBehaviour
     public GameObject tutorialPanel;
     public GameObject tutorialManager;
 
+    [Header("Shelves Tutorial")]
+    public GameObject appleShelfButton;
+
     [Header ("Customer Tutorial")]
     public GameObject customerTutorialTriggerUIObject;
     private bool isCustomerTutorialTriggered = false;
@@ -85,5 +88,10 @@ public class TutorialEventTrigger : MonoBehaviour
         GameManager.instance.TutorialEnds();
         tutorialManager.SetActive(false);
         tutorialPanel.SetActive(false);
+    }
+
+    public void TriggerAppleShelfTutorial()
+    {
+        appleShelfButton.GetComponent<CanvasGroup>().interactable = true;
     }
 }
