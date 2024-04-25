@@ -430,17 +430,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void OnGUI()
-    {
-        int posX = 10;
-        int posY = 10;
-        foreach (var item in shelfPlacementGrid)
-        {
-            GUI.Label(new Rect(posX, posY, 500, 100), "Grid Position: " + item.Key + ", Can Place: " + item.Value);
-            posY += 10;
-        }
-    }
-
     public void placingApple() => shelfPlacementManager.SetCurrentShelfPrefab(shelfPrefabs[1]);
     public void placingDurian() => shelfPlacementManager.SetCurrentShelfPrefab(shelfPrefabs[2]);
     public void placingDragonFruit() => shelfPlacementManager.SetCurrentShelfPrefab(shelfPrefabs[3]);
