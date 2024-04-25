@@ -48,7 +48,7 @@ public class ShelfPlacementManager : MonoBehaviour
         alternativeAreaStartY = 2;
 
 
-        if (GameManager.instance.currentState != GameStates.PREP)
+        if (GameManager.instance.currentState != GameStates.PREP && GameManager.instance.currentState != GameStates.TUTORIAL)
         {
             if(GameManager.instance.currentState == GameStates.STORE && !stageChangedFromPrepToStore)
             {

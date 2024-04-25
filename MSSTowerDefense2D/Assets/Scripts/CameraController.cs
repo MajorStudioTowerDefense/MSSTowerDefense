@@ -17,26 +17,31 @@ public class CameraController : MonoBehaviour
     public float acceleration = 30f;
     public float deceleration = 30f;
 
+    private bool isDisabled = false;
+
     void Update()
     {
         Vector3 pos = transform.position;
 
-        // WASD Movement
-        float moveX = Input.GetAxis("Horizontal");
-        float moveY = Input.GetAxis("Vertical");
-
-        // Middle Mouse Button Drag
-        if (Input.GetMouseButtonDown(2))
+        if (!isDisabled)
         {
-            lastMousePosition = Input.mousePosition;
-        }
+            // WASD Movement
+            float moveX = Input.GetAxis("Horizontal");
+            float moveY = Input.GetAxis("Vertical");
 
-        if (Input.GetMouseButton(2))
-        {
-            Vector3 delta = Input.mousePosition - lastMousePosition;
-            moveX -= delta.x * maxMoveSpeed * cameraDragSpeed;
-            moveY -= delta.y * maxMoveSpeed * cameraDragSpeed;
-            lastMousePosition = Input.mousePosition;
+            // Middle Mouse Button Drag
+            if (Input.GetMouseButtonDown(2))
+            {
+                lastMousePosition = Input.mousePosition;
+            }
+
+            if (Input.GetMouseButton(2))
+            {
+                Vector3 delta = Input.mousePosition - lastMousePosition;
+                moveX -= delta.x * maxMoveSpeed * cameraDragSpeed;
+                moveY -= delta.y * maxMoveSpeed * cameraDragSpeed;
+                lastMousePosition = Input.mousePosition;
+            }
         }
 
         // Apply movement
@@ -59,6 +64,16 @@ public class CameraController : MonoBehaviour
         pos.y = Mathf.Clamp(pos.y, -moveLimit.y, moveLimit.y);
 
         transform.position = pos;
+    }
+
+    public void DisableCameraMovement()
+    {
+        isDisabled = true;
+    }
+
+    public void EnableCameraMovement()
+    {
+        isDisabled = false;
     }
 
 }
