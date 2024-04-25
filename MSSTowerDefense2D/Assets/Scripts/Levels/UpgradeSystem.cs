@@ -29,6 +29,8 @@ public class UpgradeSystem : MonoBehaviour
     {
         AddShelfRangeInUpdate();
     }
+
+    //upgrade functions: 1. employee load speed boost 2. add employee 3. add shelf attraction 4. add shelf load max 5.add shelf purchase power 6.reduce employee cost
     public void AddEmployee()
     {
         GameObject emp = Instantiate(employeePrefabs[0], Vector3.zero, Quaternion.identity);
