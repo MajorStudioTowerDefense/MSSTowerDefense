@@ -11,7 +11,8 @@ public enum GameStates
     STORE,
     END,
     LOOP,
-    TUTORIAL
+    TUTORIAL,
+    LOSE
 }
 
 public class GameManager : MonoBehaviour
@@ -78,6 +79,7 @@ public class GameManager : MonoBehaviour
     [Header("Game Loop Settings")]
     public int level = 1;
     [SerializeField] private float difficultyFactor = 1.2f;
+    public GameObject LosePanel;
 
     [Header("Tutorials")]
     public GameStates previousState;
@@ -160,6 +162,9 @@ public class GameManager : MonoBehaviour
             case GameStates.TUTORIAL:
                 isTimer = false;
                 break;
+            case GameStates.LOSE:
+                isTimer = false;
+                break;
         }
     }
 
@@ -238,11 +243,20 @@ public class GameManager : MonoBehaviour
         total = revenue - shelfCost - wageCost;
         money += total;
         summaryText[0].text = "Revenue Gained " + revenue + "\nSupplies for shelves: " + shelfCost + "\nEmployee Wages: " + wageCost + "\nTotal: " + total + "\n\nEST. RENT DUE SUNDAY: " + rent;
+
+        
     }
 
     public void confirmSummary()
     {
+
         summaryPanel.SetActive(false);
+        if (money <= 0)
+        {
+            LosePanel.SetActive(true);
+            currentState = GameStates.LOSE;
+            return;
+        }
         upgradePanel.SetActive(true);
     }
 
@@ -257,6 +271,14 @@ public class GameManager : MonoBehaviour
         level++;
         ReInitLevel();
         GameObject.Find("TheBar").GetComponent<TimeBarUI>().startCo();
+    }
+
+    public void ConfirmLose()
+    {
+        Destroy(this.gameObject);
+        Destroy(GameObject.Find("AudioManager"));
+        Destroy(GameObject.Find("Pointer"));
+        SceneManager.LoadScene("NewStartScene");
     }
 
     private void UpdateShelfPlacement(Vector2Int gridPosition, bool canPlaceShelf)
