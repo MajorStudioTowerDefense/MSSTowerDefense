@@ -169,6 +169,9 @@ MonoBehaviour:
   employeeSpeedBoost: 1
   Shelves: []
   shelfVisibilityBoost: 1
+  target:
+    serializedVersion: 2
+    m_Bits: 64
   ShelfPointerUI: {fileID: 0}
 --- !u!114 &6712996876442050152
 MonoBehaviour:
