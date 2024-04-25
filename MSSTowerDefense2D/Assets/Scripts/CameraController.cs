@@ -42,14 +42,14 @@ public class CameraController : MonoBehaviour
                 moveY -= delta.y * maxMoveSpeed * cameraDragSpeed;
                 lastMousePosition = Input.mousePosition;
             }
+
+            // Apply movement
+            moveVelocity.x = Mathf.Clamp(moveX, -1, 1) * maxMoveSpeed;
+            moveVelocity.y = Mathf.Clamp(moveY, -1, 1) * maxMoveSpeed;
+
+            pos.x += moveVelocity.x * Time.deltaTime;
+            pos.y += moveVelocity.y * Time.deltaTime;
         }
-
-        // Apply movement
-        moveVelocity.x = Mathf.Clamp(moveX, -1, 1) * maxMoveSpeed;
-        moveVelocity.y = Mathf.Clamp(moveY, -1, 1) * maxMoveSpeed;
-
-        pos.x += moveVelocity.x * Time.deltaTime;
-        pos.y += moveVelocity.y * Time.deltaTime;
 
         // Zoom only if not over any UI element
         if (!EventSystem.current.IsPointerOverGameObject())
