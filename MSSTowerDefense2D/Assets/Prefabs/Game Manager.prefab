@@ -59,7 +59,7 @@ MonoBehaviour:
   shelfBeingRepositioned: {fileID: 0}
   ShelfPlaced: {fileID: 8300000, guid: 94f8267c561f437418c6ff8cba925b82, type: 3}
   alternativeAreaWidth: 0
-  playerInteraction: {fileID: 0}
+  playerInteraction: {fileID: 6712996876442050152}
   shelfCollectionForReload: {fileID: 0}
 --- !u!114 &6712996876442050155
 MonoBehaviour:
@@ -200,7 +200,7 @@ MonoBehaviour:
   upgradeSystem: {fileID: 6712996876442050153}
   interactionLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   onCorrectLayer: 0
   shelfStockButtons: []
   hoverGameObject: {fileID: 0}
@@ -303,3 +303,4 @@ MonoBehaviour:
   pooledObjects: []
   objectToPool: {fileID: 1835143573036741845, guid: 20c916eebb489834b9333f2f3808c888, type: 3}
   amountToPool: 50
+  cashier: {fileID: 0}

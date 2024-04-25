@@ -110,6 +110,7 @@ public class PlayerInteraction : MonoBehaviour
                     }
                 }
             }
+            /**
             //如果鼠标长按并释放且点到了shelf
             else if(holdLongEnough && longHoldGameObject!=null  && longHoldGameObject.tag == "interactedShelf" && longHoldGameObject.GetComponent<ShelfScript>().loadAllowed)
             {
@@ -120,7 +121,7 @@ public class PlayerInteraction : MonoBehaviour
                 {
                     Debug.Log("shelf full");
                     return;
-                }/**
+                }
                 ShelfChosenInPrimaryTask.loadAllowed = false;
                 currentStage = interactionStage.findTarget;
                 assignedTask = assignTaskTargetForShelf;
@@ -132,8 +133,8 @@ public class PlayerInteraction : MonoBehaviour
                 if (mouseUIs.Length > 0)
                 {
                     changeMouseUI(2);
-                }**/
-            }
+                }
+            }**/
         }
     }
 
