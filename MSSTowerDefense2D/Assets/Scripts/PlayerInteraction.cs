@@ -59,7 +59,7 @@ public class PlayerInteraction : MonoBehaviour
         HandleMouseInput();
         if(GameManager.instance.currentState == GameStates.END)
         {
-            //ResetAllAtEndStage();
+            ResetAllAtEndStage();
             return;
         }
         if (currentStage == interactionStage.primary) { assignPrimaryTask(); }
@@ -284,12 +284,25 @@ public class PlayerInteraction : MonoBehaviour
         
     }
 
+    [Header("Warning Text")]
+    public TextMeshProUGUI warningText;
     public void OnButtonClick(goods product)
     {
-        EmployeeChosenInPrimaryTask.eAction = employeeAction.reload;
-        EmployeeChosenInPrimaryTask.reloadShelf(shelfChosenForReload,product);
+        if(shelfChosenForReload.loadAmount<shelfChosenForReload.loadAmountMax)
+        {
+            EmployeeChosenInPrimaryTask.eAction = employeeAction.reload;
+            EmployeeChosenInPrimaryTask.reloadShelf(shelfChosenForReload, product);
+            resetSomethingToDefault();
+        }
+        else
+        {
+            warningText.gameObject.transform.position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, warningText.gameObject.transform.position.z);
+            warningText.gameObject.SetActive(true);
+            resetEverythingToDefault();
+            currentStage = interactionStage.primary;
+        }
         
-        resetSomethingToDefault();
+        
     }
 
     /*
