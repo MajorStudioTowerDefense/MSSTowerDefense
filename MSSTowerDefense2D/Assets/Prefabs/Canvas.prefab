@@ -17242,7 +17242,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2200785565722295786}
   m_Direction: 3
   m_Value: 1
-  m_Size: 0.42621264
+  m_Size: 0.4262126
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -20126,13 +20126,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd0fe6548872d4b2bb71718d42f4619a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Mon: {fileID: 0}
-  Tue: {fileID: 0}
-  Wed: {fileID: 0}
-  Thu: {fileID: 0}
-  Fri: {fileID: 0}
-  Sat: {fileID: 0}
-  Sun: {fileID: 0}
+  Mon: {fileID: 2200785564436483510}
+  Tue: {fileID: 2200785565546928125}
+  Wed: {fileID: 2200785565947588211}
+  Thu: {fileID: 2200785566499587685}
+  Fri: {fileID: 2200785564498509919}
+  Sat: {fileID: 2200785565288885430}
+  Sun: {fileID: 2200785564889754059}
   gameManager: {fileID: 0}
   week: []
   changeDay: 0
