@@ -95,6 +95,7 @@ public class UpgradeSystem : MonoBehaviour
                 {
                     if (hit.collider.gameObject.layer == 6)
                     {
+                        Debug.Log("hit!");
                         ShelfScript shelf = hit.collider.GetComponent<ShelfScript>();
                         if (Shelves.Contains(shelf))
                         {
