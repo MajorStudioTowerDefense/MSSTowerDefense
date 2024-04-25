@@ -161,7 +161,6 @@ public class GameManager : MonoBehaviour
                 isTimer = false;
                 break;
         }
-
     }
 
     private void InitializeLevel()
@@ -459,11 +458,31 @@ public class GameManager : MonoBehaviour
     {
         previousState = currentState;
         currentState = GameStates.TUTORIAL;
+        DisableUIInteraction();
     }
 
     public void TutorialEnds()
     {
         currentState = previousState;
+        EnableUIInteraction();
+    }
+
+    public void DisableUIInteraction()
+    {
+        CanvasGroup[] canvasGroups = FindObjectsOfType<CanvasGroup>();
+        foreach (CanvasGroup canvasGroup in canvasGroups)
+        {
+            canvasGroup.interactable = false;
+        }
+    }
+
+    public void EnableUIInteraction()
+    {
+        CanvasGroup[] canvasGroups = FindObjectsOfType<CanvasGroup>();
+        foreach (CanvasGroup canvasGroup in canvasGroups)
+        {
+            canvasGroup.interactable = true;
+        }
     }
 
     public GameObject employeeArea;
