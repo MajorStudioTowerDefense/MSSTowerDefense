@@ -23,8 +23,11 @@ public class PredeterminedCustomerGenerator : MonoBehaviour
     public AudioClip StartShift;
     private bool hasPlayedShiftSound = false;
 
+    private IncomingCustomers incomingCustomers;
+    private AudioManager audioManager;
+
     private void Start()
-    {    
+    {
     }
 
 
@@ -40,6 +43,10 @@ public class PredeterminedCustomerGenerator : MonoBehaviour
             numRhino = 0;
             numElf = 0;
             GenerateCustomers();
+            incomingCustomers = FindObjectOfType<IncomingCustomers>();
+            incomingCustomers.halfling.text = numBeard.ToString();
+            incomingCustomers.rhino.text = numRhino.ToString();
+            incomingCustomers.elf.text = numElf.ToString();
             allowNewList = false;
         }
         else if (GameManager.instance.currentState == GameStates.END)
@@ -68,7 +75,8 @@ public class PredeterminedCustomerGenerator : MonoBehaviour
             float chance = Random.Range(0.0f, 1.0f);
             GameObject customerPrefab;
 
-            GetComponent<AudioManager>().PlaySpawnSound();
+            audioManager = FindObjectOfType<AudioManager>();
+            audioManager.PlaySpawnSound();
 
             if (customerPrefabs.Length > 1)
             {
@@ -116,7 +124,7 @@ public class PredeterminedCustomerGenerator : MonoBehaviour
 
             // Increment the current customer count
             currentCustomers++;
-             audioSource.clip = StartShift;
+            audioSource.clip = StartShift;
          // Check if the shift sound is assigned
         if (StartShift == null)
         {
