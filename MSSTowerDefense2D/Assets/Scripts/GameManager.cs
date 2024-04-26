@@ -11,7 +11,8 @@ public enum GameStates
     STORE,
     END,
     LOOP,
-    TUTORIAL
+    TUTORIAL,
+    LOSE
 }
 
 public class GameManager : MonoBehaviour
@@ -78,6 +79,7 @@ public class GameManager : MonoBehaviour
     [Header("Game Loop Settings")]
     public int level = 1;
     [SerializeField] private float difficultyFactor = 1.2f;
+    public GameObject LosePanel;
 
     [Header("Tutorials")]
     public GameStates previousState;
@@ -104,6 +106,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+
         cameraController = FindFirstObjectByType<CameraController>();
         initialCameraMaxZoom = cameraController.maxZoom;
         initialMoveLimit = cameraController.moveLimit.x;
@@ -160,6 +163,9 @@ public class GameManager : MonoBehaviour
             case GameStates.TUTORIAL:
                 isTimer = false;
                 break;
+            case GameStates.LOSE:
+                isTimer = false;
+                break;
         }
     }
 
@@ -181,7 +187,7 @@ public class GameManager : MonoBehaviour
     {
         day++;
         if (day % 6 == 0) GenerateWalls();
-        CustomerGenerator[] customerGenerators = FindObjectsOfType<CustomerGenerator>();
+        PredeterminedCustomerGenerator[] customerGenerators = FindObjectsOfType<PredeterminedCustomerGenerator>();
         if (customerGenerators.Length > 0)
         {
             for (int i = customerGenerators[0].customersList.Count - 1; i >= 0; i--)
@@ -238,11 +244,27 @@ public class GameManager : MonoBehaviour
         total = revenue - shelfCost - wageCost;
         money += total;
         summaryText[0].text = "Revenue Gained " + revenue + "\nSupplies for shelves: " + shelfCost + "\nEmployee Wages: " + wageCost + "\nTotal: " + total + "\n\nEST. RENT DUE SUNDAY: " + rent;
+
+        
     }
 
     public void confirmSummary()
     {
+
         summaryPanel.SetActive(false);
+        if (money <= 0)
+        {
+            LosePanel.SetActive(true);
+            currentState = GameStates.LOSE;
+            return;
+        }
+        else if (day == 28)
+        {
+            Destroy(this.gameObject);
+            Destroy(GameObject.Find("AudioManager"));
+            Destroy(GameObject.Find("Pointer"));
+            SceneManager.LoadScene("WinScene");
+        }
         upgradePanel.SetActive(true);
     }
 
@@ -257,6 +279,14 @@ public class GameManager : MonoBehaviour
         level++;
         ReInitLevel();
         GameObject.Find("TheBar").GetComponent<TimeBarUI>().startCo();
+    }
+
+    public void ConfirmLose()
+    {
+        Destroy(this.gameObject);
+        Destroy(GameObject.Find("AudioManager"));
+        Destroy(GameObject.Find("Pointer"));
+        SceneManager.LoadScene("LoseScene");
     }
 
     private void UpdateShelfPlacement(Vector2Int gridPosition, bool canPlaceShelf)

@@ -3,7 +3,10 @@ guid: 24ef21ac133484adea90c521ab7dc117
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - spawnPoint: {instanceID: 0}
+  - audioSource: {instanceID: 0}
+  - StartShift: {fileID: 8300000, guid: f3bfe4c24bb25144187423e5250d56bf, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -10,11 +10,31 @@ public class AudioManager : MonoBehaviour
     public AudioSource audioSource1;
     public AudioSource audioSource2;
     
-    public AudioClip StartShift;
+
     public bool allowCheck;
     private bool hasPlayedShiftSound = false;
     
+public AudioClip spawnSound;
+private bool hasPlayedSpawnSound = false;
 
+    // This function is called whenever an NPC is spawned
+    public void PlaySpawnSound()
+    {
+        // Play the spawn sound only once
+        if (!hasPlayedSpawnSound)
+        {
+            // Check if the spawn sound is assigned
+            if (spawnSound == null)
+            {
+                Debug.LogError("Spawn sound is not assigned to the AudioManager!");
+                return;
+            }
+
+            // Play the spawn sound
+            GetComponent<AudioSource>().PlayOneShot(spawnSound);
+            hasPlayedSpawnSound = true;
+        }
+    }
     //Assigning certain sounds to play for a limited amount of time
     private void Start()
     {   
