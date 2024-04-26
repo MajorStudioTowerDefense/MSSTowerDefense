@@ -5,7 +5,6 @@ using Pathfinding;
 using System.Linq;
 using TMPro;
 using static UnityEngine.GraphicsBuffer;
-using UnityEditor.Tilemaps;
 
 public class CustomerData
 {
