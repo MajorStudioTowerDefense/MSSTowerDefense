@@ -106,8 +106,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        CustomerGenerator[] customerGenerators = FindObjectsOfType<CustomerGenerator>();
-        PredeterminedCustomerGenerator[] customerGenerators = FindObjectsOfType<PredeterminedCustomerGenerator>();
+
         cameraController = FindFirstObjectByType<CameraController>();
         initialCameraMaxZoom = cameraController.maxZoom;
         initialMoveLimit = cameraController.moveLimit.x;
