@@ -24,20 +24,7 @@ public class PredeterminedCustomerGenerator : MonoBehaviour
     private bool hasPlayedShiftSound = false;
 
     private void Start()
-    {    audioSource.clip = StartShift;
-        // Check if the shift sound is assigned
-        if (StartShift == null)
-        {
-            Debug.LogError("Shift sound is not assigned to the AudioManager!");
-            return;
-        }
-
-        // Play the shift sound only once when the first NPC spawns
-        if (!hasPlayedShiftSound && GameObject.FindGameObjectsWithTag("Customer").Length == 1)
-        {
-            GetComponent<AudioSource>().PlayOneShot(audioSource.clip);
-            hasPlayedShiftSound = true;
-        }
+    {    
     }
 
 
@@ -80,6 +67,8 @@ public class PredeterminedCustomerGenerator : MonoBehaviour
             // Generate a random number between 0.0 and 1.0
             float chance = Random.Range(0.0f, 1.0f);
             GameObject customerPrefab;
+
+            GetComponent<AudioManager>().PlaySpawnSound();
 
             if (customerPrefabs.Length > 1)
             {
@@ -127,6 +116,20 @@ public class PredeterminedCustomerGenerator : MonoBehaviour
 
             // Increment the current customer count
             currentCustomers++;
+             audioSource.clip = StartShift;
+         // Check if the shift sound is assigned
+        if (StartShift == null)
+        {
+            Debug.LogError("Shift sound is not assigned to the AudioManager!");
+            return;
+        }
+
+        // Play the shift sound only once when the first NPC spawns
+        if (!hasPlayedShiftSound && currentCustomers == 1)
+        {
+            GetComponent<AudioSource>().PlayOneShot(audioSource.clip);
+            hasPlayedShiftSound = true;
+        }
         }
 
     }
