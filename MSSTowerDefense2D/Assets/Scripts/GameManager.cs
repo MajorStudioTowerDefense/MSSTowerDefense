@@ -186,7 +186,7 @@ public class GameManager : MonoBehaviour
     {
         day++;
         if (day % 6 == 0) GenerateWalls();
-        CustomerGenerator[] customerGenerators = FindObjectsOfType<CustomerGenerator>();
+        PredeterminedCustomerGenerator[] customerGenerators = FindObjectsOfType<PredeterminedCustomerGenerator>();
         if (customerGenerators.Length > 0)
         {
             for (int i = customerGenerators[0].customersList.Count - 1; i >= 0; i--)

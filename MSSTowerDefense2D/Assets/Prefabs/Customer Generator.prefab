@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1896027676372340320}
   - component: {fileID: 1896027676372340351}
+  - component: {fileID: 1101879350521234131}
   m_Layer: 0
   m_Name: Customer Generator
   m_TagString: Untagged
@@ -41,7 +42,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1896027676372340350}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d355efd6ff90f6645b5789ac04414336, type: 3}
   m_Name: 
@@ -56,6 +57,32 @@ MonoBehaviour:
   audioSource2: {fileID: 0}
   currentCustomers: 0
   customersList: []
+--- !u!114 &1101879350521234131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1896027676372340350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24ef21ac133484adea90c521ab7dc117, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customerPrefabs:
+  - {fileID: 6430688495216814459, guid: 1b94cea9cc8da234889e003bdfabc54f, type: 3}
+  - {fileID: 2782339301779740598, guid: 99b5d3cb60531a0488180c74bc09d14d, type: 3}
+  - {fileID: 2172623621878989275, guid: 59ae1cf025289c24f9c9f6c2c19f859e, type: 3}
+  spawnPoint: {fileID: 1896027676592228250}
+  maxCustomers: 5
+  currentCustomers: 0
+  numBeard: 0
+  numRhino: 0
+  numElf: 0
+  customersList: []
+  predeterminedCustomersList: []
+  audioSource: {fileID: 0}
+  StartShift: {fileID: 0}
 --- !u!1 &1896027676592228249
 GameObject:
   m_ObjectHideFlags: 0
