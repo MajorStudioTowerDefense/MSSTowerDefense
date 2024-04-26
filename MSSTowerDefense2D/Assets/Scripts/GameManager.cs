@@ -106,6 +106,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        CustomerGenerator[] customerGenerators = FindObjectsOfType<CustomerGenerator>();
+        PredeterminedCustomerGenerator[] customerGenerators = FindObjectsOfType<PredeterminedCustomerGenerator>();
         cameraController = FindFirstObjectByType<CameraController>();
         initialCameraMaxZoom = cameraController.maxZoom;
         initialMoveLimit = cameraController.moveLimit.x;
@@ -257,6 +259,13 @@ public class GameManager : MonoBehaviour
             currentState = GameStates.LOSE;
             return;
         }
+        else if (day == 28)
+        {
+            Destroy(this.gameObject);
+            Destroy(GameObject.Find("AudioManager"));
+            Destroy(GameObject.Find("Pointer"));
+            SceneManager.LoadScene("WinScene");
+        }
         upgradePanel.SetActive(true);
     }
 
@@ -278,7 +287,7 @@ public class GameManager : MonoBehaviour
         Destroy(this.gameObject);
         Destroy(GameObject.Find("AudioManager"));
         Destroy(GameObject.Find("Pointer"));
-        SceneManager.LoadScene("NewStartScene");
+        SceneManager.LoadScene("LoseScene");
     }
 
     private void UpdateShelfPlacement(Vector2Int gridPosition, bool canPlaceShelf)
