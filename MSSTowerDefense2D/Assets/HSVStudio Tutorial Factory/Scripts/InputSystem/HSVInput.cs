@@ -108,7 +108,7 @@ namespace HSVStudio.Tutorial
 #else
         public static bool GetKeyDown(KeyCode keyCode)
         {
-            return GetKeyDown(keyCode.ToString().ToLower());
+            return Input.GetKeyDown(keyCode);
         }
 
         public static bool GetKeyDown(string keyCode)
@@ -181,7 +181,7 @@ namespace HSVStudio.Tutorial
 
         public static Vector3 GetPointerPosition()
         {
-            if(touchSupported && touchCount > 0)
+            if (touchSupported && touchCount > 0)
             {
                 return GetTouchPosition(0);
             }

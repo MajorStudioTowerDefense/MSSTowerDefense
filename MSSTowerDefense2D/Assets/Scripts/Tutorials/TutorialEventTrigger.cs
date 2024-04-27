@@ -23,6 +23,10 @@ public class TutorialEventTrigger : MonoBehaviour
     public GameObject employeeRestockTriggerUIObject;
     public GameObject emptyShelfMatcherObject;
 
+    [Header("Day End Tutorial")]
+    public GameObject dayEndTriggerUIObject;
+    private bool isDayEndTutorialTriggered = false;
+
     void Update()
     {
         TriggerCustomerTutorial();
@@ -30,6 +34,8 @@ public class TutorialEventTrigger : MonoBehaviour
         TriggerEmployeeandRestockTutorial();
 
         TriggerCustomerPurchaseTutorial();
+
+        TriggerDayEndTutorial();
     }
 
     void TriggerCustomerTutorial()
@@ -99,6 +105,19 @@ public class TutorialEventTrigger : MonoBehaviour
 
                 isCustomerPurchaseTutorialTriggered = true;
             }
+        }
+    }
+
+    void TriggerDayEndTutorial()
+    {
+        if (GameManager.instance.summaryPanel.activeInHierarchy)
+        {
+            PointerEventData pointerEventData = new PointerEventData(EventSystem.current);
+            pointerEventData.position = Camera.main.WorldToScreenPoint(customerTutorialTriggerUIObject.transform.position);
+
+            ExecuteEvents.Execute(dayEndTriggerUIObject, pointerEventData, ExecuteEvents.pointerClickHandler);
+
+            isDayEndTutorialTriggered = true;
         }
     }
 

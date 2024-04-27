@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EmptyShelfItemMatcher : MonoBehaviour
 {
-    private GameObject shelfObject;
+    private Transform shelfItemObject;
 
     void Update()
     {
@@ -11,15 +11,27 @@ public class EmptyShelfItemMatcher : MonoBehaviour
         {
             if (shelf.loadAmount == 0)
             {
-                shelfObject = shelf.gameObject;
+                shelfItemObject = FindDeepChild(shelf.gameObject.transform, "ItemIndicatorPanel");
 
-                transform.position = shelfObject.transform.position;
-                transform.rotation = shelfObject.transform.rotation;
-                transform.localScale = shelfObject.transform.localScale;
-
-
+                transform.position = shelfItemObject.position;
+                transform.rotation = shelfItemObject.rotation;
+                transform.localScale = shelfItemObject.localScale;
             }
         }
+    }
+
+    public Transform FindDeepChild(Transform parent, string childName)
+    {
+        foreach (Transform child in parent)
+        {
+            if (child.name == childName)
+                return child;
+
+            Transform found = FindDeepChild(child, childName);
+            if (found != null)
+                return found;
+        }
+        return null;
     }
 
     public void SelfDestroy()

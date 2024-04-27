@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 4110001720006361159}
   - component: {fileID: 3096787219803522277}
   - component: {fileID: 5863826799362975348}
-  - component: {fileID: 2094819913927870519}
+  - component: {fileID: 1154234251136049830}
   m_Layer: 0
   m_Name: EmptyShelfItemMatcher
   m_TagString: Untagged
@@ -171,9 +171,9 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 1.5, z: 1}
+  m_Size: {x: 3, y: 1.5, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2094819913927870519
+--- !u!114 &1154234251136049830
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -182,10 +182,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3643503516389430698}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 080c0418f6382144e9993aa94dd74ce3, type: 3}
+  m_Script: {fileID: 11500000, guid: ad2f203f466cb2246b82ab6ac2cc5ab3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RestockShelf: {fileID: 0}
 --- !u!1 &5315740179604002941
 GameObject:
   m_ObjectHideFlags: 0
