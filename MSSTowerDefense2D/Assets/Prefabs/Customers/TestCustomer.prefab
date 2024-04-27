@@ -130,7 +130,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 1205277927, guid: 6e2d73cca9a95a14d8cb3ae80479ac74, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -464,6 +464,7 @@ MonoBehaviour:
   currentDestination: {x: 0, y: 0, z: 0}
   areaPartitionSizeX: 5
   areaPartitionSizeY: 3
+  bot: {fileID: 0}
   WalkingHeavy: {fileID: 0}
   Walking: {fileID: 8300000, guid: 3b6f26366ba3461468ed335962c9b308, type: 3}
   CustomerPissed: {fileID: 8300000, guid: c572bf2b3e4da25469ad21dd4f99ca21, type: 3}

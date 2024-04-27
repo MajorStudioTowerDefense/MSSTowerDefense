@@ -275,6 +275,7 @@ MonoBehaviour:
   currentDestination: {x: 0, y: 0, z: 0}
   areaPartitionSizeX: 4
   areaPartitionSizeY: 5
+  bot: {fileID: 0}
   WalkingHeavy: {fileID: 8300000, guid: 9d837a4559d987d40a8861a9014f3c16, type: 3}
   Walking: {fileID: 0}
   CustomerPissed: {fileID: 8300000, guid: 8b44cbbce1c6c8b4e9dce211968d5add, type: 3}
@@ -626,7 +627,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 1205277927, guid: 6e2d73cca9a95a14d8cb3ae80479ac74, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

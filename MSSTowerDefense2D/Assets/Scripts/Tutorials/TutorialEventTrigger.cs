@@ -173,4 +173,28 @@ public class TutorialEventTrigger : MonoBehaviour
             button.interactable = true;
         }
     }
+
+    public void DisableTutorialPanelButton()
+    {
+        Button[] allButtons = FindObjectsOfType<Button>();
+        foreach (var button in allButtons)
+        {
+            if (button.transform.IsChildOf(tutorialManager.transform))
+            {
+                button.interactable = false;
+            }
+        }
+    }
+
+    public void EnableTutorialPanelButton()
+    {
+        Button[] allButtons = FindObjectsOfType<Button>();
+        foreach (var button in allButtons)
+        {
+            if (button.transform.IsChildOf(tutorialManager.transform))
+            {
+                button.interactable = true;
+            }
+        }
+    }
 }
