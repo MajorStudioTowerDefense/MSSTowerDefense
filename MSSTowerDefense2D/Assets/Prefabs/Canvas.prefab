@@ -15180,7 +15180,7 @@ GameObject:
   - component: {fileID: 2200785565826138533}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: MainCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17454,7 +17454,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2200785565722295786}
   m_Direction: 3
   m_Value: 1
-  m_Size: 0.42621264
+  m_Size: 0.4262126
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

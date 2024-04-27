@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class TutorialEventTrigger : MonoBehaviour
 {
@@ -10,20 +11,25 @@ public class TutorialEventTrigger : MonoBehaviour
     [Header("Shelves Tutorial")]
     public GameObject appleShelfButton;
 
-    [Header ("Customer Tutorial")]
+    [Header("Customer Tutorial")]
     public GameObject customerTutorialTriggerUIObject;
     private bool isCustomerTutorialTriggered = false;
     private GameObject firstCustomer;
     private GameObject firstDoor;
+    public GameObject customerPurchaseUIObject;
+    private bool isCustomerPurchaseTutorialTriggered = false;
 
     [Header("Employee and Restock Tutorial")]
     public GameObject employeeRestockTriggerUIObject;
+    public GameObject emptyShelfMatcherObject;
 
     void Update()
     {
         TriggerCustomerTutorial();
 
         TriggerEmployeeandRestockTutorial();
+
+        TriggerCustomerPurchaseTutorial();
     }
 
     void TriggerCustomerTutorial()
@@ -49,7 +55,7 @@ public class TutorialEventTrigger : MonoBehaviour
         }
     }
 
-    private bool isRestockTutorialTriggered = false; 
+    private bool isRestockTutorialTriggered = false;
 
     void TriggerEmployeeandRestockTutorial()
     {
@@ -60,6 +66,13 @@ public class TutorialEventTrigger : MonoBehaviour
         {
             if (shelf.loadAmount == 0)
             {
+                GameObject shelfObject;
+                shelfObject = shelf.gameObject;
+
+                emptyShelfMatcherObject.transform.position = shelfObject.transform.position;
+                emptyShelfMatcherObject.transform.rotation = shelfObject.transform.rotation;
+                emptyShelfMatcherObject.transform.localScale = shelfObject.transform.localScale;
+
                 PointerEventData pointerEventData = new PointerEventData(EventSystem.current)
                 {
                     position = Camera.main.WorldToScreenPoint(employeeRestockTriggerUIObject.transform.position)
@@ -69,6 +82,22 @@ public class TutorialEventTrigger : MonoBehaviour
 
                 isRestockTutorialTriggered = true;
                 return;
+            }
+        }
+    }
+
+    void TriggerCustomerPurchaseTutorial()
+    {
+        if (firstCustomer != null)
+        {
+            if (firstCustomer.GetComponent<NormalCustomer>().bot.isPurchasing && !isCustomerPurchaseTutorialTriggered)
+            {
+                PointerEventData pointerEventData = new PointerEventData(EventSystem.current);
+                pointerEventData.position = Camera.main.WorldToScreenPoint(customerTutorialTriggerUIObject.transform.position);
+
+                ExecuteEvents.Execute(customerPurchaseUIObject, pointerEventData, ExecuteEvents.pointerClickHandler);
+
+                isCustomerPurchaseTutorialTriggered = true;
             }
         }
     }
@@ -85,13 +114,44 @@ public class TutorialEventTrigger : MonoBehaviour
 
     public void SkipTutorial()
     {
-        GameManager.instance.TutorialEnds();
+        OffTutorial();
         tutorialManager.SetActive(false);
         tutorialPanel.SetActive(false);
     }
 
     public void TriggerAppleShelfTutorial()
     {
-        appleShelfButton.GetComponent<CanvasGroup>().interactable = true;
+        appleShelfButton.GetComponent<Button>().interactable = true;
+    }
+
+    public void OnTutorial()
+    {
+        GameManager.instance.TutorialStarts();
+
+        Button[] allButtons = FindObjectsOfType<Button>();
+
+        foreach (var button in allButtons)
+        {
+            if (button.transform.parent != null && button.transform.parent.gameObject == tutorialPanel)
+            {
+                button.interactable = true;
+            }
+            else
+            {
+                button.interactable = false;
+            }
+        }
+    }
+
+    public void OffTutorial()
+    {
+        GameManager.instance.TutorialEnds();
+
+        Button[] allButtons = FindObjectsOfType<Button>();
+
+        foreach (var button in allButtons)
+        {
+            button.interactable = true;
+        }
     }
 }

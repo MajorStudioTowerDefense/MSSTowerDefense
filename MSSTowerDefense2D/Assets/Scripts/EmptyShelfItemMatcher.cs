@@ -1,14 +1,9 @@
 using UnityEngine;
 
-public class EmptyShelfMatcher : MonoBehaviour
+public class EmptyShelfItemMatcher : MonoBehaviour
 {
     private GameObject shelfObject;
-    public AudioClip RestockShelf;
-    void Start()
-    {
-        AudioManager.instance.PlaySound(RestockShelf);
-        Debug.Log("Play sound.");
-    }
+
     void Update()
     {
         ShelfScript[] shelves = FindObjectsOfType<ShelfScript>();

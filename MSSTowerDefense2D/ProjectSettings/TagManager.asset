@@ -12,6 +12,7 @@ TagManager:
   - Door
   - Satisfaction
   - Employee
+  - MainCanvas
   layers:
   - Default
   - TransparentFX
