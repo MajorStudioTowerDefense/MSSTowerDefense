@@ -71,7 +71,7 @@ MonoBehaviour:
   customerPrefabs:
   - {fileID: 6430688495216814459, guid: 1b94cea9cc8da234889e003bdfabc54f, type: 3}
   - {fileID: 2782339301779740598, guid: 99b5d3cb60531a0488180c74bc09d14d, type: 3}
-  - {fileID: 2172623621878989275, guid: 59ae1cf025289c24f9c9f6c2c19f859e, type: 3}
+  - {fileID: 6430688495216814459, guid: a64fee57339aa4a598789b1a3df7dc38, type: 3}
   spawnPoint: {fileID: 1896027676592228250}
   maxCustomers: 5
   currentCustomers: 0
