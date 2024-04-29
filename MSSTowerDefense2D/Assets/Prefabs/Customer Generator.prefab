@@ -42,7 +42,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1896027676372340350}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d355efd6ff90f6645b5789ac04414336, type: 3}
   m_Name: 
@@ -53,6 +53,7 @@ MonoBehaviour:
   - {fileID: 6430688495216814459, guid: a64fee57339aa4a598789b1a3df7dc38, type: 3}
   spawnPoint: {fileID: 1896027676592228250}
   maxCustomers: 5
+  StartShift: {fileID: 0}
   currentCustomers: 0
   customersList: []
 --- !u!114 &1101879350521234131
@@ -62,7 +63,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1896027676372340350}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 24ef21ac133484adea90c521ab7dc117, type: 3}
   m_Name: 

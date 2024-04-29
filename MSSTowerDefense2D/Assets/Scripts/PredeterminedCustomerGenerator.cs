@@ -36,14 +36,13 @@ public class PredeterminedCustomerGenerator : MonoBehaviour
         maxGenerateDelay = 120 / maxCustomers;
         minGenerateDelay = maxGenerateDelay / 2;
 
-
         if (GameManager.instance.currentState == GameStates.PREP && allowNewList == true)
         {
             numBeard = 0;
             numRhino = 0;
             numElf = 0;
             GenerateCustomers();
-            incomingCustomers = FindObjectOfType<IncomingCustomers>();
+            incomingCustomers = FindObjectOfType<IncomingCustomers>().GetComponent<IncomingCustomers>();
             incomingCustomers.halfling.text = numBeard.ToString();
             incomingCustomers.rhino.text = numRhino.ToString();
             incomingCustomers.elf.text = numElf.ToString();
