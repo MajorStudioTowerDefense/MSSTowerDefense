@@ -122,8 +122,7 @@ MonoBehaviour:
   currentState: 0
   exit: {fileID: 0}
   revenue: 0
-  total: 0
-  rent: 0
+  rent: 0.5
   money: 100
   yesterdayMoney: 0
   timer: 0
@@ -136,6 +135,7 @@ MonoBehaviour:
   rooms: []
   level: 1
   difficultyFactor: 1.2
+  LosePanel: {fileID: 0}
   previousState: 0
   initLayout: {fileID: 4900000, guid: 56ee0eb10e9ab88469b34b6fa62f1f1c, type: 3}
   layouts:
@@ -206,6 +206,7 @@ MonoBehaviour:
     m_Bits: 8
   onCorrectLayer: 0
   shelfStockButtons: []
+  warningText: {fileID: 0}
   hoverGameObject: {fileID: 0}
   longHoldGameObject: {fileID: 0}
 --- !u!114 &6712996876442050159

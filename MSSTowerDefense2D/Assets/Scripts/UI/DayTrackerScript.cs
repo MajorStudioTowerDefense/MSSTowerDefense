@@ -26,7 +26,7 @@ public class DayTrackerScript : MonoBehaviour
         dayTracker = 0;
         currDay = Mon;
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
-        revenue = gameManager.total;
+        revenue = gameManager.money;
         rent = gameManager.rent;
         passableRevenue = rent/7;
         week = new List<GameObject> { Mon, Tue, Wed, Thu, Fri, Sat, Sun };

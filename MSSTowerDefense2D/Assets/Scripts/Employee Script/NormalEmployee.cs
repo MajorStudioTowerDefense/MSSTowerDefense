@@ -41,6 +41,8 @@ public class NormalEmployee : Bot
     public float employeeAreaOffsetYMax = 1.2f;
     public Vector3 myEmployeeAreaPos = Vector3.zero;
 
+    public int wage;
+
     private bool endStage = false;
 
     //check if the shelf is selected

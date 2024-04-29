@@ -324,6 +324,7 @@ MonoBehaviour:
   employeeAreaOffsetYMin: 0.2
   employeeAreaOffsetYMax: 0.8
   myEmployeeAreaPos: {x: 0, y: 0, z: 0}
+  wage: 15
   shelfPlacementManager: {fileID: 0}
   eStage: 0
   eAction: 0
