@@ -238,21 +238,11 @@ public class GameManager : MonoBehaviour
             wageCost += employee.wage;
         }
         summaryPanel.SetActive(true);
-<<<<<<< Updated upstream
-        revenue = yesterdayMoney - money;
-        rent = (gridCellHeight - 1) * (gridCellLength - 1) * 7;
-        total = revenue - shelfCost - wageCost;
-        money += total;
-        summaryText[0].text = "Revenue Gained " + revenue + "\nSupplies for shelves: " + shelfCost + "\nEmployee Wages: " + wageCost + "\nTotal: " + total + "\n\nEST. RENT DUE SUNDAY: " + rent;
-=======
         int rentCost = (int)(GetGridHeight() * GetGridWidth() * rent);
         money = money - shelfCost - wageCost;
         if (day % 6 == 0 && day!= 0) { money -= rentCost; Debug.Log("Expensive!"); }
         revenue = money - yesterdayMoney;
-        summaryText[0].text = "Revenue Gained " + revenue + "\nSupplies for shelves: " + shelfCost + "\nEmployee Wages: " + wageCost + "\n\nEST. RENT DUE SUNDAY: " + rentCost + "\nTotal: " + money;
->>>>>>> Stashed changes
-
-        
+        summaryText[0].text = "Revenue Gained " + revenue + "\nSupplies for shelves: " + shelfCost + "\nEmployee Wages: " + wageCost + "\n\nEST. RENT DUE SUNDAY: " + rentCost + "\nTotal: " + money;       
     }
 
     public void confirmSummary()
