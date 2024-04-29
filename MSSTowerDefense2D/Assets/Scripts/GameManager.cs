@@ -239,7 +239,7 @@ public class GameManager : MonoBehaviour
             wageCost += 20;
         }
         summaryPanel.SetActive(true);
-        revenue = money - yesterdayMoney;
+        revenue = yesterdayMoney - money;
         rent = (gridCellHeight - 1) * (gridCellLength - 1) * 7;
         total = revenue - shelfCost - wageCost;
         money += total;
