@@ -23,7 +23,7 @@ public class DayTrackerScript : MonoBehaviour
     void Awake()
     {
         day = -1;
-        dayTracker = -1;
+        dayTracker = 0;
         currDay = Mon;
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         revenue = gameManager.total;

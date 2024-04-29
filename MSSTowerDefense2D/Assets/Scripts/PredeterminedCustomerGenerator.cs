@@ -57,7 +57,7 @@ public class PredeterminedCustomerGenerator : MonoBehaviour
         if (GameManager.instance.currentState == GameStates.STORE)
         {
             // Check if it's time to generate a new customer and if the current number of customers is below the maximum
-            if (Time.time >= nextGenerateTime && currentCustomers < maxCustomers)
+            if (Time.time >= nextGenerateTime) //&& currentCustomers < maxCustomers
             {
                 SpawnCustomer();
                 // Schedule the next generation time by adding a random delay
