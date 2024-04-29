@@ -17,6 +17,7 @@ public class DayTrackerScript : MonoBehaviour
     private int day;
     public int dayTracker;
     private Vector2 ogPosition, upPosition;
+    public TextMeshProUGUI dayBannerText;
 
 
     void Awake()
@@ -41,13 +42,23 @@ public class DayTrackerScript : MonoBehaviour
         ogPosition = currDay.GetComponent<RectTransform>().position;
         upPosition = new Vector2(ogPosition.x, ogPosition.y + 3);
         doUI();
-        if (currDay == Sun) { checkForPassing(); }
+        //if (currDay == Sun) { checkForPassing(); }
+
     }
 
     void doUI()
     {
         icon = currDay.transform.GetChild(3).GetComponent<Image>();
         icon.enabled = true;
+        Debug.Log(currDay.name);
+        if (currDay == Mon) { dayBannerText.text = "Tuesday"; }
+        if (currDay == Tue) { dayBannerText.text = "Wednesday"; }
+        if (currDay == Wed) { dayBannerText.text = "Thursday"; }
+        if (currDay == Thu) { dayBannerText.text = "Friday"; }
+        if (currDay == Fri) { dayBannerText.text = "Saturday"; }
+        if (currDay == Sat) { dayBannerText.text = "Sunday"; }
+        if (currDay == Sun) { dayBannerText.text = "Monday"; }
+
     }
 
     private void checkForPassing()

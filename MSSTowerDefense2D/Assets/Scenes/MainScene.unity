@@ -19098,6 +19098,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -1591
       objectReference: {fileID: 0}
+    - target: {fileID: 2200785566315337788, guid: 672cffd96dcb942419a59dc062792de0, type: 3}
+      propertyPath: dayBannerText
+      value: 
+      objectReference: {fileID: 1525169955}
     - target: {fileID: 2200785566338257430, guid: 672cffd96dcb942419a59dc062792de0, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
