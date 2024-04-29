@@ -12,15 +12,17 @@ public class DayTrackerScript : MonoBehaviour
     public bool changeDay;
 
     private Image icon;
-    private GameObject currDay;
+    public GameObject currDay;
     public float revenue, passableRevenue, rent;
     private int day;
+    public int dayTracker;
     private Vector2 ogPosition, upPosition;
 
 
     void Awake()
     {
         day = -1;
+        dayTracker = -1;
         currDay = Mon;
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         revenue = gameManager.total;
@@ -33,6 +35,7 @@ public class DayTrackerScript : MonoBehaviour
     void changeTheDay()
     {
         day += 1;
+        dayTracker++;
         if (day == 7) day = 0;
         currDay = week[day];
         ogPosition = currDay.GetComponent<RectTransform>().position;

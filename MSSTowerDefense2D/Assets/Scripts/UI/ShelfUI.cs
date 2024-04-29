@@ -6,46 +6,32 @@ using UnityEngine.UI;
 public class ShelfUI : MonoBehaviour
 {
     //f is for fruit
-    public GameObject F1;
-    public GameObject F2;
-    public GameObject F3;
+    public GameObject apple;
+    public GameObject dragonFruit;
+    public GameObject durian;
 
     //w is for weapon
-    public GameObject W1;
-    public GameObject W2;
-    public GameObject W3;
+    public GameObject axe;
+    public GameObject sword;
+    public GameObject halbert;
 
     //p is for potion
-    public GameObject P1;
-    public GameObject P2;
-    public GameObject P3;
+    public GameObject haste;
+    public GameObject poison;
+    public GameObject love;
 
     //t is for table
-    public GameObject T1;
-    public GameObject T2;
-    public GameObject T3;
+    public GameObject horn;
+    public GameObject crystal;
+    public GameObject halo;
 
 
     public GameObject ToDisable;
 
- 
-    private List<GameObject> fruits; 
-    private List<GameObject> weapons;
-    private List<GameObject> potions;
-    private List<GameObject> tables;
-
+    public DayTrackerScript dayTrackerScript;
 
     private void Start()
     {
-        fruits = new List<GameObject>() { F1, F2, F3};
-        weapons = new List<GameObject>() { W1, W2, W3 };
-        potions = new List<GameObject>() { P1, P2, P3 };
-        tables = new List<GameObject>() { T1, T2, T3 };
-        FruitShelvesOn();
-        WeaponShelvesOn();
-        PotionShelvesOn();
-        TableShelvesOn();
-        //remove these one level building becomes a thing, will probably need to make structure edits
     }
 
     private void Update()
@@ -63,63 +49,55 @@ public class ShelfUI : MonoBehaviour
         {
             ToDisable.SetActive(false);
         }
-    }
 
-    //IEnumerator FindCustomer()
-    //{
-    //    yield return new WaitForSeconds(1.5f);
-    //    GameObject[] tags = GameObject.FindGameObjectsWithTag("Customer");
-
-    //    if (tags != null)
-    //    {
-    //        ToDisable.SetActive(false);
-    //    }
-    //    else
-    //    {
-    //        StartCoroutine(FindCustomer());
-    //    }
-    //}
-
-    public void FruitShelvesOn()
-    {
-        foreach (GameObject fruit in fruits)
+        int day = dayTrackerScript.dayTracker;
+        //we love hardcoding levels
+        if (day < 2)
         {
-            fruit.SetActive(true);
+            apple.SetActive(true);
         }
-        
-    }
-
-    public void WeaponShelvesOn()
-    {
-        foreach (GameObject weapon in weapons)
+        else if (day < 4)
         {
-            weapon.SetActive(true);
+            dragonFruit.SetActive(true);
         }
-
-    }
-
-    public void PotionShelvesOn()
-    {
-        foreach (GameObject potion in potions)
+        else if (day < 8)
         {
-            potion.SetActive(true);
+            durian.SetActive(true);
         }
-
-
-    }
-
-    public void TableShelvesOn()
-    {
-        foreach (GameObject table in tables)
+        else if (day < 10)
         {
-            table.SetActive(true);
+            haste.SetActive(true);
+        }
+        else if (day < 12)
+        {
+            poison.SetActive(true);
+        }
+        else if (day < 14)
+        {
+            love.SetActive(true);
+        }
+        else if (day < 16)
+        {
+            axe.SetActive(true);
+        }
+        else if (day < 18)
+        {
+            sword.SetActive(true);
+        }
+        else if (day < 20)
+        {
+            halbert.SetActive(true);
+        }
+        else if (day < 22)
+        {
+            horn.SetActive(true);
+            crystal.SetActive(true);
+        }
+        else
+        {
+            halo.SetActive(true);
         }
 
-
     }
-
-    public void Reset()
-    {
-        //nothing to reset anymore but will leave it here just in case;
-    }
+   
 }
