@@ -18,7 +18,7 @@ public class PauseScript : MonoBehaviour
     [SerializeField] GameObject gameManager;
     [SerializeField] GameObject play, pause;
     public AudioSource audioSource;
-    public AudioClip PausePlay; 
+    public AudioClip Pause_Resume; 
 
     public void pauseGame()
     {
@@ -27,7 +27,8 @@ public class PauseScript : MonoBehaviour
         Time.timeScale = 0.0f;
         play.SetActive(true);
         pause.SetActive(false);
-        AudioManager.instance.PlaySound(PausePlay);
+        Debug.Log("Play sound");
+        AudioManager.instance.PlaySound(Pause_Resume);
     }
 
     public void resumeGame()

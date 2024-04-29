@@ -7,6 +7,7 @@ public class MultipleGameSpeed : MonoBehaviour
 {
     public float gameSpeed = 2f;
     public AudioSource[] audioSource;
+    public AudioManager audioManager;
     public void SetGameSpeed()
     {
         Time.timeScale = gameSpeed;

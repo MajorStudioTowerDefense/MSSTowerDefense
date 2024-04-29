@@ -5,7 +5,7 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - spawnPoint: {instanceID: 0}
-  - audioSource: {instanceID: 0}
+  - audioSource: {fileID: 3861623885196813863, guid: 450e69fa7e57d4e9fbd4aaea3a24b5b3, type: 3}
   - StartShift: {fileID: 8300000, guid: f3bfe4c24bb25144187423e5250d56bf, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}

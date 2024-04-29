@@ -57,7 +57,7 @@ public class ShelfPlacementManager : MonoBehaviour
                 {
                     // Finalize initial placement if within grid
                     FinalizePlacement();
-                    AudioManager.instance.PlaySound(ShelfPlaced);
+                   
                 }
                 if (shelfBeingRepositioned != null)
                 {
