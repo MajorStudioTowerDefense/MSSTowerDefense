@@ -58,11 +58,10 @@ public class GameManager : MonoBehaviour
     public Transform exit;
 
     [Header("Revenue Data")]
-    public float revenue;
-    public float total;
+    [HideInInspector] public float revenue;
     public float rent;
     public float money = 100;
-    public float yesterdayMoney = 0;
+    [HideInInspector]public float yesterdayMoney = 0;
 
     private int day = 0;
 
@@ -186,7 +185,7 @@ public class GameManager : MonoBehaviour
     private void ReInitLevel()
     {
         day++;
-        if (day % 6 == 0) GenerateWalls();
+        if (day % 7 == 0) GenerateWalls();
         PredeterminedCustomerGenerator[] customerGenerators = FindObjectsOfType<PredeterminedCustomerGenerator>();
         if (customerGenerators.Length > 0)
         {
@@ -236,14 +235,22 @@ public class GameManager : MonoBehaviour
         }
         foreach (var employee in employees)
         {
-            wageCost += 20;
+            wageCost += employee.wage;
         }
         summaryPanel.SetActive(true);
+<<<<<<< Updated upstream
         revenue = yesterdayMoney - money;
         rent = (gridCellHeight - 1) * (gridCellLength - 1) * 7;
         total = revenue - shelfCost - wageCost;
         money += total;
         summaryText[0].text = "Revenue Gained " + revenue + "\nSupplies for shelves: " + shelfCost + "\nEmployee Wages: " + wageCost + "\nTotal: " + total + "\n\nEST. RENT DUE SUNDAY: " + rent;
+=======
+        int rentCost = (int)(GetGridHeight() * GetGridWidth() * rent);
+        money = money - shelfCost - wageCost;
+        if (day % 6 == 0 && day!= 0) { money -= rentCost; Debug.Log("Expensive!"); }
+        revenue = money - yesterdayMoney;
+        summaryText[0].text = "Revenue Gained " + revenue + "\nSupplies for shelves: " + shelfCost + "\nEmployee Wages: " + wageCost + "\n\nEST. RENT DUE SUNDAY: " + rentCost + "\nTotal: " + money;
+>>>>>>> Stashed changes
 
         
     }
