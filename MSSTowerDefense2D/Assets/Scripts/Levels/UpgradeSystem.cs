@@ -104,13 +104,13 @@ public class UpgradeSystem : MonoBehaviour
                         {
                             shelf.visibility += shelfVisibilityBoost;
                             ShelfPointerUI.SetActive(false);
-                            ES3.Save("money", GameManager.instance.money);
+                            //ES3.Save("money", GameManager.instance.money);
 
-                            ES3.Save("Employees", GameManager.instance.employeeArea);
+                            //ES3.Save("Employees", GameManager.instance.employeeArea);
 
-                            ES3.Save("Shelves", GameManager.instance.shelfPlacementManager.shelfCollectionForReload);
+                            //ES3.Save("Shelves", GameManager.instance.shelfPlacementManager.shelfCollectionForReload);
 
-                            ES3.Save("Level", GameManager.instance.level);
+                            //ES3.Save("Level", GameManager.instance.level);
                             GameManager.instance.confirmUpgrade();
                         }
                     }
