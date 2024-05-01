@@ -7,7 +7,6 @@ public class NormalCustomer : Bot
 {
     public Transform ShopExit;
     private List<GridArea> unvisitedAreas = new List<GridArea>();
-    private Dictionary<Vector2Int, bool> shelfPlacementGrid = new Dictionary<Vector2Int, bool>();
     private bool movingToExit = false;
     public Vector3 currentDestination;
 
@@ -38,57 +37,50 @@ public class NormalCustomer : Bot
         base.init();
         patience = maxPatience;
         ShopExit = GameObject.FindGameObjectWithTag("Exit").transform;
-        shelfPlacementGrid = GameManager.instance.shelfPlacementGrid;
         InitializeAreas();
         SetFirstAreaDestination();
         bot = GetComponent<Bot>();
 
-        bot.needs = bot.SelectRandomItems(bot.likedItems, bot.desireAmount);
     }
     void InitializeAreas()
     {
-        // Assuming bounds of the grid are known or calculated:
-        int minX = shelfPlacementGrid.Keys.Min(k => k.x);
-        int maxX = shelfPlacementGrid.Keys.Max(k => k.x);
-        int minY = shelfPlacementGrid.Keys.Min(k => k.y);
-        int maxY = shelfPlacementGrid.Keys.Max(k => k.y);
-
-        // Loop through the grid in chunks defined by areaPartitionSizeX and areaPartitionSizeY
-        for (int x = minX; x <= maxX; x += areaPartitionSizeX)
+        foreach (Room room in GameManager.instance.rooms)
         {
-            for (int y = minY; y <= maxY; y += areaPartitionSizeY)
-            {
-                Vector2 centerPosition = Vector2.zero;
-                int validCells = 0;
+            int startX = Mathf.FloorToInt(room.transform.position.x);
+            int startY = Mathf.FloorToInt(room.transform.position.y);
+            int roomWidth = room.GetWidth();
+            int roomHeight = room.GetHeight();
 
-                // Process each cell in the current sub-area
-                for (int xi = x; xi < x + areaPartitionSizeX && xi <= maxX; xi++)
+            for (int x = startX; x < startX + roomWidth; x += areaPartitionSizeX)
+            {
+                for (int y = startY; y < startY + roomHeight; y += areaPartitionSizeY)
                 {
-                    for (int yi = y; yi < y + areaPartitionSizeY && yi <= maxY; yi++)
+                    Vector2 centerPosition = Vector2.zero;
+                    int validCells = 0;
+
+                    for (int xi = x; xi < x + areaPartitionSizeX && xi < startX + roomWidth; xi++)
                     {
-                        Vector2Int pos = new Vector2Int(xi, yi);
-                        if (shelfPlacementGrid.ContainsKey(pos) && shelfPlacementGrid[pos])
+                        for (int yi = y; yi < y + areaPartitionSizeY && yi < startY + roomHeight; yi++)
                         {
-                            Vector2 worldPos = GameManager.instance.gridSystem.GetWorldPosition(xi, yi);
-                            centerPosition += worldPos;
-                            validCells++;
+                            if (GameManager.instance.CanPlaceShelf(new Vector2Int(xi, yi)))
+                            {
+                                Vector2 worldPos = GameManager.instance.gridSystem.GetWorldPosition(xi, yi);
+                                centerPosition += worldPos;
+                                validCells++;
+                            }
                         }
                     }
-                }
 
-                // If there are valid cells, calculate the center and store the area
-                if (validCells > 0)
-                {
-                    centerPosition /= validCells; // Calculate the center of this sub-area
-                    unvisitedAreas.Add(new GridArea($"Area_{x}_{y}", centerPosition));
+                    if (validCells > 0)
+                    {
+                        centerPosition /= validCells; // Calculate the center of this sub-area
+                        unvisitedAreas.Add(new GridArea($"Area_{x}_{y}", centerPosition));
+                    }
                 }
             }
         }
-
-        // Optionally shuffle the list of unvisited areas
         unvisitedAreas = unvisitedAreas.OrderBy(a => Random.value).ToList();
     }
-
 
     void SetFirstAreaDestination()
     {

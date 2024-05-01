@@ -52,31 +52,49 @@ public class ShelfUI : MonoBehaviour
 
         int day = dayTrackerScript.dayTracker;
         //we love hardcoding levels
-        if (day < 1)
+        if (day < 2)
         {
             apple.SetActive(true);
         }
-        else if (day < 7)
+        else if (day < 4)
+        {
+            dragonFruit.SetActive(true);
+        }
+        else if (day < 8)
         {
             durian.SetActive(true);
-            dragonFruit.SetActive(true);
+        }
+        else if (day < 10)
+        {
+            haste.SetActive(true);
+        }
+        else if (day < 12)
+        {
+            poison.SetActive(true);
         }
         else if (day < 14)
         {
-            haste.SetActive(true);
-            poison.SetActive(true);
             love.SetActive(true);
         }
-        else if (day < 21)
+        else if (day < 16)
         {
             axe.SetActive(true);
+        }
+        else if (day < 18)
+        {
             sword.SetActive(true);
+        }
+        else if (day < 20)
+        {
             halbert.SetActive(true);
         }
-        else
+        else if (day < 22)
         {
             horn.SetActive(true);
             crystal.SetActive(true);
+        }
+        else
+        {
             halo.SetActive(true);
         }
 

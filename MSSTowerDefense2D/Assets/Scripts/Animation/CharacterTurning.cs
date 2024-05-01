@@ -24,31 +24,30 @@ public class CharacterTurning : MonoBehaviour
 
     void Update()
     {
-        
         if (path.desiredVelocity.y > 0 && path.desiredVelocity.x > 0)
         {
            thisRenderer.sprite = back;
-           thisRenderer.flipX = true;
+           transform.localScale = right;
         }
         else if (path.desiredVelocity.y > 0 && path.desiredVelocity.x < 0)
         {
             thisRenderer.sprite = back;
-            thisRenderer.flipX = false;
+            transform.localScale = left;
         }
         else if (path.desiredVelocity.y < 0 && path.desiredVelocity.x > 0)
         {
             thisRenderer.sprite = forward;
-            thisRenderer.flipX = true;
+            transform.localScale = right;
         }
         else if (path.desiredVelocity.y < 0 && path.desiredVelocity.x < 0)
         {
             thisRenderer.sprite = forward;
-            thisRenderer.flipX = false;
+            transform.localScale = left;
         }
         else if (path.desiredVelocity.y < 0 && path.desiredVelocity.x == 0)
         {
             thisRenderer.sprite = front;
-            thisRenderer.flipX = false;
+            transform.localScale = left;
         }
     }
 }

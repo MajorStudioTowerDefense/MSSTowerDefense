@@ -49,7 +49,7 @@ public class Bot : MonoBehaviour
     public float nameTextOffsetY = 1f;
 
     void Start(){
-        needs = SelectRandomItems(likedItems, desireAmount);
+        likedItems = SelectRandomItems(likedItems, desireAmount);
     }
     
     /////////////////////////////////
