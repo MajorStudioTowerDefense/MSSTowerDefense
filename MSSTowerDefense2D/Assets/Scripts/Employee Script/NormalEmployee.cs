@@ -7,11 +7,11 @@ using UnityEngine.UI;
 
 public enum employeeStage
 {
-    standBy = 0,
+    standBy = 0,//idle
     isSelected = 1,
-    running = 2,
-    finishing = 3,
-    backToStandBy = 4,
+    running = 2,//walking
+    finishing = 3,// restocking
+    backToStandBy = 4,//walking
 }
 
 public enum employeeAction
@@ -44,6 +44,8 @@ public class NormalEmployee : Bot
     public int wage;
 
     private bool endStage = false;
+
+    public AudioSource employeeAudioSource;
 
     //check if the shelf is selected
     public ShelfPlacementManager shelfPlacementManager;
@@ -127,6 +129,12 @@ public class NormalEmployee : Bot
         }
         else if(eStage == employeeStage.running)
         {
+            if (!employeeAudioSource.isPlaying)
+            {
+                Debug.Log("Sound start play");
+                employeeAudioSource.clip = EmployeeWalking;
+                employeeAudioSource.Play();
+            }
             if (sprite.color != Color.white)
             {
                 sprite.color = Color.white;
@@ -142,13 +150,18 @@ public class NormalEmployee : Bot
         }
         else if (eStage == employeeStage.finishing)
         {
-            if(eAction == employeeAction.moveShelf)
+            if (eAction == employeeAction.moveShelf)
             AudioManager.instance.PlaySound(EmployeeWalking);
 
             onWayToMoveShelf();
         }
         else if (eStage == employeeStage.backToStandBy)
         {
+            if (!employeeAudioSource.isPlaying)
+            {
+                employeeAudioSource.clip = EmployeeWalking;
+                employeeAudioSource.Play();
+            }
             returnToStandBy();
         }
 
