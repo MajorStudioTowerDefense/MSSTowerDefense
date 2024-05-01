@@ -30,7 +30,7 @@ public class DayTrackerScript : MonoBehaviour
         rent = gameManager.rent;
         passableRevenue = rent/7;
         week = new List<GameObject> { Mon, Tue, Wed, Thu, Fri, Sat, Sun };
-        DontDestroyOnLoad(gameObject);
+        
     }
 
     void changeTheDay()

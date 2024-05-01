@@ -312,7 +312,7 @@ MonoBehaviour:
   budgetText: {fileID: 0}
   nameTextOffsetX: 0
   nameTextOffsetY: 1
-  EmployeeWalking: {fileID: 0}
+  EmployeeWalking: {fileID: 8300000, guid: 59205e0cf50e5c94db0112b7f683f610, type: 3}
   NeededShelf: {fileID: 0}
   isCarrying: 0
   carryMax: 3
@@ -325,6 +325,7 @@ MonoBehaviour:
   employeeAreaOffsetYMax: 0.8
   myEmployeeAreaPos: {x: 0, y: 0, z: 0}
   wage: 15
+  employeeAudioSource: {fileID: 6381253971314326612}
   shelfPlacementManager: {fileID: 0}
   eStage: 0
   eAction: 0
@@ -343,7 +344,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 3b6f26366ba3461468ed335962c9b308, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
