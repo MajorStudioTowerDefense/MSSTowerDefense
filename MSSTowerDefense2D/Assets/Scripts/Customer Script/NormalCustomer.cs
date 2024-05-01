@@ -41,6 +41,7 @@ public class NormalCustomer : Bot
         SetFirstAreaDestination();
         bot = GetComponent<Bot>();
 
+        bot.needs = bot.SelectRandomItems(bot.likedItems, bot.desireAmount);
     }
     void InitializeAreas()
     {
