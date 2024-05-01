@@ -525,5 +525,10 @@ public int GetGridHeight()
     return maxY - minY + 1;
 }
 
+    public void SkiptoStore()
+    {
+        timer = startStoreTime.x * 60 + startStoreTime.y - 1f;
+    }
+
 
 }
