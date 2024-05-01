@@ -7,14 +7,17 @@ public class MultipleGameSpeed : MonoBehaviour
 {
     public float gameSpeed = 2f;
     public AudioSource[] audioSource;
-    public AudioManager audioManager;
     public void SetGameSpeed()
     {
         Time.timeScale = gameSpeed;
-        foreach (AudioSource audio in audioSource)
+        if (audioSource != null)
         {
-            audio.pitch = gameSpeed;
+            foreach (AudioSource audio in audioSource)
+            {
+                audio.pitch = gameSpeed;
+            }
         }
+
         
     }
 }
