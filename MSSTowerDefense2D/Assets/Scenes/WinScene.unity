@@ -745,6 +745,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80338e544bde74f1baf0c1a651e6e8a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  employeeNum: {fileID: 441094317}
+  revenue: {fileID: 1522925847}
+  timePlayed: {fileID: 1400038669}
 --- !u!1 &1400038667
 GameObject:
   m_ObjectHideFlags: 0
