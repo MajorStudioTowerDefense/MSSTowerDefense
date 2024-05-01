@@ -94,16 +94,21 @@ public class TutorialEventTrigger : MonoBehaviour
 
     void TriggerCustomerPurchaseTutorial()
     {
-        if (firstCustomer != null)
+        NormalCustomer[] normalCustomers = FindObjectsOfType<NormalCustomer>();
+
+        foreach (NormalCustomer customer in normalCustomers)
         {
-            if (firstCustomer.GetComponent<NormalCustomer>().bot.isPurchasing && !isCustomerPurchaseTutorialTriggered)
+            if (customer != null)
             {
-                PointerEventData pointerEventData = new PointerEventData(EventSystem.current);
-                pointerEventData.position = Camera.main.WorldToScreenPoint(customerTutorialTriggerUIObject.transform.position);
+                if (customer.GetComponent<NormalCustomer>().bot.isPurchasing && !isCustomerPurchaseTutorialTriggered)
+                {
+                    PointerEventData pointerEventData = new PointerEventData(EventSystem.current);
+                    pointerEventData.position = Camera.main.WorldToScreenPoint(customerTutorialTriggerUIObject.transform.position);
 
-                ExecuteEvents.Execute(customerPurchaseUIObject, pointerEventData, ExecuteEvents.pointerClickHandler);
+                    ExecuteEvents.Execute(customerPurchaseUIObject, pointerEventData, ExecuteEvents.pointerClickHandler);
 
-                isCustomerPurchaseTutorialTriggered = true;
+                    isCustomerPurchaseTutorialTriggered = true;
+                }
             }
         }
     }

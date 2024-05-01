@@ -25114,15 +25114,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[0].Name
-      value: SHELF MENU
+      value: Customer 1
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[1].Name
-      value: SHELF MENU 2
+      value: Customer 2
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[2].Name
@@ -25166,11 +25166,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[0].stageIndex
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[1].stageIndex
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[2].stageIndex
@@ -25258,7 +25258,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[0].endTrigger.keyCode
-      value: 0
+      value: 323
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[1].endTrigger.keyCode
@@ -25646,11 +25646,11 @@ PrefabInstance:
       objectReference: {fileID: 2039497102852256437, guid: 03d9a09d44d7d48a48cc74476f11534b, type: 3}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[0].endTrigger.triggerType
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[1].endTrigger.triggerType
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[2].endTrigger.triggerType
@@ -25790,7 +25790,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[1].startTrigger.triggerType
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[2].moduleConfigs.Array.size
@@ -25990,7 +25990,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[0].advanceConfig.advanceType
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[3].advanceConfig.advanceType
@@ -26162,19 +26162,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[0].events.Array.data[0].enable
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[0].events.Array.data[1].enable
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
+      propertyPath: tmEditorList.Array.data[0].events.Array.data[4].enable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[0].moduleConfigs.Array.data[0]
-      value: 8266946820872863797
+      value: 8266946823575568451
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[0].moduleConfigs.Array.data[1]
-      value: 4023146072370053124
+      value: 971211097452052621
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[0].moduleConfigs.Array.data[2]
@@ -26186,7 +26190,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[1].events.Array.data[1].enable
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[1].events.Array.data[4].enable
@@ -26194,11 +26198,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[1].moduleConfigs.Array.data[0]
-      value: 8266946820872863808
+      value: 971211097452052526
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[1].moduleConfigs.Array.data[1]
-      value: 8266946820872863809
+      value: 971211097452052623
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[1].moduleConfigs.Array.data[2]
@@ -26434,11 +26438,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[0].endTrigger.tagConfig.targetTag
-      value: 
+      value: Customer
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[1].endTrigger.tagConfig.targetTag
-      value: 
+      value: Customer
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[2].endTrigger.tagConfig.targetTag
@@ -26587,18 +26591,18 @@ PrefabInstance:
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[0].endTrigger.graphicConfig.graphic
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1902829815}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[0].startTrigger.tagConfig.targetTag
-      value: 
+      value: Customer
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[1].endTrigger.graphicConfig.graphic
       value: 
-      objectReference: {fileID: 493057034}
+      objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[1].startTrigger.tagConfig.targetTag
-      value: 
+      value: Customer
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[2].endTrigger.graphicConfig.graphic
@@ -26623,11 +26627,11 @@ PrefabInstance:
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[0].focusTargets.Array.data[0].target
       value: 
-      objectReference: {fileID: 2052799382}
+      objectReference: {fileID: 730574874}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[1].focusTargets.Array.data[0].target
       value: 
-      objectReference: {fileID: 493057031}
+      objectReference: {fileID: 1245806838}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[2].focusTargets.Array.data[0].target
       value: 
@@ -26739,7 +26743,7 @@ PrefabInstance:
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[1].startTrigger.graphicConfig.graphic
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1902829815}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[2].endTrigger.colliderConfig.collider
       value: 
@@ -27034,23 +27038,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[0].focusTargets.Array.data[0].followTarget
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[0].focusTargets.Array.data[0].screenRect.x
-      value: 15.763317
+      value: 744
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[0].focusTargets.Array.data[0].screenRect.y
-      value: 115.38585
+      value: 486
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[1].focusTargets.Array.data[0].screenRect.x
-      value: 46.069275
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[1].focusTargets.Array.data[0].screenRect.y
-      value: 718.81384
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[2].focusTargets.Array.data[0].screenRect.x
@@ -27338,11 +27342,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[0].focusTargets.Array.data[0].TargetBoundType
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[1].focusTargets.Array.data[0].TargetBoundType
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[2].focusTargets.Array.data[0].TargetBoundType
@@ -27378,11 +27382,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[0].focusTargets.Array.data[0].screenRect.width
-      value: 180.6058
+      value: 108
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[1].focusTargets.Array.data[0].screenRect.width
-      value: 130
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[2].focusTargets.Array.data[0].screenRect.width
@@ -27406,11 +27410,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[0].focusTargets.Array.data[0].screenRect.height
-      value: 766.93115
+      value: 108
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[1].focusTargets.Array.data[0].screenRect.height
-      value: 130
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[2].focusTargets.Array.data[0].screenRect.height
@@ -27681,6 +27685,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
+      propertyPath: stageObjects.Array.data[3].tutorialObjects.Array.data[0].events.Array.data[0].enable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
+      propertyPath: stageObjects.Array.data[3].tutorialObjects.Array.data[0].events.Array.data[4].enable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: stageObjects.Array.data[5].tutorialObjects.Array.data[3].events.Array.data[1].enable
       value: 1
       objectReference: {fileID: 0}
@@ -27874,19 +27886,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[0].events.Array.data[0].subEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[0].events.Array.data[1].subEvent.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
-      propertyPath: tmEditorList.Array.data[1].events.Array.data[0].subEvent.m_PersistentCalls.m_Calls.Array.size
+      propertyPath: tmEditorList.Array.data[0].events.Array.data[4].subEvent.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
+      propertyPath: tmEditorList.Array.data[1].events.Array.data[0].subEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[1].events.Array.data[1].subEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[1].events.Array.data[4].subEvent.m_PersistentCalls.m_Calls.Array.size
@@ -28125,6 +28141,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
+      propertyPath: tmEditorList.Array.data[0].events.Array.data[4].subEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[1].events.Array.data[0].subEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
@@ -28227,7 +28247,7 @@ PrefabInstance:
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[0].events.Array.data[0].subEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 779099065}
+      objectReference: {fileID: 1860387132}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[0].events.Array.data[0].subEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -28237,9 +28257,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 644818504}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
+      propertyPath: tmEditorList.Array.data[0].events.Array.data[4].subEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1860387132}
+    - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[1].events.Array.data[0].subEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 644818504}
+      objectReference: {fileID: 730574876}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[1].events.Array.data[0].subEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -28338,6 +28362,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[0].events.Array.data[1].subEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
+      propertyPath: tmEditorList.Array.data[0].events.Array.data[4].subEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
@@ -28449,8 +28477,12 @@ PrefabInstance:
       value: EnableTutorialPanelButton
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
+      propertyPath: tmEditorList.Array.data[0].events.Array.data[4].subEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: resumeGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[1].events.Array.data[0].subEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: TriggerAppleShelfTutorial
+      value: SelfDestroy
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[1].events.Array.data[0].subEvent.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
@@ -28561,8 +28593,12 @@ PrefabInstance:
       value: TutorialEventTrigger, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
+      propertyPath: tmEditorList.Array.data[0].events.Array.data[4].subEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PauseScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[1].events.Array.data[0].subEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: TutorialEventTrigger, Assembly-CSharp
+      value: CustomMatcher, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[1].events.Array.data[0].subEvent.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
@@ -28685,6 +28721,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
+      propertyPath: stageObjects.Array.data[3].tutorialObjects.Array.data[0].events.Array.data[0].subEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
+      propertyPath: stageObjects.Array.data[3].tutorialObjects.Array.data[0].events.Array.data[4].subEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: stageObjects.Array.data[3].tutorialObjects.Array.data[1].events.Array.data[0].subEvent.m_PersistentCalls.m_Calls.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -28777,6 +28821,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
+      propertyPath: stageObjects.Array.data[3].tutorialObjects.Array.data[0].events.Array.data[0].subEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
+      propertyPath: stageObjects.Array.data[3].tutorialObjects.Array.data[0].events.Array.data[4].subEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: stageObjects.Array.data[3].tutorialObjects.Array.data[1].events.Array.data[0].subEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
@@ -28864,6 +28916,14 @@ PrefabInstance:
       propertyPath: stageObjects.Array.data[2].tutorialObjects.Array.data[4].events.Array.data[4].subEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 404972024}
+    - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
+      propertyPath: stageObjects.Array.data[3].tutorialObjects.Array.data[0].events.Array.data[0].subEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1860387132}
+    - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
+      propertyPath: stageObjects.Array.data[3].tutorialObjects.Array.data[0].events.Array.data[4].subEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1860387132}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: stageObjects.Array.data[3].tutorialObjects.Array.data[1].events.Array.data[0].subEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -28989,6 +29049,14 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
+      propertyPath: stageObjects.Array.data[3].tutorialObjects.Array.data[0].events.Array.data[0].subEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
+      propertyPath: stageObjects.Array.data[3].tutorialObjects.Array.data[0].events.Array.data[4].subEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: stageObjects.Array.data[3].tutorialObjects.Array.data[1].events.Array.data[0].subEvent.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
@@ -29077,6 +29145,14 @@ PrefabInstance:
       value: SkiptoStore
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
+      propertyPath: stageObjects.Array.data[3].tutorialObjects.Array.data[0].events.Array.data[0].subEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: pauseGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
+      propertyPath: stageObjects.Array.data[3].tutorialObjects.Array.data[0].events.Array.data[4].subEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: resumeGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: stageObjects.Array.data[3].tutorialObjects.Array.data[1].events.Array.data[0].subEvent.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: pauseGame
       objectReference: {fileID: 0}
@@ -29146,6 +29222,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: tmEditorList.Array.data[0].events.Array.data[1].subEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
+      propertyPath: tmEditorList.Array.data[0].events.Array.data[4].subEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
@@ -29273,6 +29353,14 @@ PrefabInstance:
       value: GameManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
+      propertyPath: stageObjects.Array.data[3].tutorialObjects.Array.data[0].events.Array.data[0].subEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PauseScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
+      propertyPath: stageObjects.Array.data[3].tutorialObjects.Array.data[0].events.Array.data[4].subEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PauseScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: stageObjects.Array.data[3].tutorialObjects.Array.data[1].events.Array.data[0].subEvent.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: PauseScript, Assembly-CSharp
       objectReference: {fileID: 0}
@@ -29362,6 +29450,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
       propertyPath: stageObjects.Array.data[2].tutorialObjects.Array.data[4].events.Array.data[4].subEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
+      propertyPath: stageObjects.Array.data[3].tutorialObjects.Array.data[0].events.Array.data[0].subEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
+      propertyPath: stageObjects.Array.data[3].tutorialObjects.Array.data[0].events.Array.data[4].subEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8537078403519427587, guid: aa2c68b8ded7b0d4b8f7fc13d98bf6f9, type: 3}
