@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class AudioManager : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class AudioManager : MonoBehaviour
     public List<AudioSource> audioSources;
     public AudioSource audioSource1;
     public AudioSource audioSource2;
+    public Slider slider;
     
 
     public bool allowCheck;
@@ -96,11 +98,12 @@ public AudioClip spawnSound;
     }
 
     // Adjust the volume of all audio sources
-    public void SetVolume(float volume)
+    public void SetVolume()
     {
+        slider = GameObject.Find("MasterVolume").GetComponent<Slider>();
         foreach (var source in audioSources)
         {
-            source.volume = volume;
+            source.volume = slider.value;
         }
     }
    
