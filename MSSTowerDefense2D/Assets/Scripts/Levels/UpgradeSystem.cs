@@ -42,13 +42,13 @@ public class UpgradeSystem : MonoBehaviour
         
         addEmployeeUseList.Add(emp);
         skeletonCardScript.CreateNewCard(emp);
-        ES3.Save("money", GameManager.instance.money);
+        //ES3.Save("money", GameManager.instance.money);
 
-        ES3.Save("Employees", GameManager.instance.employeeArea);
+        //ES3.Save("Employees", GameManager.instance.employeeArea);
 
-        ES3.Save("Shelves", GameManager.instance.shelfPlacementManager.shelfCollectionForReload);
+        //ES3.Save("Shelves", GameManager.instance.shelfPlacementManager.shelfCollectionForReload);
 
-        ES3.Save("Level", GameManager.instance.level);
+        //ES3.Save("Level", GameManager.instance.level);
 
     }
 
@@ -61,13 +61,13 @@ public class UpgradeSystem : MonoBehaviour
             e.stayShelfDuration -= employeeSpeedBoost;
             e.stayShelfDuration = Mathf.Clamp(e.stayShelfDuration, 0.5f, 10f);
         }
-        ES3.Save("money", GameManager.instance.money);
+        //ES3.Save("money", GameManager.instance.money);
 
-        ES3.Save("Employees", GameManager.instance.employeeArea);
+        //ES3.Save("Employees", GameManager.instance.employeeArea);
 
-        ES3.Save("Shelves", GameManager.instance.shelfPlacementManager.shelfCollectionForReload);
+        //ES3.Save("Shelves", GameManager.instance.shelfPlacementManager.shelfCollectionForReload);
 
-        ES3.Save("Level", GameManager.instance.level);
+        //ES3.Save("Level", GameManager.instance.level);
     }
 
     public GameObject ShelfPointerUI;
@@ -104,13 +104,13 @@ public class UpgradeSystem : MonoBehaviour
                         {
                             shelf.visibility += shelfVisibilityBoost;
                             ShelfPointerUI.SetActive(false);
-                            ES3.Save("money", GameManager.instance.money);
+                            //ES3.Save("money", GameManager.instance.money);
 
-                            ES3.Save("Employees", GameManager.instance.employeeArea);
+                            //ES3.Save("Employees", GameManager.instance.employeeArea);
 
-                            ES3.Save("Shelves", GameManager.instance.shelfPlacementManager.shelfCollectionForReload);
+                            //ES3.Save("Shelves", GameManager.instance.shelfPlacementManager.shelfCollectionForReload);
 
-                            ES3.Save("Level", GameManager.instance.level);
+                            //ES3.Save("Level", GameManager.instance.level);
                             GameManager.instance.confirmUpgrade();
                         }
                     }

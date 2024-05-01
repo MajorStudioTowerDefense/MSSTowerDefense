@@ -238,7 +238,7 @@ public class GameManager : MonoBehaviour
             wageCost += employee.wage;
         }
         summaryPanel.SetActive(true);
-        int rentCost = (int)(GetGridHeight() * GetGridWidth() * rent);
+        int rentCost = (int)(gridCellHeight * gridCellLength * rent*(day/7));
         money = money - shelfCost - wageCost;
         if (day % 6 == 0 && day!= 0) { money -= rentCost; Debug.Log("Expensive!"); }
         revenue = money - yesterdayMoney;
@@ -524,6 +524,11 @@ public int GetGridHeight()
 
     return maxY - minY + 1;
 }
+
+    public void SkiptoStore()
+    {
+        timer = startStoreTime.x * 60 + startStoreTime.y - 1f;
+    }
 
 
 }
