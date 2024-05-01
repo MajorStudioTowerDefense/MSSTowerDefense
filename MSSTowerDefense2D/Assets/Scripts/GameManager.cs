@@ -238,11 +238,13 @@ public class GameManager : MonoBehaviour
             wageCost += employee.wage;
         }
         summaryPanel.SetActive(true);
-        int rentCost = (int)(GetGridHeight() * GetGridWidth() * rent);
+        int roomCount = day / 6;
+        int rentCost = (int)(gridCellHeight * gridCellLength * rent);
+        Debug.Log("rentCost: " + rentCost * roomCount);
         money = money - shelfCost - wageCost;
-        if (day % 6 == 0 && day!= 0) { money -= rentCost; Debug.Log("Expensive!"); }
+        if (day % 6 == 0 && day!= 0) { money -= rentCost * roomCount; Debug.Log("Expensive!"); }
         revenue = money - yesterdayMoney;
-        summaryText[0].text = "Revenue Gained " + revenue + "\nSupplies for shelves: " + shelfCost + "\nEmployee Wages: " + wageCost + "\n\nEST. RENT DUE SUNDAY: " + rentCost + "\nTotal: " + money;       
+        summaryText[0].text = "Revenue Gained " + revenue + "\nSupplies for shelves: " + shelfCost + "\nEmployee Wages: " + wageCost + "\n\nEST. RENT DUE SUNDAY: " + rentCost*(roomCount+1) + "\nTotal: " + money;       
     }
 
     public void confirmSummary()
@@ -524,6 +526,11 @@ public int GetGridHeight()
 
     return maxY - minY + 1;
 }
+
+    public void SkiptoStore()
+    {
+        timer = startStoreTime.x * 60 + startStoreTime.y - 1f;
+    }
 
 
 }

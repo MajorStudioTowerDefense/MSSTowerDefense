@@ -7,11 +7,11 @@ using UnityEngine.UI;
 
 public enum employeeStage
 {
-    standBy = 0,
+    standBy = 0,//idle
     isSelected = 1,
-    running = 2,
-    finishing = 3,
-    backToStandBy = 4,
+    running = 2,//walking
+    finishing = 3,// restocking
+    backToStandBy = 4,//walking
 }
 
 public enum employeeAction
@@ -45,6 +45,8 @@ public class NormalEmployee : Bot
 
     private bool endStage = false;
 
+    public AudioSource employeeAudioSource;
+
     //check if the shelf is selected
     public ShelfPlacementManager shelfPlacementManager;
     //stage of the employee
@@ -68,7 +70,7 @@ public class NormalEmployee : Bot
     public Canvas employeeCanvas;
     public Image employeeLoadingImage;
     
-
+    public Animator employeeAnimator;
     /////////////////////////////////
 
     public override void init()
@@ -80,6 +82,7 @@ public class NormalEmployee : Bot
     private void Start()
     {
         init();
+        employeeAnimator = GetComponent<Animator>();
         employeeCanvas = GetComponentInChildren<Canvas>();
         employeeCanvas.worldCamera = Camera.main;
         employeeLoadingImage = employeeCanvas.GetComponentInChildren<Image>();
@@ -127,12 +130,21 @@ public class NormalEmployee : Bot
         }
         else if(eStage == employeeStage.running)
         {
+
+            if (!employeeAudioSource.isPlaying)
+            {
+                Debug.Log("Sound start play");
+                employeeAudioSource.clip = EmployeeWalking;
+                employeeAudioSource.Play();
+            }
+
             if (sprite.color != Color.white)
             {
                 sprite.color = Color.white;
             }
             if (eAction == employeeAction.reload)
             {
+                
                 successReload();
             }
             else if(eAction == employeeAction.moveShelf)
@@ -142,13 +154,28 @@ public class NormalEmployee : Bot
         }
         else if (eStage == employeeStage.finishing)
         {
-            if(eAction == employeeAction.moveShelf)
+            if (eAction == employeeAction.moveShelf)
             AudioManager.instance.PlaySound(EmployeeWalking);
 
             onWayToMoveShelf();
         }
         else if (eStage == employeeStage.backToStandBy)
         {
+
+            if (employeeAnimator.GetBool("isBuying"))
+            {
+                
+                employeeAnimator.SetBool("isBuying", false);
+                employeeAnimator.enabled = false;
+            }
+            
+
+            if (!employeeAudioSource.isPlaying)
+            {
+                employeeAudioSource.clip = EmployeeWalking;
+                employeeAudioSource.Play();
+            }
+
             returnToStandBy();
         }
 
@@ -247,6 +274,12 @@ public class NormalEmployee : Bot
     {
         if(destinationSetter.targetPosition == NeededShelf.transform.position && IsCloseToDestination())
         {
+            
+            if (employeeAnimator.enabled!=true)
+            {
+                employeeAnimator.enabled = true;
+                employeeAnimator.SetBool("isBuying", true);
+            }
             int actualIncrease = Mathf.Min(carryCount, NeededShelf.loadAmountMax - NeededShelf.loadAmount);
 
             
