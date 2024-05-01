@@ -22550,7 +22550,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2200785565039309889, guid: 672cffd96dcb942419a59dc062792de0, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2200785565043955289, guid: 672cffd96dcb942419a59dc062792de0, type: 3}
       propertyPath: m_fontAsset
