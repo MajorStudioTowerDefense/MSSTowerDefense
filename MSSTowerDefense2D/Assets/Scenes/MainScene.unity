@@ -23256,9 +23256,17 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224593674204764140, guid: 672cffd96dcb942419a59dc062792de0, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 400967710}
+    - target: {fileID: 224593674204764140, guid: 672cffd96dcb942419a59dc062792de0, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 404972022}
+    - target: {fileID: 224593674204764140, guid: 672cffd96dcb942419a59dc062792de0, type: 3}
+      propertyPath: Pause_Resume
+      value: 
+      objectReference: {fileID: 8300000, guid: 9cf0715be6bbc6b41b7a94a08057a971, type: 3}
     - target: {fileID: 923072021972229986, guid: 672cffd96dcb942419a59dc062792de0, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -24428,6 +24436,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3480701108755723792, guid: 672cffd96dcb942419a59dc062792de0, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 400967710}
+    - target: {fileID: 3480701108755723792, guid: 672cffd96dcb942419a59dc062792de0, type: 3}
+      propertyPath: Pause_Resume
+      value: 
+      objectReference: {fileID: 8300000, guid: 9cf0715be6bbc6b41b7a94a08057a971, type: 3}
+    - target: {fileID: 3480701108755723792, guid: 672cffd96dcb942419a59dc062792de0, type: 3}
       propertyPath: audioSource.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -24472,9 +24488,17 @@ PrefabInstance:
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6635436274966859801, guid: 672cffd96dcb942419a59dc062792de0, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 400967710}
+    - target: {fileID: 6635436274966859801, guid: 672cffd96dcb942419a59dc062792de0, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 404972022}
+    - target: {fileID: 6635436274966859801, guid: 672cffd96dcb942419a59dc062792de0, type: 3}
+      propertyPath: Pause_Resume
+      value: 
+      objectReference: {fileID: 8300000, guid: 9cf0715be6bbc6b41b7a94a08057a971, type: 3}
     - target: {fileID: 8234989191798394292, guid: 672cffd96dcb942419a59dc062792de0, type: 3}
       propertyPath: m_fontAsset
       value: 
@@ -24683,9 +24707,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1362520606}
     - target: {fileID: 6712996876442050155, guid: 3886e2976353d0b43955345cc98dff06, type: 3}
+      propertyPath: dayWin
+      value: 
+      objectReference: {fileID: 8300000, guid: 164822b94c7cdf8438ac06722bf77861, type: 3}
+    - target: {fileID: 6712996876442050155, guid: 3886e2976353d0b43955345cc98dff06, type: 3}
+      propertyPath: dayLoss
+      value: 
+      objectReference: {fileID: 8300000, guid: 0840755df07866e41b5ac0c1d692e32f, type: 3}
+    - target: {fileID: 6712996876442050155, guid: 3886e2976353d0b43955345cc98dff06, type: 3}
       propertyPath: LosePanel
       value: 
       objectReference: {fileID: 82705930}
+    - target: {fileID: 6712996876442050155, guid: 3886e2976353d0b43955345cc98dff06, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 400967710}
     - target: {fileID: 6712996876442050155, guid: 3886e2976353d0b43955345cc98dff06, type: 3}
       propertyPath: employeeArea
       value: 

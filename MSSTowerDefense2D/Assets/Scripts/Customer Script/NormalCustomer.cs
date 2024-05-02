@@ -107,22 +107,16 @@ public class NormalCustomer : Bot
 
         if (Vector2.Distance(transform.position, ShopExit.position) <= 1.5f)
         {
-            if (patience <= 0)
-            {
-                customerAudioSource.clip = CustomerPissed;
-                customerAudioSource.Play();
-            }
-            else
-            {
-                customerAudioSource.clip = CustomerHappy;
-                customerAudioSource.Play();
-            }
+            customerAudioSource.clip = CustomerHappy;
+            customerAudioSource.Play();
 
             Destroy(gameObject);
         }
 
         if (patience <= 0)
         {
+            customerAudioSource.clip = CustomerPissed;
+            customerAudioSource.Play();
             MoveToExit();
             return;
         }

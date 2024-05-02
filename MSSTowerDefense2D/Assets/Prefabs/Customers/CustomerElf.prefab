@@ -414,7 +414,7 @@ MonoBehaviour:
   WalkingHeavy: {fileID: 0}
   Walking: {fileID: 8300000, guid: 3b6f26366ba3461468ed335962c9b308, type: 3}
   CustomerPissed: {fileID: 8300000, guid: c572bf2b3e4da25469ad21dd4f99ca21, type: 3}
-  CustomerHappy: {fileID: 0}
+  CustomerHappy: {fileID: 8300000, guid: aae1d43d67697fe43b5f9084a8dee1d2, type: 3}
   thump: {fileID: 8300000, guid: 64d39d97f0b0a66458ba0b20f4e1cccd, type: 3}
   customerAudioSource: {fileID: 3409233227936722764}
   maxPatience: 35

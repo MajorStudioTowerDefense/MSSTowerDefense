@@ -4,7 +4,8 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - audioManager: {fileID: 3861623885196813867, guid: 450e69fa7e57d4e9fbd4aaea3a24b5b3, type: 3}
+  - audioSource: {instanceID: 0}
+  - Pause_Resume: {fileID: 8300000, guid: 9cf0715be6bbc6b41b7a94a08057a971, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -228,6 +228,8 @@ public class GameManager : MonoBehaviour
 
     private void SummaryOfTheDay()
     {
+        audioSource.clip = dayWin;
+        audioSource.Play();
         ShelfScript[] shelfScripts = FindObjectsOfType<ShelfScript>();
         NormalEmployee[] employees = FindObjectsOfType<NormalEmployee>();
         int shelfCost = 0;
