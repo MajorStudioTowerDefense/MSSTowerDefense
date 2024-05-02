@@ -866,7 +866,7 @@ MonoBehaviour:
   loadAmountMax: 3
   loadAllowed: 1
   targetObjectName: TestShopExit
-  costToBuy: 25
+  costToBuy: 75
   canvas: {fileID: 4461831576480158605}
   itemsCanBeSold:
   - {fileID: 11400000, guid: 011163cdb31c31744b8d39272e5378b6, type: 2}

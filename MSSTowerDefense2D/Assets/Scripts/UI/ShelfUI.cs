@@ -69,15 +69,15 @@ public class ShelfUI : MonoBehaviour
         }
         else if (day < 21)
         {
-            axe.SetActive(true);
-            sword.SetActive(true);
-            halbert.SetActive(true);
-        }
-        else
-        {
             horn.SetActive(true);
             crystal.SetActive(true);
             halo.SetActive(true);
+        }
+        else
+        {
+            axe.SetActive(true);
+            sword.SetActive(true);
+            halbert.SetActive(true);
         }
 
     }
