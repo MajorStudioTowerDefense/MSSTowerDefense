@@ -21,8 +21,11 @@ public class NormalCustomer : Bot
     public AudioClip WalkingHeavy;
     public AudioClip Walking;
     public AudioClip CustomerPissed;
+    public AudioClip CustomerHappy;
 
     public AudioClip thump;
+
+    public AudioSource customerAudioSource;
 
     [Header("Patience")]
     public float maxPatience = 30f;
@@ -104,6 +107,17 @@ public class NormalCustomer : Bot
 
         if (Vector2.Distance(transform.position, ShopExit.position) <= 1.5f)
         {
+            if (patience <= 0)
+            {
+                customerAudioSource.clip = CustomerPissed;
+                customerAudioSource.Play();
+            }
+            else
+            {
+                customerAudioSource.clip = CustomerHappy;
+                customerAudioSource.Play();
+            }
+
             Destroy(gameObject);
         }
 

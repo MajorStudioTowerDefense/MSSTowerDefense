@@ -23,8 +23,9 @@ public enum employeeAction
 public class NormalEmployee : Bot
 {
     public AudioClip EmployeeWalking;
+    public AudioClip EmployeeFinish;
 
-    
+
     //the shelf being selected
     public ShelfScript NeededShelf;
     public bool isCarrying = false;
@@ -157,11 +158,8 @@ public class NormalEmployee : Bot
         }
         else if (eStage == employeeStage.backToStandBy)
         {
-            if (!employeeAudioSource.isPlaying)
-            {
-                employeeAudioSource.clip = EmployeeWalking;
-                employeeAudioSource.Play();
-            }
+            employeeAudioSource.clip = EmployeeFinish;
+            employeeAudioSource.Play();
             returnToStandBy();
         }
 
@@ -301,6 +299,11 @@ public class NormalEmployee : Bot
     {
         if(destinationSetter.targetPosition == myEmployeeAreaPos && IsCloseToDestination())
         {
+            if (!employeeAudioSource.isPlaying)
+            {
+                employeeAudioSource.clip = EmployeeWalking;
+                employeeAudioSource.Play();
+            }
             eStage = employeeStage.standBy;
             eAction = employeeAction.noAction;
             carryCount = carryMax;

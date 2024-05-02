@@ -11,8 +11,17 @@ MonoImporter:
   - selectedItem: {instanceID: 0}
   - nameText: {instanceID: 0}
   - budgetText: {instanceID: 0}
-  - desireVFX: {instanceID: 0}
   - ShopExit: {instanceID: 0}
+  - bot: {instanceID: 0}
+  - WalkingHeavy: {instanceID: 0}
+  - Walking: {instanceID: 0}
+  - CustomerPissed: {fileID: 8300000, guid: 0965f31a73877044bb60c4fa62079181, type: 3}
+  - CustomerHappy: {fileID: 8300000, guid: aae1d43d67697fe43b5f9084a8dee1d2, type: 3}
+  - thump: {instanceID: 0}
+  - highPatienceSprite: {instanceID: 0}
+  - mediumPatienceSprite: {instanceID: 0}
+  - lowPatienceSprite: {instanceID: 0}
+  - patienceSpriteRenderer: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
