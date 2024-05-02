@@ -1342,7 +1342,7 @@ MonoBehaviour:
   sellingItem: {fileID: 11400000, guid: 12f0818cb0aa0dd499c46c19e5af6672, type: 2}
   thisType: 2
   loadAmountText: {fileID: 9042331822603504411}
-  costToMaintain: 5
+  costToMaintain: 6
   purchasePower: 4
   visibilityIndicator: {fileID: 1214488877365645690}
 --- !u!114 &3589884318226659849
