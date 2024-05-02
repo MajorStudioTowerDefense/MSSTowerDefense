@@ -273,9 +273,10 @@ MonoBehaviour:
   nameTextOffsetY: 1
   ShopExit: {fileID: 0}
   currentDestination: {x: 0, y: 0, z: 0}
-  areaPartitionSizeX: 4
-  areaPartitionSizeY: 5
+  areaPartitionSizeX: 3
+  areaPartitionSizeY: 3
   bot: {fileID: 0}
+  hasForcedToBuyApple: 0
   WalkingHeavy: {fileID: 8300000, guid: 9d837a4559d987d40a8861a9014f3c16, type: 3}
   Walking: {fileID: 0}
   CustomerPissed: {fileID: 8300000, guid: 8b44cbbce1c6c8b4e9dce211968d5add, type: 3}
