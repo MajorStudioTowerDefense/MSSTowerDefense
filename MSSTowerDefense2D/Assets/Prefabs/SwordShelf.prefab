@@ -771,7 +771,7 @@ MonoBehaviour:
   purchaseRadius: 1.5
   customerStayDuration: 8
   loadAmount: 3
-  initalLoadAmount: 3
+  initalLoadAmount: 1
   loadAmountMax: 3
   loadAllowed: 1
   targetObjectName: TestShopExit
@@ -785,7 +785,7 @@ MonoBehaviour:
   thisType: 3
   loadAmountText: {fileID: 1295908062915999847}
   costToMaintain: 15
-  purchasePower: 0
+  purchasePower: 6
   visibilityIndicator: {fileID: 2606767789544531563}
 --- !u!114 &2014722460697413060
 MonoBehaviour:
