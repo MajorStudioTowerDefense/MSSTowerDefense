@@ -18,7 +18,7 @@ public class PlayerInteraction : MonoBehaviour
     delegate void AssignTaskDelegate(GameObject chosen);
     AssignTaskDelegate assignedTask;
 
-    interactionStage currentStage = interactionStage.primary;
+    [SerializeField]interactionStage currentStage = interactionStage.primary;
 
     [Header("UI")]
     public Sprite[] mouseUIs;
@@ -72,6 +72,7 @@ public class PlayerInteraction : MonoBehaviour
     
     void assignPrimaryTask()
     {
+
         if (GameManager.instance.currentState == GameStates.STORE)
         {
             //如果鼠标左键点击且点到了物体
@@ -437,6 +438,7 @@ public class PlayerInteraction : MonoBehaviour
             EmployeeChosenInPrimaryTask.eAction = employeeAction.noAction;
             EmployeeChosenInPrimaryTask = null;
             changeMouseUI(0);
+            Debug.Log("resetall");
         }
         if (shelfStockButtons != null)
         {
@@ -468,6 +470,7 @@ public class PlayerInteraction : MonoBehaviour
         {
             Destroy(GameObject.Find("ShadowShelf(Clone)"));
         }
+        currentStage = interactionStage.primary;
         changeMouseUI(0);
         assignedTask = null;
         shelfPlacementManager.SetCurrentShelfInstance(null);

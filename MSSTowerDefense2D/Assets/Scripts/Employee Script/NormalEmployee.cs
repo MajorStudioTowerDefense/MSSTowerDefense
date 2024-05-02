@@ -105,6 +105,10 @@ public class NormalEmployee : Bot
                 //progress
                 employeeLoadingImage.fillAmount = 0;
                 eStage = employeeStage.backToStandBy;
+                if (sprite.color != Color.white)
+                {
+                    sprite.color = Color.white;
+                }
             }
             if(eStage == employeeStage.backToStandBy)
             {
