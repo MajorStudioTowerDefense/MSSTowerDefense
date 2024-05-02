@@ -5,7 +5,15 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - gridBlockMain: {instanceID: 0}
-  - ShelfPlaced: {fileID: 8300000, guid: 94f8267c561f437418c6ff8cba925b82, type: 3}
+  - interactableCollider: {instanceID: 0}
+  - hoverPanel: {instanceID: 0}
+  - audioSourceRestock: {instanceID: 0}
+  - audioSourcePurchase: {instanceID: 0}
+  - Restock: {fileID: 8300000, guid: 4c510b110ef0509479a6abc84116adbb, type: 3}
+  - PurchaseSound: {fileID: 8300000, guid: 14f5fcf713590364786c1a19f547fa49, type: 3}
+  - canvas: {instanceID: 0}
+  - sellingItem: {instanceID: 0}
+  - loadAmountText: {instanceID: 0}
   - visibilityIndicator: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}

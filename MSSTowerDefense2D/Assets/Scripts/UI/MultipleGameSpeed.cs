@@ -6,18 +6,14 @@ using UnityEngine;
 public class MultipleGameSpeed : MonoBehaviour
 {
     public float gameSpeed = 2f;
-    public AudioSource[] audioSource;
+    public AudioSource audioSource;
+    public AudioClip Pause_Resume;
     public void SetGameSpeed()
     {
         Time.timeScale = gameSpeed;
-        if (audioSource != null)
-        {
-            foreach (AudioSource audio in audioSource)
-            {
-                audio.pitch = gameSpeed;
-            }
-        }
+        audioSource.clip = Pause_Resume;
+        audioSource.Play();
 
-        
+
     }
 }

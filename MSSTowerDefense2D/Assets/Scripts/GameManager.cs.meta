@@ -3,7 +3,26 @@ guid: 4875594b6d4fbce438f8d1c8a8f1e784
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - shelfPlacementManager: {instanceID: 0}
+  - cellTilePrefab: {instanceID: 0}
+  - topWallPrefab: {instanceID: 0}
+  - sideWallPrefab: {instanceID: 0}
+  - bottomWallPrefab: {instanceID: 0}
+  - entrancePrefab: {instanceID: 0}
+  - exitPrefab: {instanceID: 0}
+  - alternativeCellTilePrefab: {instanceID: 0}
+  - audioSource: {instanceID: 0}
+  - dayWin: {fileID: 8300000, guid: 164822b94c7cdf8438ac06722bf77861, type: 3}
+  - dayLoss: {fileID: 8300000, guid: 0840755df07866e41b5ac0c1d692e32f, type: 3}
+  - aStar: {instanceID: 0}
+  - exit: {instanceID: 0}
+  - roomPrefab: {instanceID: 0}
+  - LosePanel: {instanceID: 0}
+  - initLayout: {instanceID: 0}
+  - summaryPanel: {instanceID: 0}
+  - upgradePanel: {instanceID: 0}
+  - employeeArea: {instanceID: 0}
   executionOrder: 1
   icon: {instanceID: 0}
   userData: 

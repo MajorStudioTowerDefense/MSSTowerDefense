@@ -468,7 +468,9 @@ MonoBehaviour:
   WalkingHeavy: {fileID: 0}
   Walking: {fileID: 8300000, guid: 3b6f26366ba3461468ed335962c9b308, type: 3}
   CustomerPissed: {fileID: 8300000, guid: c572bf2b3e4da25469ad21dd4f99ca21, type: 3}
+  CustomerHappy: {fileID: 0}
   thump: {fileID: 8300000, guid: 64d39d97f0b0a66458ba0b20f4e1cccd, type: 3}
+  customerAudioSource: {fileID: -6107410012183814407}
   maxPatience: 35
   highPatienceSprite: {fileID: 1205277927, guid: 6e2d73cca9a95a14d8cb3ae80479ac74, type: 3}
   mediumPatienceSprite: {fileID: -289482232, guid: 6e2d73cca9a95a14d8cb3ae80479ac74, type: 3}

@@ -29,7 +29,10 @@ public class GameManager : MonoBehaviour
     public GameObject entrancePrefab;
     public GameObject exitPrefab;
     public GameObject alternativeCellTilePrefab;
-    
+
+    public AudioSource audioSource;
+    public AudioClip dayWin;
+    public AudioClip dayLoss;
 
     [Header("Level Initialization Perameters")]
     public int gridCellLength = 10;
@@ -251,12 +254,16 @@ public class GameManager : MonoBehaviour
         summaryPanel.SetActive(false);
         if (money <= 0)
         {
+            audioSource.clip = dayLoss;
+            audioSource.Play();
             LosePanel.SetActive(true);
             currentState = GameStates.LOSE;
             return;
         }
         else if (day == 28)
         {
+            audioSource.clip = dayWin;
+            audioSource.Play();
             Destroy(this.gameObject);
             Destroy(GameObject.Find("AudioManager"));
             Destroy(GameObject.Find("Pointer"));

@@ -24,17 +24,19 @@ public class PauseScript : MonoBehaviour
     {
         //stopAI();
         //disableShelves();
+        audioSource.clip = Pause_Resume;
+        audioSource.Play();
         Time.timeScale = 0.0f;
         play.SetActive(true);
         pause.SetActive(false);
-        Debug.Log("Play sound");
-        AudioManager.instance.PlaySound(Pause_Resume);
     }
 
     public void resumeGame()
     {
         //startAI();
         //enableShelves();
+        audioSource.clip = Pause_Resume;
+        audioSource.Play();
         Time.timeScale = 1.0f;
         pause.SetActive(true);
         play.SetActive(false);

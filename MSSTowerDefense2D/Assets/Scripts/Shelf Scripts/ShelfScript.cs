@@ -13,6 +13,8 @@ public class CustomerData
     public float timeAtShelf = 0f;
     public Bot bot;
 
+    
+
     public CustomerData(AIDestinationSetter ai, NormalCustomer normalCustomer, Bot bot)
     {
         this.aiDestinationSetter = ai;
@@ -45,6 +47,11 @@ public class ShelfScript : MonoBehaviour
     public GridSystem gridSystem;
     public BoxCollider2D interactableCollider;
     public RectTransform hoverPanel;
+
+    public AudioSource audioSourceRestock;
+    public AudioSource audioSourcePurchase;
+    public AudioClip Restock;
+    public AudioClip PurchaseSound;
 
     public float visibility = 1f;
     public float purchaseRadius = 1f;
@@ -161,6 +168,8 @@ public class ShelfScript : MonoBehaviour
                 currentInventoryItems.Add(item);
             }
         }
+        audioSourceRestock.clip = Restock;
+        audioSourceRestock.Play();
     }
 
     public void drawInCustomer(GameObject customer)
@@ -342,7 +351,10 @@ public class ShelfScript : MonoBehaviour
         Bot customer = customerData.bot;
         float moneyGained = ItemManager.Instance.GetPricePerUnit(sellingItem.GetItem()) + purchasePower;
         GameManager.instance.AddMoney(moneyGained);
-        
+
+        audioSourcePurchase.clip = PurchaseSound;
+        audioSourcePurchase.Play();
+
         showGainedMoney(moneyGained);
         customer.needs.Remove(customer.selectedItem);
         customer.selectedItem = null;
