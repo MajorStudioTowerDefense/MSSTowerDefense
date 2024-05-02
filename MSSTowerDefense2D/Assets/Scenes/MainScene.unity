@@ -25702,6 +25702,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1362520606}
     - target: {fileID: 6712996876442050155, guid: 3886e2976353d0b43955345cc98dff06, type: 3}
+      propertyPath: apple
+      value: 
+      objectReference: {fileID: 11400000, guid: 1d538a75481f3480e9db0507f04b4a6b, type: 2}
+    - target: {fileID: 6712996876442050155, guid: 3886e2976353d0b43955345cc98dff06, type: 3}
       propertyPath: LosePanel
       value: 
       objectReference: {fileID: 82705930}

@@ -19,6 +19,7 @@ public class NormalCustomer : Bot
 
     [HideInInspector] public Bot bot;
 
+    public bool hasForcedToBuyApple = false;
     public AudioClip WalkingHeavy;
     public AudioClip Walking;
     public AudioClip CustomerPissed;
