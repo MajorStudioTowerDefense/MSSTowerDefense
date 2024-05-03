@@ -123,4 +123,10 @@ public AudioClip spawnSound;
             Debug.Log("audio2");
         }
     }
+
+    public void PlayShiftAudio()
+    {
+        audioSource2.clip = spawnSound;
+        audioSource2.Play();
+    }
 }
