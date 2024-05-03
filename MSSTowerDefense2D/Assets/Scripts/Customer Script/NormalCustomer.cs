@@ -20,7 +20,6 @@ public class NormalCustomer : Bot
     public bool hasForcedToBuyApple = false;
     public AudioClip WalkingHeavy;
     public AudioClip Walking;
-    public AudioClip CustomerPissed;
     [SerializeField] private AudioSource customerPlayer;
 
     public Items apple;
@@ -170,7 +169,6 @@ if (GameManager.instance.day == 0 && !hasForcedToBuyApple)
         else  // Low patience
         {
             patienceSpriteRenderer.sprite = lowPatienceSprite;
-            AudioManager.instance.PlaySound(CustomerPissed);
         }
     }
 
