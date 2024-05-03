@@ -41,7 +41,7 @@ public AudioClip spawnSound;
     //Assigning certain sounds to play for a limited amount of time
     private void Start()
     {   
-        audioSource1.volume = 0.0f;
+        audioSource1.volume = 0.2f;
         //audioSource2.clip = StartShift;
         allowCheck = true;
         // Start playing music based on the initial time
