@@ -112,11 +112,6 @@ public class NormalEmployee : Bot
             }
             if(eStage == employeeStage.backToStandBy)
             {
-                if (!employeeAudioSource.isPlaying)
-                {
-                    employeeAudioSource.clip = EmployeeWalking;
-                    employeeAudioSource.Play();
-                }
                 returnToStandBy();
             }
             
