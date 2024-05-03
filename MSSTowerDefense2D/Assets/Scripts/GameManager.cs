@@ -46,8 +46,6 @@ public class GameManager : MonoBehaviour
     public int outdoorGridHeight = 40;
     public float plantSpacing = 2.0f;
 
-    public Items apple;
-
     [System.Serializable]
     public class PlantProbability
     {
@@ -66,7 +64,7 @@ public class GameManager : MonoBehaviour
     public float money = 100;
     [HideInInspector]public float yesterdayMoney = 0;
 
-    private int day = 0;
+    [HideInInspector] public int day = 0;
 
     [Header("Clock Settings")]
     [HideInInspector] public float timer;
@@ -168,11 +166,6 @@ public class GameManager : MonoBehaviour
             case GameStates.LOSE:
                 isTimer = false;
                 break;
-        }
-
-        if (day == 0)
-        {
-            ForceToBuyApple();
         }
     }
 
@@ -538,20 +531,5 @@ public int GetGridHeight()
     public void SkiptoStore()
     {
         timer = startStoreTime.x * 60 + startStoreTime.y - 1f;
-    }
-
-    public void ForceToBuyApple()
-    {
-        NormalCustomer[] normalCustomers = FindObjectsOfType<NormalCustomer>();
-
-        foreach (NormalCustomer normalCustomer in normalCustomers)
-        {
-            Debug.Log("cus:" + normalCustomer);
-            if (!normalCustomer.hasForcedToBuyApple)
-            {
-                normalCustomer.needs[0] = apple;
-                normalCustomer.hasForcedToBuyApple = true;
-            }
-        }
     }
 }

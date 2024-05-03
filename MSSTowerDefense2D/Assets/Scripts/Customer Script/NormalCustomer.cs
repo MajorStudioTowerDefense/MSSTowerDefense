@@ -23,6 +23,8 @@ public class NormalCustomer : Bot
     public AudioClip CustomerPissed;
     [SerializeField] private AudioSource customerPlayer;
 
+    public Items apple;
+
     public AudioClip thump;
 
     [Header("Patience")]
@@ -137,6 +139,20 @@ public class NormalCustomer : Bot
             AudioManager.instance.PlaySound(thump);
         }
         //Debug.Log(gameObject.name + " distance from exit: " + distance);
+
+if (GameManager.instance.day == 0 && !hasForcedToBuyApple)
+{
+        ForceToBuyApple();
+}
+    }
+
+    void ForceToBuyApple()
+    {
+        if (!hasForcedToBuyApple)
+            {
+                needs[0] = apple;
+                hasForcedToBuyApple = true;
+            }
     }
 
     void UpdatePatienceSprite()

@@ -464,11 +464,12 @@ MonoBehaviour:
   currentDestination: {x: 0, y: 0, z: 0}
   areaPartitionSizeX: 8
   areaPartitionSizeY: 5
-  bot: {fileID: 0}
   hasForcedToBuyApple: 0
   WalkingHeavy: {fileID: 0}
   Walking: {fileID: 8300000, guid: 3b6f26366ba3461468ed335962c9b308, type: 3}
   CustomerPissed: {fileID: 8300000, guid: c572bf2b3e4da25469ad21dd4f99ca21, type: 3}
+  customerPlayer: {fileID: 0}
+  apple: {fileID: 11400000, guid: 1d538a75481f3480e9db0507f04b4a6b, type: 2}
   thump: {fileID: 8300000, guid: 64d39d97f0b0a66458ba0b20f4e1cccd, type: 3}
   maxPatience: 35
   highPatienceSprite: {fileID: 1205277927, guid: 6e2d73cca9a95a14d8cb3ae80479ac74, type: 3}
