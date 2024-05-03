@@ -408,8 +408,8 @@ MonoBehaviour:
   nameTextOffsetY: 1
   ShopExit: {fileID: 0}
   currentDestination: {x: 0, y: 0, z: 0}
-  areaPartitionSizeX: 2
-  areaPartitionSizeY: 2
+  areaPartitionSizeX: 5
+  areaPartitionSizeY: 5
   bot: {fileID: 0}
   hasForcedToBuyApple: 0
   WalkingHeavy: {fileID: 0}

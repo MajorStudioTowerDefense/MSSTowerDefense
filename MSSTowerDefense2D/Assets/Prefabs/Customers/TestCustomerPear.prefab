@@ -273,15 +273,15 @@ MonoBehaviour:
   nameTextOffsetY: 1
   ShopExit: {fileID: 0}
   currentDestination: {x: 0, y: 0, z: 0}
-  areaPartitionSizeX: 3
-  areaPartitionSizeY: 3
+  areaPartitionSizeX: 10
+  areaPartitionSizeY: 10
   bot: {fileID: 0}
   hasForcedToBuyApple: 0
   WalkingHeavy: {fileID: 8300000, guid: 9d837a4559d987d40a8861a9014f3c16, type: 3}
   Walking: {fileID: 0}
   CustomerPissed: {fileID: 8300000, guid: 8b44cbbce1c6c8b4e9dce211968d5add, type: 3}
   thump: {fileID: 8300000, guid: 64d39d97f0b0a66458ba0b20f4e1cccd, type: 3}
-  maxPatience: 35
+  maxPatience: 45
   highPatienceSprite: {fileID: 1205277927, guid: 6e2d73cca9a95a14d8cb3ae80479ac74, type: 3}
   mediumPatienceSprite: {fileID: -289482232, guid: 6e2d73cca9a95a14d8cb3ae80479ac74, type: 3}
   lowPatienceSprite: {fileID: 1675742690, guid: 6e2d73cca9a95a14d8cb3ae80479ac74, type: 3}
