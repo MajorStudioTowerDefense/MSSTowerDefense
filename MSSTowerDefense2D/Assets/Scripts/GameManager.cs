@@ -546,9 +546,10 @@ public int GetGridHeight()
 
         foreach (NormalCustomer normalCustomer in normalCustomers)
         {
+            Debug.Log("cus:" + normalCustomer);
             if (!normalCustomer.hasForcedToBuyApple)
             {
-                normalCustomer.bot.needs[0] = apple;
+                normalCustomer.needs[0] = apple;
                 normalCustomer.hasForcedToBuyApple = true;
             }
         }

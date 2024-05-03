@@ -96,7 +96,7 @@ public class TutorialEventTrigger : MonoBehaviour
     {
         if (firstCustomer != null)
         {
-            if (firstCustomer.GetComponent<NormalCustomer>().bot.isPurchasing && !isCustomerPurchaseTutorialTriggered)
+            if (firstCustomer.GetComponent<NormalCustomer>().isPurchasing && !isCustomerPurchaseTutorialTriggered)
             {
                 PointerEventData pointerEventData = new PointerEventData(EventSystem.current);
                 pointerEventData.position = Camera.main.WorldToScreenPoint(customerTutorialTriggerUIObject.transform.position);

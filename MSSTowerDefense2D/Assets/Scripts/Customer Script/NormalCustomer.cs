@@ -17,12 +17,11 @@ public class NormalCustomer : Bot
     private float stopDuration = 2.0f;
     private bool isWaiting = false;
 
-    [HideInInspector] public Bot bot;
-
     public bool hasForcedToBuyApple = false;
     public AudioClip WalkingHeavy;
     public AudioClip Walking;
     public AudioClip CustomerPissed;
+    [SerializeField] private AudioSource customerPlayer;
 
     public AudioClip thump;
 
@@ -38,13 +37,13 @@ public class NormalCustomer : Bot
     {
         base.init();
         patience = maxPatience;
+        customerPlayer = GetComponent<AudioSource>();
         ShopExit = GameObject.FindGameObjectWithTag("Exit").transform;
         shelfPlacementGrid = GameManager.instance.shelfPlacementGrid;
         InitializeAreas();
         SetFirstAreaDestination();
-        bot = GetComponent<Bot>();
 
-        bot.needs = bot.SelectRandomItems(bot.likedItems, bot.desireAmount);
+        needs = SelectRandomItems(likedItems, desireAmount);
     }
     void InitializeAreas()
     {
@@ -123,7 +122,7 @@ public class NormalCustomer : Bot
 
         UpdatePatienceSprite();
 
-        switch (bot.isPurchasing)
+        switch (isPurchasing)
         {
             case false:
                 PerformWonderingActions();
@@ -179,7 +178,7 @@ public class NormalCustomer : Bot
         isWaiting = true;
         yield return new WaitForSeconds(duration);
         isWaiting = false;
-        if (!bot.isPurchasing)
+        if (!isPurchasing)
         {
             patience -= 10;
         }
@@ -200,6 +199,7 @@ public class NormalCustomer : Bot
 
     void MoveToNextArea()
     {
+        if (!customerPlayer.isPlaying) {customerPlayer.clip = Walking; customerPlayer.Play(); }
         Debug.Log("Moving... Unvisited areas: " + unvisitedAreas.Count);
         if (unvisitedAreas.Count == 0 || isWaiting) return;
 
@@ -226,6 +226,7 @@ public class NormalCustomer : Bot
 
     void MoveToExit()
     {
+        if (!customerPlayer.isPlaying) { customerPlayer.clip = Walking; customerPlayer.Play(); }
         movingToExit = true;
         destinationSetter.targetPosition = ShopExit.position;
     }
