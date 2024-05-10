@@ -189,6 +189,7 @@ if (GameManager.instance.day == 0 && !hasForcedToBuyApple)
 
     IEnumerator WaitAtArea(float duration)
     {
+        customerPlayer.Stop();
         isWaiting = true;
         yield return new WaitForSeconds(duration);
         isWaiting = false;
@@ -213,7 +214,7 @@ if (GameManager.instance.day == 0 && !hasForcedToBuyApple)
 
     void MoveToNextArea()
     {
-        //if (!customerPlayer.isPlaying && canPlaySound) {customerPlayer.clip = Walking; customerPlayer.Play(); }
+        if (!customerPlayer.isPlaying && canPlaySound) {customerPlayer.clip = Walking; customerPlayer.Play(); }
         Debug.Log("Moving... Unvisited areas: " + unvisitedAreas.Count);
         if (unvisitedAreas.Count == 0 || isWaiting) return;
 
@@ -240,7 +241,7 @@ if (GameManager.instance.day == 0 && !hasForcedToBuyApple)
 
     void MoveToExit()
     {
-        //if (!customerPlayer.isPlaying && canPlaySound) { customerPlayer.clip = Walking; customerPlayer.Play(); }
+        if (!customerPlayer.isPlaying && canPlaySound) { customerPlayer.clip = Walking; customerPlayer.Play(); }
         movingToExit = true;
         destinationSetter.targetPosition = ShopExit.position;
     }
