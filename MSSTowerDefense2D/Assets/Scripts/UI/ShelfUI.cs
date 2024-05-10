@@ -56,18 +56,18 @@ public class ShelfUI : MonoBehaviour
         {
             apple.SetActive(true);
         }
-        else if (day < 7)
+        else if (day < 3)
         {
             durian.SetActive(true);
             dragonFruit.SetActive(true);
         }
-        else if (day < 14)
+        else if (day < 7)
         {
             haste.SetActive(true);
             poison.SetActive(true);
             love.SetActive(true);
         }
-        else if (day < 21)
+        else if (day < 10)
         {
             horn.SetActive(true);
             crystal.SetActive(true);
