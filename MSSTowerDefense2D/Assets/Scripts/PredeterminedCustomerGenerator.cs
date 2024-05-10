@@ -158,4 +158,15 @@ public class PredeterminedCustomerGenerator : MonoBehaviour
             isShopOpened = true;
         }
     }
+
+    void disableSound()
+    {
+        if(predeterminedCustomersList.Count > 4)
+        {
+            foreach (GameObject customer in predeterminedCustomersList)
+            {
+                customer.GetComponent<NormalCustomer>().canPlaySound = false;
+            }
+        }
+    }
 }

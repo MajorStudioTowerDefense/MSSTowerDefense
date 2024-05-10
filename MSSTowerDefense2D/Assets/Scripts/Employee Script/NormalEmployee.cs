@@ -159,7 +159,7 @@ public class NormalEmployee : Bot
         else if (eStage == employeeStage.finishing)
         {
             if (eAction == employeeAction.moveShelf)
-            AudioManager.instance.PlaySound(EmployeeWalking);
+            
 
             onWayToMoveShelf();
         }

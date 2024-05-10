@@ -21,7 +21,7 @@ public class NormalCustomer : Bot
     public AudioClip WalkingHeavy;
     public AudioClip Walking;
     [SerializeField] private AudioSource customerPlayer;
-
+    public bool canPlaySound = true;
     public Items apple;
 
     public AudioClip thump;
@@ -135,7 +135,7 @@ public class NormalCustomer : Bot
         if (GameManager.instance.currentState == GameStates.END)
         {
             MoveToExit();
-            AudioManager.instance.PlaySound(thump);
+            
         }
         //Debug.Log(gameObject.name + " distance from exit: " + distance);
 
@@ -213,7 +213,7 @@ if (GameManager.instance.day == 0 && !hasForcedToBuyApple)
 
     void MoveToNextArea()
     {
-        if (!customerPlayer.isPlaying) {customerPlayer.clip = Walking; customerPlayer.Play(); }
+        if (!customerPlayer.isPlaying && canPlaySound) {customerPlayer.clip = Walking; customerPlayer.Play(); }
         Debug.Log("Moving... Unvisited areas: " + unvisitedAreas.Count);
         if (unvisitedAreas.Count == 0 || isWaiting) return;
 
@@ -240,7 +240,7 @@ if (GameManager.instance.day == 0 && !hasForcedToBuyApple)
 
     void MoveToExit()
     {
-        if (!customerPlayer.isPlaying) { customerPlayer.clip = Walking; customerPlayer.Play(); }
+        if (!customerPlayer.isPlaying && canPlaySound) { customerPlayer.clip = Walking; customerPlayer.Play(); }
         movingToExit = true;
         destinationSetter.targetPosition = ShopExit.position;
     }

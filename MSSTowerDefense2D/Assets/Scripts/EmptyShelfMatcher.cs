@@ -6,8 +6,7 @@ public class EmptyShelfMatcher : MonoBehaviour
     public AudioClip RestockShelf;
     void Start()
     {
-        AudioManager.instance.PlaySound(RestockShelf);
-        Debug.Log("Play sound.");
+        
     }
     void Update()
     {

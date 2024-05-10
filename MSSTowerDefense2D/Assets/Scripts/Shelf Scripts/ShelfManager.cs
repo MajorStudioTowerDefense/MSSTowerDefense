@@ -28,7 +28,7 @@ public class ShelfManager : MonoBehaviour
     public Sprite GetShelfSpriteFull(int index)
     {
         return shelfSpritesFull[index];
-        AudioManager.instance.PlaySound(Refilled);
+        
 
     }
 

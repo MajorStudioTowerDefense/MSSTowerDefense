@@ -244,7 +244,7 @@ GameObject:
   - component: {fileID: -726666408145361071}
   - component: {fileID: -9108921441225004776}
   - component: {fileID: 1331516189927977476}
-  - component: {fileID: -6107410012183814407}
+  - component: {fileID: 156316846080975984}
   m_Layer: 0
   m_Name: TestCustomer
   m_TagString: Customer
@@ -467,8 +467,8 @@ MonoBehaviour:
   hasForcedToBuyApple: 0
   WalkingHeavy: {fileID: 0}
   Walking: {fileID: 8300000, guid: 3b6f26366ba3461468ed335962c9b308, type: 3}
-  CustomerPissed: {fileID: 8300000, guid: c572bf2b3e4da25469ad21dd4f99ca21, type: 3}
   customerPlayer: {fileID: 0}
+  canPlaySound: 1
   apple: {fileID: 11400000, guid: 1d538a75481f3480e9db0507f04b4a6b, type: 2}
   thump: {fileID: 8300000, guid: 64d39d97f0b0a66458ba0b20f4e1cccd, type: 3}
   maxPatience: 35
@@ -507,7 +507,7 @@ MonoBehaviour:
   - spriteRenderer: {fileID: 6430688495216814452}
     relativeOrder: 0
   _sortOffsetMarker: {fileID: 8956798028541590634}
---- !u!82 &-6107410012183814407
+--- !u!82 &156316846080975984
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

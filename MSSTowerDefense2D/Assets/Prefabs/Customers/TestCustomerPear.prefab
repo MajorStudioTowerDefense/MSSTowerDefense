@@ -46,9 +46,9 @@ GameObject:
   - component: {fileID: 3901240669130896230}
   - component: {fileID: 3901240669130896224}
   - component: {fileID: 7858649830088713757}
-  - component: {fileID: -1235564854328231557}
   - component: {fileID: 2378792219961176668}
   - component: {fileID: 7943251442694473406}
+  - component: {fileID: -5380343562746964776}
   m_Layer: 0
   m_Name: TestCustomerPear
   m_TagString: Customer
@@ -277,8 +277,9 @@ MonoBehaviour:
   areaPartitionSizeY: 10
   hasForcedToBuyApple: 0
   WalkingHeavy: {fileID: 8300000, guid: 9d837a4559d987d40a8861a9014f3c16, type: 3}
-  Walking: {fileID: 0}
+  Walking: {fileID: 8300000, guid: 9d837a4559d987d40a8861a9014f3c16, type: 3}
   customerPlayer: {fileID: 0}
+  canPlaySound: 1
   apple: {fileID: 11400000, guid: 1d538a75481f3480e9db0507f04b4a6b, type: 2}
   thump: {fileID: 8300000, guid: 64d39d97f0b0a66458ba0b20f4e1cccd, type: 3}
   maxPatience: 45
@@ -286,7 +287,38 @@ MonoBehaviour:
   mediumPatienceSprite: {fileID: -289482232, guid: 6e2d73cca9a95a14d8cb3ae80479ac74, type: 3}
   lowPatienceSprite: {fileID: 1675742690, guid: 6e2d73cca9a95a14d8cb3ae80479ac74, type: 3}
   patienceSpriteRenderer: {fileID: 7108125565702973533}
---- !u!82 &-1235564854328231557
+--- !u!114 &2378792219961176668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2782339301779740598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b455b4c67a0dc4afea71245a52eb2770, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  front: {fileID: 21300000, guid: 1d38a3df0462c492681e80f32c199905, type: 3}
+  back: {fileID: 21300000, guid: 4e1f424633dba4344ab155bbd723e6ff, type: 3}
+  forward: {fileID: 21300000, guid: 4900a974098044a58b90f82293cf2f2f, type: 3}
+--- !u!114 &7943251442694473406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2782339301779740598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca0e74b414ada72409484048f6119501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sortableSprites:
+  - spriteRenderer: {fileID: 3901240669130896229}
+    relativeOrder: 0
+  _sortOffsetMarker: {fileID: 2126774657054391109}
+--- !u!82 &-5380343562746964776
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -382,37 +414,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &2378792219961176668
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2782339301779740598}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b455b4c67a0dc4afea71245a52eb2770, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  front: {fileID: 21300000, guid: 1d38a3df0462c492681e80f32c199905, type: 3}
-  back: {fileID: 21300000, guid: 4e1f424633dba4344ab155bbd723e6ff, type: 3}
-  forward: {fileID: 21300000, guid: 4900a974098044a58b90f82293cf2f2f, type: 3}
---- !u!114 &7943251442694473406
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2782339301779740598}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca0e74b414ada72409484048f6119501, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _sortableSprites:
-  - spriteRenderer: {fileID: 3901240669130896229}
-    relativeOrder: 0
-  _sortOffsetMarker: {fileID: 2126774657054391109}
 --- !u!1 &6764625469833469541
 GameObject:
   m_ObjectHideFlags: 0
